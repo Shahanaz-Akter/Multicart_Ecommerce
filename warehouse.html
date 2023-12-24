@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | Multicart - Responsive Admin Dashboard Template</title>
+    <title>Warehouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -18,13 +18,8 @@
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-
-
-
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-
 
     <!-- Plugins css -->
     <link href="assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
@@ -40,6 +35,12 @@
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- data tables css -->
+    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+
 
 </head>
 
@@ -50,7 +51,7 @@
     <!-- Begin page -->
     <div id="wrapper">
 
-        <!-- Topbar Start -->
+        <!-- Top bar Start -->
         <div class="navbar-custom" style="background: #FFFFFF; border-bottom: 3px solid #EBEBEB!important;">
             <ul class="list-unstyled topnav-menu float-end mb-0">
 
@@ -229,7 +230,7 @@
                     <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="index.html#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ms-1">
-                            Nowak <i class="mdi mdi-chevron-down"></i>
+                            Admin <i class="mdi mdi-chevron-down"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -296,9 +297,9 @@
                     </button>
                 </li>
 
-                <li>
+                <!-- <li>
                     <h4 class="page-title-main">Dashboard</h4>
-                </li>
+                </li> -->
 
             </ul>
 
@@ -317,7 +318,7 @@
 
                     <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-md">
                     <div class="dropdown">
-                        <a href="index.html#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown" aria-expanded="false">Nowak Helme</a>
+                        <a href="index.html#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown" aria-expanded="false">Admin Panel</a>
                         <div class="dropdown-menu user-pro-dropdown">
 
                             <!-- item-->
@@ -565,12 +566,16 @@
                             <div class="collapse" id="UserManagement">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="user_admin.html">
+                                        <a href="super_admin.html">
 
                                             <i class="mdi mdi-circle" style="font-size: 6px;margin-right: 10px;"></i>
                                             <span> Super Admin
-                                            </span></a>
-                                    </li>
+                                            </span>
+
+                                        </a>
+
+                                        <!-- end -->
+
                                     <li>
                                         <a href="admin.html">
 
@@ -578,6 +583,7 @@
                                             <span> Admin
                                             </span></a>
                                     </li>
+
                                     <li>
                                         <a href="moderator.html">
                                             <i class="mdi mdi-circle" style="font-size: 6px;margin-right: 10px;"></i>
@@ -585,6 +591,7 @@
                                             </span>
                                         </a>
                                     </li>
+
                                 </ul>
                             </div>
                         </li>
@@ -733,41 +740,198 @@
 
                 <div class="bg-white p-3 mb-2">
 
-                    <h4 class="text-black font-bold mb-3">Expense Lists</h4>
+                    <h4 class="text-black font-bold mb-3">
+
+                        Warehouse Lists
+                    </h4>
 
                     <div style="color: rgb(97 97 97); margin-right: 0.5rem">
-                        <span>Trading</span>
+                        <span>Warehouse</span>
                         <span>></span>
-                        <span>Sale</span>
-                        <span>></span>
-                        <span>Expense Lists</span>
+                        <span>Warehouse Lists</span>
                     </div>
                 </div>
+
+
+
 
                 <!-- Start Content-->
                 <div class="container-fluid card p-4">
 
+                    <div class="mb-5">
+                        <h3 class="mb-3">Warehouse</h3>
 
-                    <table id="example" class="display nowrap" style="width:100%">
+                        <span class="p-2" style="border: 1px solid  grey;">
+                            <span data-bs-toggle="modal" data-bs-target="#warehouse_modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 448 512" class="">
+                                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                </svg>
+                                <span class="text-dark">
+                                    Add Warehouse
+                                </span>
+                            </span>
+
+                            <!-- Center modal content -->
+                            <div class="modal fade" id="warehouse_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myCenterModalLabel"></h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form action="" method="post">
+
+                                                <div class="row">
+
+                                                    <style>
+                                                        .select2-container--default .select2-selection--single {
+                                                            background: #FCFCFC !important;
+                                                            color: #444 !important;
+                                                        }
+
+                                                        .form-control {
+                                                            background: #FCFCFC !important;
+                                                            color: #444 !important;
+                                                        }
+                                                    </style>
+
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="name" class="form-label">Name</label>
+                                                        <input type="text" id="name" class="form-control" placeholder="XYZ" name="name" style="background: #FCFCFC!important;">
+                                                    </div>
+
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="phone" class="form-label">Phone</label>
+                                                        <input type="text" id="phone" class="form-control" placeholder="************" name="phone" style="background: #FCFCFC!important;">
+                                                    </div>
+
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="email" class="form-label">Email</label>
+                                                        <input type="text" id="email" class="form-control" placeholder="xyx@gmail.com" name="email" style="background: #FCFCFC!important;">
+                                                    </div>
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="city" class="form-label">City</label>
+                                                        <input type="text" id="city" class="form-control" placeholder="Dhaka" name="city" style="background: #FCFCFC!important;">
+                                                    </div>
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="country" class="form-label">Country</label>
+                                                        <input type="text" id="country" class="form-control" placeholder="New York" name="country" style="background: #FCFCFC!important;">
+                                                    </div>
+
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="address" class="form-label">Address</label>
+                                                        <input type="text" id="address" class="form-control" placeholder="MogBazar" name="address" style="background: #FCFCFC!important;">
+                                                    </div>
+                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                                        <label for="zip" class="form-label">Zip</label>
+                                                        <input type="text" id="zip" class="form-control" placeholder="******" name="zip" style="background: #FCFCFC!important;">
+                                                    </div>
+
+                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </span>
+
+                    </div>
+
+
+                    <table id="warehouse" class="display nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th><input type="checkbox" id="select-all-checkbox" onclick="selectAll()"></th>
+                                <th>SL</th>
+                                <th>Warehouse</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011-04-25</td>
-                                <td>$320,800</td>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+
+                                <td>01</td>
+                                <td>Dhanmondi</td>
+                                <td>01836549236</td>
+                                <td>shahanazakter@gmail.com</td>
+                                <td>Dhaka</td>
+                                <td>
+                                    <div class="btn-group mb-2">
+                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <i class="mdi mdi-chevron-down"></i></button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="edit_warehouse.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
+                                                </svg>
+                                                <span class="ms-1">Edit</span>
+                                            </a>
+
+
+
+                                            <a class="dropdown-item" href="delete_warehouse.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                                                    <path
+                                                        d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                                                </svg>
+
+                                                <span class="ms-1">Delete</span>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>02</td>
+                                <td>Gulshan</td>
+                                <td>01836549299</td>
+                                <td>mimi@gmail.com</td>
+                                <td>Dhaka</td>
+                                <td>
+                                    <div class="btn-group mb-2">
+                                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <i class="mdi mdi-chevron-down"></i></button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="edit.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
+                                                </svg>
+                                                <span class="ms-1">Edit</span>
+                                            </a>
+
+
+                                            <a class="dropdown-item" href="delete.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 448 512">
+                                                    <path
+                                                        d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                                                </svg>
+
+                                                <span class="ms-1">Delete</span>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
 
                         </tbody>
 
@@ -963,6 +1127,69 @@
     <script src="assets/js/app.min.js"></script>
 
 
+    <!-- data table js -->
+    <!-- <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+
+    </script> -->
+
+    <script>
+        var table;
+
+        $(document).ready(function () {
+            table = $('#warehouse').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'],
+                scrollX: true,
+                scrollY: true,
+
+                // select: {
+                //     style: 'multi', // Enable multiple row selection
+                //     selector: 'td input', // Use the first column for selection
+                // },
+            });
+
+            // $('#select-all-checkbox').on('click', function () {
+            //     var isChecked = $(this).prop('checked');
+            //     $('input.row-checkbox', table.rows().nodes()).prop('checked', isChecked);
+            //     table.rows().select(isChecked);
+            // });
+        });
+    </script>
+
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+
+    <!-- <script>
+        const selectAll = () => {
+            let select_all = document.querySelector('#select-all-checkbox');
+
+            let one_checkbox = document.querySelector('.row-checkbox');
+            console.log(select_all);
+            select_all.addEventListener(() => {
+                one_checkbox.setAttribute('selected');
+            })
+
+
+        }
+    </script> -->
 
 </body>
 
