@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Add Expense</title>
+    <title>Add Supplier</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -726,57 +726,34 @@
 
                 <div class="bg-white p-3 mb-2">
 
-                    <h4 class="text-black font-bold mb-3">Add Expense</h4>
+                    <h4 class="text-black font-bold mb-3">Add Supplier</h4>
 
                     <div style="color: rgb(97 97 97); margin-right: 0.5rem">
-                        <span>Expense</span>
+                        <span>Supplier</span>
                         <span>></span>
-                        <span>Add Expense</span>
+                        <span>Add Supplier</span>
                     </div>
                 </div>
 
                 <!-- Start Content-->
                 <div class="container-fluid card p-4">
 
+                    <h3 class="mb-3">Create Supplier</h3>
+
                     <form action="" method="post">
 
                         <div class="row">
 
-
-
-
-
-                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
-                                <label for="date" class="form-label">Date</label>
-                                <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="supplier_name" class="form-label">Supplier Name</label>
+                                <input class="form-control" id="supplier_name" type="text" name="supplier_name" placeholder="Joseph Tylor">
                             </div>
 
-
-                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-5">
-                                <label for="warehouse" class="form-label">Select Warehouse</label>
-                                <select class="form-control" data-toggle="select2" data-width="100%" name="warehouse" style="background: #FCFCFC!important;">
-                                    <!-- <option>Warehouse</option> -->
-                                    <optgroup label="">
-                                        <option value="united_state">United State</option>
-                                        <option value="canada">Canada</option>
-                                        <option value="maxico">Maxico</option>
-                                        <option value="france">France</option>
-                                        <option value="germany">Germany</option>
-                                    </optgroup>
-                                </select>
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" id="phone" class="form-control" placeholder="00 000 000 000" name="phone" style="background: #FCFCFC!important;">
                             </div>
 
-                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
-                                <label for="expense_type" class="form-label">Expense Type</label>
-                                <select class="form-control" data-toggle="select2" data-width="100%" name="expense_type" style="background: #FCFCFC!important;">
-                                    <!-- <option>Direct Expense</option> -->
-                                    <optgroup label="">
-                                        <option value="direct_expense">Direct Expense</option>
-                                        <option value="draft_enpense">Draft Expense</option>
-                                    </optgroup>
-
-                                </select>
-                            </div>
 
                             <style>
                                 .select2-container--default .select2-selection--single {
@@ -790,54 +767,49 @@
                                 }
                             </style>
 
-                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4" style="background: #FCFCFC!important;">
-                                <label for="category" class="form-label">Category</label>
-                                <select class="form-control" data-toggle="select2" data-width="100%" name="category">
-                                    <!-- <option>Electrics</option> -->
-                                    <optgroup label="">
-                                        <option value="united_state">Electrics</option>
-                                        <option value="united_state">Shoe</option>
-                                        <option value="canada">Clothes</option>
-                                        <option value="bag">Bag</option>
-                                        <option value="maxico">Computer</option>
-                                        <option value="france">Laptop</option>
-                                        <option value="germany">Germany</option>
-                                    </optgroup>
-                                </select>
+
+
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" id="email" class="form-control" placeholder="joseph@gmail.com" name="email" style="background: #FCFCFC!important;">
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" id="country" class="form-control" placeholder="United States" name="country" style="background: #FCFCFC!important;">
                             </div>
 
-                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
-                                <label for="voucher_no" class="form-label">Voucher No</label>
-                                <input type="text" id="voucher_no" class="form-control" placeholder="748" name="voucher_no" style="background: #FCFCFC!important;">
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" id="city" class="form-control" placeholder="New York" name="city" style="background: #FCFCFC!important;">
                             </div>
 
 
-                            <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-5">
-                                <label class="form-label">Amount</label>
-                                <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470" style="background: #FCFCFC!important;">
-                            </div> -->
-
-                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4" style="margin-bottom: 10px;">
-                                <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
-                                    <label class="">Amount</label>
-                                    <input type="number" class="form-control" placeholder="100" name="amount" onkeypress="return event.keyCode != 13;">
-                                </div>
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" id="address" class="form-control" placeholder="Malmate Station" name="address" style="background: #FCFCFC!important;">
                             </div>
 
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="zip_code" class="form-label">Zip Code</label>
+                                <input type="text" id="zip_code" class="form-control" placeholder="48756" name="zip_code" style="background: #FCFCFC!important;">
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="company" class="form-label">Company</label>
+                                <input type="text" id="company" class="form-control" placeholder="Ztrios Tech" name="company" style="background: #FCFCFC!important;">
+                            </div>
 
-                            <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-4">
-                                <label class="" for="purchase_notes">Purchase Notes:</label>
-                                <textarea id="textarea" class="form-control" maxlength="225" rows="7" cols="" placeholder="TYPE Text...." name="purchase_notes" style="background: #FCFCFC;"></textarea>
+                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                <label for="supplier_code" class="form-label">Supplier Code</label>
+                                <input type="text" id="supplier_code" class="form-control" placeholder="101" name="supplier_code" style="background: #FCFCFC!important;">
                             </div>
 
                             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-lg btn-primary">Create Now </button>
                             </div>
 
                         </div>
 
                     </form>
-
 
                 </div>
                 <!-- container-fluid -->
