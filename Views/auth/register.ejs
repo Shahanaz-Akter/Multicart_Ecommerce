@@ -43,57 +43,47 @@
                                 <h4 class="text-uppercase mt-0">Register / Signup</h4>
                             </div>
 
-                            <form action="auth-register.html#">
+                            <form action="/post_register" method="post">
 
                                 <div class="mb-3">
-                                    <label for="fullname" class="form-label">Full Name</label>
+                                    <label for="fullname" class="form-label">User Name</label>
                                     <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="emailaddress" class="form-label">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email">
-                                </div>
+
+
+
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input class="form-control" type="password" required id="password" placeholder="Enter your password">
                                 </div>
+
+
+
+                                <div class="mb-3 d-none">
+                                    <label for="user_id" class="form-label">User_id</label>
+                                    <input class="form-control" type="text" required id="user_id" placeholder="">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Role</label>
+                                    <input class="form-control" type="text" required id="role" placeholder="superadmin / admin">
+                                </div>
+
                                 <div class="mb-3">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="checkbox-signup">
                                         <label class="form-check-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>
                                     </div>
                                 </div>
-                                <div class="mb-3 text-center d-grid">
-                                    <button class="btn btn-dark text-white" type="submit"> Sign Up </button>
+
+                                <div class="mb-3 d-grid text-center">
+                                    <button class="btn btn-dark" type="submit">Sign Up </button>
                                 </div>
 
 
-
-                                <div class="">
-                                    <span class="" style="color: #000000;">Login With</span>
-
-                                    <span class="ms-2">
-                                        <a href="/facebook">
-                                            <svg style="color: blue!important;" class="" xmlns="http://www.w3.org/2000/svg" height="19" width="19" viewBox="0 0 512 512">
-                                                <path
-                                                    d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
-                                            </svg>
-                                        </a>
-                                    </span>
-
-                                    <span class="ms-2">
-                                        <a href="/google">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="19" width="18.25" viewBox="0 0 488 512">
-                                                <path
-                                                    d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
-                                            </svg>
-                                        </a>
-                                    </span>
-
-
-                                </div>
 
                             </form>
+
 
                         </div> <!-- end card-body -->
                     </div>
@@ -101,7 +91,7 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center ">
-                            <p class="text-dark">Already have account? <a href="https://coderthemes.com/adminto/layouts/pages-login.html" class="text-dark ms-1"><b>Sign In</b></a></p>
+                            <p class="text-dark">Already have account? <a href="/auth/super_admin/login" class="text-dark ms-1"><b>Sign In</b></a></p>
                         </div> <!-- end col -->
                     </div>
                     <!-- end row -->

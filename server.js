@@ -43,7 +43,10 @@ app.set('View engine', 'ejs');
 //if I want to bring some folder or file have to module. exports than get using require('') method
 
 //Creating Multiple Routes with prefix
+// app.use('/customer', require('./routes/customerRoute'));
 app.use('/auth', require('./routes/authRoute'));
+app.use('/super_admin', require('./routes/superAdminRoute'));
+
 // app.use('/product', require('./routes/productRoute'));
 // app.use('/expense', require('./routes/expenseRoute'));
 // app.use('/people', require('./routes/peopleRoute'));
@@ -57,4 +60,4 @@ const connectDB = require('./config/db');
 //server starting at the end of the project
 app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
-})
+});

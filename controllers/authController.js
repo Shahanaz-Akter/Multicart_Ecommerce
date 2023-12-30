@@ -2,12 +2,12 @@
 const asyncHandler = require('express-async-handler');
 
 const register = (req, res) => {
-    res.render('auth/dashboard.ejs');
+    res.render('auth/register.ejs');
 }
 
-const dashboard = (req, res) => {
-    res.render('superAdmin/master.ejs');
+const login = (req, res) => {
+    res.render('auth/login.ejs');
 }
 
 
-module.exports = { register, dashboard, };
+module.exports = { register, login };
