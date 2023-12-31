@@ -9,6 +9,7 @@
 
 //npm init -y or npm init->package.json  // initialize a new Node.js project using npm init
 //npm install ->package-lock.json
+//npm install express ejs express-ejs-layouts 
 
 //npm install mongodb
 //node modules command->npm i express dotenv mongoose colors
@@ -24,6 +25,9 @@
 //created Express application npm install express install nodemon  using express() and assign it to the app variable.
 const express = require('express');
 const app = express();
+
+// const expressLayouts = require('express-ejs-layouts');
+// app.use(expressLayouts);
 
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 5000; //if env port is not working then work 5000 port
@@ -44,7 +48,9 @@ app.set('View engine', 'ejs');
 
 //Creating Multiple Routes with prefix
 // app.use('/customer', require('./routes/customerRoute'));
-app.use('/auth', require('./routes/authRoute'));
+
+
+app.use('/', require('./routes/authRoute'));
 app.use('/super_admin', require('./routes/superAdminRoute'));
 
 // app.use('/product', require('./routes/productRoute'));
@@ -52,7 +58,6 @@ app.use('/super_admin', require('./routes/superAdminRoute'));
 // app.use('/people', require('./routes/peopleRoute'));
 // app.use('/customer', require('./routes/customerRoute'));
 // app.use('/report', require('./routes/reportRoute'));
-
 
 const connectDB = require('./config/db');
 // connectDB();

@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const { dashboard, addProduct, ProductList, productCategory, addExpense, expenseList, addCustomer, customerList, productReport, expenseReport, customerReport } = require('../controllers/superAdminController');
+const { Super, dashboard, addProduct, ProductList, productCategory, addExpense, expenseList, addCustomer, customerList, productReport, expenseReport, customerReport } = require('../controllers/superAdminController');
 
 router.get('/', dashboard);
 router.get('/dashboard', dashboard);
+router.get('/super', Super);
+
 
 router.get('/add_product', addProduct);
 router.get('/Product_list', ProductList);

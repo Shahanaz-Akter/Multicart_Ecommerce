@@ -9,6 +9,13 @@ const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
+
+    // connection.query('CREATE DATABASE fgfd', (err) => {
+    //     if (err) throw new Error(err);
+    //     console.log('Created successfully');
+
+    // });
+
     if (err) {
         console.error('Error connecting to MySQL:', err);
     } else {

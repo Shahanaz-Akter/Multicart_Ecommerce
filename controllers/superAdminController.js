@@ -6,6 +6,11 @@ const dashboard = (req, res) => {
     res.render('layouts/master.ejs');
 }
 
+const Super = (req, res) => {
+    res.render('user/super_admin.ejs');
+}
+
+
 const addProduct = (req, res) => {
     res.render('product/add_product.ejs');
 }
@@ -41,4 +46,4 @@ const expenseReport = (req, res) => {
 const customerReport = (req, res) => {
     res.render('report/customer_report.ejs');
 }
-module.exports = { dashboard, addProduct, ProductList, productCategory, addExpense, expenseList, addCustomer, customerList, productReport, expenseReport, customerReport }
+module.exports = { Super, dashboard, addProduct, ProductList, productCategory, addExpense, expenseList, addCustomer, customerList, productReport, expenseReport, customerReport }
