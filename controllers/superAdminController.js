@@ -10,7 +10,6 @@ const Super = (req, res) => {
     res.render('user/super_admin.ejs');
 }
 
-
 const addProduct = (req, res) => {
     res.render('product/add_product.ejs');
 }
@@ -27,7 +26,6 @@ const addExpense = (req, res) => {
 const expenseList = (req, res) => {
     res.render('expense/expense_list.ejs');
 }
-
 
 const addCustomer = (req, res) => {
     res.render('customer/add_customer.ejs');

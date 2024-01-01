@@ -43,44 +43,47 @@
                                 <h4 class="text-uppercase mt-0">Register / Signup</h4>
                             </div>
 
-                            <form action="/post_register" method="post">
+                            <form action="/post_register" method="post" enctype="multipart/form-data">
 
                                 <div class="mb-3">
-                                    <label for="fullname" class="form-label">User Name</label>
-                                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                                    <label for="user_name" class="form-label">User Name</label>
+                                    <input class="form-control" type="text" id="fullname" name="user_name" placeholder="John">
                                 </div>
-
-
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input class="form-control" type="password" required id="password" placeholder="Enter your password">
+                                    <input class="form-control" type="text" id="password" name="password" placeholder="******" required>
                                 </div>
 
-
-
-                                <div class="mb-3 d-none">
+                                <!-- <div class="mb-3 d-none">
                                     <label for="user_id" class="form-label">User_id</label>
                                     <input class="form-control" type="text" required id="user_id" placeholder="">
-                                </div>
+                                </div> -->
 
                                 <div class="mb-3">
                                     <label for="role" class="form-label">Role</label>
-                                    <input class="form-control" type="text" required id="role" placeholder="superadmin / admin">
+                                    <input class="form-control" type="text" id="role" name="role" placeholder="superadmin / admin" required>
                                 </div>
+
+
+                                <style>
+                                    /* checkbox background */
+                                    .form-check-input:checked {
+                                        background: black;
+                                    }
+                                </style>
 
                                 <div class="mb-3">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="checkbox-signup">
-                                        <label class="form-check-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>
+                                        <input type="checkbox" class="form-check-input" id="checkbox-signup" required>
+                                        <label class="form-check-label" for="checkbox-signup">I accept Terms and Conditions</label>
                                     </div>
                                 </div>
+
 
                                 <div class="mb-3 d-grid text-center">
                                     <button class="btn btn-dark" type="submit">Sign Up </button>
                                 </div>
-
-
 
                             </form>
 
