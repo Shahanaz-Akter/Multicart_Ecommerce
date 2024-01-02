@@ -27,7 +27,7 @@
     <!-- icons -->
     <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- add_products external css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
@@ -41,19 +41,7 @@
             margin-bottom: 5px;
         }
 
-        .s-i-c-2 label {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 90px;
-            width: 90px;
-            background-color: rgb(195, 212, 223);
-        }
 
-        .s-i-c-2 label i {
-            color: white;
-            font-size: 50px;
-        }
 
         .form-control {
             color: #242945;
@@ -581,9 +569,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100px;
-            width: 100px;
-            background-color: rgb(195, 212, 223);
+            height: 70px;
+            width: 70px;
+            /* background-color: rgb(195, 212, 223); */
+            background-color: #3D3D3D;
+
         }
 
         .s-i-c-2 label i {
@@ -833,18 +823,6 @@
             color: blue;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
         /* Styling for the dropdown menu items */
         .content_dropdown-menu {
             position: absolute;
@@ -914,12 +892,6 @@
    font-size: 16px;
    background-color: #f6f6f6;
  } */
-
-
-
-
-
-
 
         /* .colorVariantBox #colorVariant{
    width: 100%;
@@ -1010,8 +982,7 @@
                         <div class="container-fluid card" style="padding: 20px;">
 
                             <!-- new Add product code Start  -->
-                            <form action="" method="post">
-
+                            <form action="/product/post_add_product" method="post" enctype="multipart/form-data">
 
                                 <div class="row">
 
@@ -1020,7 +991,7 @@
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Product Name</label>
-                                                <input type="text" class="form-control" placeholder="HP Elite Book" name="product_name" onkeypress="return event.keyCode != 13;">
+                                                <input type="text" class="form-control" placeholder="HP Elite Book" name="product_name" onkeypress="return event.keyCode != 13;" required>
                                             </div>
                                         </div>
 
@@ -1037,17 +1008,17 @@
                                             <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label class="" style="">Product Category</label>
                                                 <div class=" position-relative single-contact-info productName" style="margin-top: 7px">
-                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;">
+                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;" required>
                                                     <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1000" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Mexico</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Physical</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">France</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Germany</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Tops</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Pant</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Shirt</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Tie</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Saree</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
 
 
                                         <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
@@ -1089,14 +1060,14 @@
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Buying Price</label>
-                                                <input type="number" class="form-control" placeholder="0" name="buying_price">
+                                                <input type="number" class="form-control" placeholder="1" name="buying_price" required>
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Selling Price</label>
-                                                <input type="number" class="form-control" placeholder="0" name="selling_price" onkeypress="return event.keyCode != 13;">
+                                                <input type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;" required>
                                             </div>
                                         </div>
 
@@ -1111,7 +1082,7 @@
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Discount</label>
-                                                <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;">
+                                                <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;" required>
                                             </div>
                                         </div>
 
@@ -1120,7 +1091,12 @@
                                             <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
                                         </div>
 
-
+                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                            <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
+                                                <label>Total Quantity</label>
+                                                <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;" required>
+                                            </div>
+                                        </div>
 
                                         <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                         <label for="product_unit" class="form-label">Product Unit</label>
@@ -1138,11 +1114,14 @@
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6" style="border: 2px solid transparent;">
                                         <div class="row h-100">
                                             <div class="col-md-5 col-lg-5 col-sm-12">
-                                                <div class="main-img-container">
-                                                    <p>*All Image size should be 300/300.</p>
+
+                                                <p>*Image size should be 300/300.</p>
+
+                                                <div class="main-img-container mt-2">
+                                                    <!-- <p>*All Image size should be 300/300.</p> -->
                                                     <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width:180px;border-radius:5px;"
                                                         id="main-img-preview">
-                                                    <label for="mainImg" class="btn btn-primary mt-3">Set Primary Image</label>
+                                                    <label for="mainImg" class="btn btn-dark mt-2">Set Primary Image</label>
                                                     <input type="file" for="mainImg" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
                                                 </div>
                                             </div>
@@ -1152,8 +1131,8 @@
                                                 </div>
 
                                                 <div class="s-i-c-2">
-                                                    <label for="secondaryImg" class="btn btn-info"><i class="mdi mdi-plus"></i></label>
-                                                    <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" onchange="secondary_image_changed(this,null)" multiple>
+                                                    <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
+                                                    <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
                                                 </div>
                                             </div>
 
@@ -1161,1114 +1140,1007 @@
                                     </div>
                                 </div>
 
-                                <div style="margin-top: 30px;">
-                                    <div class="d-flex justify-content-between ">
+                                <div style="margin-top: 10px;">
+                                    <div class="d-flex justify-content-start">
+                                        <!-- <input type="checkbox" class=""> -->
+
+                                        <input type="checkbox" id="myCheckbox" class="mt-2 ms-2" style=" width: 20px;height: 20px;cursor:pointer;">
                                         <h3 class="ms-2">Product Variant</h3>
                                     </div>
+                                </div>
 
-                                    <div class="row " id="varient_container_">
+                                <!-- disable product section -->
+                                <section class="enable_div" style="display: none;">
+                                    <div class="" style="margin-top: 0px;">
 
-                                        <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
-                                            <div style="background-color:white; border-radius:5px; padding:10px;">
-                                                <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="colorVariant">Color <span onclick="this.parentNode.parentNode.parentNode.remove()"><i class="mdi mdi-close"
-                                                            style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i></span></label>
-                                                <div class="position-relative">
-                                                    <ul class="colorInputUL" id="colorInputUL" style=" margin-bottom: 0px;" onclick="showColorDropDown(this)"><input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="variantColor" placeholder="Enter please"
-                                                            onkeypress="return event.keyCode != 13;"></ul>
-                                                    <div class="dropdownBox d-none" id="colorDropdownBox" style="height: 200px; overflow-y: auto;">
-                                                        <ul>
-                                                            <li onclick="getValueFronDropDown(this)">Red</li>
-                                                            <li onclick="getValueFronDropDown(this)">Blue</li>
-                                                            <li onclick="getValueFronDropDown(this)">Black</li>
-                                                            <li onclick="getValueFronDropDown(this)">Pink</li>
-                                                            <li onclick="getValueFronDropDown(this)">Yellow</li>
-                                                            <li onclick="getValueFronDropDown(this)">White</li>
-                                                            <li onclick="getValueFronDropDown(this)">Brown</li>
+                                        <div class="row " id="varient_container_">
+
+
+                                            <!-- color -->
+
+                                            <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
+                                                <div style="background-color:white; border-radius:5px; padding:10px;">
+                                                    <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="colorVariant">
+                                                        Color
+                                                        <span onclick="this.parentNode.parentNode.parentNode.remove()">
+                                                            <i class="mdi mdi-close" style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="position-relative">
+                                                        <ul class="colorInputUL" id="colorInputUL" style=" margin-bottom: 0px;" onclick="showColorDropDown(this)">
+                                                            <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="variantColor" placeholder="Enter Color" onkeypress="return event.keyCode != 13;">
                                                         </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
-                                            <div style="background-color:white; border-radius:5px; padding:10px;">
-                                                <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="sizeVariant">Size
-                                                    <span onclick="this.parentNode.parentNode.parentNode.remove()"><i class="mdi mdi-close" style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i></span>
-                                                </label>
-                                                <div class="position-relative">
-                                                    <ul class="colorInputUL" id="sizeInputUL" style="margin-bottom: 0px;" onclick="showColorDropDown(this)"><input class="tagIntpus" type="text" name="sizeVariants" spellcheck="false" id="sizeVariant" placeholder="Enter please"
-                                                            onkeypress="return event.keyCode != 13;"></ul>
-                                                    <div class="dropdownBox d-none" id="sizedropdownBox" style="height: 200px; overflow-y: auto;">
-                                                        <ul>
-                                                            <li onclick="getValueFronDropDown(this)">SM</li>
-                                                            <li onclick="getValueFronDropDown(this)">LG</li>
-                                                            <li onclick="getValueFronDropDown(this)">MD</li>
-                                                            <li onclick="getValueFronDropDown(this)">XL</li>
-                                                            <li onclick="getValueFronDropDown(this)">XXL</li>
-                                                            <li onclick="getValueFronDropDown(this)">35</li>
-                                                            <li onclick="getValueFronDropDown(this)">36</li>
-                                                            <li onclick="getValueFronDropDown(this)">38</li>
-                                                            <li onclick="getValueFronDropDown(this)">40</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 colorVariantBox mt-3 d-md-flex d-xl-flex d-sm-flex text-center justify-content-start align-items-center">
-
-                                            <span class="addVarientSpan ms-2" style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#addVarientModal">Add Varient</span>
-
-                                            <div class="populateBtn delete-table-data mt-0 mt-sm-0 ms-3" style="">
-                                                <span onclick="Populate_variant_table(this, null)">Populate variant table</span>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                    <!-- <div class="d-md-flex d-xl-flex d-sm-flex text-center justify-content-end align-items-center" style="margin-top:20px">
-                            <span class="addVarientSpan" style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#addVarientModal">Add Varient</span>
-                            <div class="populateBtn delete-table-data mt-4 mt-sm-0" style="">
-                                <span onclick="Populate_variant_table(this, null)">Populate variant table</span>
-                            </div>
-                        </div> -->
-
-                                    <div class="modal fade" id="addVarientModal" tabindex="-1" aria-labelledby="addVarientLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title ms-2" id="addVarientLabel">Add Varient</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body" style="padding: 100px;">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>Varient Name</label>
-                                                                <input type="text" class="form-control" id="modal_varient_name" style="padding: 10px 20px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 pt-5 colorVariantBox">
-                                                            <label class="varient_label" for="creaateVariant">Varient Attributes</label>
-                                                            <div class="position-relative">
-                                                                <ul class="colorInputUL" id="addNewVarient" style=" margin-bottom: 0px;" onclick="showVarientBox(this)">
-                                                                    <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="makeVariant" placeholder="Write or Click Here" onkeypress="return event.keyCode != 13;">
-                                                                </ul>
-                                                            </div>
+                                                        <div class="dropdownBox d-none" id="colorDropdownBox" style="height: 200px; overflow-y: auto;">
+                                                            <ul>
+                                                                <li onclick="getValueFronDropDown(this)">Red</li>
+                                                                <li onclick="getValueFronDropDown(this)">Blue</li>
+                                                                <li onclick="getValueFronDropDown(this)">Black</li>
+                                                                <li onclick="getValueFronDropDown(this)">Pink</li>
+                                                                <li onclick="getValueFronDropDown(this)">Yellow</li>
+                                                                <li onclick="getValueFronDropDown(this)">White</li>
+                                                                <li onclick="getValueFronDropDown(this)">Brown</li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary" onclick="save_varient(this, null)">Save
-                                                        Varient</button>
+                                            </div>
+
+                                            <!-- size -->
+                                            <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
+                                                <div style="background-color:white; border-radius:5px; padding:10px;">
+                                                    <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="sizeVariant">Size
+                                                        <span onclick="this.parentNode.parentNode.parentNode.remove()">
+                                                            <i class="mdi mdi-close" style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
+                                                        </span>
+                                                    </label>
+                                                    <div class="position-relative">
+                                                        <ul class="colorInputUL" id="sizeInputUL" style="margin-bottom: 0px;" onclick="showColorDropDown(this)">
+                                                            <input class="tagIntpus" type="text" name="sizeVariants" spellcheck="false" id="sizeVariant" placeholder="Enter Size" onkeypress="return event.keyCode != 13;">
+                                                        </ul>
+                                                        <div class="dropdownBox d-none" id="sizedropdownBox" style="height: 200px; overflow-y: auto;">
+                                                            <ul>
+                                                                <li onclick="getValueFronDropDown(this)">SM</li>
+                                                                <li onclick="getValueFronDropDown(this)">LG</li>
+                                                                <li onclick="getValueFronDropDown(this)">MD</li>
+                                                                <li onclick="getValueFronDropDown(this)">XL</li>
+                                                                <li onclick="getValueFronDropDown(this)">XXL</li>
+                                                                <li onclick="getValueFronDropDown(this)">35</li>
+                                                                <li onclick="getValueFronDropDown(this)">36</li>
+                                                                <li onclick="getValueFronDropDown(this)">38</li>
+                                                                <li onclick="getValueFronDropDown(this)">40</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12 colorVariantBox mt-3 d-md-flex d-xl-flex d-sm-flex text-center justify-content-start align-items-center">
+
+                                                <span class="addVarientSpan ms-2 d-none" style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#addVarientModal">Add Varient</span>
+
+                                                <div class="populateBtn delete-table-data mt-0 mt-sm-0 ms-2" style="">
+                                                    <span onclick="Populate_variant_table(this, null)">Populate variant table</span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="modal fade" id="addVarientModal" tabindex="-1" aria-labelledby="addVarientLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title ms-2" id="addVarientLabel">Add Varient</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body" style="padding: 100px;">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label>Varient Name</label>
+                                                                    <input type="text" class="form-control" id="modal_varient_name" style="padding: 10px 20px;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 pt-5 colorVariantBox">
+                                                                <label class="varient_label" for="creaateVariant">Varient Attributes</label>
+                                                                <div class="position-relative">
+                                                                    <ul class="colorInputUL" id="addNewVarient" style=" margin-bottom: 0px;" onclick="showVarientBox(this)">
+                                                                        <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="makeVariant" placeholder="Write or Click Here" onkeypress="return event.keyCode != 13;">
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary" onclick="save_varient(this, null)">Save
+                                                            Varient</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
 
-                                    <script>
-                                        let ulTag;
-                                        let input;
-                                        let dropdownBox;
-                                        let varientRemove = 0;
+                                        <script>
+                                            let ulTag;
+                                            let input;
+                                            let dropdownBox;
+                                            let varientRemove = 0;
 
-                                        let tags = [];
-                                        let colorTags = [];
-                                        let SizeTags = [];
+                                            let tags = [];
+                                            let colorTags = [];
+                                            let SizeTags = [];
 
-                                        let oldColorDropdown = '';
-                                        let dropdownOldTag = '';
+                                            let oldColorDropdown = '';
+                                            let dropdownOldTag = '';
 
-                                        const showColorDropDown = (tag) => {
-                                            dropdownBox = tag.parentNode.children[1];
-                                            ulTag = tag;
-                                            if (oldColorDropdown && !oldColorDropdown.classList.contains('d-none') && dropdownOldTag != tag) {
-                                                console.log("inside the if conditon ", oldColorDropdown, !oldColorDropdown.classList.contains('d-none'));
-                                                oldColorDropdown.classList.add('d-none');
+                                            const showColorDropDown = (tag) => {
+                                                dropdownBox = tag.parentNode.children[1];
+                                                ulTag = tag;
+                                                if (oldColorDropdown && !oldColorDropdown.classList.contains('d-none') && dropdownOldTag != tag) {
+                                                    console.log("inside the if conditon ", oldColorDropdown, !oldColorDropdown.classList.contains('d-none'));
+                                                    oldColorDropdown.classList.add('d-none');
+                                                }
+
+                                                input = tag.querySelector("input");
+                                                dropdownBox.classList.toggle("d-none");
+                                                dropdownOldTag = tag;
+                                                oldColorDropdown = dropdownBox;
+                                            }
+                                            const showVarientBox = (tag) => {
+                                                ulTag = tag;
+                                                console.log("remove tag from show varient");
+                                                varientRemove = 1;
+                                                input = tag.querySelector("input");
                                             }
 
-                                            input = tag.querySelector("input");
-                                            dropdownBox.classList.toggle("d-none");
-                                            dropdownOldTag = tag;
-                                            oldColorDropdown = dropdownBox;
-                                        }
-                                        const showVarientBox = (tag) => {
-                                            ulTag = tag;
-                                            console.log("remove tag from show varient");
-                                            varientRemove = 1;
-                                            input = tag.querySelector("input");
-                                        }
+
+                                            const getValueFronDropDown = (tag) => {
+                                                ulTag = tag.parentNode.parentNode.parentNode.children[0];
+                                                let value = tag.innerText;
+                                                let li = ulTag.children.length
+                                                tags = [];
+                                                if (ulTag.children.length > 1) {
+                                                    ulTag.querySelectorAll("li").forEach(li => {
+                                                        tags.push(li.innerText)
+                                                    });
+                                                }
+                                                tags.push(value);
+                                                createTag(ulTag);
+                                                tag.style.backgroundColor = "#f0f0f0"
+                                                tag.style.color = "#888"
+                                                tag.style.cursor = "not-allowed";
+                                                tag.style.pointerEvents = "none"
+                                                dropdownBox.classList.add("d-none");
+                                            }
 
 
-                                        const getValueFronDropDown = (tag) => {
-                                            ulTag = tag.parentNode.parentNode.parentNode.children[0];
-                                            let value = tag.innerText;
-                                            let li = ulTag.children.length
-                                            tags = [];
-                                            if (ulTag.children.length > 1) {
-                                                ulTag.querySelectorAll("li").forEach(li => {
-                                                    tags.push(li.innerText)
+
+                                            function createTag(ulTag) {
+                                                ulTag.querySelectorAll("li").forEach(li => li.remove());
+                                                tags.slice().reverse().forEach(tag => {
+                                                    let liTag = `<li>${tag} <i class="mdi mdi-close" onclick="remove(this, '${tag}')"></i></li>`;
+                                                    ulTag.insertAdjacentHTML("afterbegin", liTag);
                                                 });
+
                                             }
-                                            tags.push(value);
-                                            createTag(ulTag);
-                                            tag.style.backgroundColor = "#f0f0f0"
-                                            tag.style.color = "#888"
-                                            tag.style.cursor = "not-allowed";
-                                            tag.style.pointerEvents = "none"
-                                            dropdownBox.classList.add("d-none");
-                                        }
-
-
-
-                                        function createTag(ulTag) {
-                                            ulTag.querySelectorAll("li").forEach(li => li.remove());
-                                            tags.slice().reverse().forEach(tag => {
-                                                let liTag = `<li>${tag} <i class="mdi mdi-close" onclick="remove(this, '${tag}')"></i></li>`;
-                                                ulTag.insertAdjacentHTML("afterbegin", liTag);
-                                            });
-
-                                        }
-                                        const enableLiTag = (tag, value) => {
-                                            console.log("test space value == ", `"${value}"`);
-                                            let liText = "";
-                                            if (value.endsWith(" ")) {
-                                                value = value.slice(0, -1);
-                                            }
-                                            console.log("test space liText == ", tag, `'${value}'`);
-                                            let dropdownLi = tag.querySelectorAll("li");
-                                            $(dropdownLi).each(function (index, element) {
-                                                if (element.innerText.endsWith(" ")) {
-                                                    let elementInnerText = element.innerText.slice(0, -1);
-                                                    if (elementInnerText == value) {
-                                                        element.style.removeProperty("background-color");
-                                                        element.style.removeProperty("color");
-                                                        element.style.removeProperty("cursor");
-                                                        element.style.removeProperty("pointer-events");
-                                                    }
+                                            const enableLiTag = (tag, value) => {
+                                                console.log("test space value == ", `"${value}"`);
+                                                let liText = "";
+                                                if (value.endsWith(" ")) {
+                                                    value = value.slice(0, -1);
                                                 }
-                                                else {
-                                                    if (element.innerText == value) {
-                                                        element.style.removeProperty("background-color");
-                                                        element.style.removeProperty("color");
-                                                        element.style.removeProperty("cursor");
-                                                        element.style.removeProperty("pointer-events");
-
-                                                    }
-                                                }
-
-
-
-
-                                            })
-                                        }
-
-                                        function remove(element, tag) {
-                                            // if (varientRemove == 1) {
-                                            //     let index  = tags.indexOf(tag);
-                                            //     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-                                            //     element.parentElement.remove();
-                                            //     varientRemove = 0;
-                                            // }
-                                            // else{
-                                            let dropdownUl = element.parentNode.parentNode.parentNode.children[1].children[0];
-                                            enableLiTag(dropdownUl, tag);
-
-                                            let index = tags.indexOf(tag);
-                                            tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-                                            element.parentElement.remove();
-                                            // }
-                                        }
-
-                                        function addTag(e) {
-                                            let inputParent = e.target.parentNode;
-                                            let allInput = inputParent.querySelectorAll("input")
-                                            for (let i = 0; i < allInput.length; i++) {
-                                                if (allInput[i].classList.contains('tagIntpus')) {
-                                                    if (e.key == "Enter" || e.keyCode == 32) {
-                                                        if (dropdownBox) {
-                                                            dropdownBox.classList.add("d-none");
+                                                console.log("test space liText == ", tag, `'${value}'`);
+                                                let dropdownLi = tag.querySelectorAll("li");
+                                                $(dropdownLi).each(function (index, element) {
+                                                    if (element.innerText.endsWith(" ")) {
+                                                        let elementInnerText = element.innerText.slice(0, -1);
+                                                        if (elementInnerText == value) {
+                                                            element.style.removeProperty("background-color");
+                                                            element.style.removeProperty("color");
+                                                            element.style.removeProperty("cursor");
+                                                            element.style.removeProperty("pointer-events");
                                                         }
+                                                    }
+                                                    else {
+                                                        if (element.innerText == value) {
+                                                            element.style.removeProperty("background-color");
+                                                            element.style.removeProperty("color");
+                                                            element.style.removeProperty("cursor");
+                                                            element.style.removeProperty("pointer-events");
 
-                                                        tags = [];
+                                                        }
+                                                    }
 
 
-                                                        let tag = e.target.value.replace(/\s+/g, ' ');
-                                                        let allText = e.target.value.replace(/\s+/g, ' ');
-                                                        if (tag.length > 1 && !tags.includes(tag)) {
-                                                            console.log("tag tag ", ulTag);
-                                                            if (tags.length < 10) {
-                                                                if (ulTag.children.length > 1) {
-                                                                    ulTag.querySelectorAll("li").forEach(li => {
-                                                                        li = li.innerText.split(" ")
-                                                                        tags.push(li[0])
+
+
+                                                })
+                                            }
+
+                                            function remove(element, tag) {
+                                                // if (varientRemove == 1) {
+                                                //     let index  = tags.indexOf(tag);
+                                                //     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+                                                //     element.parentElement.remove();
+                                                //     varientRemove = 0;
+                                                // }
+                                                // else{
+                                                let dropdownUl = element.parentNode.parentNode.parentNode.children[1].children[0];
+                                                enableLiTag(dropdownUl, tag);
+
+                                                let index = tags.indexOf(tag);
+                                                tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+                                                element.parentElement.remove();
+                                                // }
+                                            }
+
+                                            function addTag(e) {
+                                                let inputParent = e.target.parentNode;
+                                                let allInput = inputParent.querySelectorAll("input")
+                                                for (let i = 0; i < allInput.length; i++) {
+                                                    if (allInput[i].classList.contains('tagIntpus')) {
+                                                        if (e.key == "Enter" || e.keyCode == 32) {
+                                                            if (dropdownBox) {
+                                                                dropdownBox.classList.add("d-none");
+                                                            }
+
+                                                            tags = [];
+
+
+                                                            let tag = e.target.value.replace(/\s+/g, ' ');
+                                                            let allText = e.target.value.replace(/\s+/g, ' ');
+                                                            if (tag.length > 1 && !tags.includes(tag)) {
+                                                                console.log("tag tag ", ulTag);
+                                                                if (tags.length < 10) {
+                                                                    if (ulTag.children.length > 1) {
+                                                                        ulTag.querySelectorAll("li").forEach(li => {
+                                                                            li = li.innerText.split(" ")
+                                                                            tags.push(li[0])
+                                                                        });
+                                                                    }
+                                                                    tag.split(',' || " ").forEach(tag => {
+
+                                                                        tag = tag.split(' ');
+                                                                        if (!tags.includes(tag[0])) {
+                                                                            tags.push(tag[0])
+                                                                        }
+
+                                                                        else {
+                                                                            e.target.value = "";
+                                                                        }
+                                                                        console.log("log from split = ", tags, tag);
+                                                                        createTag(ulTag);
                                                                     });
                                                                 }
-                                                                tag.split(',' || " ").forEach(tag => {
-
-                                                                    tag = tag.split(' ');
-                                                                    if (!tags.includes(tag[0])) {
-                                                                        tags.push(tag[0])
-                                                                    }
-
-                                                                    else {
-                                                                        e.target.value = "";
-                                                                    }
-                                                                    console.log("log from split = ", tags, tag);
-                                                                    createTag(ulTag);
-                                                                });
                                                             }
+                                                            e.target.value = "";
                                                         }
-                                                        e.target.value = "";
                                                     }
+
                                                 }
-
                                             }
-                                        }
-                                        document.addEventListener("keyup", addTag)
-                                    </script>
+                                            document.addEventListener("keyup", addTag)
+                                        </script>
 
-                                </div>
-
-                                <div class="ms-2">
-                                    <div class="newVariantTable" style="margin: 30px 0 30px 0;">
-                                        <div class="d-flex justify-content-between ">
-                                            <h3>Product Variant</h3>
-                                        </div>
-
-                                        <p>Please Provide all information correctly to manage your products with
-                                            our inventory service.
-                                        </p>
-
-                                        <div class="table-responsive h-auto" data-simplebar style="padding: 0px;">
-                                            <table id="ddssrr" style="table-layout: fixed;">
-
-                                                <thead class="tableHead" id="tableHead" style="">
-                                                    <tr style="height: 60px;" id="tableHeadTr">
-                                                        <th class="varient_table_label" style="border-top-left-radius: 10px">Color</th>
-                                                        <th class="varient_table_label">Size</th>
-                                                        <th>Qunatity</th>
-                                                        <th style="border-top-right-radius: 10px">Actions</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody id="product_table">
-                                                </tbody>
-                                            </table>
-                                        </div>
                                     </div>
-                                </div>
 
-                                <div id="table_content_container" class="newVariantTable TableOfContents" style="">
-                                    <div class="d-flex justify-content-between ">
-                                        <h3 class="ms-2">Table of contents for your product</h3>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-6 col-xl-6 col-sm-12 ro">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:20px">
-                                                <label>Product Description</label>
-                                                <textarea name="product_description" class="form-control" cols="40" rows="7" value="Product Description..........."></textarea>
+                                    <!-- product variant -->
+                                    <div class="ms-2">
+                                        <div class="newVariantTable" style="margin: 30px 0 30px 0;">
+                                            <div class="d-flex justify-content-between ">
+                                                <!-- <h3>Product Variant</h3> -->
+                                            </div>
+
+                                            <p>Please Provide all information correctly to manage your products with
+                                                our inventory service.
+                                            </p>
+
+                                            <div class="table-responsive h-auto" data-simplebar style="padding: 0px;">
+                                                <table id="ddssrr" style="table-layout: fixed;">
+
+                                                    <thead class="tableHead" id="tableHead" style="">
+                                                        <tr style="height: 60px;" id="tableHeadTr">
+                                                            <th class="varient_table_label" style="border-top-left-radius: 10px">Color</th>
+                                                            <th class="varient_table_label">Size</th>
+                                                            <th>Qunatity</th>
+                                                            <th style="border-top-right-radius: 10px">Actions</th>
+                                                        </tr>
+
+                                                    </thead>
+
+                                                    <tbody id="product_table">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">
+                                    </div>
+
+                                </section>
+
+
+
+                                <div id="table_content_container" class="newVariantTable TableOfContents" style="">
+
+                                    <div class="row mt-3">
+                                        <div class="col-md-6 col-xl-6 col-sm-12">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:20px">
+                                                <label>Description</label>
+                                                <textarea name="product_description" class="form-control" cols="40" rows="7" value="">Enter Product Description...........</textarea>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">
                                             <div class="form-group" style="background-color: white; border-radius :5px; padding:20px">
                                                 <label>Additional Information</label>
                                                 <textarea name="additional_information" class="form-control" cols="40" rows="7" value="Additional Information..........."></textarea>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
-                                    <div class="d-none row mt-4" id="table_content_dropdown_">
-                                        <div class=" col-lg-5 com-md-5 col-sm-12 mt-sm-3 mt-3 position-relative  productName">
-                                            <div class="form-group" style="background-color: white; border-radius:5px; padding:20px;">
-                                                <label style="margin-bottom: 0px;">Attribute Title</label>
-                                                <div class=" position-relative  productName ">
-                                                    <input type="text" class="form-control form-control-product" placeholder="Title" onclick="showContentDropdown(1, null)" autocomplete="off" id="contentsTitleInput_" style=" font-size: 16px;" name="attributes_title[]">
-                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray; height:200px;overflow-y:auto">
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Brand</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Product Type</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Fabric</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Apparel Type</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Gender</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Style</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Model</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Size measurement
-                                                        </div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Colour</div>
 
-                                                        <!-- Add more options as needed -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-5 com-md-5 col-sm-10 mt-sm-3 mt-3 single-contact-info productName">
-                                            <div class="form-group" style="background-color: white; border-radius:5px; padding:20px;">
-                                                <label>Product Value</label>
-                                                <input type="text" class="form-control" style=" font-size: 16px;;" name="attribute_value[]">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-lg-2 com-md-2 col-sm-2 mt-sm-3 mt-3 table_content-delete d-flex align-items-center">
-                                            <div class="delete-content-icon" style="border-radius:5px; padding:5px 20px;background-color: #EBEBEB; margin-top: 20px;" onclick="deleteTableContent(this, null)">
-                                                <span style="color: red">
-                                                    <i class="mdi mdi-delete" style="font-size: 20px;"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div id="table_content_dropdown_box">
-                                        <div class="row mt-4" id="table_content_dropdown_0">
-                                            <div class=" col-md-5 col-lg-5 col-sm-12 mt-sm-3 position-relative  productName">
-                                                <div class="form-group" style="background-color: white; border-radius:5px; padding:20px;">
-                                                    <label>Attribute Title</label>
-                                                    <div class=" position-relative productName">
-                                                        <input type="text" class="form-control form-control-product " placeholder="Title" onclick="showContentDropdown(0, null)" autocomplete="off" id="contentsTitleInput_0" name="attributes_title[]" style=" font-size: 16px;">
-                                                        <div class="content_dropdown-menu border-0 d-none w-100 dropdownMenu_ dropdownBox" id="dropdownMenu_0" style="margin-left: 0px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray; height:200px;overflow-y:auto">
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Brand</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Product Type</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Fabric</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Apparel Type</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Gender</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Style</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Model</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Size measurement
-                                                            </div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Colour</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-5 col-lg-5 col-sm-10 mt-sm-3 mt-3 productName">
-                                                <div class="form-group" style="background-color: white; border-radius:5px; padding:20px;">
-                                                    <label>Product Value</label>
-                                                    <input type="text" class="form-control" style=" font-size: 16px;" name="attribute_value[]">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2 col-lg-2 col-sm-2 mt-sm-3 mt-3 table_content-Add d-flex align-items-center">
-                                                <div class="add-content-icon" style="border-radius:5px; padding:5px 20px; margin-top: 20px; background-color: #EBEBEB;" onclick="table_content_dropdown_add(this, null)">
-                                                    <span><i class="mdi mdi-plus"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="ms-3" style="display: flex; justify-content: left;">
-                                    <button type="submit" class="btn btn-primary me-3 border-0" style="background-color:#2871FF; padding: 10px 3em; font-weight: 600;">
+                                    <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
                                         Upload
                                     </button>
 
-                                    <button class="btn btn-primary border-0" style="background-color: #6F7D87; padding: 10px 3em; font-weight: 600;">
+                                    <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
                                         Cancel
                                     </button>
                                 </div>
 
-                                <!-- new Add product code End  -->
-                                <div class="row d-none">
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="date" class="form-label">Date</label>
-                                        <input class="form-control" id="date" type="date" name="date">
-                                    </div>
+                            </form>
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="warehouse" class="form-label">Select Warehouse</label>
-                                        <select class="form-control" data-toggle="select2" data-width="100%" name="warehouse" style="background: #FCFCFC!important;">
-                                            <option>Warehouse</option>
-                                            <optgroup label="">
-                                                <option value="united_state">United State</option>
-                                                <option value="canada">Canada</option>
-                                                <option value="maxico">Maxico</option>
-                                                <option value="france">France</option>
-                                                <option value="germany">Germany</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="expense_type" class="form-label">Expense Type</label>
-                                        <select class="form-control" data-toggle="select2" data-width="100%" name="expense_type" style="background: #FCFCFC!important;">
-                                            <option>Direct Expense</option>
-                                            <optgroup label="">
-                                                <option value="direct_expense">Direct Expense</option>
-                                                <option value="draft_enpense">Draft Expense</option>
-                                            </optgroup>
-
-                                        </select>
-                                    </div>
+                            <!-- new Add product code End  -->
 
 
-                                    <!-- <style>
+                            <div class="row d-none">
+
+                                <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                    <label for="warehouse" class="form-label">Select Warehouse</label>
+                                    <select class="form-control" data-toggle="select2" data-width="100%" name="warehouse" style="background: #FCFCFC!important;">
+                                        <option>Warehouse</option>
+                                        <optgroup label="">
+                                            <option value="united_state">United State</option>
+                                            <option value="canada">Canada</option>
+                                            <option value="maxico">Maxico</option>
+                                            <option value="france">France</option>
+                                            <option value="germany">Germany</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+
+
+                                <!-- <style>
                                     .select2-container--default .select2-selection--single .select2-selection__rendered {
                                         background: #FCFCFC !important;
                                         color: #444;
 
                                     }
-                                </style> -->
+                                   </styl> -->
 
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3" style="background: #FCFCFC!important;">
-                                        <label for="product_category" class="form-label">Product Category</label>
-                                        <select class="form-control" data-toggle="select2" data-width="100%" name="product_category">
-                                            <option>Electrics</option>
-                                            <optgroup label="">
-                                                <option value="united_state">Shoe</option>
-                                                <option value="canada">Clothes</option>
-                                                <option value="bag">Bag</option>
-                                                <option value="maxico">Computer</option>
-                                                <option value="france">Laptop</option>
-                                                <option value="germany">Germany</option>
-                                            </optgroup>
-                                        </select>
+                                <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Amount</label>
+                                        <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470" style="background: #FCFCFC!important;">
                                     </div>
-
-
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="voucher_no" class="form-label">Voucher No</label>
-                                        <input type="text" id="voucher_no" class="form-control" placeholder="748" name="voucher_no" style="background: #FCFCFC!important;">
-                                    </div>
-
-
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <div class="mb-3">
-                                            <label class="form-label">Amount</label>
-                                            <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470" style="background: #FCFCFC!important;">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-3">
-                                        <label class="mb-3" for="description">Purchase to Notes:</label>
-                                        <textarea id="textarea" class="form-control" maxlength="225" rows="5" cols="10" placeholder="TYPE Text...." name="description" style="background: #FCFCFC;"></textarea>
-                                    </div>
-
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-3">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-
                                 </div>
 
-                            </form>
+
+                            </div>
+                            <!-- container-fluid -->
 
                         </div>
-                        <!-- container-fluid -->
+                        <!-- content -->
 
-
-
-                        <!-- <div style="display: flex; justify-content: center; align-items:center; padding:4em">
-                <button type="submit" class="btn btn-primary me-3 border-0" style="background-color:#2871FF; padding: 10px 3em; font-weight: 600;">
-                    Upload
-                </button>
-
-                <button class="btn btn-primary border-0" style="background-color: #6F7D87; padding: 10px 3em; font-weight: 600;">
-                    Cancel
-                </button>
-            </div> -->
-
-
-
-                        <!-- container-fluid -->
+                        <%- include('../layouts/footer.ejs') -%>
 
                     </div>
-                    <!-- content -->
+                    <!-- End Page content -->
 
-                    <%- include('../layouts/footer.ejs') -%>
 
                 </div>
-                <!-- End Page content -->
+                <!-- END wrapper -->
 
+                <!-- Right Sidebar -->
+                <%- include('../layouts/right_sidebar.ejs') -%>
 
-    </div>
-    <!-- END wrapper -->
+                    <!-- /Right-bar -->
 
-    <!-- Right Sidebar -->
-    <%- include('../layouts/right_sidebar.ejs') -%>
+                    <!-- Right bar overlay-->
+                    <div class="rightbar-overlay"></div>
 
-        <!-- /Right-bar -->
+                    <!-- Vendor -->
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+                    <script src="/assets/libs/jquery/jquery.min.js"></script>
 
-        <!-- Vendor -->
-        <script src="/assets/libs/jquery/jquery.min.js"></script>
-        <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="/assets/libs/node-waves/waves.min.js"></script>
-        <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-        <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-        <script src="/assets/libs/feather-icons/feather.min.js"></script>
+                    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+                    <script src="/assets/libs/node-waves/waves.min.js"></script>
+                    <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+                    <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+                    <script src="/assets/libs/feather-icons/feather.min.js"></script>
 
-        <script src="/assets/libs/selectize/js/standalone/selectize.min.js"></script>
-        <script src="/assets/libs/mohithg-switchery/switchery.min.js"></script>
-        <script src="/assets/libs/multiselect/js/jquery.multi-select.js"></script>
-        <script src="/assets/libs/select2/js/select2.min.js"></script>
-        <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
-        <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
-        <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-        <script src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+                    <script src="/assets/libs/selectize/js/standalone/selectize.min.js"></script>
+                    <script src="/assets/libs/mohithg-switchery/switchery.min.js"></script>
+                    <script src="/assets/libs/multiselect/js/jquery.multi-select.js"></script>
+                    <script src="/assets/libs/select2/js/select2.min.js"></script>
+                    <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
+                    <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
+                    <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+                    <script src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 
-        <!-- Init js-->
-        <script src="/assets/js/pages/form-advanced.init.js"></script>
+                    <!-- Init js-->
+                    <script src="/assets/js/pages/form-advanced.init.js"></script>
 
-        <!-- App js -->
-        <script src="/assets/js/app.min.js"></script>
+                    <!-- App js -->
+                    <script src="/assets/js/app.min.js"></script>
 
+                    <!-- add_product external js -->
+                    <script>
+                        // const { functions } = require("lodash");
 
-
-        <!-- add_product external js -->
-        <script>
-            // const { functions } = require("lodash");
-
-            let count = 0;
-            const main_image_changed = (tag, ind) => {
-                let imgTag;
-                if (ind) {
-                    imgTag = document.getElementById(`main-img-preview_${ind}`);
-                } else {
-                    imgTag = document.getElementById(`main-img-preview`);
-                }
-                // imgTag.classList.remove("d-none");
-                if (tag.files && tag.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        imgTag.setAttribute("src", e.target.result);
-                    };
-                    reader.readAsDataURL(tag.files[0]);
-                }
-                // let imge = document.getElementById("main-img-preview");
-
-            };
-
-            // js for single image and carosel image delete
-            const deleteSliderSingleImg = (tag) => {
-                let deletedNode = tag.parentNode;
-                let deleteFromParentNode = tag.parentNode.parentNode;
-
-                if (deletedNode) {
-                    deleteFromParentNode.removeChild(deletedNode);
-                    topUploadParent.style.display = "block";
-                }
-            };
-            function getCombinations(arrays, prefix = [], results = []) {
-                if (prefix.length === arrays.length) {
-                    results.push(prefix.slice());
-                    return;
-                }
-
-                for (let i = 0; i < arrays[prefix.length].length; i++) {
-                    prefix.push(arrays[prefix.length][i]);
-                    getCombinations(arrays, prefix, results);
-                    prefix.pop();
-                }
-
-                return results;
-            }
-
-            const Populate_variant_table = (tag, num) => {
-                let labelParent;
-                let table;
-                let tableHeadTr;
-
-                if (num) {
-                    labelParent = document.getElementById(`varient_container__${num}`);
-                    table = document.getElementById(`product_table_${num}`);
-                    tableHeadTr = document.getElementById(`tableHeadTr_${num}`);
-
-
-                } else {
-                    labelParent = document.getElementById(`varient_container_`);
-                    table = document.getElementById(`product_table`);
-                    tableHeadTr = document.getElementById(`tableHeadTr`);
-                }
-                let all_varient_table_labels = tableHeadTr.querySelectorAll(".varient_table_label");
-
-                Array.from(all_varient_table_labels).forEach(element => {
-                    element.remove();
-                })
-
-                let varient_labels = labelParent.querySelectorAll("label")
-                let varient_uls = labelParent.querySelectorAll(".colorInputUL");
-
-                //  for (let i = 0; i < varient_labels.length; i++) {
-                //     const element = varient_labels[i];
-                //     console.log("varient_labels == ", varient_labels[i]); 
-                //  }
-                //  for (let i = 0; i < varient_uls.length; i++) {
-                //     const element = varient_uls[i];
-                //     console.log("varient_labels == ", varient_uls[i]); 
-                //  }
-
-
-                let varient_table_labels = [];
-
-
-                const values = []; //aikhane problem
-                let emptyUlIndex = [];
-
-                $(varient_uls).each(function (index, element) {
-                    // console.log('element == ', element, element.querySelectorAll("li").length, 'index == ', index);
-                    let inputArray = [];
-                    if (element.querySelectorAll("li").length != "0") {
-                        varient_table_labels.push(all_varient_table_labels[index]);
-                        element.querySelectorAll("li").forEach(li => {
-                            inputArray.push(li.innerText)
-                        });
-                        values.push(inputArray)
-                    }
-                    else emptyUlIndex.push(index)
-                });
-                console.log("emptyUlIndex === ", emptyUlIndex);
-
-                const combinations = getCombinations(values);
-
-                for (let i = varient_labels.length - 1; i >= 0; i--) {
-                    console.log("the varient is === ", varient_labels[i]);
-                    if (!emptyUlIndex.includes(i)) {
-                        console.log("varient_labels each === ", i, varient_labels[i].textContent);
-                        let th = document.createElement("th");
-                        th.classList.add("varient_table_label");
-                        th.innerHTML = varient_labels[i].textContent;
-                        tableHeadTr.prepend(th);
-                        console.log("tableHeadTr == ", tableHeadTr);
-                    }
-                    else console.log("include here ==");
-                }
-
-
-
-
-                // Array.from(varient_labels).reverse().forEach(label=>{
-                //     let th = document.createElement("th");
-                //     th.classList.add("varient_table_label");
-                //     th.innerHTML = label.textContent;
-                //     tableHeadTr.prepend(th); 
-                // });
-
-                tableHeadTr.children[0].style.borderTopLeftRadius = "10px"
-                table.innerHTML = "";
-                combinations.forEach((combination, key) => {
-                    let tr = document.createElement("tr");
-                    tr.classList.add("tableBody");
-                    combination.forEach((comb) => {
-                        let td = document.createElement("td");
-                        td.innerHTML = comb;
-                        tr.appendChild(td);
-                    });
-
-
-                    let input4 = document.createElement("input");
-                    input4.setAttribute("name", "quantitys[]");
-                    input4.classList.add("myInput");
-                    input4.setAttribute("placeholder", "Qunatity");
-                    let td4 = document.createElement("td");
-                    td4.appendChild(input4);
-                    tr.appendChild(td4);
-
-
-                    let icon = document.createElement("i");
-                    icon.classList.add(
-                        "mdi",
-                        "mdi-delete",
-                        "text-danger",
-                        "delete-table-data"
-                    );
-                    icon.setAttribute("id", "td_" + key);
-                    icon.setAttribute("onclick", "tableDataDelete(this)");
-                    icon.style.fontSize = "20px"
-                    let td7 = document.createElement("td");
-                    td7.style.textAlign = "center";
-                    td7.appendChild(icon);
-                    tr.appendChild(td7);
-                    table.appendChild(tr);
-                });
-                let tableDataleftBox = table.querySelectorAll("tr")
-                let tableLastRow = tableDataleftBox[tableDataleftBox.length - 1];
-                let tableDataList = tableLastRow.querySelectorAll("td");
-                let firstTableData = tableDataList[0];
-                let lastTableData = tableDataList[tableDataList.length - 1];
-                firstTableData.style.borderBottomLeftRadius = "10px"
-                lastTableData.style.borderBottomRightRadius = "10px"
-
-            };
-            // End Populate_variant_table function 
-
-            const tableDataDelete = (tag) => {
-                // let table = document.getElementById("product_table");
-                let deleteItem = tag.parentNode.parentNode;
-                let parentTable = tag.parentNode.parentNode.parentNode;
-                // console.log("the table is = ", table, deleteItem, parentTable);
-                parentTable.removeChild(deleteItem);
-            };
-
-            const table_content_dropdown_add = (tag, num) => {
-                count += 1;
-                let table_content = document.getElementById("table_content_dropdown_");
-                let table_content_container;
-                let new_content = table_content.cloneNode(true);
-                if (num) {
-                    table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
-                    // let new_content = table_content.cloneNode(true);
-                    new_content.setAttribute("id", `table_content_dropdown_${num}_${count}`);
-
-                    var innerIDs = [];
-
-                    function collectInnerIDs(element) {
-                        if (element.hasAttribute("onclick")) {
-                            let onchangeIS = element.getAttribute("onclick");
-                            var onclickParts = onchangeIS.split(',' || ' ');
-                            if (onclickParts[0] == "deleteTableContent(this") {
-                                console.log("what is element === ", element);
-                                element.setAttribute("onclick", onclickParts[0] + ', ' + num + ')');
+                        let count = 0;
+                        const main_image_changed = (tag, ind) => {
+                            let imgTag;
+                            if (ind) {
+                                imgTag = document.getElementById(`main-img-preview_${ind}`);
+                            } else {
+                                imgTag = document.getElementById(`main-img-preview`);
                             }
-                        }
+                            // imgTag.classList.remove("d-none");
+                            if (tag.files && tag.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    imgTag.setAttribute("src", e.target.result);
+                                };
+                                reader.readAsDataURL(tag.files[0]);
+                            }
+                            // let imge = document.getElementById("main-img-preview");
 
-                        for (var i = 0; i < element.children.length; i++) {
-                            collectInnerIDs(element.children[i]);
-                        }
-                    }
-
-                    collectInnerIDs(new_content);
-                }
-                else {
-                    table_content_container = document.getElementById(`table_content_dropdown_box`)
-                    new_content.setAttribute("id", "table_content_dropdown_" + count);
-                }
-
-                new_content.classList.remove("d-none");
-                let firstChild = new_content.children[0];
-                let input = firstChild.children[0].children[1].children[0];
-                let dropDownMenu = firstChild.children[0].children[1].children[1];
-                console.log('firstChild', firstChild, input, dropDownMenu);
-
-                input.setAttribute("id", "contentsTitleInput_" + count);
-                input.setAttribute("onclick", "showContentDropdown(" + count + ")");
-                dropDownMenu.setAttribute("id", "dropdownMenu_" + count);
-                table_content_container.appendChild(new_content);
-            };
-
-            const deleteTableContent = (tag, num) => {
-                let table_content_container;
-                if (num) {
-                    table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
-                }
-                else {
-                    table_content_container = document.getElementById(`table_content_dropdown_box`)
-                }
-                let table_content = tag.parentNode.parentNode;
-                console.log("table_content", table_content_container, table_content);
-                table_content_container.removeChild(table_content);
-            };
-
-            const cancel = () => {
-                let product_table = document.getElementById("product_table");
-                const allInput = $(".main-contact-area").find("input");
-                const allSelect = $(".main-contact-area").find("select");
-                const allTextarea = $(".main-contact-area").find("textarea");
-                for (let i = 0; i < allInput.length; i++) {
-                    allInput[i].value = "";
-                }
-                for (let i = 0; i < allSelect.length; i++) {
-                    // allSelect[i].value = "";
-                    allSelect[i].selectedIndex = 0;
-                }
-                product_table.innerHTML = "";
-                for (let i = 0; i < allTextarea.length; i++) {
-                    allTextarea[i].value = "";
-                }
-            };
-
-            let findInput = 0;
-            let oldDropdownContent = '';
-            const showContentDropdown = (id, num) => {
-                let dropdownMenu_s;
-                if (num) {
-                    dropdownMenu_s = document.getElementById(`dropdownMenu_${id}_${num}`);
-                }
-                else {
-                    dropdownMenu_s = document.getElementById(`dropdownMenu_${id}`);
-                }
-                if (oldDropdownContent && !oldDropdownContent.classList.contains('d-none') && findInput != id) {
-                    oldDropdownContent.classList.add('d-none')
-                }
-                dropdownMenu_s.classList.toggle("d-none");
-                findInput = id;
-                oldDropdownContent = dropdownMenu_s
-            };
-
-            document.addEventListener("click", function (event) {
-                var target = event.target
-                let dropdownBox = document.querySelectorAll(".dropdownBox");
-                if (target.tagName != 'INPUT') {
-                    for (let i = 0; i < dropdownBox.length; i++) {
-                        if (!dropdownBox[i].classList.contains('d-none')) {
-                            dropdownBox[i].classList.add("d-none");
-                        }
-                    }
-                }
-            })
-
-            let allInputTags = document.querySelectorAll('input');
-            $(allInputTags).each(function (index, element) {
-                element.addEventListener("input", function (e) {
-                    let dropdownBox = document.querySelectorAll(".dropdownBox");
-                    for (let i = 0; i < dropdownBox.length; i++) {
-                        console.log("dropdownBox[i]", dropdownBox[i]);
-                        if (!dropdownBox[i].classList.contains('d-none')) {
-                            dropdownBox[i].classList.add("d-none");
-                        }
-                    }
-                })
-            })
-
-            function selectOption(tag, num) {
-
-                let textInput;
-                if (num) {
-                    textInput = document.getElementById(`contentsTitleInput_${findInput}_${num}`);
-                }
-                else {
-                    textInput = document.getElementById(`contentsTitleInput_${findInput}`);
-                }
-
-                let text = tag.innerText;
-                textInput.value = text;
-                let parent = tag.parentNode;
-                parent.classList.add("d-none");
-            }
-
-            const openAdditionalSection = () => {
-                let area = document.getElementById("AdditionalArea");
-                area.classList.remove("d-none");
-            };
-
-            // window.addEventListener("click", function (event) {
-            //     const dropdownMenu = document.getElementById("dropdownMenu_" + findInput);
-            //     console.log("dropdownMenu", dropdownMenu);
-            //     const textInput = document.getElementById(
-            //         "contentsTitleInput_" + findInput
-            //     );
-            //     let allClassList = dropdownMenu.classList.value;
-            //     const classListArray = allClassList.split(" ");
-            //     classListArray.find((className) => {
-            //         if (!textInput.contains(event.target)) {
-            //             if (!className.includes("d-none")) {
-            //                 dropdownMenu.classList.add("d-none");
-            //             }
-            //         }
-            //     });
-            // });
-
-            const removeSecondaryImg = (tag) => {
-                let parentImgContainer = tag.parentNode.parentNode;
-                let imge_cotainer = tag.parentNode;
-                parentImgContainer.removeChild(imge_cotainer);
-            };
-
-            const secondary_image_changed = (tag, ind) => {
-                // const previewContainer = document.getElementById("secondary-img-container");
-                let previewContainer;
-                if (ind) {
-                    previewContainer = document.getElementById(`secondary-img-container_${ind}`);
-                } else {
-                    previewContainer = document.getElementById(`secondary-img-container`);
-                }
-                // const previewContainer = document.querySelector(
-                //     ".secondary-img-container"
-                // );
-                // const secondaryImageAdder = document.querySelector(
-                //     ".secondary-img-container"
-                // );
-
-                // previewContainer.innerHTML = ''; // Clear previous previews
-                if (tag.files && tag.files.length > 0) {
-                    for (let i = 0; i < tag.files.length; i++) {
-                        const file = tag.files[i];
-                        const reader = new FileReader();
-                        reader.onload = function (e) {
-                            // const input = document.createElement("input");
-                            // input.type = "file";
-                            // input.classList.add("d-none");
-                            // input.files[0] = reader.result;
-                            // input.setAttribute("name", "secondary_images[]");
-                            // const fileList = new DataTransfer(); // Create a new FileList object and add the selected file to it
-                            // fileList.items.add(file);
-                            // console.log('previewContainer',fileList);
-                            // input.files = fileList.files; // Assign the new FileList to the main page image field
-
-                            const div = document.createElement("div");
-                            div.style.width = "90px";
-                            div.style.height = "90px";
-                            div.style.background = `url(${e.target.result})`;
-                            div.style.backgroundSize = 'cover';
-                            div.style.marginRight = "8px";
-                            div.style.marginBottom = "8px";
-
-                            div.classList.add("position-relative");
-                            const span = document.createElement("span");
-                            span.innerHTML =
-                                '<i class="mdi mdi-close" style="font-size:30px;color:white;border:1px solid skyblue;border-radius:50%;"></i>';
-                            span.classList.add("position-absolute");
-                            // span.setAttribute("onclick", `removeSecondaryImg(${i})`);
-                            span.setAttribute("onclick", `removeSecondaryImg(this)`);
-                            span.style.top = "0";
-                            span.style.right = "0px";
-                            span.style.cursor = "pointer";
-                            div.append(span);
-                            // const img = document.createElement("img");
-                            // img.src = e.target.result;
-                            // img.alt = `Preview Image ${i + 1}`;
-                            // img.style.width = "100%";
-                            // img.style.height = "auto";
-                            // console.log(img);
-                            div.setAttribute("id", `secondary_img_preview_${i}`);
-                            // div.append(input);
-                            // div.append(img);
-                            previewContainer.prepend(div);
                         };
-                        reader.readAsDataURL(tag.files[i]);
-                    }
-                    //   previewContainer.append(secondaryImageAdder);
-                }
-            };
+
+                        // js for single image and carosel image delete
+                        const deleteSliderSingleImg = (tag) => {
+                            let deletedNode = tag.parentNode;
+                            let deleteFromParentNode = tag.parentNode.parentNode;
+
+                            if (deletedNode) {
+                                deleteFromParentNode.removeChild(deletedNode);
+                                topUploadParent.style.display = "block";
+                            }
+                        };
+                        function getCombinations(arrays, prefix = [], results = []) {
+                            if (prefix.length === arrays.length) {
+                                results.push(prefix.slice());
+                                return;
+                            }
+
+                            for (let i = 0; i < arrays[prefix.length].length; i++) {
+                                prefix.push(arrays[prefix.length][i]);
+                                getCombinations(arrays, prefix, results);
+                                prefix.pop();
+                            }
+
+                            return results;
+                        }
+
+                        const Populate_variant_table = (tag, num) => {
+                            let labelParent;
+                            let table;
+                            let tableHeadTr;
+
+                            if (num) {
+                                labelParent = document.getElementById(`varient_container__${num}`);
+                                table = document.getElementById(`product_table_${num}`);
+                                tableHeadTr = document.getElementById(`tableHeadTr_${num}`);
 
 
-            const save_varient = (tag, num) => {
-                console.log('save the varient ====');
-                let varient_container;
-                let custom_variant;
-                let newVarientUl;
-                let modal_varient_name;
-                let varientLabelInput;
-                let varientTagUlInput;
-                if (num) {
-                    varient_container = document.getElementById(`varient_container__${num}`);
-                    custom_variant = document.getElementById(`custom_variant_${num}`);
-                    newVarientUl = document.getElementById(`addNewVarient_${num}`)
-                    modal_varient_name = document.getElementById(`modal_varient_name_${num}`).value;
-                    varientLabelInput = document.getElementById(`modal_varient_name_${num}`)
-                    varientTagUlInput = document.getElementById(`addNewVarient_${num}`)
+                            } else {
+                                labelParent = document.getElementById(`varient_container_`);
+                                table = document.getElementById(`product_table`);
+                                tableHeadTr = document.getElementById(`tableHeadTr`);
+                            }
+                            let all_varient_table_labels = tableHeadTr.querySelectorAll(".varient_table_label");
 
-                } else {
-                    varient_container = document.getElementById(`varient_container_`);
-                    custom_variant = document.getElementById(`custom_variant`);
-                    newVarientUl = document.getElementById("addNewVarient")
-                    modal_varient_name = document.getElementById("modal_varient_name").value;
-                    varientLabelInput = document.getElementById(`modal_varient_name`)
-                    varientTagUlInput = document.getElementById(`addNewVarient`)
-                }
+                            Array.from(all_varient_table_labels).forEach(element => {
+                                element.remove();
+                            })
+
+                            let varient_labels = labelParent.querySelectorAll("label")
+                            let varient_uls = labelParent.querySelectorAll(".colorInputUL");
+
+                            //  for (let i = 0; i < varient_labels.length; i++) {
+                            //     const element = varient_labels[i];
+                            //     console.log("varient_labels == ", varient_labels[i]); 
+                            //  }
+                            //  for (let i = 0; i < varient_uls.length; i++) {
+                            //     const element = varient_uls[i];
+                            //     console.log("varient_labels == ", varient_uls[i]); 
+                            //  }
 
 
-                // let modal_varient_name = document.querySelector(
-                //     "#modal_varient_name"
-                // ).value;
+                            let varient_table_labels = [];
 
-                // let varient_container = document.querySelector("#varient_container_");
-                // varient_container.classList.add("colorVariantBox");
-                let data = [];
-                let varientLi = newVarientUl.querySelectorAll("li");
-                varientLi.forEach((li) => {
-                    data.push(li.innerText)
-                })
-                // let data = $(custom_variant).select2("val");
 
-                let colorVariantBox = document.createElement("div");
-                colorVariantBox.classList.add("col-lg-4", "col-md-6", "col-sm-12", "colorVariantBox", "mt-3");
-                let variantInnderBox = document.createElement('div')
-                variantInnderBox.style.backgroundColor = "white";
-                variantInnderBox.style.borderRadius = "5px";
-                variantInnderBox.style.padding = "10px";
-                let label2 = document.createElement("label");
-                label2.classList.add('varient_label', "inline-block", "d-flex", "justify-content-between", "align-items-center");
-                label2.innerText = modal_varient_name;
-                // label2.classList.add("inline-block");
-                // label2.classList.add("varient_label");
-                // label2.classList.add("d-flex");
-                // label2.classList.add("justify-content-between");
-                // label2.classList.add("align-items-center");
-                // label2.style.marginTop = "20px";
-                // x-mark
-                let x_span = document.createElement("span");
-                x_span.setAttribute(
-                    "onclick",
-                    "this.parentNode.parentNode.parentNode.remove()"
-                );
-                x_span.innerHTML =
-                    '<i class="fa-solid mdi mdi-close" style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i>';
-                label2.append(x_span);
-                let dropdownPositionDiv = document.createElement("div");
-                dropdownPositionDiv.classList.add("position-relative")
-                let ul = document.createElement("ul");
-                ul.classList.add('colorInputUL');
-                ul.style.marginBottom = "0px";
-                ul.setAttribute("onclick", "showColorDropDown(this)");
-                let inputInUL = document.createElement("input");
-                inputInUL.setAttribute("class", "tagIntpus");
-                inputInUL.setAttribute("type", "text");
-                inputInUL.setAttribute("spellcheck", "false");
-                inputInUL.setAttribute("placeholder", "Write here for tag");
-                inputInUL.setAttribute("onkeypress", "return event.keyCode != 13;");
-                ul.append(inputInUL);
+                            const values = []; //aikhane problem
+                            let emptyUlIndex = [];
 
-                let dropdownOptionBox = document.createElement('div');
-                dropdownOptionBox.classList.add("dropdownBox", "d-none");
-                dropdownOptionBox.style.height = "200px";
-                dropdownOptionBox.style.overflowY = "auto"
-                let dropdownUL = document.createElement('ul');
-                data.forEach((element) => {
-                    let li = document.createElement("li");
-                    onclick = "getValueFronDropDown(this)"
-                    li.setAttribute("onclick", "getValueFronDropDown(this)")
-                    li.textContent = element;
-                    dropdownUL.append(li);
+                            $(varient_uls).each(function (index, element) {
+                                // console.log('element == ', element, element.querySelectorAll("li").length, 'index == ', index);
+                                let inputArray = [];
+                                if (element.querySelectorAll("li").length != "0") {
+                                    varient_table_labels.push(all_varient_table_labels[index]);
+                                    element.querySelectorAll("li").forEach(li => {
+                                        inputArray.push(li.innerText)
+                                    });
+                                    values.push(inputArray)
+                                }
+                                else emptyUlIndex.push(index)
+                            });
+                            console.log("emptyUlIndex === ", emptyUlIndex);
+
+                            const combinations = getCombinations(values);
+
+                            for (let i = varient_labels.length - 1; i >= 0; i--) {
+                                console.log("the varient is === ", varient_labels[i]);
+                                if (!emptyUlIndex.includes(i)) {
+                                    console.log("varient_labels each === ", i, varient_labels[i].textContent);
+                                    let th = document.createElement("th");
+                                    th.classList.add("varient_table_label");
+                                    th.innerHTML = varient_labels[i].textContent;
+                                    tableHeadTr.prepend(th);
+                                    console.log("tableHeadTr == ", tableHeadTr);
+                                }
+                                else console.log("include here ==");
+                            }
+
+
+
+
+                            // Array.from(varient_labels).reverse().forEach(label=>{
+                            //     let th = document.createElement("th");
+                            //     th.classList.add("varient_table_label");
+                            //     th.innerHTML = label.textContent;
+                            //     tableHeadTr.prepend(th); 
+                            // });
+
+                            tableHeadTr.children[0].style.borderTopLeftRadius = "10px"
+                            table.innerHTML = "";
+                            combinations.forEach((combination, key) => {
+                                let tr = document.createElement("tr");
+                                tr.classList.add("tableBody");
+                                combination.forEach((comb) => {
+                                    let td = document.createElement("td");
+                                    td.innerHTML = comb;
+                                    tr.appendChild(td);
+                                });
+
+
+                                let input4 = document.createElement("input");
+                                input4.setAttribute("name", "quantitys[]");
+                                input4.classList.add("myInput");
+                                input4.setAttribute("placeholder", "Qunatity");
+                                let td4 = document.createElement("td");
+                                td4.appendChild(input4);
+                                tr.appendChild(td4);
+
+
+                                let icon = document.createElement("i");
+                                icon.classList.add(
+                                    "mdi",
+                                    "mdi-delete",
+                                    "text-danger",
+                                    "delete-table-data"
+                                );
+                                icon.setAttribute("id", "td_" + key);
+                                icon.setAttribute("onclick", "tableDataDelete(this)");
+                                icon.style.fontSize = "20px"
+                                let td7 = document.createElement("td");
+                                td7.style.textAlign = "center";
+                                td7.appendChild(icon);
+                                tr.appendChild(td7);
+                                table.appendChild(tr);
+                            });
+                            let tableDataleftBox = table.querySelectorAll("tr")
+                            let tableLastRow = tableDataleftBox[tableDataleftBox.length - 1];
+                            let tableDataList = tableLastRow.querySelectorAll("td");
+                            let firstTableData = tableDataList[0];
+                            let lastTableData = tableDataList[tableDataList.length - 1];
+                            firstTableData.style.borderBottomLeftRadius = "10px"
+                            lastTableData.style.borderBottomRightRadius = "10px"
+
+                        };
+                        // End Populate_variant_table function 
+
+                        const tableDataDelete = (tag) => {
+                            // let table = document.getElementById("product_table");
+                            let deleteItem = tag.parentNode.parentNode;
+                            let parentTable = tag.parentNode.parentNode.parentNode;
+                            // console.log("the table is = ", table, deleteItem, parentTable);
+                            parentTable.removeChild(deleteItem);
+                        };
+
+                        const table_content_dropdown_add = (tag, num) => {
+                            count += 1;
+                            let table_content = document.getElementById("table_content_dropdown_");
+                            let table_content_container;
+                            let new_content = table_content.cloneNode(true);
+                            if (num) {
+                                table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
+                                // let new_content = table_content.cloneNode(true);
+                                new_content.setAttribute("id", `table_content_dropdown_${num}_${count}`);
+
+                                var innerIDs = [];
+
+                                function collectInnerIDs(element) {
+                                    if (element.hasAttribute("onclick")) {
+                                        let onchangeIS = element.getAttribute("onclick");
+                                        var onclickParts = onchangeIS.split(',' || ' ');
+                                        if (onclickParts[0] == "deleteTableContent(this") {
+                                            console.log("what is element === ", element);
+                                            element.setAttribute("onclick", onclickParts[0] + ', ' + num + ')');
+                                        }
+                                    }
+
+                                    for (var i = 0; i < element.children.length; i++) {
+                                        collectInnerIDs(element.children[i]);
+                                    }
+                                }
+
+                                collectInnerIDs(new_content);
+                            }
+                            else {
+                                table_content_container = document.getElementById(`table_content_dropdown_box`)
+                                new_content.setAttribute("id", "table_content_dropdown_" + count);
+                            }
+
+                            new_content.classList.remove("d-none");
+                            let firstChild = new_content.children[0];
+                            let input = firstChild.children[0].children[1].children[0];
+                            let dropDownMenu = firstChild.children[0].children[1].children[1];
+                            console.log('firstChild', firstChild, input, dropDownMenu);
+
+                            input.setAttribute("id", "contentsTitleInput_" + count);
+                            input.setAttribute("onclick", "showContentDropdown(" + count + ")");
+                            dropDownMenu.setAttribute("id", "dropdownMenu_" + count);
+                            table_content_container.appendChild(new_content);
+                        };
+
+                        const deleteTableContent = (tag, num) => {
+                            let table_content_container;
+                            if (num) {
+                                table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
+                            }
+                            else {
+                                table_content_container = document.getElementById(`table_content_dropdown_box`)
+                            }
+                            let table_content = tag.parentNode.parentNode;
+                            console.log("table_content", table_content_container, table_content);
+                            table_content_container.removeChild(table_content);
+                        };
+
+                        const cancel = () => {
+                            let product_table = document.getElementById("product_table");
+                            const allInput = $(".main-contact-area").find("input");
+                            const allSelect = $(".main-contact-area").find("select");
+                            const allTextarea = $(".main-contact-area").find("textarea");
+                            for (let i = 0; i < allInput.length; i++) {
+                                allInput[i].value = "";
+                            }
+                            for (let i = 0; i < allSelect.length; i++) {
+                                // allSelect[i].value = "";
+                                allSelect[i].selectedIndex = 0;
+                            }
+                            product_table.innerHTML = "";
+                            for (let i = 0; i < allTextarea.length; i++) {
+                                allTextarea[i].value = "";
+                            }
+                        };
+
+                        let findInput = 0;
+                        let oldDropdownContent = '';
+                        const showContentDropdown = (id, num) => {
+                            let dropdownMenu_s;
+                            if (num) {
+                                dropdownMenu_s = document.getElementById(`dropdownMenu_${id}_${num}`);
+                            }
+                            else {
+                                dropdownMenu_s = document.getElementById(`dropdownMenu_${id}`);
+                            }
+                            if (oldDropdownContent && !oldDropdownContent.classList.contains('d-none') && findInput != id) {
+                                oldDropdownContent.classList.add('d-none')
+                            }
+                            dropdownMenu_s.classList.toggle("d-none");
+                            findInput = id;
+                            oldDropdownContent = dropdownMenu_s
+                        };
+
+                        document.addEventListener("click", function (event) {
+                            var target = event.target
+                            let dropdownBox = document.querySelectorAll(".dropdownBox");
+                            if (target.tagName != 'INPUT') {
+                                for (let i = 0; i < dropdownBox.length; i++) {
+                                    if (!dropdownBox[i].classList.contains('d-none')) {
+                                        dropdownBox[i].classList.add("d-none");
+                                    }
+                                }
+                            }
+                        })
+
+                        let allInputTags = document.querySelectorAll('input');
+                        $(allInputTags).each(function (index, element) {
+                            element.addEventListener("input", function (e) {
+                                let dropdownBox = document.querySelectorAll(".dropdownBox");
+                                for (let i = 0; i < dropdownBox.length; i++) {
+                                    console.log("dropdownBox[i]", dropdownBox[i]);
+                                    if (!dropdownBox[i].classList.contains('d-none')) {
+                                        dropdownBox[i].classList.add("d-none");
+                                    }
+                                }
+                            })
+                        })
+
+                        function selectOption(tag, num) {
+
+                            let textInput;
+                            if (num) {
+                                textInput = document.getElementById(`contentsTitleInput_${findInput}_${num}`);
+                            }
+                            else {
+                                textInput = document.getElementById(`contentsTitleInput_${findInput}`);
+                            }
+
+                            let text = tag.innerText;
+                            textInput.value = text;
+                            let parent = tag.parentNode;
+                            parent.classList.add("d-none");
+                        }
+
+                        const openAdditionalSection = () => {
+                            let area = document.getElementById("AdditionalArea");
+                            area.classList.remove("d-none");
+                        };
+
+                        // window.addEventListener("click", function (event) {
+                        //     const dropdownMenu = document.getElementById("dropdownMenu_" + findInput);
+                        //     console.log("dropdownMenu", dropdownMenu);
+                        //     const textInput = document.getElementById(
+                        //         "contentsTitleInput_" + findInput
+                        //     );
+                        //     let allClassList = dropdownMenu.classList.value;
+                        //     const classListArray = allClassList.split(" ");
+                        //     classListArray.find((className) => {
+                        //         if (!textInput.contains(event.target)) {
+                        //             if (!className.includes("d-none")) {
+                        //                 dropdownMenu.classList.add("d-none");
+                        //             }
+                        //         }
+                        //     });
+                        // });
+
+                        const removeSecondaryImg = (tag) => {
+                            let parentImgContainer = tag.parentNode.parentNode;
+                            let imge_cotainer = tag.parentNode;
+                            parentImgContainer.removeChild(imge_cotainer);
+                        };
+
+                        const secondary_image_changed = (tag, ind) => {
+                            // const previewContainer = document.getElementById("secondary-img-container");
+                            let previewContainer;
+                            if (ind) {
+                                previewContainer = document.getElementById(`secondary-img-container_${ind}`);
+                            } else {
+                                previewContainer = document.getElementById(`secondary-img-container`);
+                            }
+                            // const previewContainer = document.querySelector(
+                            //     ".secondary-img-container"
+                            // );
+                            // const secondaryImageAdder = document.querySelector(
+                            //     ".secondary-img-container"
+                            // );
+
+                            // previewContainer.innerHTML = ''; // Clear previous previews
+                            if (tag.files && tag.files.length > 0) {
+                                for (let i = 0; i < tag.files.length; i++) {
+                                    const file = tag.files[i];
+                                    const reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        // const input = document.createElement("input");
+                                        // input.type = "file";
+                                        // input.classList.add("d-none");
+                                        // input.files[0] = reader.result;
+                                        // input.setAttribute("name", "secondary_images[]");
+                                        // const fileList = new DataTransfer(); // Create a new FileList object and add the selected file to it
+                                        // fileList.items.add(file);
+                                        // console.log('previewContainer',fileList);
+                                        // input.files = fileList.files; // Assign the new FileList to the main page image field
+
+                                        const div = document.createElement("div");
+                                        div.style.width = "90px";
+                                        div.style.height = "90px";
+                                        div.style.background = `url(${e.target.result})`;
+                                        div.style.backgroundSize = 'cover';
+                                        div.style.marginRight = "8px";
+                                        div.style.marginBottom = "8px";
+
+                                        div.classList.add("position-relative");
+                                        const span = document.createElement("span");
+                                        span.innerHTML =
+                                            '<i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;"></i>';
+                                        span.classList.add("position-absolute");
+                                        // span.setAttribute("onclick", `removeSecondaryImg(${i})`);
+                                        span.setAttribute("onclick", `removeSecondaryImg(this)`);
+                                        span.style.top = "0";
+                                        span.style.right = "0px";
+                                        span.style.cursor = "pointer";
+                                        div.append(span);
+                                        // const img = document.createElement("img");
+                                        // img.src = e.target.result;
+                                        // img.alt = `Preview Image ${i + 1}`;
+                                        // img.style.width = "100%";
+                                        // img.style.height = "auto";
+                                        // console.log(img);
+                                        div.setAttribute("id", `secondary_img_preview_${i}`);
+                                        // div.append(input);
+                                        // div.append(img);
+                                        previewContainer.prepend(div);
+                                    };
+                                    reader.readAsDataURL(tag.files[i]);
+                                }
+                                //   previewContainer.append(secondaryImageAdder);
+                            }
+                        };
+
+
+                        const save_varient = (tag, num) => {
+                            console.log('save the varient ====');
+                            let varient_container;
+                            let custom_variant;
+                            let newVarientUl;
+                            let modal_varient_name;
+                            let varientLabelInput;
+                            let varientTagUlInput;
+                            if (num) {
+                                varient_container = document.getElementById(`varient_container__${num}`);
+                                custom_variant = document.getElementById(`custom_variant_${num}`);
+                                newVarientUl = document.getElementById(`addNewVarient_${num}`)
+                                modal_varient_name = document.getElementById(`modal_varient_name_${num}`).value;
+                                varientLabelInput = document.getElementById(`modal_varient_name_${num}`)
+                                varientTagUlInput = document.getElementById(`addNewVarient_${num}`)
+
+                            } else {
+                                varient_container = document.getElementById(`varient_container_`);
+                                custom_variant = document.getElementById(`custom_variant`);
+                                newVarientUl = document.getElementById("addNewVarient")
+                                modal_varient_name = document.getElementById("modal_varient_name").value;
+                                varientLabelInput = document.getElementById(`modal_varient_name`)
+                                varientTagUlInput = document.getElementById(`addNewVarient`)
+                            }
+
+
+                            // let modal_varient_name = document.querySelector(
+                            //     "#modal_varient_name"
+                            // ).value;
+
+                            // let varient_container = document.querySelector("#varient_container_");
+                            // varient_container.classList.add("colorVariantBox");
+                            let data = [];
+                            let varientLi = newVarientUl.querySelectorAll("li");
+                            varientLi.forEach((li) => {
+                                data.push(li.innerText)
+                            })
+                            // let data = $(custom_variant).select2("val");
+
+                            let colorVariantBox = document.createElement("div");
+                            colorVariantBox.classList.add("col-lg-4", "col-md-6", "col-sm-12", "colorVariantBox", "mt-3");
+                            let variantInnderBox = document.createElement('div')
+                            variantInnderBox.style.backgroundColor = "white";
+                            variantInnderBox.style.borderRadius = "5px";
+                            variantInnderBox.style.padding = "10px";
+                            let label2 = document.createElement("label");
+                            label2.classList.add('varient_label', "inline-block", "d-flex", "justify-content-between", "align-items-center");
+                            label2.innerText = modal_varient_name;
+                            // label2.classList.add("inline-block");
+                            // label2.classList.add("varient_label");
+                            // label2.classList.add("d-flex");
+                            // label2.classList.add("justify-content-between");
+                            // label2.classList.add("align-items-center");
+                            // label2.style.marginTop = "20px";
+                            // x-mark
+                            let x_span = document.createElement("span");
+                            x_span.setAttribute(
+                                "onclick",
+                                "this.parentNode.parentNode.parentNode.remove()"
+                            );
+                            x_span.innerHTML =
+                                '<i class="fa-solid mdi mdi-close" style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i>';
+                            label2.append(x_span);
+                            let dropdownPositionDiv = document.createElement("div");
+                            dropdownPositionDiv.classList.add("position-relative")
+                            let ul = document.createElement("ul");
+                            ul.classList.add('colorInputUL');
+                            ul.style.marginBottom = "0px";
+                            ul.setAttribute("onclick", "showColorDropDown(this)");
+                            let inputInUL = document.createElement("input");
+                            inputInUL.setAttribute("class", "tagIntpus");
+                            inputInUL.setAttribute("type", "text");
+                            inputInUL.setAttribute("spellcheck", "false");
+                            inputInUL.setAttribute("placeholder", "Write here for tag");
+                            inputInUL.setAttribute("onkeypress", "return event.keyCode != 13;");
+                            ul.append(inputInUL);
+
+                            let dropdownOptionBox = document.createElement('div');
+                            dropdownOptionBox.classList.add("dropdownBox", "d-none");
+                            dropdownOptionBox.style.height = "200px";
+                            dropdownOptionBox.style.overflowY = "auto"
+                            let dropdownUL = document.createElement('ul');
+                            data.forEach((element) => {
+                                let li = document.createElement("li");
+                                onclick = "getValueFronDropDown(this)"
+                                li.setAttribute("onclick", "getValueFronDropDown(this)")
+                                li.textContent = element;
+                                dropdownUL.append(li);
+                            });
+
+                            // dropdownOptionBox.append(ul);
+                            dropdownOptionBox.append(dropdownUL);
+                            dropdownPositionDiv.append(ul);
+                            dropdownPositionDiv.append(dropdownOptionBox);
+                            variantInnderBox.append(label2);
+                            variantInnderBox.append(dropdownPositionDiv);
+                            colorVariantBox.append(variantInnderBox);
+                            varient_container.append(colorVariantBox)
+
+                            // Create a new script element
+                            const newScript = document.createElement("script");
+
+                            // Set the script content
+                            newScript.textContent = `
+                $("#varient-select2-${modal_varient_name}").select2({
+                tags: true,
+                tokenSeparators: [',', ' '],
+                dropdownParent: $('.addProduct___'),
+                placeholder: "Select Product Color",
+                allowClear: true
                 });
+                `;
 
-                // dropdownOptionBox.append(ul);
-                dropdownOptionBox.append(dropdownUL);
-                dropdownPositionDiv.append(ul);
-                dropdownPositionDiv.append(dropdownOptionBox);
-                variantInnderBox.append(label2);
-                variantInnderBox.append(dropdownPositionDiv);
-                colorVariantBox.append(variantInnderBox);
-                varient_container.append(colorVariantBox)
+                            // Append the new script to the document body
+                            document.body.appendChild(newScript);
 
-                // Create a new script element
-                const newScript = document.createElement("script");
+                            varientLabelInput.value = '';
+                            let varientTagUlInputLi = varientTagUlInput.querySelectorAll('li');
+                            for (let i = 0; i < varientTagUlInputLi.length; i++) {
+                                console.log(varientTagUlInputLi[i]);
+                                varientTagUlInputLi[i].remove();
+                                // removarientTagUlInputLi[i];
 
-                // Set the script content
-                newScript.textContent = `
-$("#varient-select2-${modal_varient_name}").select2({
-  tags: true,
-  tokenSeparators: [',', ' '],
-  dropdownParent: $('.addProduct___'),
-  placeholder: "Select Product Color",
-  allowClear: true
-});
-`;
+                            }
+                            //  console.log("varientTagInput", varientTagInput.querySelectorAll('li'));;
+                        };
 
-                // Append the new script to the document body
-                document.body.appendChild(newScript);
-
-                varientLabelInput.value = '';
-                let varientTagUlInputLi = varientTagUlInput.querySelectorAll('li');
-                for (let i = 0; i < varientTagUlInputLi.length; i++) {
-                    console.log(varientTagUlInputLi[i]);
-                    varientTagUlInputLi[i].remove();
-                    // removarientTagUlInputLi[i];
-
-                }
-                //  console.log("varientTagInput", varientTagInput.querySelectorAll('li'));;
-            };
+                    </script>
 
 
-        </script>
+                    <!-- hide and show enable checkbox -->
+                    <script>
+
+                        $('#myCheckbox').click(function () {
+                            if ($(this).is(':checked')) {
+                                $('.enable_div').show();
+
+                            } else {
+                                $('.enable_div').hide();
+                            }
+                        });
+
+                    </script>
 
 </body>
 

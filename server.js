@@ -81,13 +81,12 @@ app.set('View engine', 'ejs');
 // app.use('/', require('./routes/authRoute'));
 const authRoute = require('./routes/authRoute');
 app.use('/', authRoute);
-app.use('/super_admin', require('./routes/superAdminRoute'));
 
-// app.use('/product', require('./routes/productRoute'));
-// app.use('/expense', require('./routes/expenseRoute'));
-// app.use('/people', require('./routes/peopleRoute'));
-// app.use('/customer', require('./routes/customerRoute'));
-// app.use('/report', require('./routes/reportRoute'));
+app.use('/super_admin', require('./routes/superAdminRoute'));
+app.use('/product', require('./routes/productRoute'));
+app.use('/expense', require('./routes/expenseRoute'));
+app.use('/customer', require('./routes/customerRoute'));
+app.use('/report', require('./routes/reportRoute'));
 
 // const connectDB = require('./db_config/db');
 // connectDB();

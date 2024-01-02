@@ -20,10 +20,14 @@ module.exports = (sequelize, DataTypes) => {
     selling_price: DataTypes.INTEGER,
     discount: DataTypes.INTEGER,
     primary_image: DataTypes.STRING,
-    secondary_image: DataTypes.STRING,
-    tax: DataTypes.INTEGER,
-    size: DataTypes.STRING,
-    description: DataTypes.STRING
+    secondary_image: DataTypes.ARRAY(DataTypes.STRING),
+    description: DataTypes.STRING,
+    colorVariants: DataTypes.ARRAY(DataTypes.STRING),
+    sizeVariants: DataTypes.ARRAY(DataTypes.STRING),
+    total_qty: DataTypes.INTEGER,
+    product_code: DataTypes.INTEGER,
+    date: DataTypes.STRING,
+
   }, {
     sequelize,
     modelName: 'Product',

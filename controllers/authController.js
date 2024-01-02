@@ -1,8 +1,7 @@
-
 const asyncHandler = require('express-async-handler');
 const bodyParser = require('body-parser');
-
 const models = require('../models');
+
 const register = (req, res, next) => {
     res.render('auth/register.ejs');
 }
@@ -22,29 +21,21 @@ const postRegister = async (req, res) => {
             role: req.body.role,
         }
 
-        console.log('hello1');
-        console.log(req.body.user_name);
-        // console.log(user_record);
-        console.log('hello2');
+        console.log("User Record:", user_record);
 
         let result = await models.User.create({
             user_name: req.body.user_name,
             password: req.body.password,
-            role: req.body.role
+            role: req.body.role,
         });
 
-        res.status(200).json({
-            'message': 'Successfully',
-            'post': result
-        });
+        res.redirect('/super_admin/dashboard');
 
-        // Redirect only after the database operation is successful
-        // res.redirect('/');
-
-    } catch (error) {
-        res.status(200).json({
-            'message': 'Wrong',
-            'error': error
+    } catch (err) {
+        console.log('Not Connect with Database');
+        res.status(500).json({
+            'message': 'Something went wrong',
+            'error': err
         });
     }
 }
