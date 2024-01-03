@@ -982,7 +982,7 @@
                         <div class="container-fluid card" style="padding: 20px;">
 
                             <!-- new Add product code Start  -->
-                            <form action="/product/post_add_product" method="post" enctype="multipart/form-data">
+                            <form action="/product/post_add_product" method="post" enctype="">
 
                                 <div class="row">
 
@@ -991,16 +991,7 @@
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Product Name</label>
-                                                <input type="text" class="form-control" placeholder="HP Elite Book" name="product_name" onkeypress="return event.keyCode != 13;" required>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- It generate automatically -->
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2 d-none">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Product Code</label>
-                                                <input type="text" class="form-control" placeholder="" name="product_code" onkeypress="return event.keyCode != 13;">
+                                                <input type="text" class="form-control" placeholder="HP Elite Book" name="name" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
@@ -1008,13 +999,14 @@
                                             <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label class="" style="">Product Category</label>
                                                 <div class=" position-relative single-contact-info productName" style="margin-top: 7px">
-                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;" required>
+                                                    <input required type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;">
                                                     <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1000" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Tops</div>
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Pant</div>
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Shirt</div>
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Tie</div>
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Saree</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Electronics</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1058,16 +1050,16 @@
                                     </div> -->
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Buying Price</label>
-                                                <input type="number" class="form-control" placeholder="1" name="buying_price" required>
+                                                <input type="number" class="form-control" placeholder="1" name="buying_price">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Selling Price</label>
-                                                <input type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;" required>
+                                                <input type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
@@ -1080,21 +1072,21 @@
 
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Discount</label>
-                                                <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;" required>
+                                                <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
                                             <label for="date" class="form-label">Date</label>
-                                            <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+                                            <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Total Quantity</label>
-                                                <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;" required>
+                                                <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
@@ -1109,6 +1101,7 @@
                                             </optgroup>
                                         </select>
                                     </div> -->
+
                                     </div>
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6" style="border: 2px solid transparent;">
@@ -1122,7 +1115,8 @@
                                                     <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width:180px;border-radius:5px;"
                                                         id="main-img-preview">
                                                     <label for="mainImg" class="btn btn-dark mt-2">Set Primary Image</label>
-                                                    <input type="file" for="mainImg" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
+                                                    <input type="file" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
+
                                                 </div>
                                             </div>
 
@@ -1155,9 +1149,7 @@
 
                                         <div class="row " id="varient_container_">
 
-
                                             <!-- color -->
-
                                             <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
                                                 <div style="background-color:white; border-radius:5px; padding:10px;">
                                                     <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="colorVariant">
@@ -1169,7 +1161,7 @@
 
                                                     <div class="position-relative">
                                                         <ul class="colorInputUL" id="colorInputUL" style=" margin-bottom: 0px;" onclick="showColorDropDown(this)">
-                                                            <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="variantColor" placeholder="Enter Color" onkeypress="return event.keyCode != 13;">
+                                                            <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="variantColor" placeholder="Select or write  Color" onkeypress="return event.keyCode != 13;">
                                                         </ul>
                                                         <div class="dropdownBox d-none" id="colorDropdownBox" style="height: 200px; overflow-y: auto;">
                                                             <ul>
@@ -1196,7 +1188,7 @@
                                                     </label>
                                                     <div class="position-relative">
                                                         <ul class="colorInputUL" id="sizeInputUL" style="margin-bottom: 0px;" onclick="showColorDropDown(this)">
-                                                            <input class="tagIntpus" type="text" name="sizeVariants" spellcheck="false" id="sizeVariant" placeholder="Enter Size" onkeypress="return event.keyCode != 13;">
+                                                            <input class="tagIntpus" type="text" name="sizeVariants" spellcheck="false" id="sizeVariant" placeholder="Select or write Size" onkeypress="return event.keyCode != 13;">
                                                         </ul>
                                                         <div class="dropdownBox d-none" id="sizedropdownBox" style="height: 200px; overflow-y: auto;">
                                                             <ul>
@@ -1217,7 +1209,6 @@
 
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 colorVariantBox mt-3 d-md-flex d-xl-flex d-sm-flex text-center justify-content-start align-items-center">
-
                                                 <span class="addVarientSpan ms-2 d-none" style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#addVarientModal">Add Varient</span>
 
                                                 <div class="populateBtn delete-table-data mt-0 mt-sm-0 ms-2" style="">
@@ -1445,7 +1436,7 @@
                                                         <tr style="height: 60px;" id="tableHeadTr">
                                                             <th class="varient_table_label" style="border-top-left-radius: 10px">Color</th>
                                                             <th class="varient_table_label">Size</th>
-                                                            <th>Qunatity</th>
+                                                            <th>Quantity</th>
                                                             <th style="border-top-right-radius: 10px">Actions</th>
                                                         </tr>
 
@@ -1464,11 +1455,11 @@
 
                                 <div id="table_content_container" class="newVariantTable TableOfContents" style="">
 
-                                    <div class="row mt-3">
-                                        <div class="col-md-6 col-xl-6 col-sm-12">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:20px">
+                                    <div class="row mt-2 mb-2">
+                                        <div class="col-12 col-md-12 col-xl-6 col-lg-6">
+                                            <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">
                                                 <label>Description</label>
-                                                <textarea name="product_description" class="form-control" cols="40" rows="7" value="">Enter Product Description...........</textarea>
+                                                <textarea name="description" class="form-control" cols="10" rows="7" value="">Product Description...........</textarea>
                                             </div>
                                         </div>
                                         <!-- <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">
@@ -1581,7 +1572,7 @@
                     <!-- App js -->
                     <script src="/assets/js/app.min.js"></script>
 
-                    <!-- add_product external js -->
+                    <!-- add_product tableBody external js -->
                     <script>
                         // const { functions } = require("lodash");
 
@@ -1712,6 +1703,8 @@
 
                             tableHeadTr.children[0].style.borderTopLeftRadius = "10px"
                             table.innerHTML = "";
+                            console.log(combinations);
+
                             combinations.forEach((combination, key) => {
                                 let tr = document.createElement("tr");
                                 tr.classList.add("tableBody");
@@ -1719,6 +1712,7 @@
                                     let td = document.createElement("td");
                                     td.innerHTML = comb;
                                     tr.appendChild(td);
+                                    console.log('hi', tr);
                                 });
 
 
@@ -2102,14 +2096,14 @@
 
                             // Set the script content
                             newScript.textContent = `
-                $("#varient-select2-${modal_varient_name}").select2({
-                tags: true,
-                tokenSeparators: [',', ' '],
-                dropdownParent: $('.addProduct___'),
-                placeholder: "Select Product Color",
-                allowClear: true
-                });
-                `;
+                                $("#varient-select2-${modal_varient_name}").select2({
+                                tags: true,
+                                tokenSeparators: [',', ' '],
+                                dropdownParent: $('.addProduct___'),
+                                placeholder: "Select Product Color",
+                                allowClear: true
+                                });
+                                `;
 
                             // Append the new script to the document body
                             document.body.appendChild(newScript);
@@ -2120,17 +2114,14 @@
                                 console.log(varientTagUlInputLi[i]);
                                 varientTagUlInputLi[i].remove();
                                 // removarientTagUlInputLi[i];
-
                             }
                             //  console.log("varientTagInput", varientTagInput.querySelectorAll('li'));;
                         };
 
                     </script>
 
-
                     <!-- hide and show enable checkbox -->
                     <script>
-
                         $('#myCheckbox').click(function () {
                             if ($(this).is(':checked')) {
                                 $('.enable_div').show();
@@ -2141,6 +2132,23 @@
                         });
 
                     </script>
+
+                    <!-- date setup in min attributes -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+
+                    <script>
+                        // Set the timezone to Bangladesh
+                        moment.tz.setDefault("Asia/Dhaka");
+                        // Get the current date in "YYYY-MM-DD" format
+                        var currentDate = moment().format("YYYY-MM-DD");
+                        console.log('currentDate', currentDate);
+                        // Set the min attribute of the date input
+                        document.getElementById("date").min = currentDate;
+                    </script>
+
+
+
 
 </body>
 

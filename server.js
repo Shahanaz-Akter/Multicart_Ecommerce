@@ -63,7 +63,7 @@ app.use(bodyParser.json());
 // Parse application/json
 // app.use(bodyParser.json());
 
-const path = require('path'); //for keeping all views
+const path = require('path'); //for keeping all views and image sources path
 app.use(express.static('public'));
 //set public as a default folder
 

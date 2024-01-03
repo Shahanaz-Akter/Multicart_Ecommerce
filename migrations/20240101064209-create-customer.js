@@ -13,7 +13,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       mobile: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       dob: {
         type: Sequelize.STRING,
