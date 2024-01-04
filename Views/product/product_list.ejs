@@ -79,14 +79,14 @@
                                         <th>SL</th>
                                         <th>Name</th>
                                         <th>Category</th>
-                                        <th>Buy.Price</th>
-                                        <th>Sell.Price</th>
+                                        <th>Buying Price</th>
+                                        <th>Selling Price</th>
                                         <th>Discount</th>
                                         <th>Date</th>
                                         <th>Total Qty</th>
                                         <th>Primary Img</th>
                                         <th>Secondary Img</th>
-                                        <th>Po.Code</th>
+                                        <th>Product Code</th>
                                         <th>CoVariants</th>
                                         <th>SiVariants</th>
                                         <th>Description</th>
@@ -95,13 +95,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
                                     <%products.forEach(all_products=>{%>
+
                                         <tr>
                                             <td><input type="checkbox" class="row-checkbox"></td>
                                             <td>
-                                                0<%=all_products.id%>
+                                                <%=all_products.id%>
                                             </td>
                                             <td>
                                                 <%=all_products.name%>
@@ -127,9 +126,9 @@
                                                 <%=all_products.total_qty%>
                                             </td>
                                             <td>
-                                                <img src="/assets/images/<%=all_products.primary_image %>" alt="Image is not uploaded" height="150" width="150">
+                                                <img src="/assets/images/<%=all_products.primary_image %>" alt="Image is not uploaded" height="120" width="120">
                                             </td>
-                                            <td><button class="btn btn-md btn-dark" data-bs-toggle="modal" data-bs-target="#seondary_image_list">S.Image List</button></td>
+                                            <td><button class="btn btn-md btn-dark" data-bs-toggle="modal" data-bs-target="#secondary_image_list_<%=all_products.id%>">S.Image List</button></td>
                                             <td>
                                                 <%=all_products.product_code%>
                                             </td>
@@ -165,37 +164,41 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <!-- seondary_image_list modal -->
+                                        <div class="modal fade" id="secondary_image_list_<%=all_products.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title text-muted" id="myCenterModalLabel">List of Secondary Products</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
 
-                                        <%})%>
+                                                        <div class="row">
 
-                                </tbody>
+                                                            <%const secondaryImageArray=JSON.parse(all_products.secondary_image);%>
 
-                                <!-- seondary_image_list modal -->
-                                <div class="modal fade" id="seondary_image_list" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title text-muted" id="myCenterModalLabel">List of Secondary Products</h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
+                                                                <% if (Array.isArray(secondaryImageArray)) { %>
 
-                                                <div class="row">
+                                                                    <% secondaryImageArray.forEach(se_img=> { %>
+                                                                        <div class="col-12 col-md-3 col-lg-3 col-xl-3 mb-2">
+                                                                            <img src="/assets/images/<%=se_img%>" alt="" height="150" width="150">
+                                                                        </div>
+                                                                        <% }); %>
 
-                                                    <div class="col-12 col-md-3 col-lg-3 col-xl-3 mb-2">
-                                                        <div>
-                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEBdc_pQjY0uBBrkNFZ8iBRpT6M2uXS2-UpJHROq82kA&s" alt="" height="150" width="150">
+                                                                            <% } else { %>
+                                                                                <p>No secondary images available.</p>
+                                                                                <% } %>
                                                         </div>
 
                                                     </div>
-
-
                                                 </div>
-
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        <%})%>
+                                </tbody>
+
+
                             </table>
 
 

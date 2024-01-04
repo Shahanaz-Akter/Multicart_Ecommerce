@@ -62,13 +62,13 @@
                         <!-- Start Content-->
                         <div class="container-fluid card p-4">
 
-                            <form action="" method="post">
+                            <form action="/expense/post_expense" method="post">
 
                                 <div class="row">
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
                                         <label for="date" class="form-label">Date</label>
-                                        <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+                                        <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
                                     </div>
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
@@ -97,7 +97,7 @@
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4" style="background: #FCFCFC!important;">
                                         <label for="category" class="form-label">Category</label>
-                                        <select class="form-control" data-toggle="select2" data-width="100%" name="category">
+                                        <select class="form-control" data-toggle="select2" data-width="100%" name="expense_category">
                                             <!-- <option>Electrics</option> -->
                                             <optgroup label="">
                                                 <option value="united_state">Electrics</option>
@@ -132,7 +132,7 @@
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-4">
                                         <label class="" for="purchase_notes">Purchase Notes:</label>
-                                        <textarea id="textarea" class="form-control" maxlength="225" rows="7" cols="" placeholder="TYPE Text...." name="purchase_notes" style="background: #FCFCFC;"></textarea>
+                                        <textarea id="textarea" class="form-control" maxlength="225" rows="7" cols="" placeholder="TYPE Text...." name="description" style="background: #FCFCFC;"></textarea>
                                     </div>
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -195,7 +195,19 @@
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
 
+        <!-- date setup in min attributes -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
 
+        <script>
+            // Set the timezone to Bangladesh
+            moment.tz.setDefault("Asia/Dhaka");
+            // Get the current date in "YYYY-MM-DD" format
+            var currentDate = moment().format("YYYY-MM-DD");
+            console.log('currentDate', currentDate);
+            // Set the min attribute of the date input
+            document.getElementById("date").min = currentDate;
+        </script>
 
 </body>
 

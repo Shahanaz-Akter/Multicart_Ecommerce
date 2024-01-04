@@ -37,7 +37,8 @@
 
 // sequelize db:migrate:undo (last migrate file will be removed only) or sequelize db:migrate:undo --name migration-file-name
 //sequelize db:migrate:undo:all all will be undo
-//sequelize db:migrate:undo --to 20240101064209-create-customer.js   specific undo migrate
+// sequelize db:migrate:undo --name 20240101064209-create-customer.js  specific undo migrate
+
 //sequelize migration:generate --name add-extra-field-to-customer add one field in db and i need to manually replace the models fields name
 
 //control + c for stop server
@@ -76,17 +77,18 @@ app.set('View engine', 'ejs');
 //if I want to bring some folder or file have to module. exports than get using require('') method
 
 //Creating Multiple Routes with prefix
-// app.use('/customer', require('./routes/customerRoute'));
+const userRoute = require('./routes/userRoute');
+app.use('/', userRoute);
 
-// app.use('/', require('./routes/authRoute'));
 const authRoute = require('./routes/authRoute');
-app.use('/', authRoute);
+app.use('/auth', authRoute);
 
 app.use('/super_admin', require('./routes/superAdminRoute'));
 app.use('/product', require('./routes/productRoute'));
 app.use('/expense', require('./routes/expenseRoute'));
 app.use('/customer', require('./routes/customerRoute'));
 app.use('/report', require('./routes/reportRoute'));
+// app.use('/admin', require('./routes/adminRoute'));
 
 // const connectDB = require('./db_config/db');
 // connectDB();

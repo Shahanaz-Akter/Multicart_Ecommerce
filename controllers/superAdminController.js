@@ -42,4 +42,7 @@ const expenseReport = (req, res) => {
 const customerReport = (req, res) => {
     res.render('report/customer_report.ejs');
 }
+
+
+
 module.exports = { Super, dashboard, addProduct, ProductList, productCategory, addExpense, expenseList, addCustomer, customerList, productReport, expenseReport, customerReport }

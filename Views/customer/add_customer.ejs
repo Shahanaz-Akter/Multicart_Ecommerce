@@ -64,7 +64,7 @@
 
                             <h3 class="mb-3">Create Customer</h3>
 
-                            <form action="" method="post">
+                            <form action="/customer/post_customer" method="post">
 
                                 <div class="row">
 
@@ -78,7 +78,6 @@
                                         <label for="dob" class="form-label">Date of Birth</label>
                                         <input class="form-control custom-date-input" id="dob" type="date" name="dob" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
                                     </div>
-
                                     <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                         <label for="customer_group" class="form-label">Customer Group</label>
                                         <select class="form-control" data-toggle="select2" data-width="100%" name="customer_group" style="background: #FCFCFC!important;">
@@ -118,10 +117,10 @@
                                         <input type="text" id="country" class="form-control" placeholder="Dhaka" name="country" style="background: #FCFCFC!important;">
                                     </div>
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                    <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                         <label for="city" class="form-label">City</label>
                                         <input type="text" id="city" class="form-control" placeholder="Dhaka" name="city" style="background: #FCFCFC!important;">
-                                    </div>
+                                    </div> -->
 
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
@@ -133,12 +132,15 @@
                                         <input type="text" id="zip_code" class="form-control" placeholder="9766767" name="zip_code" style="background: #FCFCFC!important;">
                                     </div>
 
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
+                                        <label for="dob" class="form-label">Date</label>
+                                        <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
+                                    </div>
+
                                     <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                 <label class="form-label" for="reward_point">Reward Point</label>
                                 <input data-toggle="touchspin" type="number" name="reward_point" placeholder="4.470" style="background: #FCFCFC!important;">
                             </div> -->
-
-
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                                         <button type="submit" class="btn btn-lg btn-primary">Create Now </button>
@@ -195,7 +197,19 @@
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
 
+        <!-- date setup in min attributes -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
 
+        <script>
+            // Set the timezone to Bangladesh
+            moment.tz.setDefault("Asia/Dhaka");
+            // Get the current date in "YYYY-MM-DD" format
+            var currentDate = moment().format("YYYY-MM-DD");
+            console.log('currentDate', currentDate);
+            // Set the min attribute of the date input
+            document.getElementById("date").min = currentDate;
+        </script>
 
 </body>
 

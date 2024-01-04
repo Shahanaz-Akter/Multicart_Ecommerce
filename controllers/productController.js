@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler');
-const { Sequelize } = require('sequelize');
 const bodyParser = require('body-parser');
 const models = require('../models');
 
@@ -24,37 +23,34 @@ const postAddProduct = async (req, res) => {
             'total_qty': req.body.total_qty,
             'product_code': Math.floor(Math.random() * 1000) + 1,
             'date': req.body.date,
-            'quantitys': req.body.quantitys
+            'quantitys': req.body.quantitys,
         });
 
         console.log('here1');
-        console.log(req.body.primary_image);
-        console.log('here2');
-        res.redirect('/product/Product_list');
+        console.log(result);
+        console.log('here1');
 
+        res.redirect('/product/Product_list');
     }
     catch (err) {
-        res.json({
-            'msg': 'Something went Wrong',
-            'error': err
-        });
+        console.log(err);
     }
-
 }
 
 const ProductList = async (req, res) => {
     try {
         let products = await models.Product.findAll();
-
         res.render('product/product_list.ejs', { products });
     }
     catch (error) {
         // console.log('Error fetching product list:', error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).send('Internal Server Error', error);
     }
 }
 const productCategory = async (req, res) => {
-    res.render('product/category.ejs');
+
+    let products = await models.Product.findAll();
+    res.render('product/category.ejs', { products });
 }
 
 const editProduct = async (req, res) => {
