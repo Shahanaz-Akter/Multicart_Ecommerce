@@ -10,6 +10,7 @@
 //npm init -y or npm init->package.json  // initialize a new Node.js project using npm init
 //npm install ->package-lock.json
 //npm install express ejs express-ejs-layouts 
+//npm install multer for uploading image on node js with any database
 
 //npm install mongodb
 //node modules command->npm i express dotenv mongoose colors
@@ -47,6 +48,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+
+const multer=require('multer');
+
+
+
+// const upload=multer({storage:storage});
 
 // const expressLayouts = require('express-ejs-layouts');
 // app.use(expressLayouts);

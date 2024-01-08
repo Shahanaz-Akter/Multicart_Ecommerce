@@ -1,41 +1,64 @@
 const asyncHandler = require('express-async-handler');
 const bodyParser = require('body-parser');
 const models = require('../models');
+const multer=require('multer');
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "public/front_assets/img1/");
+    },
+    filename: function (req, file, cb) {
+        const name = Date.now() + "_" + file.originalname;
+        cb(null, name);
+    },
+});
+
+const upload = multer({ storage: storage }).fields([
+    { name: 'primary_image', maxCount: 1 },
+    { name: 'secondary_image', maxCount: 1 },
+]);
 
 const addProduct = async (req, res) => {
     res.render('product/add_product.ejs');
-}
-const postAddProduct = async (req, res) => {
-    // const { name, buying_price, selling_price, discount, product_category, primary_image, secondary_image, description, colorVariants, sizeVariants, total_qty, date, quantitys } = req.body;
-    try {
+};
 
-        let result = await models.Product.create({
-            'name': req.body.name,
-            'buying_price': req.body.buying_price,
-            'selling_price': req.body.selling_price,
-            'discount': req.body.discount,
-            'product_category': req.body.product_category,
-            'primary_image': req.body.primary_image,
-            'secondary_image': req.body.secondary_image,
-            'description': req.body.description,
-            'colorVariants': req.body.colorVariants,
-            'sizeVariants': req.body.sizeVariants,
-            'total_qty': req.body.total_qty,
-            'product_code': Math.floor(Math.random() * 1000) + 1,
-            'date': req.body.date,
-            'quantitys': req.body.quantitys,
-        });
+const postAddProduct = asyncHandler(async (req, res) => {
+    // Use multer to handle file uploads
+    upload(req, res, async function (err) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('File upload failed.');
+        }
 
-        console.log('here1');
-        console.log(result);
-        console.log('here1');
+        try {
+            console.log(req.files);
+            let result = await models.Product.create({
+                'name': req.body.name,
+                'buying_price': req.body.buying_price,
+                'selling_price': req.body.selling_price,
+                'discount': req.body.discount,
+                'product_category': req.body.product_category,
+                'primary_image': '/public/front_assets/img1/' + req.files['primary_image'][0].filename,
+                'secondary_image': 'public/front_assets/img1/' + req.files['secondary_image'][0].filename,
+                'description': req.body.description,
+                'colorVariants': req.body.colorVariants,
+                'sizeVariants': req.body.sizeVariants,
+                'total_qty': req.body.total_qty,
+                'product_code': Math.floor(Math.random() * 1000) + 1,
+                'date': req.body.date,
+                'quantitys': req.body.quantitys,
+            });
 
-        res.redirect('/product/Product_list');
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
+            console.log('Product created successfully:', result);
+            res.redirect('/product/Product_list');
+        } catch (err) {
+            console.error('Error creating product:', err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+});
+
 
 const ProductList = async (req, res) => {
     try {

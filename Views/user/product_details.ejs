@@ -39,20 +39,21 @@
   <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-      <a class="navbar-brand d-none d-xl-inline" href="index.html"><img src="img/logo.jpg" class="logo-img" alt=""></a>
+      <a class="navbar-brand d-none d-xl-inline" href="index.html"><img src="/front_assets/img/logo.webp" class="logo-img" alt=""></a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list"></i>
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><img src="img/logo.jpg" class="logo-img" alt="">
+          <div class="offcanvas-logo"><img src="/front_assets/img/logo.webp" class="logo-img" alt="">
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+
         <div class="offcanvas-body primary-menu">
           <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
@@ -63,24 +64,17 @@
                   <div class="col-12 col-xl-4">
                     <h6 class="large-menu-title">Fashion</h6>
                     <ul class="list-unstyled">
-                      <li><a href="product-details.html">Casual T-Shirts</a>
+                      <li><a href="/product_category">Men's & Boys' Fashion</a>
                       </li>
-                      <li><a href="product-details.html">Formal Shirts</a>
+                      <li><a href="/product_category">Women's & Girls' Fashion</a>
                       </li>
-                      <li><a href="product-details.html">Jackets</a>
+                      <li><a href="/product_category">Home & Lifestyle</a>
                       </li>
-                      <li><a href="product-details.html">Jeans</a>
-                      </li>
-                      <li><a href="product-details.html">Dresses</a>
-                      </li>
-                      <li><a href="product-details.html">Sneakers</a>
-                      </li>
-                      <li><a href="product-details.html">Belts</a>
-                      </li>
-                      <li><a href="product-details.html">Sports Shoes</a>
+                      <li><a href="/product_category">Electronic Accessories</a>
                       </li>
                     </ul>
                   </div>
+
                   <!-- end col-3 -->
                   <!-- <div class="col-12 col-xl-4">
                     <h6 class="large-menu-title">Electronics</h6>
@@ -106,7 +100,7 @@
                   <!-- end col-3 -->
                   <div class="col-12 col-xl-4 d-none d-xl-block">
                     <div class="pramotion-banner1">
-                      <img src="img/menu-img.jpg" class="img-fluid" alt="" />
+                      <img src="/front_assets/img/menu-img.jpg" class="img-fluid" alt="" />
                     </div>
                   </div>
                   <!-- end col-3 -->
@@ -121,7 +115,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
                 <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-                <li><a class="dropdown-item" href="product-details.html">Product Details</a></li>
+                <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
                 <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
                 <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
                 <li><a class="dropdown-item" href="address.html">Addresses</a></li>
@@ -132,25 +126,13 @@
               </ul>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="about-us.html">About Us</a>
+              <a class="nav-link" href="/about_us">About Us</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="contact-us.html">Contact</a>
             </li> -->
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                Register
-              </a>
-              <ul class="dropdown-menu">
 
-                <!-- <li>
-                  <hr class="dropdown-divider">
-                </li> -->
-                <li><a class="dropdown-item" href="authentication-login.html">Login</a></li>
-                <li><a class="dropdown-item" href="authentication-register.html">Register</a></li>
-              </ul>
-            </li>
 
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
@@ -174,7 +156,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="search.html"><i class="bi bi-search"></i></a>
+          <a class="nav-link" href=""><i class="bi bi-search"></i></a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
@@ -186,7 +168,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="account-dashboard.html"><i class="bi bi-person-circle"></i></a>
+          <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
         </li>
       </ul>
     </nav>
@@ -223,42 +209,42 @@
                 <div class="row row-cols-2 g-3">
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/01.jpg">
-                      <img src="/front_assets/img/product-images/01-01.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/01.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/02.jpg">
-                      <img src="/front_assets/img/product-images/01-02.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/02.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/03.jpg">
-                      <img src="/front_assets/img/product-images/01-03.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/03.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/04.jpg">
-                      <img src="/front_assets/img/product-images/01-04.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/04.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/05.jpg">
-                      <img src="/front_assets/img/product-images/01-05.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/05.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/06.jpg">
-                      <img src="/front_assets/img/product-images/01-06.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/06.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/07.jpg">
-                      <img src="/front_assets/img/product-images/01-07.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/07.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                   <div class="col">
                     <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="/front_assets/img/product-images/08.jpg">
-                      <img src="/front_assets/img/product-images/01-01.jpg" class="img-fluid" alt="">
+                      <img src="/front_assets/img/product-images/08.jpg" class="img-fluid" alt="">
                     </div>
                   </div>
                 </div><!--end row-->
