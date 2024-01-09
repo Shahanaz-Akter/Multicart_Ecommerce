@@ -39,7 +39,6 @@
 // sequelize db:migrate:undo (last migrate file will be removed only) or sequelize db:migrate:undo --name migration-file-name
 //sequelize db:migrate:undo:all all will be undo
 // sequelize db:migrate:undo --name 20240101064209-create-customer.js  specific undo migrate
-
 //sequelize migration:generate --name add-extra-field-to-customer add one field in db and i need to manually replace the models fields name
 
 //control + c for stop server
@@ -49,14 +48,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-const multer=require('multer');
 
 
-
-// const upload=multer({storage:storage});
-
-// const expressLayouts = require('express-ejs-layouts');
-// app.use(expressLayouts);
 
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 5000; //if env port is not working then work 5000 port

@@ -1,12 +1,11 @@
-
 const asyncHandler = require('express-async-handler');
 const bodyParser = require('body-parser');
 const models = require('../models');
 
 const userView = async (req, res) => {
-    let products= await models.Product.findAll();
+    let products = await models.Product.findAll();
     console.log(products);
-    res.render('user/index.ejs', {products});
+    res.render('user/index.ejs', { products });
 }
 const aboutUs = async (req, res) => {
     res.render('user/about_us.ejs');
@@ -18,8 +17,8 @@ const cart = async (req, res) => {
     res.render('user/cart.ejs');
 }
 const category = async (req, res) => {
-    let products= await models.Product.findAll();
-    res.render('user/product_category.ejs' ,{products});
+    let products = await models.Product.findAll();
+    res.render('user/product_category.ejs', { products });
 }
 const Login = async (req, res) => {
     res.render('user/authentication_login.ejs');
