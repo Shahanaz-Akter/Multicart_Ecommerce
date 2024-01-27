@@ -1,0 +1,568 @@
+
+
+/* The Modal (background) */
+#checkoutModal {
+  /* display: none;  */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  left: 0;
+  top: 0px;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-contentCheckout {
+  /* background: linear-gradient(#146fb6, #633693); */
+  background-image: url("../img/checkout_1.png");
+  background-size: cover;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 20px;
+  width: 60%;
+  height: 500px;
+  /* position: relative;  */
+}
+
+/* The Close Button */
+.checkoutClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.checkoutClose:hover,
+.checkoutClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.backContent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}
+.contactContainer {
+  background-color: white;
+  margin-top: -82px;
+  border-radius: 22px;
+}
+.contactContainer .contactHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  background: linear-gradient(#146fb6, #633693);
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.contactContainer .contactHead .headTitle {
+  font-size: 25px;
+  font-weight: 600;
+}
+.contactBody {
+  padding: 20px;
+  background-color: #ececec;
+  height: 500px;
+  overflow-y: scroll;
+}
+.contactBody .bodyHead {
+  /* padding: 20px; */
+  display: flex;
+  align-items: center;
+}
+.bodyHead .userIcon {
+  background-color: #f4f3f8;
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 25px;
+}
+.bodyHead .text {
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+/* css for phone number input field  */
+.phone-container {
+  width: 100%;
+  position: relative;
+}
+.phone-container .lavel {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  transition: all 0.2s;
+  padding: 5px 2px 0 80px;
+  z-index: 1;
+  color: #b3b3b3;
+}
+.phone-container .text-input {
+  /* padding: 0.8rem; */
+  padding: 16px 16px 16px 80px;
+  width: 100%;
+  height: 50px;
+  border: 2px solid #9b9c9d;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  outline: none;
+  transition: all 0.3s;
+  color: #000000;
+}
+.phone-container .lavel::before {
+  content: "";
+  height: 3px;
+  /* background-color: #e90909; */
+  background-color: white;
+  position: absolute;
+  left: 80px;
+  top: 18px;
+  width: 54%;
+  z-index: -1;
+}
+/* .phone-container .text-input:focus {
+  border: 2px solid #9b9c9d;
+} */
+.phone-container .text-input:focus + .lavel,
+.field {
+  top: -18px;
+  color: #345094;
+  font-size: 14px;
+}
+.phone-container .text-input:valid + .lavel,.field {
+  top: -18px;
+}
+.text-input::placeholder {
+  font-size: 16px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.text-input:focus::placeholder {
+  opacity: 1;
+  animation-delay: 0.2s;
+}
+
+/* css for country code dropdown menue  */
+
+.setCodeDropdown {
+  position: absolute;
+  top: -30px;
+  left: -32px;
+  z-index: 2;
+}
+.phoneDropdown {
+  width: 50%;
+  height: 50px;
+  position: relative;
+  margin: 2em;
+  /* height: 100%; */
+}
+.phoneDropdown * {
+  box-sizing: border-box;
+}
+.countrySelect {
+  height: 100%;
+  background: white;
+  color: #9b9c9d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #9b9c9d;
+  /* border-bottom: none; */
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+/* added later in javaScript */
+.select-clicked {
+  border: 2px solid #26489a;
+  box-shadow: 0 0 0.8em #26489a;
+}
+.countrySelect:hover {
+  background: #f2f2f2;
+  color: #9b9c9d;
+}
+.countryCaret {
+  width: 0;
+  height: 0;
+  margin: 0 10px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #9b9c9d;
+  transition: 0.3s;
+}
+/* added later in javaScript */
+.caret-rotate {
+  transform: rotate(180deg);
+}
+.countryMenu {
+  list-style: none;
+  padding: 0.2em 0.5em;
+  background: #f2f2f2;
+  border: 1px solid #363a43;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: black;
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 60000000;
+}
+.countryMenu li {
+  padding: 0.7em 0.5em;
+  margin: 0.5em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+  z-index: 1;
+}
+.countryMenu li:hover {
+  background: #a6a6a8;
+}
+/* added later in javaScript */
+.active {
+  background: #a6a6a8;
+  color: black;
+}
+/* added later in javaScript */
+.menu-open {
+  display: block;
+  opacity: 1;
+}
+
+.input-container {
+  margin: 10px 0;
+  position: relative;
+}
+.lavel {
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  transition: all 0.2s;
+  padding: 0 2px;
+  z-index: 1;
+  color: #9b9c9d;
+}
+.text-input {
+  padding: 0.8rem;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #9b9c9d;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  outline: none;
+  transition: all 0.3s;
+  color: #000;
+}
+
+.lavel::before {
+  content: "";
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 100%;
+  z-index: -1;
+}
+.text-input:focus {
+  border: 2px solid #345094;
+}
+.text-input:focus + .lavel,
+.field {
+  top: -10px;
+  color: #345094;
+  font-size: 14px;
+}
+.text-input:valid + label, .field {
+  top: -10px;
+}
+/* .text-input:not(:placeholder-shown) + .label,
+.text-input:focus + .label {
+  top: -10px;
+} */
+.text-input::placeholder {
+  font-size: 16px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.text-input:focus::placeholder {
+  opacity: 1;
+  animation-delay: 0.2s;
+}
+.text-input:focus + .full-name::after {
+  content: "*";
+}
+
+.input_dropdown {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}
+
+/* css for dropdown menue  */
+/* css for dropdown menue  */
+.checkoutDropdown {
+  width: 100%;
+  position: relative;
+}
+.checkoutDropdown * {
+  box-sizing: border-box;
+}
+.select {
+  height: 100%;
+  margin: 10px 5px 10px 0;
+  background: white;
+  color: #9b9c9d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #9b9c9d;
+  border-radius: 0.5em;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+/* added later in javaScript */
+.select-clicked {
+  border: 2px solid #26489a;
+  box-shadow: 0 0 0.8em #26489a;
+}
+.select:hover {
+  background: #f2f2f2;
+  color: #9b9c9d;
+}
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #9b9c9d;
+  transition: 0.3s;
+}
+/* added later in javaScript */
+.caret-rotate {
+  transform: rotate(180deg);
+}
+.menu {
+  list-style: none;
+  padding: 0.2em 0.5em;
+  background: #f2f2f2;
+  border: 1px solid #363a43;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: black;
+  position: absolute;
+  top: 3.5em;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 5;
+}
+.menu li {
+  padding: 0.7em 0.5em;
+  margin: 0.5em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.menu li:hover {
+  background: #a6a6a8;
+}
+/* added later in javaScript */
+.active {
+  background: #a6a6a8;
+  color: black;
+  font-weight: 600;
+}
+/* added later in javaScript */
+.menu-open {
+  display: block;
+  opacity: 1;
+}
+/* css for dropdown menue end */
+/* css for dropdown menue end */
+
+.itemContainer {
+  height: 320px;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+}
+
+.rightSection {
+  padding: 15px;
+}
+.rightSection h4 {
+  color: white;
+}
+.addItem {
+  display: flex;
+  margin-bottom: 20px;
+  padding-right: 5px;
+}
+.addCardImg img {
+  border-radius: 5px;
+  max-width: 100px;
+}
+.addCardText {
+  padding-left: 10px;
+}
+.addCardText {
+  color: white;
+}
+.addCardText > p {
+  height: 65px;
+  overflow: hidden;
+  color: white;
+  border-bottom: 10px;
+  line-height: 23px;
+}
+.addCardText > p::after {
+  content: " . .";
+}
+.priceQuantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  /* margin-top: 5px; */
+}
+.totalPrice {
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.text-input:focus + .City-name::after {
+  content: "*";
+}
+.text-input:focus + .house-number::after {
+  content: "*";
+}
+.text-input:focus + .area-sector::after {
+  content: "*";
+}
+
+.address-check {
+  margin-top: 8px;
+}
+.address-check input {
+  accent-color: #3e68af;
+  width: 12px;
+  height: 12px;
+  transform: scale(1.5);
+}
+.address-check label {
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.contactFooter {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.contactFooter .btnPrice {
+  /* color: white; */
+}
+.contactFooter .ProceedBtn {
+  background: linear-gradient(#146fb6, #633693);
+  border: none;
+  border: 1px solid #9b9c9d;
+  border-radius: 5px;
+  padding: 5px 40px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+}
+
+@media only screen and (max-width: 1300px) {
+  /* CSS rules for large screens */
+
+  .modal-contentCheckout {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 1150px) {
+  /* CSS rules for large screens */
+
+  .modal-contentCheckout {
+    width: 85%;
+    margin: 15% auto;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .modal-contentCheckout {
+    width: 90%;
+    margin: 20% auto;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .modal-contentCheckout {
+    width: 90%;
+    margin: 20% auto;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .modal-contentCheckout {
+    overflow-y: scroll;
+    padding: 10px;
+  }
+  .backContent {
+    display: block;
+  }
+  .contactBody {
+    padding: 10px;
+  }
+  .contactContainer {
+    margin-top: 0;
+  }
+  .contactBody {
+    overflow-y: visible;
+    height: 630px;
+  }
+  .address-check label {
+    margin-left: 8px;
+    font-size: 15px;
+  }
+  .contactContainer .contactHead {
+    background: linear-gradient(#633693, #146fb6);
+  }
+  .setCodeDropdown {
+    top: -27px;
+    left: -27px;
+  }
+  .contactFooter {
+    padding: 15px 10px;
+  }
+  .contactFooter .ProceedBtn {
+    padding: 5px 20px;
+  }
+  
+}
+
