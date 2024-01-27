@@ -981,12 +981,12 @@
                     <div class="row mt-5 p-2" style="border: 2px solid transparent;">
 
 
-                        <% if (banner!=null) { %>
+                        <%if (banner !=null && banner.banner_image !=null){%>
                             <%let banner_img=JSON.parse(banner.banner_image)%>
                                 <% banner_img.forEach(images=> { %>
                                     <div class="carousel-item active bg-dark">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <div class="" style="background: url('<%= images %>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 700px;width: 800px;">
+                                            <div class="" style="background: url('<%=images %>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 700px;width: 800px;">
                                             </div>
                                         </div>
                                     </div>

@@ -1022,17 +1022,16 @@
 
                                 <% if (banner!=null) {%>
                                     <%let arr=JSON.parse(banner.banner_image)%>
-                                        <%console.log('munni',arr);%>
-                                            <%arr.forEach(images=> { %>
-                                                <div class="col-12 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                                    <!-- <img src="<%=images%>" class="img-fluid" alt="Not Available"> -->
-                                                    <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: 200px;">
-                                                    </div>
+                                        <%arr.forEach(images=> { %>
+                                            <div class="col-12 col-md-2 col-lg-2 col-xl-2 mb-2">
+                                                <!-- <img src="<%=images%>" class="img-fluid" alt="Not Available"> -->
+                                                <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: 200px;">
                                                 </div>
-                                                <%});%>
-                                                    <%}else { %>
-                                                        <p>No Banner Images Available.</p>
-                                                        <% }%>
+                                            </div>
+                                            <%});%>
+                                                <%}else { %>
+                                                    <p>No Banner Images Available.</p>
+                                                    <% }%>
 
 
                             </div>

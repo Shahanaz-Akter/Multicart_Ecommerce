@@ -56,7 +56,7 @@ const addBanner = async (req, res) => {
         raw: true,
     });
 
-    // console.log('Banner: ', banner);
+    console.log('Banner: ', banner);
     // console.log(banner.banner_image);
 
     // let bannerImageArray = [];
