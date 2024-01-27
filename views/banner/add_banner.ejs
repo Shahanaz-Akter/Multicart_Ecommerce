@@ -1020,7 +1020,7 @@
 
                             <div class="row mt-5 p-2" style="border: 2px solid black;">
 
-                                <% if (banner!=null) {%>
+                                <%if (banner !=null && banner.banner_image !=null){%>
                                     <%let arr=JSON.parse(banner.banner_image)%>
                                         <%arr.forEach(images=> { %>
                                             <div class="col-12 col-md-2 col-lg-2 col-xl-2 mb-2">
