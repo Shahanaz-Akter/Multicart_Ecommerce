@@ -23,7 +23,7 @@ const postAddProduct = async (req, res) => {
             'product_category': req.body.product_category,
             'primary_image': '/front_assets/new_img/' + req.files['primary_image'][0].filename,
             'category_image': '/front_assets/new_img/' + req.files['category_image'][0].filename,
-            'secondary_image': secondaryImages,
+            'secondary_image': JSON.stringify(secondaryImages),
             'description': req.body.description,
             'product_type': req.body.product_type,
             'colorVariants': req.body.colorVariants,
@@ -33,6 +33,16 @@ const postAddProduct = async (req, res) => {
             'date': req.body.date,
             'quantitys': req.body.quantitys,
         });
+
+        console.log(typeof (result.secondary_image));
+        console.log(result.secondary_image);
+
+        console.log('ggg');
+
+        console.log(typeof (JSON.parse(result.secondary_image)));
+
+        console.log(JSON.parse(result.secondary_image));
+        console.log(typeof (JSON.parse(result.secondary_image)));
 
         res.redirect('/product/Product_list');
     }
@@ -45,6 +55,7 @@ const postAddProduct = async (req, res) => {
 const ProductList = async (req, res) => {
     try {
         let products = await models.Product.findAll();
+        // console.log(products);
         res.render('product/product_list.ejs', { products });
     }
     catch (error) {

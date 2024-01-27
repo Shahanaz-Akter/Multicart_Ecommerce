@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Crm.init({
     logo_image: DataTypes.STRING,
-    banner_image: DataTypes.JSON
+    banner_image: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Crm',

@@ -56,8 +56,8 @@ const addBanner = async (req, res) => {
         raw: true,
     });
 
-    console.log(banner);
-    console.log(banner.banner_image);
+    // console.log('Banner: ', banner);
+    // console.log(banner.banner_image);
 
     // let bannerImageArray = [];
 
@@ -103,30 +103,32 @@ const postAddLogo = async (req, res) => {
     }
 };
 
-
 const postAddBanner = async (req, res) => {
     try {
-        let sliderImages = req.files['banner_image'].map(file => '/front_assets/new_img/' + file.filename);
 
+        let sliderImages = req.files['banner_image'].map(file => '/front_assets/new_img/' + file.filename);
         // Find the first record, if it exists
         let existingData = await models.Crm.findOne();
 
         if (!existingData) {
             // If no records exist, create a new record
             await models.Crm.create({
-                'banner_image': sliderImages
+                'banner_image': JSON.stringify(sliderImages)
             });
+            console.log(sliderImages);
+
+            // console.log(JSON.stringify(sliderImages));
+
         } else {
             // If records exist, update the first record
             await models.Crm.update({
-                'banner_image': sliderImages
+                'banner_image': JSON.stringify(sliderImages)
             }, {
                 where: {
                     id: existingData.id
                 }
             });
         }
-
         // Redirect after the operation
         res.redirect('/super_admin/add_banner');
     } catch (err) {

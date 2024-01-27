@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       banner_image: {
-        type: Sequelize.JSON
+        type: Sequelize.STRING(5000)
       },
       createdAt: {
         allowNull: false,

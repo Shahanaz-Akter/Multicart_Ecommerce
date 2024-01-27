@@ -40,7 +40,7 @@ module.exports = {
         allowNull: false,
       },
       secondary_image: {
-        type: Sequelize.JSON,
+        type: Sequelize.STRING,
         allowNull: false,
 
       },
