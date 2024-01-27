@@ -786,185 +786,177 @@
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
       <a class="navbar-brand d-none d-xl-inline" href="/index">
 
-        <!-- <div class="offcanvas-logo">
-              <img src="/front_assets/img/logo.webp"
-              class="logo-img" alt=""></a> -->
+        <!-- <div class="offcanvas-logo"><img src="/front_assets/img/logo.webp" class="logo-img" alt=""></a> -->
+        <img src="/front_assets/img/logo.webp" class="logo-img" alt=""></a>
+      <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+        <i class="bi bi-list"></i>
+      </a>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+          <div class="offcanvas-logo">
+            <img src="/front_assets/img/logo.webp" class="logo-img" alt="">
 
-        <%if(logo_img !=null){%>
-          <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-          <%}%>
-            <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-              <i class="bi bi-list"></i>
-            </a>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-              <div class="offcanvas-header">
-                <div class="offcanvas-logo">
-                  <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
-                  <%if(logo_img!=null){%>
-                    <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-                    <%}%>
-                </div>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
+          </div>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
 
-              <div class="offcanvas-body primary-menu">
-                <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                      Shop
-                    </a>
-                    <div class="dropdown-menu dropdown-large-menu">
-                      <div class="row">
-                        <div class="col-12 col-xl-4">
-                          <h6 class="large-menu-title">Fashion</h6>
-                          <ul class="list-unstyled">
-                            <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
-                            </li>
-                            <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
-                            </li>
-                            <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
-                            </li>
-                            <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
-                            </li>
-                            <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
-                            </li>
-                            <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
-                            </li>
-                            <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
-                            </li>
-                            <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
-                            </li>
-                          </ul>
-                        </div>
-
-                        <!-- end col-3 -->
-                        <!-- <div class="col-12 col-xl-4">
-                    <h6 class="large-menu-title">Electronics</h6>
-                    <ul class="list-unstyled">
-                      <li><a href="javascript:;">Mobiles</a>
-                      </li>
-                      <li><a href="javascript:;">Laptops</a>
-                      </li>
-                      <li><a href="javascript:;">Macbook</a>
-                      </li>
-                      <li><a href="javascript:;">Televisions</a>
-                      </li>
-                      <li><a href="javascript:;">Lighting</a>
-                      </li>
-                      <li><a href="javascript:;">Smart Watch</a>
-                      </li>
-                      <li><a href="javascript:;">Galaxy Phones</a>
-                      </li>
-                      <li><a href="javascript:;">PC Monitors</a>
-                      </li>
-                    </ul>
-                  </div> -->
-                        <!-- end col-3 -->
-                        <div class="col-12 col-xl-4 d-none d-xl-block">
-                          <div class="pramotion-banner1">
-                            <img src="/front_assets/img/menu-img.webp" class="img-fluid" alt="" />
-                          </div>
-                        </div>
-                        <!-- end col-3 -->
-                      </div>
-                      <!-- end row -->
-                    </div>
-                  </li>
-
-                  <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+        <div class="offcanvas-body primary-menu">
+          <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
                 Shop
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
-                <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-                <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
-                <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
-                <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
-                <li><a class="dropdown-item" href="address.html">Addresses</a></li>
-                <li><a class="dropdown-item" href="#">Shop Grid</a></li>
-                <li><a class="dropdown-item" href="#">Shop Grid 4</a></li>
-                <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
-                <li><a class="dropdown-item" href="search.html">Search</a></li>
-              </ul>
-            </li> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about_us">About Us</a>
-                  </li>
-                  <!-- <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">Contact</a>
-            </li> -->
-
-                  <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                Blog
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                <li><a class="dropdown-item" href="#">Blog Read</a></li>
-              </ul>
-            </li> -->
-
-                </ul>
-              </div>
-            </div>
-            <ul class="navbar-nav secondary-menu flex-row">
-              <li class="nav-item">
-                <a class="nav-link dark-mode-icon" href="javascript:;">
-                  <div class="mode-icon">
-                    <i class="bi bi-moon"></i>
+              <div class="dropdown-menu dropdown-large-menu">
+                <div class="row">
+                  <div class="col-12 col-xl-4">
+                    <h6 class="large-menu-title">Fashion</h6>
+                    <ul class="list-unstyled">
+                      <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
+                      </li>
+                      <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
+                      </li>
+                      <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
+                      </li>
+                      <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
+                      </li>
+                      <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
+                      </li>
+                      <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
+                      </li>
+                      <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
+                      </li>
+                      <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
+                      </li>
+                    </ul>
                   </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
-              </li>
-              <!-- <li class="nav-item">
-          <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
-        </li> -->
 
-              <!-- <li class="nav-item" data-bs-toggle="modal" data-bs-target="#checkoutModal"> -->
-              <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-                <a class="nav-link position-relative" href="javascript:;">
-                  <% let cart_total=locals.session.cart||[]%>
+                  <!-- end col-3 -->
+                  <!-- <div class="col-12 col-xl-4">
+                  <h6 class="large-menu-title">Electronics</h6>
+                  <ul class="list-unstyled">
+                    <li><a href="javascript:;">Mobiles</a>
+                    </li>
+                    <li><a href="javascript:;">Laptops</a>
+                    </li>
+                    <li><a href="javascript:;">Macbook</a>
+                    </li>
+                    <li><a href="javascript:;">Televisions</a>
+                    </li>
+                    <li><a href="javascript:;">Lighting</a>
+                    </li>
+                    <li><a href="javascript:;">Smart Watch</a>
+                    </li>
+                    <li><a href="javascript:;">Galaxy Phones</a>
+                    </li>
+                    <li><a href="javascript:;">PC Monitors</a>
+                    </li>
+                  </ul>
+                </div> -->
+                  <!-- end col-3 -->
+                  <div class="col-12 col-xl-4 d-none d-xl-block">
+                    <div class="pramotion-banner1">
+                      <img src="/front_assets/img/menu-img.webp" class="img-fluid" alt="" />
+                    </div>
+                  </div>
+                  <!-- end col-3 -->
+                </div>
+                <!-- end row -->
+              </div>
+            </li>
 
-                    <% if(cart_total.length>0){%>
-                      <div class="cart-badge">
-                        <%=cart_total.length%>
-                      </div>
-                      <%}else{%>
-                        <div class="cart-badge">0</div>
-                        <%}%>
-
-                          <i class="bi bi-basket2"></i>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
-              </li>
-
-              <li class="nav-item d-none d-md-block">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-              <li class="nav-item d-block d-md-none">
-                <a class="nav-link" href="/login"><i class="bi bi-person"></i></a>
-              </li>
-
-              <li class="nav-item d-none d-md-block">
-                <a class="nav-link lowercase" href="/logout">SessionOut</a>
-              </li>
+            <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+              Shop
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
+              <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
+              <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
+              <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
+              <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
+              <li><a class="dropdown-item" href="address.html">Addresses</a></li>
+              <li><a class="dropdown-item" href="#">Shop Grid</a></li>
+              <li><a class="dropdown-item" href="#">Shop Grid 4</a></li>
+              <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
+              <li><a class="dropdown-item" href="search.html">Search</a></li>
             </ul>
+          </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/about_us">About Us</a>
+            </li>
+            <!-- <li class="nav-item">
+            <a class="nav-link" href="contact-us.html">Contact</a>
+          </li> -->
+
+            <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+              Blog
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+              <li><a class="dropdown-item" href="#">Blog Read</a></li>
+            </ul>
+          </li> -->
+
+          </ul>
+        </div>
+      </div>
+      <ul class="navbar-nav secondary-menu flex-row">
+        <li class="nav-item">
+          <a class="nav-link dark-mode-icon" href="javascript:;">
+            <div class="mode-icon">
+              <i class="bi bi-moon"></i>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+        </li>
+        <!-- <li class="nav-item">
+        <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
+      </li> -->
+
+        <!-- <li class="nav-item" data-bs-toggle="modal" data-bs-target="#checkoutModal"> -->
+        <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
+          <a class="nav-link position-relative" href="javascript:;">
+            <% let cart_total=locals.session.cart||[]%>
+
+              <% if(cart_total.length>0){%>
+                <div class="cart-badge">
+                  <%=cart_total.length%>
+                </div>
+                <%}else{%>
+                  <div class="cart-badge">0</div>
+                  <%}%>
+
+                    <i class="bi bi-basket2"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
+        </li>
+
+        <li class="nav-item d-none d-md-block">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item d-block d-md-none">
+          <a class="nav-link" href="/login"><i class="bi bi-person"></i></a>
+        </li>
+
+        <li class="nav-item d-none d-md-block">
+          <a class="nav-link lowercase" href="/logout">SessionOut</a>
+        </li>
+      </ul>
     </nav>
   </header>
   <!--end top header-->
 
   <!--start page content-->
   <div class="page-content">
-
     <!--start carousel-->
     <section class="slider-section">
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -978,31 +970,52 @@
 
         <div class="carousel-inner">
 
-          <div class="row mt-5 p-2" style="border: 2px solid transparent;">
-
-            <% if (banner.length> 0) { %>
-              <% banner.forEach(images=> { %>
-                <div class="carousel-item active bg-dark">
-                  <div class="d-flex align-items-center justify-content-center">
-                    <div class="" style="background: url('<%= images %>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 700px;width: 800px;">
-                    </div>
+          <div class="carousel-item active bg-primary">
+            <div class="row d-flex align-items-center">
+              <div class="col d-none d-lg-flex justify-content-center">
+                <div class="">
+                  <h3 class="h3 fw-light text-white fw-bold">New Arrival</h3>
+                  <h1 class="h1 text-white fw-bold">Women Fashion</h1>
+                  <p class="text-white fw-bold"><i>Last call for upto 25%</i></p>
+                  <div class=""><a class="btn btn-dark btn-ecomm" href="#">Shop Now</a>
                   </div>
                 </div>
-                <% }); %>
-                  <% } else { %>
-                    <p>No Banner Images Available.</p>
-                    <% } %>
+              </div>
+              <div class="col">
+                <!-- <img src="/front_assets/img/sliders/s_1.webp" class="img-fluid" alt="..."> -->
+                <img src="../../front_assets/img/sliders/s_1.webp" class="img-fluid" alt="...">
+
+              </div>
+            </div>
           </div>
 
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="carousel-item bg-red">
+            <div class="row d-flex align-items-center">
+              <div class="col d-none d-lg-flex justify-content-center">
+                <div class="">
+                  <h3 class="h3 fw-light text-white fw-bold">Latest Trending</h3>
+                  <h1 class="h1 text-white fw-bold">Fashion Wear</h1>
+                  <p class="text-white fw-bold"><i>Last call for upto 35%</i></p>
+                  <div class=""> <a class="btn btn-dark btn-ecomm" href="shop-grid.html">Shop Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <img src="../../front_assets/img/sliders/s_2.webp" class="img-fluid" alt="...">
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </section>
     <!--end carousel-->
@@ -2527,11 +2540,7 @@
             <h5 class="mb-3 fw-bold">About Us</h5>
 
             <div class="offcanvas-logo">
-              <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
-              <%if(logo_img!=null){%>
-
-                <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-                <%}%>
+              <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt="">
             </div>
             <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima
               dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>

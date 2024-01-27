@@ -29,9 +29,9 @@ const userView = async (req, res) => {
         order: [['createdAt', 'DESC']],
         raw: true,
     });
-    console.log('logo: ', logo_img);
+    // console.log('logo: ', logo_img);
 
-    console.log('banner: ', banner);
+    // console.log('banner: ', banner);
 
     // let bn = JSON.parse(banner.banner_image)
     // console.log(banner.banner_image.length);
@@ -53,7 +53,7 @@ const userView = async (req, res) => {
     // let bn = JSON.parse(banner.banner_image);
     // console.log(typeof (banner.banner_image));
     // console.log(typeof (bn));
-    console.log("Array: ", bannerImageArray);
+    // console.log("Array: ", bannerImageArray);
 
 
     res.render('user/index.ejs', { products, logo_img, banner: bannerImageArray, locals: { session: req.session } });
