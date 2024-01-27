@@ -33,16 +33,13 @@ const postAddProduct = async (req, res) => {
             'date': req.body.date,
             'quantitys': req.body.quantitys,
         });
-
-        console.log(typeof (result.secondary_image));
-        console.log(result.secondary_image);
-
-        console.log('ggg');
-
-        console.log(typeof (JSON.parse(result.secondary_image)));
-
-        console.log(JSON.parse(result.secondary_image));
-        console.log(typeof (JSON.parse(result.secondary_image)));
+        // console.log(typeof (result.secondary_image));
+        // console.log(result.secondary_image);
+        // console.log('ggg');
+        // console.log(typeof (JSON.parse(result.secondary_image)));
+        // console.log(JSON.parse(result.secondary_image));
+        // console.log(typeof (JSON.parse(result.secondary_image)));
+        console.log(result);
 
         res.redirect('/product/Product_list');
     }

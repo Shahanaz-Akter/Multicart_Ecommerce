@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     product_category: DataTypes.STRING,
     primary_image: DataTypes.STRING,
     category_image: DataTypes.STRING,
-    secondary_image: DataTypes.JSON,
+    secondary_image: DataTypes.STRING,
     description: DataTypes.STRING,
     product_type: DataTypes.STRING,
     colorVariants: DataTypes.JSON,

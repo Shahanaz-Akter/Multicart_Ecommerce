@@ -981,8 +981,8 @@
                     <div class="row mt-5 p-2" style="border: 2px solid transparent;">
 
 
-                        <%let banner_img=JSON.parse(banner.banner_image)%>
-                            <% if (banner_img.length>0) { %>
+                        <% if (banner!=null) { %>
+                            <%let banner_img=JSON.parse(banner.banner_image)%>
                                 <% banner_img.forEach(images=> { %>
                                     <div class="carousel-item active bg-dark">
                                         <div class="d-flex align-items-center justify-content-center">
@@ -1035,9 +1035,14 @@
 
                                 <!-- style="background: url('<%=product.primary_image%>');background-size: cover;background-repeat: no-repeat;background-position: center;" -->
                                 <a href="/product/product_details/<%=product.id%>">
-                                    <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
-                                        <!-- <img src="<%=product.primary_image%>" class="card-img-top" alt="not available" style="width: 100%;"> -->
-                                    </div>
+                                    <%if(product!=null){%>
+                                        <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
+                                            <img src="<%=product.primary_image%>" class="card-img-top" alt="not available" style="width: 100%;">
+                                        </div>
+                                        <%}else{%>
+                                            <p>No Image is being uploaded</p>
+                                            <%}%>
+
                                 </a>
                             </div>
 
@@ -2591,24 +2596,24 @@
             </div><!--end row-->
             <div class="my-5"></div>
             <!-- <div class="row">
-                                                                                                    <div class="col-12">
-                                                                                                        <div class="text-center">
-                                                                                                            <h5 class="fw-bold mb-3">Download Mobile App</h5>
-                                                                                                        </div>
-                                                                                                        <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
-                                                                                                            <div>
-                                                                                                                <a href="javascript:;">
-                                                                                                                    <img src="/front_assets/img/play-store.jpg" width="160" alt="">
-                                                                                                                </a>
-                                                                                                            </div>
-                                                                                                            <div>
-                                                                                                                <a href="javascript:;">
-                                                                                                                    <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
-                                                                                                                </a>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div> -->
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h5 class="fw-bold mb-3">Download Mobile App</h5>
+                        </div>
+                        <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
+                            <div>
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/play-store.jpg" width="160" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             <!--end row-->
         </div>
     </section>

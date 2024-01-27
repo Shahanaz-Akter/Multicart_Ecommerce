@@ -31,7 +31,7 @@ const userView = async (req, res) => {
     });
     // console.log('logo: ', logo_img);
 
-    // console.log('banner: ', banner);
+    console.log('banner: ', banner);
 
     // let bn = JSON.parse(banner.banner_image)
     // console.log(banner.banner_image.length);

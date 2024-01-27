@@ -5,6 +5,8 @@
 //     "host": "database-1.clyo04k0oiqj.ap-south-1.rds.amazonaws.com",
 //     "dialect": "mysql"
 //   },
+
+
 // This is Our main or server file where all of the file will be included
 
 //npm/nodemon run server ->for entry point
