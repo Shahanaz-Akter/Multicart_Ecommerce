@@ -56,20 +56,23 @@ const addBanner = async (req, res) => {
         raw: true,
     });
 
-    let bannerImageArray = [];
+    console.log(banner);
+    console.log(banner.banner_image);
 
-    if (banner && banner.banner_image) {
-        try {
-            bannerImageArray = JSON.parse(banner.banner_image);
+    // let bannerImageArray = [];
 
-        } catch (error) {
-            console.error('Error parsing banner_image:', error);
-        }
-    }
+    // if (banner && banner.banner_image) {
+    //     try {
+    //         bannerImageArray = JSON.parse(banner.banner_image);
+
+    //     } catch (error) {
+    //         console.error('Error parsing banner_image:', error);
+    //     }
+    // }
 
     // let banner = await models.Crm.findOne();
 
-    res.render('banner/add_banner.ejs', { banner: bannerImageArray });
+    res.render('banner/add_banner.ejs', { banner });
 }
 const postAddLogo = async (req, res) => {
     try {

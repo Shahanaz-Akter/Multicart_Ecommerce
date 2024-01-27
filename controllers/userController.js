@@ -42,21 +42,21 @@ const userView = async (req, res) => {
 
     let bannerImageArray = [];
 
-    if (banner && banner.banner_image) {
-        try {
-            bannerImageArray = JSON.parse(banner.banner_image);
+    // if (banner && banner.banner_image) {
+    //     try {
+    //         bannerImageArray = JSON.parse(banner.banner_image);
 
-        } catch (error) {
-            console.error('Error parsing banner_image:', error);
-        }
-    }
+    //     } catch (error) {
+    //         console.error('Error parsing banner_image:', error);
+    //     }
+    // }
     // let bn = JSON.parse(banner.banner_image);
     // console.log(typeof (banner.banner_image));
     // console.log(typeof (bn));
     // console.log("Array: ", bannerImageArray);
 
 
-    res.render('user/index.ejs', { products, logo_img, banner: bannerImageArray, locals: { session: req.session } });
+    res.render('user/index.ejs', { products, logo_img, banner, locals: { session: req.session } });
 }
 const aboutUs = async (req, res) => {
     res.render('user/about_us.ejs', { locals: { session: req.session } });
