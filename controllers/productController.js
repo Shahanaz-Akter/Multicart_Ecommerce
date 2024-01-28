@@ -6,7 +6,7 @@ const addProduct = async (req, res) => {
     let error1 = req.query.error1;
     let error2 = req.query.error2;
     let error3 = req.query.error3;
-    console.log(error1);
+    // console.log(error1);
 
     res.render('product/add_product.ejs', { error1, error2, error3 });
 };
@@ -25,8 +25,6 @@ const postAddProduct = async (req, res) => {
         if (!req.files || !req.files['category_image']) {
             res.redirect(`/product/add_product/?error3=${encodeURIComponent('category Image  Required')}`);
         }
-
-
         // console.log(req.files);
         let secondaryImages = [];
         for (let i = 0; i < req.files['secondary_image'].length; i++) {
@@ -110,22 +108,32 @@ const postCartProduct = async (req, res) => {
     if (!existingProduct) {
         // If not in the cart, add it
         let cart_data = {
-            product_id: specific_record.id,
-            image: specific_record.primary_image,
+            id: specific_record.id,
+            primary_image: specific_record.primary_image,
             name: specific_record.name,
             quantity: 1,
-            price: specific_record.buying_price,
-            total: specific_record.buying_price,
+            selling_price: specific_record.selling_price,
+            total_qty: specific_record.buying_price,
+            total: specific_record.selling_price
         }
         cart.push(cart_data);
         // Update the session with the modified cart
         req.session.cart = cart;
+        // console.log('Cart Items: ', cart);
+        return res.send({
+            'record': cart_data,
+            'cart': cart,
+            'add_on_html': true
+        });
+    } else {
+        // console.log('Cart Items: ', cart);
+        return res.send({
+            'record': specific_record,
+            'cart': cart,
+            'add_on_html': false
+        });
     }
-    // console.log('Cart Items: ', cart);
-    return res.send({
-        'record': specific_record,
-        'cart': cart,
-    });
+
 }
 
 const editProduct = async (req, res) => {
@@ -138,6 +146,61 @@ const editProduct = async (req, res) => {
     // console.log(record);
     res.render('product/edit_product.ejs', { record });
 }
+
+const example = async (req, res) => {
+    // Use multer to handle file uploads
+
+    try {
+        if (!req.files || !req.files['primary_image']) {
+            res.redirect(`/product/add_product/?error1=${encodeURIComponent('Primary Image Required')}`);
+        }
+
+        if (!req.files || !req.files['secondary_image']) {
+            res.redirect(`/product/add_product/?error2=${encodeURIComponent('Secondary Image Required')}`);
+        }
+        if (!req.files || !req.files['category_image']) {
+            res.redirect(`/product/add_product/?error3=${encodeURIComponent('category Image  Required')}`);
+        }
+        // console.log(req.files);
+        let secondaryImages = [];
+        for (let i = 0; i < req.files['secondary_image'].length; i++) {
+            secondaryImages.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
+        }
+
+        let result = await models.Product.create({
+            'name': req.body.name,
+            'buying_price': req.body.buying_price,
+            'selling_price': req.body.selling_price,
+            'discount': req.body.discount,
+            'product_category': req.body.product_category,
+            'primary_image': '/front_assets/new_img/' + req.files['primary_image'][0].filename,
+            'category_image': '/front_assets/new_img/' + req.files['category_image'][0].filename,
+            'secondary_image': JSON.stringify(secondaryImages),
+            'description': req.body.description,
+            'product_type': req.body.product_type,
+            'colorVariants': req.body.colorVariants,
+            'sizeVariants': req.body.sizeVariants,
+            'total_qty': req.body.total_qty,
+            'product_code': Math.floor(Math.random() * 1000) + 1,
+            'date': req.body.date,
+            'quantitys': req.body.quantitys,
+        });
+        // console.log(typeof (result.secondary_image));
+        // console.log(result.secondary_image);
+        // console.log('ggg');
+        // console.log(typeof (JSON.parse(result.secondary_image)));
+        // console.log(JSON.parse(result.secondary_image));
+        // console.log(typeof (JSON.parse(result.secondary_image)));
+        console.log(result);
+
+        res.redirect('/product/Product_list');
+    }
+    catch (err) {
+        console.error('Error creating product:', err);
+        // res.status(500).send('Internal Server Error');
+    }
+}
+
 
 const postEditProduct = async (req, res) => {
     let id = req.params.id;

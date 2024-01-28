@@ -1078,13 +1078,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Unit Price</label>
-                                            <input type="number" class="form-control" placeholder="0" name="unit_price" onkeypress="return event.keyCode != 13;">
-                                        </div>
-                                    </div> -->
-
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
@@ -1163,13 +1156,16 @@
 
                                             <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent" style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
                                                 <div class="secondary-img-container" id="secondary-img-container">
+
                                                     <%if(record!=null && record.secondary_image!=null){%>
                                                         <%let images=JSON.parse(record.secondary_image)%>
                                                             <%images.forEach(img=>{ %>
-                                                                <div class="row">
-                                                                    <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                                                                        <img src="<%=img%>" alt="">
-                                                                    </div>
+                                                                <!-- background-position-x: center; background-position-y: center; -->
+                                                                <div class="position-relative" id="secondary_img_preview_1" style="width: 90px; height: 90px; background: url('<%=img%>'); background-repeat: no-repeat;background-size: cover; margin-right: 8px; margin-bottom: 8px;">
+                                                                    <span class="position-absolute" onclick="removeSecondaryImg(this)" style="top: 0px; right: 0px; cursor: pointer;">
+                                                                        <i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;">
+                                                                        </i>
+                                                                    </span>
                                                                 </div>
 
                                                                 <%});%>

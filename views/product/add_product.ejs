@@ -1114,24 +1114,23 @@
                                                     <label for="mainImg" class="btn btn-dark mt-2">Set Primary Image</label>
                                                     <input type="file" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
                                                     <% if (error1) { %>
-                                                        <p class="text-danger">
+                                                        <p class="text-danger mt-1">
                                                             <%= error1 %>
                                                         </p>
                                                         <% } %>
                                                 </div>
-
-
                                             </div>
 
                                             <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent" style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
                                                 <div class="secondary-img-container" id="secondary-img-container">
+
                                                 </div>
 
                                                 <div class="s-i-c-2">
                                                     <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
                                                     <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
                                                     <% if (error2) { %>
-                                                        <p class="text-danger">
+                                                        <p class="text-danger mt-2">
                                                             <%= error2 %>
                                                         </p>
                                                         <% } %>
@@ -1460,9 +1459,7 @@
 
                                 </section>
 
-
                                 <div id="table_content_container" class="newVariantTable TableOfContents" style="">
-
                                     <div class="row mt-2 mb-2">
                                         <div class="col-12 col-md-12 col-xl-6 col-lg-6">
                                             <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">

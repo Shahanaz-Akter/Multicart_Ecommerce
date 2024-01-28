@@ -4,10 +4,59 @@ const router = express.Router();
 const { Logout, userView, aboutUs, productDetails, cart, category, Login, postLogin, register, postReview, post_checkout, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory } = require('../controllers/userController');
 
-router.get('/', userView);
+
+
 router.get('/ses', (req, res) => {
     res.send(req.session.cart);
 });
+router.post('/product/product_increment', (req, res) => {
+    let id = req.body.product_id;
+    let reason = req.body.reason;
+
+    let cart = req.session.cart;
+    let qty, total;
+    cart.forEach(element => {
+        if (element.id == id) {
+            if (reason == "plus") {
+                element.quantity = element.quantity + 1;
+                element.total = element.quantity * element.selling_price;
+            }
+            if (reason == "minus") {
+                element.quantity = element.quantity - 1;
+                element.total = element.total - element.selling_price;
+            }
+            qty = element.quantity;
+            total = element.total;
+        }
+    });
+    req.session.cart = cart;
+    console.log('cart ', req.session.cart)
+    res.send({
+        success: true,
+        locals: { session: req.session },
+        qty: qty,
+        total: total
+    })
+
+});
+router.post('/product/calculate_subtotal', (req, res) => {
+
+    let subT = 0;
+    let cart = req.session.cart;
+    cart.forEach(element => {
+
+        subT = subT + element.total;
+
+
+    });
+    res.send({
+        success: true,
+        subtotal: subT
+    })
+
+});
+
+router.get('/', userView);
 router.get('/index', userView);
 router.get('/about_us', aboutUs);
 router.get('/product_details', productDetails);

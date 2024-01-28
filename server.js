@@ -66,9 +66,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const dotenv = require('dotenv').config();
-const port = process.env.PORT || 5000;
-//if env port is not working then work 5000 port
-
+const port = process.env.PORT || 5000; //if env port is not working then work 5000 port
 
 app.use(session({
     secret: 'some secret',
