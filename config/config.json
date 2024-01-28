@@ -4,7 +4,8 @@
     "password": "root12345",
     "database": "multicart_ecommerce",
     "host": "database-1.clyo04k0oiqj.ap-south-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    ,
+ialect": "mysql"
   },
   "test": {
     "username": "root",
