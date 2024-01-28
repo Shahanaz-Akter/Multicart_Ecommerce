@@ -68,7 +68,7 @@ const axios = require('axios');
 const dotenv = require('dotenv').config();
 // const port = process.env.PORT || 5000; 
 //if env port is not working then work 5000 port
-const port = process.env.PORT || 5000;
+const port = 443 || 5000;
 
 
 app.use(session({
