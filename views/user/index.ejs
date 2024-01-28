@@ -23,7 +23,7 @@
     <title>Product Details</title>
     <style>
         * {
-            box - sizing: border-box;
+            box-sizing: border-box;
             padding: 0;
             margin: 0;
             font-family: poppins;
@@ -1035,7 +1035,7 @@
 
                                 <!-- style="background: url('<%=product.primary_image%>');background-size: cover;background-repeat: no-repeat;background-position: center;" -->
                                 <a href="/product/product_details/<%=product.id%>">
-                                    <%if(product!=null){%>
+                                    <%if(product!=null && product.primary_image!=null){%>
                                         <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
                                             <!-- <img src="" class="card-img-top" alt="not available" style="width: 100%;"> -->
                                         </div>
@@ -1085,15 +1085,15 @@
                                             <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                 <%if(Array.isArray(secondaryImageArray)){%>
                                                     <% secondaryImageArray.forEach(images=> {%>
-                                                        < !-- < div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                            <div>
-                                                                <img src="<%=images%>" alt="" class="img-fluid">
-                                                            </div>
-                                                            <%});%>
+                                                        <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                        <div>
+                                                            <img src="<%=images%>" alt="" class="img-fluid">
+                                                        </div>
+                                                        <%});%>
 
-                                                                <%}else { %>
-                                                                    <p>No secondary Images Available.</p>
-                                                                    <% }%>
+                                                            <%}else { %>
+                                                                <p>No secondary Images Available.</p>
+                                                                <% }%>
 
                                         </div>
 
@@ -1102,16 +1102,16 @@
                                             <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
                                                 <%if(Array.isArray(secondaryImageArray1)){%>
                                                     <% secondaryImageArray.forEach(img=> {%>
-                                                        < !-- < div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                            <div>
-                                                                <img src="<%=img%>" alt="" class="img-fluid">
-                                                            </div>
+                                                        <!--<div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                        <div>
+                                                            <img src="<%=img%>" alt="" class="img-fluid">
+                                                        </div>
 
-                                                            <%});%>
+                                                        <%});%>
 
-                                                                <%}else { %>
-                                                                    <p>No secondary Images Available.</p>
-                                                                    <% }%>
+                                                            <%}else { %>
+                                                                <p>No secondary Images Available.</p>
+                                                                <% }%>
                                         </div>
 
                                     </div>
@@ -1257,7 +1257,7 @@
 
                             <div class="tab-pane fade show active" id="new-arrival">
                                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                                    <%products.slice(10,20).forEach(product=>{%>
+                                    <%products.forEach(product=>{%>
                                         <div class="col">
                                             <div class="card">
                                                 <div class="ribban">New Season</div>
@@ -1310,15 +1310,15 @@
                                                                         <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray)){%>
                                                                                 <% secondaryImageArray.forEach(images=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=images%>" alt="" class="img-fluid">
-                                                                                        </div>
-                                                                                        <%});%>
+                                                                                    <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=images%>" alt="" class="img-fluid">
+                                                                                    </div>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
 
                                                                     </div>
 
@@ -1327,16 +1327,16 @@
                                                                         <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray1)){%>
                                                                                 <% secondaryImageArray.forEach(img=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=img%>" alt="" class="img-fluid">
-                                                                                        </div>
+                                                                                    <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=img%>" alt="" class="img-fluid">
+                                                                                    </div>
 
-                                                                                        <%});%>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
                                                                     </div>
 
                                                                 </div>
@@ -1453,7 +1453,6 @@
                                                         <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
                                                         <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#Icon_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
                                                         <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
-
                                                     </div>
                                                     <a href="/product/product_details/<%=product.id%>">
                                                         <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
@@ -1495,15 +1494,15 @@
                                                                         <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray)){%>
                                                                                 <% secondaryImageArray.forEach(images=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=images%>" alt="" class="img-fluid">
-                                                                                        </div>
-                                                                                        <%});%>
+                                                                                    <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=images%>" alt="" class="img-fluid">
+                                                                                    </div>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
 
                                                                     </div>
 
@@ -1512,16 +1511,16 @@
                                                                         <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray1)){%>
                                                                                 <% secondaryImageArray.forEach(img=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=img%>" alt="" class="img-fluid">
-                                                                                        </div>
+                                                                                    <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=img%>" alt="" class="img-fluid">
+                                                                                    </div>
 
-                                                                                        <%});%>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
                                                                     </div>
 
                                                                 </div>
@@ -1630,7 +1629,7 @@
 
                             <div class="tab-pane fade" id="best-sellar">
                                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                                    <%products.slice(0,10).forEach(product=>{%>
+                                    <%products.forEach(product=>{%>
                                         <div class="col">
                                             <div class="card">
                                                 <div class="position-relative overflow-hidden">
@@ -1678,15 +1677,15 @@
                                                                         <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray)){%>
                                                                                 <% secondaryImageArray.forEach(images=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=images%>" alt="" class="img-fluid">
-                                                                                        </div>
-                                                                                        <%});%>
+                                                                                    <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=images%>" alt="" class="img-fluid">
+                                                                                    </div>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
 
                                                                     </div>
 
@@ -1695,16 +1694,16 @@
                                                                         <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray1)){%>
                                                                                 <% secondaryImageArray.forEach(img=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=img%>" alt="" class="img-fluid">
-                                                                                        </div>
+                                                                                    <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=img%>" alt="" class="img-fluid">
+                                                                                    </div>
 
-                                                                                        <%});%>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
                                                                     </div>
 
                                                                 </div>
@@ -1813,7 +1812,7 @@
                             <div class="tab-pane fade" id="trending-product">
                                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 
-                                    <%products.slice(10,20).forEach(product=>{ %>
+                                    <%products.forEach(product=>{ %>
 
                                         <div class="col">
                                             <div class="card">
@@ -1865,15 +1864,15 @@
                                                                         <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray)){%>
                                                                                 <% secondaryImageArray.forEach(images=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=images%>" alt="" class="img-fluid">
-                                                                                        </div>
-                                                                                        <%});%>
+                                                                                    <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=images%>" alt="" class="img-fluid">
+                                                                                    </div>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
 
                                                                     </div>
 
@@ -1882,16 +1881,16 @@
                                                                         <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray1)){%>
                                                                                 <% secondaryImageArray.forEach(img=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=img%>" alt="" class="img-fluid">
-                                                                                        </div>
+                                                                                    <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=img%>" alt="" class="img-fluid">
+                                                                                    </div>
 
-                                                                                        <%});%>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
                                                                     </div>
 
                                                                 </div>
@@ -1999,7 +1998,7 @@
 
                             <div class="tab-pane fade" id="special-offer">
                                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                                    <%products.slice(0,10).forEach(product=>{ %>
+                                    <%products.forEach(product=>{ %>
 
                                         <div class="col">
                                             <div class="card">
@@ -2051,15 +2050,15 @@
                                                                         <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray)){%>
                                                                                 <% secondaryImageArray.forEach(images=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=images%>" alt="" class="img-fluid">
-                                                                                        </div>
-                                                                                        <%});%>
+                                                                                    <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=images%>" alt="" class="img-fluid">
+                                                                                    </div>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
 
                                                                     </div>
 
@@ -2068,16 +2067,16 @@
                                                                         <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
                                                                             <%if(Array.isArray(secondaryImageArray1)){%>
                                                                                 <% secondaryImageArray.forEach(img=> {%>
-                                                                                    < !-- < div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                                        <div>
-                                                                                            <img src="<%=img%>" alt="" class="img-fluid">
-                                                                                        </div>
+                                                                                    <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                                                    <div>
+                                                                                        <img src="<%=img%>" alt="" class="img-fluid">
+                                                                                    </div>
 
-                                                                                        <%});%>
+                                                                                    <%});%>
 
-                                                                                            <%}else { %>
-                                                                                                <p>No secondary Images Available.</p>
-                                                                                                <% }%>
+                                                                                        <%}else { %>
+                                                                                            <p>No secondary Images Available.</p>
+                                                                                            <% }%>
                                                                     </div>
 
                                                                 </div>
@@ -2403,7 +2402,7 @@
 
 
                             <%if(products){%>
-                                <% products.slice(0, 7).forEach(all_products=> {%>
+                                <% products.forEach(all_products=> {%>
                                     <a href="#">
                                         <div class="card">
                                             <div class="card-body">
