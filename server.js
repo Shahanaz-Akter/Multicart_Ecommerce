@@ -6,6 +6,11 @@
 //     "dialect": "mysql"
 //   },
 
+//"username": "root",
+// "password": "root12345",
+// "database": "multicart_ecommerce",
+// "host": "database-1.clyo04k0oiqj.ap-south-1.rds.amazonaws.com",
+// "dialect": "mysql"
 
 // This is Our main or server file where all of the file will be included
 
@@ -61,7 +66,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const dotenv = require('dotenv').config();
-const port = process.env.PORT || 5000; //if env port is not working then work 5000 port
+// const port = process.env.PORT || 5000; 
+//if env port is not working then work 5000 port
+const port = process.env.PORT || 5000;
+
 
 app.use(session({
     secret: 'some secret',

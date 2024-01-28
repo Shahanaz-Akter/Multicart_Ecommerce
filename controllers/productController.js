@@ -3,12 +3,30 @@ const bodyParser = require('body-parser');
 const models = require('../models');
 
 const addProduct = async (req, res) => {
-    res.render('product/add_product.ejs');
+    let error1 = req.query.error1;
+    let error2 = req.query.error2;
+    let error3 = req.query.error3;
+    console.log(error1);
+
+    res.render('product/add_product.ejs', { error1, error2, error3 });
 };
 
 const postAddProduct = async (req, res) => {
     // Use multer to handle file uploads
+
     try {
+        if (!req.files || !req.files['primary_image']) {
+            res.redirect(`/product/add_product/?error1=${encodeURIComponent('Primary Image Required')}`);
+        }
+
+        if (!req.files || !req.files['secondary_image']) {
+            res.redirect(`/product/add_product/?error2=${encodeURIComponent('Secondary Image Required')}`);
+        }
+        if (!req.files || !req.files['category_image']) {
+            res.redirect(`/product/add_product/?error3=${encodeURIComponent('category Image  Required')}`);
+        }
+
+
         // console.log(req.files);
         let secondaryImages = [];
         for (let i = 0; i < req.files['secondary_image'].length; i++) {

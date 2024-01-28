@@ -24,14 +24,13 @@ const userView = async (req, res) => {
         raw: true,
     });
 
-
     let banner = await models.Crm.findOne({
         order: [['createdAt', 'DESC']],
         raw: true,
     });
     // console.log('logo: ', logo_img);
 
-    console.log('banner: ', banner);
+    // console.log('banner: ', banner);
 
     // let bn = JSON.parse(banner.banner_image)
     // console.log(banner.banner_image.length);

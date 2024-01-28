@@ -56,7 +56,7 @@ const addBanner = async (req, res) => {
         raw: true,
     });
 
-    console.log('Banner: ', banner);
+    // console.log('Banner: ', banner);
     // console.log(banner.banner_image);
 
     // let bannerImageArray = [];
@@ -115,7 +115,7 @@ const postAddBanner = async (req, res) => {
             await models.Crm.create({
                 'banner_image': JSON.stringify(sliderImages)
             });
-            console.log(sliderImages);
+            // console.log(sliderImages);
 
             // console.log(JSON.stringify(sliderImages));
 

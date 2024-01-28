@@ -946,9 +946,7 @@
 
 <!-- body start -->
 
-<body class="loading" data-layout-color="light" data-layout-mode="default" data-layout-size="fluid"
-    data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default'
-    data-sidebar-user='true'>
+<body class="loading" data-layout-color="light" data-layout-mode="default" data-layout-size="fluid" data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='true'>
 
     <!-- Begin page -->
     <div id="wrapper">
@@ -991,41 +989,24 @@
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6 row ">
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Product Name</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    value="<%=record.name%>" name="name"
-                                                    onkeypress="return event.keyCode != 13;">
+                                                <input type="text" class="form-control" placeholder="" value="<%=record.name%>" name="name" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group  position-relative"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label class="" style="">Product Category</label>
-                                                <div class=" position-relative single-contact-info productName"
-                                                    style="margin-top: 7px">
-                                                    <input type="text" class="form-control " placeholder=""
-                                                        value="<%=record.product_category%>"
-                                                        onclick="showContentDropdown(1000, null)" autocomplete="off"
-                                                        id="contentsTitleInput_1000" name="product_category"
-                                                        onkeypress="return event.keyCode != 13;">
-                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox"
-                                                        id="dropdownMenu_1000"
-                                                        style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Tops</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Pant</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Shirt</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Tie</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Saree</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Electronics</div>
+                                                <div class=" position-relative single-contact-info productName" style="margin-top: 7px">
+                                                    <input type="text" class="form-control " placeholder="" value="<%=record.product_category%>" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;">
+                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1000" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Tops</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Pant</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Shirt</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Tie</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Saree</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Electronics</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1033,27 +1014,16 @@
 
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group  position-relative"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label class="" style="">Product Types</label>
-                                                <div class="position-relative single-contact-info productName"
-                                                    style="margin-top: 7px">
-                                                    <input type="text" class="form-control "
-                                                        value="<%=record.product_type%>" placeholder="Select Type"
-                                                        onclick="showContentDropdown(1001, null)" autocomplete="off"
-                                                        id="contentsTitleInput_1001" name="product_type"
+                                                <div class="position-relative single-contact-info productName" style="margin-top: 7px">
+                                                    <input type="text" class="form-control " value="<%=record.product_type%>" placeholder="Select Type" onclick="showContentDropdown(1001, null)" autocomplete="off" id="contentsTitleInput_1001" name="product_type"
                                                         onkeypress="return event.keyCode != 13;">
-                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox"
-                                                        id="dropdownMenu_1001"
-                                                        style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Trending</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">New Arrival</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Best Seller</div>
-                                                        <div class="content_dropdown-item p-2"
-                                                            onclick="selectOption(this, null)">Special Offer</div>
+                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1001" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Trending</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">New Arrival</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Best Seller</div>
+                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Special Offer</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1073,7 +1043,6 @@
                                             </div>
                                         </div>
                                     </div> -->
-
 
                                         <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                                         <label for="category" class="form-label"> Sub Category</label>
@@ -1096,21 +1065,16 @@
                                     </div> -->
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Buying Price</label>
-                                                <input type="number" class="form-control" placeholder=""
-                                                    value="<%=record.buying_price%>" name="buying_price">
+                                                <input type="number" class="form-control" placeholder="" value="<%=record.buying_price%>" name="buying_price">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Selling Price</label>
-                                                <input type="number" class="form-control" placeholder=""
-                                                    value="<%=record.selling_price%>" name="selling_price"
-                                                    onkeypress="return event.keyCode != 13;">
+                                                <input type="number" class="form-control" placeholder="" value="<%=record.selling_price%>" name="selling_price" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
@@ -1123,66 +1087,48 @@
 
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Discount</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    value="<%=record.discount%>" name="discount"
-                                                    onkeypress="return event.keyCode != 13;">
+                                                <input type="text" class="form-control" placeholder="" value="<%=record.discount%>" name="discount" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
                                             <label for="date" class="form-label">Date</label>
-                                            <input class="form-control custom-date-input" id="date" type="date"
-                                                name="date" placeholder="" value="<%=record.date%>"
-                                                pattern="\d{2}/\d{2}/\d{4}" min="">
+                                            <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="" value="<%=record.date%>" pattern="\d{2}/\d{2}/\d{4}" min="">
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Total Quantity</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    value="<%=record.total_qty%>" name="total_qty"
-                                                    onkeypress="return event.keyCode != 13;">
+                                                <input type="text" class="form-control" placeholder="" value="<%=record.total_qty%>" name="total_qty" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Price</label>
-                                                <input type="number" class="form-control" placeholder="400" name="price"
-                                                    onkeypress="return event.keyCode != 13;" value="<%=record.price%>">
+                                                <input type="number" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;" value="<%=record.price%>">
                                             </div>
                                         </div>
 
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 5px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Old Price</label>
-                                                <input type="number" class="form-control" placeholder="700"
-                                                    name="old_price" onkeypress="return event.keyCode != 13;"
-                                                    value="<%=record.old_price%>">
+                                                <input type="number" class="form-control" placeholder="700" name="old_price" onkeypress="return event.keyCode != 13;" value="<%=record.old_price%>">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="main-img-container mt-2">
                                                 <!-- <p>*All Image size should be 300/300.</p> -->
-                                                <img class="" src="<%=record.category_image%>" alt="Not Available"
-                                                    style="width:180px;border-radius:5px;" id="main-img-preview1">
+                                                <img class="" src="<%=record.category_image%>" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
                                                 <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
-                                                <input required type="file" class="d-none" id="mainImg1"
-                                                    onchange="main_image_changed1(this,null)" name="category_image">
+                                                <input required type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
                                             </div>
                                         </div>
-
-
-
 
                                         <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                         <label for="product_unit" class="form-label">Product Unit</label>
@@ -1198,8 +1144,9 @@
 
                                     </div>
 
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-6"
-                                        style="border: 2px solid transparent;">
+
+                                    <!-- dynamic value -->
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-6" style="border: 2px solid transparent;">
                                         <div class="row h-100">
                                             <div class="col-md-5 col-lg-5 col-sm-12">
                                                 <!-- 
@@ -1207,34 +1154,31 @@
 
                                                 <div class="main-img-container mt-2">
                                                     <!-- <p>*All Image size should be 300/300.</p> -->
-                                                    <img class="" src="<%=record.primary_image%>" alt=""
-                                                        style="width:180px;border-radius:5px;" id="main-img-preview">
+                                                    <img class="" src="<%=record.primary_image%>" alt="" style="width:180px;border-radius:5px;" id="main-img-preview">
                                                     <label for="mainImg" class="btn btn-dark mt-2">Set Primary
                                                         Image</label>
-                                                    <input type="file" for="mainImg" class="d-none" id="mainImg"
-                                                        value="<%=record.primary_image%>"
-                                                        onchange="main_image_changed(this,null)" name="primary_image">
+                                                    <input type="file" for="mainImg" class="d-none" id="mainImg" value="<%=record.primary_image%>" onchange="main_image_changed(this,null)" name="primary_image">
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent"
-                                                style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
+                                            <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent" style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
                                                 <div class="secondary-img-container" id="secondary-img-container">
-                                                    <%let images=JSON.parse(record.secondary_image)%>
-                                                        <%images.forEach(img=>{ %>
-                                                            <div>
-                                                                <img src="<%=img%>" alt="">
-                                                            </div>
-                                                            <%});%>
+                                                    <%if(record!=null && record.secondary_image!=null){%>
+                                                        <%let images=JSON.parse(record.secondary_image)%>
+                                                            <%images.forEach(img=>{ %>
+                                                                <div class="row">
+                                                                    <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                                                        <img src="<%=img%>" alt="">
+                                                                    </div>
+                                                                </div>
 
+                                                                <%});%>
+                                                                    <%}%>
                                                 </div>
 
                                                 <div class="s-i-c-2">
-                                                    <label for="secondaryImg" class="btn btn-dark"><i
-                                                            class="mdi mdi-plus"></i></label>
-                                                    <input type="file" for="secondaryImg" class="d-none"
-                                                        id="secondaryImg" name="secondary_image" value=""
-                                                        onchange="secondary_image_changed(this,null)" multiple>
+                                                    <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
+                                                    <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" value="" onchange="secondary_image_changed(this,null)" multiple>
                                                 </div>
                                             </div>
 
@@ -1246,8 +1190,7 @@
                                     <div class="d-flex justify-content-start">
                                         <!-- <input type="checkbox" class=""> -->
 
-                                        <input type="checkbox" id="myCheckbox" class="mt-2 ms-2"
-                                            style=" width: 20px;height: 20px;cursor:pointer;">
+                                        <input type="checkbox" id="myCheckbox" class="mt-2 ms-2" style=" width: 20px;height: 20px;cursor:pointer;">
                                         <h3 class="ms-2">Product Variant</h3>
                                     </div>
                                 </div>
@@ -1261,26 +1204,18 @@
                                             <!-- color -->
                                             <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
                                                 <div style="background-color:white; border-radius:5px; padding:10px;">
-                                                    <label
-                                                        class="varient_label inline-block d-flex justify-content-between align-items-center"
-                                                        for="colorVariant">
+                                                    <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="colorVariant">
                                                         Color
                                                         <span onclick="this.parentNode.parentNode.parentNode.remove()">
-                                                            <i class="mdi mdi-close"
-                                                                style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
+                                                            <i class="mdi mdi-close" style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
                                                         </span>
                                                     </label>
 
                                                     <div class="position-relative">
-                                                        <ul class="colorInputUL" id="colorInputUL"
-                                                            style=" margin-bottom: 0px;"
-                                                            onclick="showColorDropDown(this)">
-                                                            <input class="tagIntpus" type="text" name="colorVariants"
-                                                                spellcheck="false" id="variantColor" placeholder=""
-                                                                value="" onkeypress="return event.keyCode != 13;">
+                                                        <ul class="colorInputUL" id="colorInputUL" style=" margin-bottom: 0px;" onclick="showColorDropDown(this)">
+                                                            <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="variantColor" placeholder="" value="" onkeypress="return event.keyCode != 13;">
                                                         </ul>
-                                                        <div class="dropdownBox d-none" id="colorDropdownBox"
-                                                            style="height: 200px; overflow-y: auto;">
+                                                        <div class="dropdownBox d-none" id="colorDropdownBox" style="height: 200px; overflow-y: auto;">
                                                             <ul>
                                                                 <li onclick="getValueFronDropDown(this)">Red</li>
                                                                 <li onclick="getValueFronDropDown(this)">Blue</li>
@@ -1298,24 +1233,16 @@
                                             <!-- size -->
                                             <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
                                                 <div style="background-color:white; border-radius:5px; padding:10px;">
-                                                    <label
-                                                        class="varient_label inline-block d-flex justify-content-between align-items-center"
-                                                        for="sizeVariant">Size
+                                                    <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="sizeVariant">Size
                                                         <span onclick="this.parentNode.parentNode.parentNode.remove()">
-                                                            <i class="mdi mdi-close"
-                                                                style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
+                                                            <i class="mdi mdi-close" style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
                                                         </span>
                                                     </label>
                                                     <div class="position-relative">
-                                                        <ul class="colorInputUL" id="sizeInputUL"
-                                                            style="margin-bottom: 0px;"
-                                                            onclick="showColorDropDown(this)">
-                                                            <input class="tagIntpus" type="text" name="sizeVariants"
-                                                                spellcheck="false" id="sizeVariant" placeholder=""
-                                                                value="" onkeypress="return event.keyCode != 13;">
+                                                        <ul class="colorInputUL" id="sizeInputUL" style="margin-bottom: 0px;" onclick="showColorDropDown(this)">
+                                                            <input class="tagIntpus" type="text" name="sizeVariants" spellcheck="false" id="sizeVariant" placeholder="" value="" onkeypress="return event.keyCode != 13;">
                                                         </ul>
-                                                        <div class="dropdownBox d-none" id="sizedropdownBox"
-                                                            style="height: 200px; overflow-y: auto;">
+                                                        <div class="dropdownBox d-none" id="sizedropdownBox" style="height: 200px; overflow-y: auto;">
                                                             <ul>
                                                                 <li onclick="getValueFronDropDown(this)">SM</li>
                                                                 <li onclick="getValueFronDropDown(this)">LG</li>
@@ -1333,11 +1260,8 @@
                                             </div>
 
 
-                                            <div
-                                                class="col-lg-12 col-md-12 col-sm-12 colorVariantBox mt-3 d-md-flex d-xl-flex d-sm-flex text-center justify-content-start align-items-center">
-                                                <span class="addVarientSpan ms-2 d-none"
-                                                    style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;"
-                                                    data-bs-toggle="modal" data-bs-target="#addVarientModal">Add
+                                            <div class="col-lg-12 col-md-12 col-sm-12 colorVariantBox mt-3 d-md-flex d-xl-flex d-sm-flex text-center justify-content-start align-items-center">
+                                                <span class="addVarientSpan ms-2 d-none" style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#addVarientModal">Add
                                                     Varient</span>
 
                                                 <div class="populateBtn delete-table-data mt-0 mt-sm-0 ms-2" style="">
@@ -1349,48 +1273,35 @@
 
                                         </div>
 
-                                        <div class="modal fade" id="addVarientModal" tabindex="-1"
-                                            aria-labelledby="addVarientLabel" aria-hidden="true">
+                                        <div class="modal fade" id="addVarientModal" tabindex="-1" aria-labelledby="addVarientLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title ms-2" id="addVarientLabel">Add Varient
                                                         </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body" style="padding: 100px;">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <div class="form-group">
                                                                     <label>Varient Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="modal_varient_name"
-                                                                        style="padding: 10px 20px;">
+                                                                    <input type="text" class="form-control" id="modal_varient_name" style="padding: 10px 20px;">
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 pt-5 colorVariantBox">
-                                                                <label class="varient_label"
-                                                                    for="creaateVariant">Varient Attributes</label>
+                                                                <label class="varient_label" for="creaateVariant">Varient Attributes</label>
                                                                 <div class="position-relative">
-                                                                    <ul class="colorInputUL" id="addNewVarient"
-                                                                        style=" margin-bottom: 0px;"
-                                                                        onclick="showVarientBox(this)">
-                                                                        <input class="tagIntpus" type="text"
-                                                                            name="colorVariants" spellcheck="false"
-                                                                            id="makeVariant"
-                                                                            placeholder="Write or Click Here"
-                                                                            onkeypress="return event.keyCode != 13;">
+                                                                    <ul class="colorInputUL" id="addNewVarient" style=" margin-bottom: 0px;" onclick="showVarientBox(this)">
+                                                                        <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="makeVariant" placeholder="Write or Click Here" onkeypress="return event.keyCode != 13;">
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary"
-                                                            onclick="save_varient(this, null)">Save
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary" onclick="save_varient(this, null)">Save
                                                             Varient</button>
                                                     </div>
                                                 </div>
@@ -1578,8 +1489,7 @@
 
                                                     <thead class="tableHead" id="tableHead" style="">
                                                         <tr style="height: 60px;" id="tableHeadTr">
-                                                            <th class="varient_table_label"
-                                                                style="border-top-left-radius: 10px">Color</th>
+                                                            <th class="varient_table_label" style="border-top-left-radius: 10px">Color</th>
                                                             <th class="varient_table_label">Size</th>
                                                             <th>Quantity</th>
                                                             <th style="border-top-right-radius: 10px">Actions</th>
@@ -1596,17 +1506,13 @@
 
                                 </section>
 
-
-
                                 <div id="table_content_container" class="newVariantTable TableOfContents" style="">
 
                                     <div class="row mt-2 mb-2">
                                         <div class="col-12 col-md-12 col-xl-6 col-lg-6">
-                                            <div class="form-group"
-                                                style="background-color: white; border-radius: 0px; padding:10px">
+                                            <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">
                                                 <label>Description</label>
-                                                <textarea name="description" class="form-control" cols="10" rows="7"
-                                                    value="">...here will be dynamic value</textarea>
+                                                <textarea name="description" class="form-control" cols="10" rows="7" value="">...here will be dynamic value</textarea>
                                             </div>
                                         </div>
                                         <!-- <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">
@@ -1621,8 +1527,7 @@
                                 </div>
 
                                 <div class="ms-3" style="display: flex; justify-content: left;">
-                                    <button type="submit" class="btn btn-dark me-3 border-0"
-                                        style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
+                                    <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
                                         Upload
                                     </button>
 
@@ -1635,13 +1540,10 @@
 
                             <!-- new Add product code End  -->
 
-
                             <div class="row d-none">
-
                                 <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                     <label for="warehouse" class="form-label">Select Warehouse</label>
-                                    <select class="form-control" data-toggle="select2" data-width="100%"
-                                        name="warehouse" style="background: #FCFCFC!important;">
+                                    <select class="form-control" data-toggle="select2" data-width="100%" name="warehouse" style="background: #FCFCFC!important;">
                                         <option>Warehouse</option>
                                         <optgroup label="">
                                             <option value="united_state">United State</option>
@@ -1667,8 +1569,7 @@
                                 <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                     <div class="mb-3">
                                         <label class="form-label">Amount</label>
-                                        <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470"
-                                            style="background: #FCFCFC!important;">
+                                        <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470" style="background: #FCFCFC!important;">
                                     </div>
                                 </div>
 
@@ -1714,8 +1615,7 @@
                     <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
                     <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
                     <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-                    <script
-                        src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+                    <script src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 
                     <!-- Init js-->
                     <script src="/assets/js/pages/form-advanced.init.js"></script>

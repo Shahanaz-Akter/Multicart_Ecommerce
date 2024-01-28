@@ -1016,7 +1016,7 @@
                                         </div>
 
 
-                                       
+
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
@@ -1033,41 +1033,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label class="" style=""> Sub Category</label>
-                                                <div class=" position-relative single-contact-info productName" style="margin-top: 7px">
-                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="sub_category" onkeypress="return event.keyCode != 13;">
-                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1000" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">sub_category</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">sub_category</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">sub_category</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">sub_category</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
 
-
-                                        <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-                                        <label for="category" class="form-label"> Sub Category</label>
-                                        <select class="form-control" data-toggle="select2" data-width="100%" name="category" style="background: #FCFCFC!important;">
-                                            <optgroup label="">
-                                                <option value="">United State</option>
-                                                <option value="">Canada</option>
-                                                <option value="">Maxico</option>
-                                                <option value="">France</option>
-                                                <option value="">Germany</option>
-                                            </optgroup>
-                                        </select>
-                                    </div> -->
-
-                                        <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2 d-none">
-                                        <div class=" " style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Bar Code</label>
-                                            <input type="text" class="form-control" placeholder="Scan Barcode" name="bar_code">
-                                        </div>
-                                    </div> -->
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
@@ -1083,12 +1049,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group " style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Unit Price</label>
-                                            <input type="number" class="form-control" placeholder="0" name="unit_price" onkeypress="return event.keyCode != 13;">
-                                        </div>
-                                    </div> -->
 
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
@@ -1116,15 +1076,20 @@
                                             </div>
                                         </div>
 
-                                        
-                                <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                    <div class="main-img-container mt-2">
-                                        <!-- <p>*All Image size should be 300/300.</p> -->
-                                        <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
-                                        <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
-                                        <input required type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
-                                    </div>
-                                </div>
+
+                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                            <div class="main-img-container mt-2">
+                                                <!-- <p>*All Image size should be 300/300.</p> -->
+                                                <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
+                                                <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
+                                                <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
+                                            </div>
+                                            <% if (error3) { %>
+                                                <p class="text-danger">
+                                                    <%= error3 %>
+                                                </p>
+                                                <% } %>
+                                        </div>
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Old Price</label>
@@ -1134,17 +1099,7 @@
 
 
 
-                                        <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <label for="product_unit" class="form-label">Product Unit</label>
-                                            <select class="form-control" data-toggle="select2" data-width="100%" name="product_unit" style="background: #FCFCFC!important;">
-                                                <option>Direct Expense</option>
-                                                <optgroup label="">
-                                                    <option value="kilogram">Kilogram</option>
-                                                    <option value="meter">Meter</option>
-                                                    <option value="piece">Piece</option>
-                                                </optgroup>
-                                            </select>
-                                        </div> -->
+
 
                                     </div>
 
@@ -1152,15 +1107,20 @@
                                         <div class="row h-100">
                                             <div class="col-md-5 col-lg-5 col-sm-12">
 
-
                                                 <div class="main-img-container mt-2">
                                                     <!-- <p>*All Image size should be 300/300.</p> -->
                                                     <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width:180px;border-radius:5px;"
                                                         id="main-img-preview">
                                                     <label for="mainImg" class="btn btn-dark mt-2">Set Primary Image</label>
-                                                    <input required type="file" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
-
+                                                    <input type="file" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
+                                                    <% if (error1) { %>
+                                                        <p class="text-danger">
+                                                            <%= error1 %>
+                                                        </p>
+                                                        <% } %>
                                                 </div>
+
+
                                             </div>
 
                                             <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent" style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
@@ -1169,16 +1129,19 @@
 
                                                 <div class="s-i-c-2">
                                                     <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
-                                                    <input required type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
+                                                    <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
+                                                    <% if (error2) { %>
+                                                        <p class="text-danger">
+                                                            <%= error2 %>
+                                                        </p>
+                                                        <% } %>
                                                 </div>
+
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-
-                                
-                                
 
                                 <div style="margin-top: 10px;">
                                     <div class="d-flex justify-content-start">
@@ -1188,8 +1151,6 @@
                                         <h3 class="ms-2">Product Variant</h3>
                                     </div>
                                 </div>
-
-                                
 
                                 <!-- disable product section -->
                                 <section class="enable_div" style="display: none;">
@@ -1500,7 +1461,6 @@
                                 </section>
 
 
-
                                 <div id="table_content_container" class="newVariantTable TableOfContents" style="">
 
                                     <div class="row mt-2 mb-2">
@@ -1520,8 +1480,6 @@
 
 
                                 </div>
-
-                                
 
                                 <div class="ms-3" style="display: flex; justify-content: left;">
                                     <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
