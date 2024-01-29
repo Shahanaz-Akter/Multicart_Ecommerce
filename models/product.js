@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Product.init({
     name: DataTypes.STRING,
-    buying_price: DataTypes.BIGINT,
+    buying_price: DataTypes.DOUBLE,
     selling_price: DataTypes.DOUBLE,
     discount: DataTypes.INTEGER,
     product_category: DataTypes.STRING,
@@ -24,12 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     secondary_image: DataTypes.STRING,
     description: DataTypes.STRING,
     product_type: DataTypes.STRING,
-    colorVariants: DataTypes.JSON,
-    sizeVariants: DataTypes.JSON,
+    colorVariants: DataTypes.STRING,
+    sizeVariants: DataTypes.STRING,
     total_qty: DataTypes.INTEGER,
     product_code: DataTypes.INTEGER,
     date: DataTypes.STRING,
-    quantitys: DataTypes.JSON,
+    quantitys: DataTypes.STRING,
     old_price: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
   }, {

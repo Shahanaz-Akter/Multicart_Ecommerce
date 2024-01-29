@@ -50,6 +50,7 @@ const add_cart_product = async (product_id) => {
                 let mainCart = document.querySelector('.cart-list');
 
                 const mainParent = document.createElement('div');
+                mainParent.setAttribute('id', `productcartContainer_${response.data.record.id}`);
                 mainParent.classList.add('d-flex', 'align-items-center', 'justify-content-around', 'm-1');
 
                 // parent 1
@@ -98,7 +99,7 @@ const add_cart_product = async (product_id) => {
                 // parent 6
                 const p6 = document.createElement('div');
                 p6.classList.add('ms-auto', 'fs-5');
-                p6.innerHTML = `<a a href = "/logout" class="link-dark" > <i class="bi bi-trash"></i></a > `;
+                p6.innerHTML = `<span onclick="deleteSessionProduct(${response.data.record.id})" class="link-dark"> <i class="bi bi-trash"></i></ span> `;
 
                 const hrTag = document.createElement('hr');
                 mainParent.appendChild(p1);
@@ -133,18 +134,49 @@ const calculate_subtotal = async () => {
     const response = await axios.post('/product/calculate_subtotal');
     subT = response.data.subtotal;
 
-
-
     document.querySelector('.addCardText').children[0].innerHTML = `Subtotal: ${subT} TK`;
     console.log(subT);
 }
-
-
-
 
 const setDeliveryCharge = (price) => {
     deliver_charge = price
     document.querySelector('.addCardText').children[1].innerHTML = `Delivery: ${price} TK`;
     let t = subT + deliver_charge;
     document.querySelector('.totalPrice').children[1].innerHTML = `${t} ৳`;
+}
+
+// orderlist js
+const orderList = () => {
+    // console.log('hello');
+    let phone = document.querySelector('#mobile').value;
+    let email = document.querySelector('#email').value;
+    let fullName = document.querySelector('#fullName').value;
+    let delivery_charge = document.querySelector('#delivery_charge').value;
+    let areaSector = document.querySelector('#areaSector').value;
+    let addressCheck = document.querySelector('#addressCheck').value;
+    console.log(phone, email, fullName, delivery_charge, areaSector, addressCheck, subT);
+    let orderResponse = axios.post('/post_checkout', { phone, email, fullName, delivery_charge, areaSector, addressCheck, subT })
+}
+
+// delete session js
+const deleteSessionProduct = async (id) => {
+    console.log(id);
+    let container = document.querySelector(`#productcartContainer_${id}`);
+    let response = await axios.post('/delete_session_product', { id });
+    if (response.data.success == true) {
+        container.remove();
+    }
+}
+
+// for quantiy incremnet decrement
+
+const change_quantity_value = async (reason, id, tag) => {
+
+    const response = await axios.post('/product/product_increment', { product_id: id, reason: reason });
+    // console.log(tag.parentNode);
+
+    tag.parentNode.children[1].innerHTML = await response.data.qty;
+    let total_holder = document.querySelector(`#total_${id}`);
+    total_holder.innerHTML = "T- " + await response.data.total + 'TK';
+    console.log(response);
 }

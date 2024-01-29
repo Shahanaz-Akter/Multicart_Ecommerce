@@ -10,7 +10,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       mobile: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       address: {
         type: Sequelize.STRING
@@ -18,10 +19,16 @@ module.exports = {
       delivery_charge: {
         type: Sequelize.INTEGER
       },
+      products: {
+        type: Sequelize.STRING(5000)
+      },
       sub_total: {
         type: Sequelize.DOUBLE
       },
       total: {
+        type: Sequelize.DOUBLE
+      },
+      total_amount: {
         type: Sequelize.DOUBLE
       },
       discount: {

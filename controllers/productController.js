@@ -13,6 +13,9 @@ const addProduct = async (req, res) => {
 
 const postAddProduct = async (req, res) => {
     // Use multer to handle file uploads
+    console.log(req.body.colorVariantsVariants);
+
+    console.log(req.body.sizeVariants);
 
     try {
         if (!req.files || !req.files['primary_image']) {
@@ -42,8 +45,8 @@ const postAddProduct = async (req, res) => {
             'secondary_image': JSON.stringify(secondaryImages),
             'description': req.body.description,
             'product_type': req.body.product_type,
-            'colorVariants': req.body.colorVariants,
-            'sizeVariants': req.body.sizeVariants,
+            'colorVariants': JSON.stringify(req.body.colorVariants),
+            'sizeVariants': JSON.stringify(req.body.sizeVariants),
             'total_qty': req.body.total_qty,
             'product_code': Math.floor(Math.random() * 1000) + 1,
             'date': req.body.date,

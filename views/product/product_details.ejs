@@ -855,6 +855,7 @@
                 <%}else{%>
                   <div class="cart-badge">0</div>
                   <%}%>
+
                     <i class="bi bi-basket2"></i>
           </a>
         </li>
@@ -1319,12 +1320,10 @@
   </footer>
 
 
-  <!--start cart-->
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <!--right cart-->
+  <div class="offcanvas offcanvas-end cart_modal" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header bg-section-2">
-
-
-      <h5 class="mb-0 fw-bold cartCount" id="offcanvasRightLabel">0 items in the cart</h5>
+      <h5 class="mb-0 fw-bold cartCount" id="offcanvasRightLabel"></h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -1334,11 +1333,20 @@
         </div>
 
         <!-- Access the cart data in your EJS file -->
+        <div class="d-flex align-items-center justify-content-around mt-3 text-dark">
+          <span>Product Image</span>
+          <span>Name</span>
+          <span>Quantity</span>
+          <span>Price</span>
+          <span>Total</span>
+          <span>Action</span>
+        </div>
+
         <% const cart=locals.session.cart || []; %>
           <% if (cart.length> 0) { %>
-            <!-- If cart is not empty, render each product -->
+            <!--If cart is not empty, render each product -->
             <% cart.forEach(product=> { %>
-              <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center gap-3 mt-3" id="productcartContainer_<%=product.id%>">
                 <div class="bottom-product-img">
                   <a href="/product_details">
                     <img src="<%= product.primary_image %>" width="60" alt="<%= product.name %>">
@@ -1348,15 +1356,24 @@
                   <h6 class="mb-0 fw-light mb-1">
                     <%= product.name %>
                   </h6>
-                  <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p>
+                  <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
                 </div>
-                <div class="d-flex justify-center md:w-1/5 mr-2">
-                  <a href="" class="px-3 py-2 font-bold border hover:border-gray-800" id="increment">+</a>
-                  <span class="quantity-counter p-2" id="input">1</span>
-                  <a href="" class="px-3 py-2 font-bold border hover:border-gray-800" id="decrement">-</a>
+
+                <div class="d-flex justify-center md:w-1/5  mr-2">
+                  <span onclick="change_quantity_value('plus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
+                  <span class="quantity-counter p-2" id="input">
+                    <%= product.quantity %>
+                  </span>
+                  <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+                </div>
+                <div>
+                  <%= product.selling_price %>
+                </div>
+                <div id="total_<%= product.id%>">
+                  T- <%= product.total %>TK
                 </div>
                 <div class="ms-auto fs-5">
-                  <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+                  <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
                 </div>
               </div>
               <hr>
@@ -1367,15 +1384,14 @@
                   <% } %>
       </div>
     </div>
-    <div class="offcanvas-footer p-3 border-top">
+    <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
       <div class="d-grid">
-        <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</button>
+        <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
       </div>
     </div>
 
   </div>
-  <!--end cat-->
-
+  <!--end right cart-->
 
   <!-- checkout  modal -->
   <div class="offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
@@ -1387,12 +1403,13 @@
     <div class="offcanvas-body">
 
       <div class="cart-list">
+
         <!-- Modal content -->
         <div class="modal-contentCheckout">
           <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
 
           <!-- <p>Some text in the Modal..</p> -->
-          <div class="backContent" id="phoneModal">
+          <div class="backContent" id="phoneModal" style="background: #4B5563;">
 
             <div class="leftSection" id="phone_2nd">
               <div class="contactContainer">
@@ -1417,7 +1434,7 @@
                   <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
                   <!-- <span class="checkoutClose">&times;</span> -->
                 </div>
-                <form action="/post_checkout" method="post">
+                <div>
                   <div class="contactBody">
                     <div class="bodyHead" id="createScroll">
                       <span class="userIcon"> <i class='bx bx-user'></i></span>
@@ -1425,7 +1442,8 @@
                     </div>
                     <div class="inputInformation">
                       <div class="phone-container">
-                        <input type="text" name="phone" id="phone" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input">
+                        <!-- customer_name, mobile, dob, country, address, zip_code, date, otp_num, email -->
+                        <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input">
                         <label for="phone" class="lavel phone-lavel">Phone Number</label>
                         <div class="setCodeDropdown">
                           <div class="phoneDropdown">
@@ -1433,14 +1451,13 @@
                               <span class="countrySelected">+880</span>
                               <div class="countryCaret"></div>
                             </div>
-                            <ul class="countryMenu">
-                              <!-- <li class="active">+91</li> -->
-                              <!-- <li class="active">+91</li> -->
-                              <!-- <li>+001</li> -->
-                              <!-- <li>+621</li>
-                              <li>+555</li>
-                              <li>+321</li> -->
-                            </ul>
+                            <!-- <ul class="countryMenu">
+                                                                                                                                                  <li class="active">+91</li>
+                                                                                                                                                  <li>+880</li>
+                                                                                                                                                  <li>+621</li>
+                                                                                                                                                  <li>+555</li>
+                                                                                                                                                  <li>+321</li>
+                                                                                                                                              </ul> -->
                           </div>
                         </div>
                       </div>
@@ -1450,44 +1467,48 @@
                       </div>
                       <div class="bodyHead mb-2">
                         <span class="userIcon"> <i class='bx bx-map'></i></span>
-                        <span class="text">Delivery Address</span>
+                        <span class="text">Delivery Information</span>
                       </div>
                       <div class="input-container">
-                        <input type="text" name="fullName" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
+                        <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
                         <label for="fullName" class="lavel full-name">Full Name</label>
                       </div>
+
+
                       <div class="input_dropdown">
                         <div>
                           <!-- <span>left site</span> -->
                           <div class="checkoutDropdown">
-                            <div class="select" id="textColoSet" name="state">
-                              <span class="mimi22">Delivery Address</span>
+                            <div class="select" id="textColoSet">
+                              <input class="d-none" type="text" id="delivery_charge" name="delivery_charge">
+                              <span class="mimi22">Select</span>
                               <div class="caret"></div>
                             </div>
+
                             <ul class="menu">
-                              <li class="active">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk )
+                              <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
                               </li>
-                              <li>ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk )</li>
+                              <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
                               <!-- <li>Noakhali</li>
-                              <li>Comilla</li>
-                              <li>Uttara</li> -->
+                                                                                                                                          <li>Comilla</li>
+                                                                                                                                          <li>Uttara</li> -->
                             </ul>
                           </div>
                         </div>
                         <div>
                           <!-- <span>right site</span> -->
                           <!-- <div class="input-container">
-                            <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
-                            <label for="City" class="lavel City-name">City</label>
-                          </div> -->
+                                                                                                                                          <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
+                                                                                                                                              <label for="City" class="lavel City-name">City</label>
+                                                                                                                                      </div> -->
                         </div>
                       </div>
                       <!-- <div class="input-container mb-3">
-                        <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
-                        <label for="HouseNumber" class="lavel house-number">House Number</label>
-                      </div> -->
+                                                                                                                                  <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
+                                                                                                                                      <label for="HouseNumber" class="lavel house-number">House Number</label>
+                                                                                                                              </div> -->
                       <div style="margin-bottom: 20px;" class="input-container">
-                        <input type="text" name="are" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
+                        <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
                         <label for="areaSector" class="lavel area-sector">Area /Address</label>
                       </div>
                       <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
@@ -1498,11 +1519,11 @@
 
                     </div>
                   </div>
-                  <div class="contactFooter">
-                    <h4 class="btnPrice">193,000<span>&#2547;</span></h4>
-                    <button type="submit" class="ProceedBtn">Submit Order</button>
+                  <div class="contactFooter" onclick="orderList()">
+                    <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
+                    <button type="" class="ProceedBtn">Submit Order</button>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
 
@@ -1514,25 +1535,26 @@
                 <div class="addItem addCard">
 
                   <div class="addCardText">
-                    <div class="mb-3"> Subtotal: 2500 TK</div>
-                    <div class="mb-3"> Delivery: 20 January</div>
-                    <div class="mb-3"> Flat Discount: 10%</div>
+                    <div class="mb-3"> Subtotal: 00.00 TK</div>
+                    <div class="mb-3"> Delivery: 00 TK</div>
+                    <!-- <div class="mb-3"> Discount: 10%</div> -->
                   </div>
                 </div>
-
 
               </div>
               <div class="totalPrice">
                 <span>Total:</span>
-                <span>3,000 <span>&#2547;</span></span>
+                <span id="total_amount">00.00 <span>&#2547;</span></span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
 
   </div>
+  <!-- checkout  modal end-->
   <!--Start Back To Top Button-->
   <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
   <!--End Back To Top Button-->

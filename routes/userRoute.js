@@ -4,18 +4,16 @@ const router = express.Router();
 const { Logout, userView, aboutUs, productDetails, cart, category, Login, postLogin, register, postReview, post_checkout, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory } = require('../controllers/userController');
 
-
-
 router.get('/ses', (req, res) => {
     res.send(req.session.cart);
 });
-router.post('/product/product_increment', (req, res) => {
+router.post('/product/product_increment', async (req, res) => {
     let id = req.body.product_id;
     let reason = req.body.reason;
 
     let cart = req.session.cart;
     let qty, total;
-    cart.forEach(element => {
+    await cart.forEach(element => {
         if (element.id == id) {
             if (reason == "plus") {
                 element.quantity = element.quantity + 1;
@@ -46,12 +44,22 @@ router.post('/product/calculate_subtotal', (req, res) => {
     cart.forEach(element => {
 
         subT = subT + element.total;
-
-
     });
     res.send({
         success: true,
         subtotal: subT
+    })
+
+});
+
+router.post('/delete_session_product', async (req, res) => {
+    let id = req.body.id;
+    console.log('Id is: ', id);
+    let sessionProduct = req.session.cart;
+    req.session.cart = sessionProduct.filter(element => element.id !== id);
+    console.log('bye: ', req.session.cart);
+    res.send({
+        success: true
     })
 
 });
