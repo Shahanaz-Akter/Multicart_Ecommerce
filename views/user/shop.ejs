@@ -20,7 +20,7 @@
     <link href="/front_assets/css/style.css" rel="stylesheet">
     <link href="/front_assets/css/dark-theme.css" rel="stylesheet">
 
-    <title>Kitchen and Dining Category</title>
+    <title>All Category Products</title>
     <!-- css checkout -->
     <style>
         * {
@@ -704,10 +704,12 @@
         </div>
     </div>
     <!--end loader-->
+
     <!--start top header-->
     <header class="top-header">
         <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
             <a class="navbar-brand d-none d-xl-inline" href="/">
+
                 <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
                 <%if(logo_img !=null){%>
                     <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
@@ -888,28 +890,18 @@
         <section class="product-tab-section section-padding bg-light">
             <div class="container">
                 <div class="text-center pb-3">
-                    <h3 class="mb-0 h3 fw-bold title"> KITCHEN & DININGFASHION CATEGORY PRODUCTS</h3>
+                    <h3 class="mb-0 h3 fw-bold">All Products</h3>
                     <!-- <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p> -->
                 </div>
+
                 <div class="row">
                     <div class="col-auto mx-auto">
                         <div class="product-tab-menu table-responsive">
                             <ul class="nav nav-pills flex-nowrap" id="pills-tab" role="tablist">
-                                <!-- <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#new-arrival" type="button">New
-                                        Arrival</button>
-                                </li> -->
-                                <!-- <li class="nav-item" role="presentation">
-                                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#best-sellar" type="button">Best
-                                        Sellar</button>
+
+                                <li class="nav-item invisible" role="presentation">
+                                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#all" type="button"></button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#trending-product" type="button">Trending</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#special-offer" type="button">Special
-                                        Offer</button>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -917,23 +909,21 @@
                 <hr>
                 <div class="tab-content tabular-product">
 
-                    <div class="tab-pane fade show active" id="new-arrival">
+                    <div class="tab-pane fade active show" id="all">
                         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-
-                            <% record.forEach(products=> { %>
+                            <%products.forEach(product=>{%>
 
                                 <div class="col">
                                     <div class="card">
                                         <div class="position-relative overflow-hidden">
                                             <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
                                                 <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
-                                                <a href="javascript:;" onclick="add_cart_product(<%=products.id%>)"><i class="bi bi-basket3"></i></a>
-                                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modall<%=products.id%>"><i class="bi bi-zoom-in"></i></a>
+                                                <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
+                                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#Icon_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
                                                 <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
-
                                             </div>
-                                            <a href="/product/product_details/<%=products.id%>">
-                                                <div class="" style="background: url('<%=products.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
+                                            <a href="/product/product_details/<%=product.id%>">
+                                                <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
                                                     <!-- <img src="/front_assets/img/new-arrival/01.jpg" class="card-img-top" alt="..."> -->
                                                 </div>
                                             </a>
@@ -941,7 +931,7 @@
                                         <div class="card-body">
                                             <div class="product-info text-center">
                                                 <h6 class="mb-1 fw-bold product-name">
-                                                    <%=products.name%>
+                                                    <%=product.name%>
                                                 </h6>
                                                 <div class="ratings mb-1 h6">
                                                     <i class="bi bi-star-fill text-warning"></i>
@@ -950,15 +940,15 @@
                                                     <i class="bi bi-star-fill text-warning"></i>
                                                     <i class="bi bi-star-fill text-warning"></i>
                                                 </div>
-                                                <p class="mb-0 h6 fw-bold product-price">৳<%=products.selling_price%>
+                                                <p class="mb-0 h6 fw-bold product-price">৳ <%=product.selling_price%>
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="modall<%=products.id%>" tabindex="-1">
+                                <!--plusIcon Modal -->
+                                <div class="modal fade" id="Icon_<%=product.id%>" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                                         <div class="modal-content rounded-0">
 
@@ -969,37 +959,45 @@
                                                         <div class="wrap-modal-slider">
 
                                                             <div class="slider-for">
-                                                                <% const sec_images=JSON.parse(products.secondary_image); %>
-                                                                    <% if (Array.isArray(sec_images)) { %>
-                                                                        <% sec_images.forEach(img=> { %>
+                                                                <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
+                                                                    <%if(Array.isArray(secondaryImageArray)){%>
+                                                                        <% secondaryImageArray.forEach(images=> {%>
+                                                                            <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
                                                                             <div>
-                                                                                <img src="<%= img %>" alt="" class="img-fluid">
+                                                                                <img src="<%=images%>" alt="" class="img-fluid">
                                                                             </div>
-                                                                            <% }); %>
-                                                                                <% } else { %>
+                                                                            <%});%>
+
+                                                                                <%}else { %>
                                                                                     <p>No secondary Images Available.</p>
-                                                                                    <% } %>
+                                                                                    <% }%>
+
                                                             </div>
 
                                                             <div class="slider-nav mt-3">
-                                                                <% const sec_images1=JSON.parse(products.secondary_image); %>
-                                                                    <% if (Array.isArray(sec_images1)) { %>
-                                                                        <% sec_images1.forEach(img1=> { %>
+
+                                                                <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
+                                                                    <%if(Array.isArray(secondaryImageArray1)){%>
+                                                                        <% secondaryImageArray.forEach(img=> {%>
+                                                                            <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
                                                                             <div>
-                                                                                <img src="<%= img1 %>" alt="" class="img-fluid">
+                                                                                <img src="<%=img%>" alt="" class="img-fluid">
                                                                             </div>
-                                                                            <% }); %>
-                                                                                <% } else { %>
-                                                                                    <p>Image is not Available</p>
-                                                                                    <% } %>
+
+                                                                            <%});%>
+
+                                                                                <%}else { %>
+                                                                                    <p>No secondary Images Available.</p>
+                                                                                    <% }%>
                                                             </div>
 
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                     <div class="col-12 col-xl-6">
                                                         <div class="product-info">
-                                                            <h4 class="product-title fw-bold mb-1">/<%=products.name%>
+                                                            <h4 class="product-title fw-bold mb-1">
+                                                                <%=product.name%>
                                                             </h4>
                                                             <p class="mb-0">Women Pink & Off-White Printed Kurta with Palazzos</p>
                                                             <div class="product-rating">
@@ -1011,11 +1009,10 @@
                                                             </div>
                                                             <hr>
                                                             <div class="product-price d-flex align-items-center gap-3">
-                                                                <div class="h4 fw-bold">৳<%=products.selling_price%>
+                                                                <div class="h4 fw-bold">৳<%=product.selling_price%>
                                                                 </div>
-                                                                <div class="h5 fw-light text-muted text-decoration-line-through">৳<%=products.old_price%>
-                                                                </div>
-                                                                <div class="h4 fw-bold text-danger">(/<%=products.discount%> % off)</div>
+                                                                <div class="h5 fw-light text-muted text-decoration-line-through">৳2089</div>
+                                                                <div class="h4 fw-bold text-danger">(<%=product.discount%>% off)</div>
                                                             </div>
                                                             <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
 
@@ -1055,7 +1052,7 @@
                                                             </div>
                                                             <div class="cart-buttons mt-3">
                                                                 <div class="buttons d-flex flex-column gap-3 mt-4">
-                                                                    <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
+                                                                    <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                                     <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
                                                                     <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
                                                                 </div>
@@ -1091,442 +1088,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--end quick view-->
-                                <% }); %>
-
-                        </div>
-
-                    </div>
-
-                    <div class="tab-pane fade" id="best-sellar">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/01.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/02.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/03.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="ribban bg-primary">New Fashion</div>
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/04.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/05.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <!--plusIconModal end-->
+                                <%});%>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="trending-product">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/01.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/02.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="ribban bg-warning text-dark">New Season</div>
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="/front_assets/img/trending-product/03.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/04.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/05.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="special-offer">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/01.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/02.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="ribban">50% Discount</div>
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/03.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/04.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/05.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
-
             </div>
         </section>
         <!--end tabular product-->
-
 
         <!--start features-->
         <section class="product-thumb-slider section-padding">
@@ -1863,11 +1432,12 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-4 g-4">
                 <div class="col">
+
                     <div class="footer-widget-6">
+                        <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
                         <%if(logo_img !=null){%>
                             <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
                             <%}%>
-                                <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
                                 <h5 class="mb-3 fw-bold">About Us</h5>
                                 <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
 

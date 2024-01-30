@@ -12,6 +12,7 @@ if (count == 0) {
 }
 const add_cart_product = async (product_id) => {
     try {
+
         // Send a POST request to the server
         const response = await axios.post('/product/post_cart_product', { product_id });
         console.log('Response data: ', response.data.add_on_html);
@@ -36,11 +37,15 @@ const add_cart_product = async (product_id) => {
             });
 
             if (!isRecordIncluded && response.data.add_on_html == true) {
-                //increment cartlist
-                let c = ++count;
-                cartbadge.innerHTML = c;
+                let cartbadgeggg = document.querySelector('.cart-badge');
+                let cartCountggg = document.querySelector('.cartCount');
 
-                cartCount.innerHTML = c + " items to the cart";
+                let countggg = parseInt(cartbadgeggg.innerHTML);
+                //increment cartlist
+                let c = ++countggg;
+                cartbadgeggg.innerHTML = c;
+
+                cartCountggg.innerHTML = c + " items to the cart";
 
                 cartArr.push(response.data.record);
 
@@ -102,7 +107,7 @@ const add_cart_product = async (product_id) => {
                 p6.innerHTML = `<span onclick="deleteSessionProduct(${response.data.record.id})" class="link-dark"> <i class="bi bi-trash"></i></ span> `;
 
                 const hrTag = document.createElement('hr');
-                hrTag.setAttribute('id', `hr_for_${response.data.record.id}`);
+                hrTag.id = `hr_for_${response.data.record.id}`;
                 mainParent.appendChild(p1);
                 mainParent.appendChild(p2);
                 mainParent.appendChild(p3);
@@ -172,9 +177,18 @@ const orderList = async () => {
 const deleteSessionProduct = async (id) => {
     console.log(id);
     let container = document.querySelector(`#productcartContainer_${id}`);
+    let cart_bbbb = document.querySelector(`.cart-badge`);
+    let cartCount_bbb = document.querySelector('.cartCount');
+    let cbvvv = parseInt(cart_bbbb.innerHTML);
     let hr = document.querySelector(`#hr_for_${id}`);
     let response = await axios.post('/delete_session_product', { id });
     if (response.data.success == true) {
+
+        cart_bbbb.innerHTML = JSON.stringify(--cbvvv);
+        cartCount_bbb.innerHTML = `${JSON.stringify(cbvvv)} items to the cart`;
+
+        cartArr = cartArr.filter(element => element.id !== id);
+        console.log(cartArr)
         container.remove();
         hr.remove();
         // container.parentNode.

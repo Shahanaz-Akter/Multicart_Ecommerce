@@ -776,13 +776,22 @@
   <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-      <a class="navbar-brand d-none d-xl-inline" href="/"><img src="/front_assets/img/logo.webp" class="logo-img" alt=""></a>
+      <a class="navbar-brand d-none d-xl-inline" href="/">
+        <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+        <%if(logo_img !=null){%>
+          <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+          <%}%>
+      </a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list"></i>
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><img src="/front_assets/img/logo.webp" class="logo-img" alt="">
+          <div class="offcanvas-logo">
+            <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+            <%if(logo_img !=null){%>
+              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+              <%}%>
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -792,9 +801,13 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop">Shop</a>
+            </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                Shop
+                Category
               </a>
               <div class="dropdown-menu dropdown-large-menu">
                 <div class="row">
@@ -1132,12 +1145,16 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
-          <div class="footer-widget-6">
-            <img src="images/logo.webp" class="logo-img mb-3" alt="">
-            <h5 class="mb-3 fw-bold">About Us</h5>
-            <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
 
-            <a class="link-dark" href="javascript:;">Read More</a>
+          <div class="footer-widget-6">
+            <!-- <img src="images/logo.webp" class="logo-img mb-3" alt=""> -->
+            <%if(logo_img !=null){%>
+              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+              <%}%>
+                <h5 class="mb-3 fw-bold">About Us</h5>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+
+                <a class="link-dark" href="javascript:;">Read More</a>
           </div>
         </div>
         <div class="col">
@@ -1319,167 +1336,167 @@
   </div>
   <!--end right cart-->
 
-<!-- checkout  modal -->
-<div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
-  <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-  <div class="offcanvas-header bg-section-2">
+  <!-- checkout  modal -->
+  <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+    <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+    <div class="offcanvas-header bg-section-2">
       <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-  </div>
+    </div>
 
-  <div class="offcanvas-body">
+    <div class="offcanvas-body">
 
       <div class="cart-list">
 
-          <!-- Modal content -->
-          <div class="modal-contentCheckout">
-              <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+        <!-- Modal content -->
+        <div class="modal-contentCheckout">
+          <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
 
-              <!-- <p>Some text in the Modal..</p> -->
-              <div class="backContent" id="phoneModal" style="background: #4B5563;">
+          <!-- <p>Some text in the Modal..</p> -->
+          <div class="backContent" id="phoneModal" style="background: #4B5563;">
 
-                  <div class="leftSection" id="phone_2nd">
-                      <div class="contactContainer">
+            <div class="leftSection" id="phone_2nd">
+              <div class="contactContainer">
 
-                          <style>
-                              .btn-close {
-                                  color: white !important;
-                                  opacity: unset;
-                              }
+                <style>
+                  .btn-close {
+                    color: white !important;
+                    opacity: unset;
+                  }
 
-                              .offcanvas-header {
-                                  border-bottom: #146FB6;
-                              }
-                          </style>
+                  .offcanvas-header {
+                    border-bottom: #146FB6;
+                  }
+                </style>
 
-                          <div class="contactHead d-flex justify-content-between">
-                              <span class="headTitle">Checkout</span>
-                              <div class="offcanvas-header bg-section-0">
-                                  <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                              </div>
-                              <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                              <!-- <span class="checkoutClose">&times;</span> -->
-                          </div>
-                          <div>
-                              <div class="contactBody">
-                                  <div class="bodyHead" id="createScroll">
-                                      <span class="userIcon"> <i class='bx bx-user'></i></span>
-                                      <span class="text mb-2">Contact Details</span>
-                                  </div>
-                                  <div class="inputInformation">
-                                      <div class="phone-container">
-                                          <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input">
-                                          <label for="phone" class="lavel phone-lavel">Phone Number</label>
-                                          <div class="setCodeDropdown">
-                                              <div class="phoneDropdown">
-                                                  <div class="countrySelect">
-                                                      <span class="countrySelected">+880</span>
-                                                      <div class="countryCaret"></div>
-                                                  </div>
-                                                  <!-- <ul class="countryMenu">
+                <div class="contactHead d-flex justify-content-between">
+                  <span class="headTitle">Checkout</span>
+                  <div class="offcanvas-header bg-section-0">
+                    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                  <!-- <span class="checkoutClose">&times;</span> -->
+                </div>
+                <div>
+                  <div class="contactBody">
+                    <div class="bodyHead" id="createScroll">
+                      <span class="userIcon"> <i class='bx bx-user'></i></span>
+                      <span class="text mb-2">Contact Details</span>
+                    </div>
+                    <div class="inputInformation">
+                      <div class="phone-container">
+                        <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input">
+                        <label for="phone" class="lavel phone-lavel">Phone Number</label>
+                        <div class="setCodeDropdown">
+                          <div class="phoneDropdown">
+                            <div class="countrySelect">
+                              <span class="countrySelected">+880</span>
+                              <div class="countryCaret"></div>
+                            </div>
+                            <!-- <ul class="countryMenu">
                                                                                                                                                   <li class="active">+91</li>
                                                                                                                                                   <li>+880</li>
                                                                                                                                                   <li>+621</li>
                                                                                                                                                   <li>+555</li>
                                                                                                                                                   <li>+321</li>
                                                                                                                                               </ul> -->
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="input-container mt-3">
-                                          <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
-                                          <label for="email" class="lavel">Email</label>
-                                      </div>
-                                      <div class="bodyHead mb-2">
-                                          <span class="userIcon"> <i class='bx bx-map'></i></span>
-                                          <span class="text">Delivery Information</span>
-                                      </div>
-                                      <div class="input-container">
-                                          <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
-                                          <label for="fullName" class="lavel full-name">Full Name</label>
-                                      </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-container mt-3">
+                        <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
+                        <label for="email" class="lavel">Email</label>
+                      </div>
+                      <div class="bodyHead mb-2">
+                        <span class="userIcon"> <i class='bx bx-map'></i></span>
+                        <span class="text">Delivery Information</span>
+                      </div>
+                      <div class="input-container">
+                        <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
+                        <label for="fullName" class="lavel full-name">Full Name</label>
+                      </div>
 
 
-                                      <div class="input_dropdown">
-                                          <div>
-                                              <!-- <span>left site</span> -->
-                                              <div class="checkoutDropdown">
-                                                  <div class="select" id="textColoSet">
-                                                      <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
-                                                      <span class="mimi22">Select</span>
-                                                      <div class="caret"></div>
-                                                  </div>
+                      <div class="input_dropdown">
+                        <div>
+                          <!-- <span>left site</span> -->
+                          <div class="checkoutDropdown">
+                            <div class="select" id="textColoSet">
+                              <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
+                              <span class="mimi22">Select</span>
+                              <div class="caret"></div>
+                            </div>
 
-                                                  <ul class="menu">
-                                                      <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
-                                                      </li>
-                                                      <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
-                                                      <!-- <li>Noakhali</li>
+                            <ul class="menu">
+                              <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
+                              </li>
+                              <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
+                              <!-- <li>Noakhali</li>
                                                                                                                                           <li>Comilla</li>
                                                                                                                                           <li>Uttara</li> -->
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                          <div>
-                                              <!-- <span>right site</span> -->
-                                              <!-- <div class="input-container">
+                            </ul>
+                          </div>
+                        </div>
+                        <div>
+                          <!-- <span>right site</span> -->
+                          <!-- <div class="input-container">
                                                                                                                                           <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                               <label for="City" class="lavel City-name">City</label>
                                                                                                                                       </div> -->
-                                          </div>
-                                      </div>
-                                      <!-- <div class="input-container mb-3">
+                        </div>
+                      </div>
+                      <!-- <div class="input-container mb-3">
                                                                                                                                   <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                       <label for="HouseNumber" class="lavel house-number">House Number</label>
                                                                                                                               </div> -->
-                                      <div style="margin-bottom: 20px;" class="input-container">
-                                          <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
-                                          <label for="areaSector" class="lavel area-sector">Area /Address</label>
-                                      </div>
-                                      <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
-                                      <div class="address-check">
-                                          <input type="checkbox" name="addressCheck" id="addressCheck">
-                                          <label for="addressCheck">Billing and delivery address same.</label>
-                                      </div>
-
-                                  </div>
-                              </div>
-                              <div class="contactFooter" onclick="orderList()">
-                                  <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
-                                  <button type="" class="ProceedBtn">Submit Order</button>
-                              </div>
-                          </div>
+                      <div style="margin-bottom: 20px;" class="input-container">
+                        <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
+                        <label for="areaSector" class="lavel area-sector">Area /Address</label>
                       </div>
+                      <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
+                      <div class="address-check">
+                        <input type="checkbox" name="addressCheck" id="addressCheck">
+                        <label for="addressCheck">Billing and delivery address same.</label>
+                      </div>
+
+                    </div>
                   </div>
-
-                  <div class="rightSection" id="phone_1st">
-                      <h4 style="text-decoration: ;">Total Amount</h4>
-                      <hr style="color:white!important">
-
-                      <div class="itemContainer">
-                          <div class="addItem addCard">
-
-                              <div class="addCardText">
-                                  <div class="mb-3"> Subtotal: 00.00 TK</div>
-                                  <div class="mb-3"> Delivery: 00 TK</div>
-                                  <!-- <div class="mb-3"> Discount: 10%</div> -->
-                              </div>
-                          </div>
-
-                      </div>
-                      <div class="totalPrice">
-                          <span>Total:</span>
-                          <span id="total_amount">00.00 <span>&#2547;</span></span>
-                      </div>
+                  <div class="contactFooter" onclick="orderList()">
+                    <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
+                    <button type="" class="ProceedBtn">Submit Order</button>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rightSection" id="phone_1st">
+              <h4 style="text-decoration: ;">Total Amount</h4>
+              <hr style="color:white!important">
+
+              <div class="itemContainer">
+                <div class="addItem addCard">
+
+                  <div class="addCardText">
+                    <div class="mb-3"> Subtotal: 00.00 TK</div>
+                    <div class="mb-3"> Delivery: 00 TK</div>
+                    <!-- <div class="mb-3"> Discount: 10%</div> -->
+                  </div>
+                </div>
 
               </div>
-          </div>
-      </div>
-  </div>
+              <div class="totalPrice">
+                <span>Total:</span>
+                <span id="total_amount">00.00 <span>&#2547;</span></span>
+              </div>
+            </div>
 
-</div>
-<!-- checkout  modal end-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- checkout  modal end-->
 
   <!--Start Back To Top Button-->
   <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>

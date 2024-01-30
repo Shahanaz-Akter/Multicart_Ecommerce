@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const bodyParser = require('body-parser');
 const models = require('../models');
+
 const Logout = async (req, res) => {
     // Clear the session
     req.session.destroy((err) => {
@@ -40,7 +41,6 @@ const userView = async (req, res) => {
     // console.log(typeof (bn));
 
     let bannerImageArray = [];
-
     // if (banner && banner.banner_image) {
     //     try {
     //         bannerImageArray = JSON.parse(banner.banner_image);
@@ -54,11 +54,14 @@ const userView = async (req, res) => {
     // console.log(typeof (bn));
     // console.log("Array: ", bannerImageArray);
 
-
     res.render('user/index.ejs', { products, logo_img, banner, locals: { session: req.session } });
 }
 const aboutUs = async (req, res) => {
-    res.render('user/about_us.ejs', { locals: { session: req.session } });
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+    res.render('user/about_us.ejs', { logo_img, locals: { session: req.session } });
 }
 const productDetails = async (req, res) => {
     res.render('user/product_details.ejs', { locals: { session: req.session } });
@@ -72,7 +75,11 @@ const category = async (req, res) => {
 }
 const Login = async (req, res) => {
     let error = req.query.error;
-    res.render('user/authentication_login.ejs', { error, locals: { session: req.session } });
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+    res.render('user/authentication_login.ejs', { logo_img, error, locals: { session: req.session } });
 }
 
 
@@ -96,7 +103,11 @@ const postLogin = async (req, res) => {
 }
 
 const register = async (req, res) => {
-    res.render('user/authentication_register.ejs', { locals: { session: req.session } });
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+    res.render('user/authentication_register.ejs', { logo_img, locals: { session: req.session } });
 }
 
 const postReview = async (req, res) => {
@@ -124,6 +135,10 @@ const postReview = async (req, res) => {
 
 const menBoysCategory = async (req, res) => {
     let products = await models.Product.findAll();
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
 
     try {
         let single_product = await models.Product.findAll({
@@ -133,7 +148,7 @@ const menBoysCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/menboys_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/menboys_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -143,7 +158,10 @@ const menBoysCategory = async (req, res) => {
 
 const womensCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
     try {
         let single_product = await models.Product.findAll({
             where: {
@@ -152,7 +170,7 @@ const womensCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/womengirls_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/womengirls_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -163,7 +181,10 @@ const womensCategory = async (req, res) => {
 }
 const homeGadgetsCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
     try {
         let single_product = await models.Product.findAll({
             where: {
@@ -172,7 +193,7 @@ const homeGadgetsCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/homegadgets_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/homegadgets_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
     catch (err) {
         console.log('Error Fetching Products: ', err);
@@ -182,7 +203,10 @@ const homeGadgetsCategory = async (req, res) => {
 }
 const kitchenDiningCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
     try {
         let single_product = await models.Product.findAll({
             where: {
@@ -191,7 +215,7 @@ const kitchenDiningCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/kitchendining_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/kitchendining_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -202,7 +226,10 @@ const kitchenDiningCategory = async (req, res) => {
 }
 const healthBeautyCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
     try {
         let single_product = await models.Product.findAll({
             where: {
@@ -211,7 +238,7 @@ const healthBeautyCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/healthbeauty_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/healthbeauty_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -222,7 +249,10 @@ const healthBeautyCategory = async (req, res) => {
 }
 const babyKidsCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
     try {
         let single_product = await models.Product.findAll({
             where: {
@@ -231,7 +261,7 @@ const babyKidsCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/babykids_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/babykids_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -242,7 +272,10 @@ const babyKidsCategory = async (req, res) => {
 }
 const shaverTrimmerCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
 
     try {
         let single_product = await models.Product.findAll({
@@ -252,7 +285,7 @@ const shaverTrimmerCategory = async (req, res) => {
         });
         let le = single_product.length;
         // console.log("bbbb", single_product, le);
-        res.render('user/shavertrimmer_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/shavertrimmer_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -263,7 +296,10 @@ const shaverTrimmerCategory = async (req, res) => {
 }
 const electronicsCategory = async (req, res) => {
     let products = await models.Product.findAll();
-
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
     try {
         let single_product = await models.Product.findAll({
             where: {
@@ -271,7 +307,7 @@ const electronicsCategory = async (req, res) => {
             }
         });
         let le = single_product.length;
-        res.render('user/electronics_category.ejs', { record: single_product, locals: { session: req.session }, products });
+        res.render('user/electronics_category.ejs', { logo_img, record: single_product, locals: { session: req.session }, products });
     }
 
     catch (err) {
@@ -323,7 +359,27 @@ const post_checkout = async (req, res) => {
         console.log(err);
     }
 }
+
+
+const shop = async (req, res) => {
+
+    try {
+        let products = await models.Product.findAll();
+        let logo_img = await models.Crm.findOne({
+            order: [['createdAt', 'DESC']],
+            raw: true,
+        });
+        console.log(logo_img);
+        res.render('user/shop.ejs', { products, logo_img, locals: { session: req.session } });
+    }
+
+    catch (err) {
+        console.log('Error Fetching Products: ', err);
+
+    }
+    // res.render('user/shop.ejs', { locals: { session: req.session } });
+}
 module.exports = {
-    Logout, userView, aboutUs, productDetails, cart, category, Login, register, postReview, post_checkout, postLogin, menBoysCategory,
+    shop, Logout, userView, aboutUs, productDetails, cart, category, Login, register, postReview, post_checkout, postLogin, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory,
 }

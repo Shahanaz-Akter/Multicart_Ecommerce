@@ -707,13 +707,22 @@
     <!--start top header-->
     <header class="top-header">
         <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-            <a class="navbar-brand d-none d-xl-inline" href="/"><img src="/front_assets/img/logo.webp" class="logo-img" alt=""></a>
+            <a class="navbar-brand d-none d-xl-inline" href="/">
+                <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+                <%if(logo_img !=null){%>
+                    <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                    <%}%>
+            </a>
             <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                 <i class="bi bi-list"></i>
             </a>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
                 <div class="offcanvas-header">
-                    <div class="offcanvas-logo"><img src="/front_assets/img/logo.webp" class="logo-img" alt="">
+                    <div class="offcanvas-logo">
+                        <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+                        <%if(logo_img !=null){%>
+                            <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                            <%}%>
                     </div>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
@@ -723,9 +732,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop">Shop</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                                Shop
+                                Category
                             </a>
                             <div class="dropdown-menu dropdown-large-menu">
                                 <div class="row">
@@ -1851,11 +1864,14 @@
             <div class="row row-cols-1 row-cols-lg-4 g-4">
                 <div class="col">
                     <div class="footer-widget-6">
-                        <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt="">
-                        <h5 class="mb-3 fw-bold">About Us</h5>
-                        <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+                        <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
+                        <%if(logo_img !=null){%>
+                            <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                            <%}%>
+                                <h5 class="mb-3 fw-bold">About Us</h5>
+                                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
 
-                        <a class="link-dark" href="javascript:;">Read More</a>
+                                <a class="link-dark" href="javascript:;">Read More</a>
                     </div>
                 </div>
                 <div class="col">
