@@ -1119,7 +1119,7 @@
                                                 <!-- <p>*All Image size should be 300/300.</p> -->
                                                 <img class="" src="<%=record.category_image%>" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
                                                 <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
-                                                <input required type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
+                                                <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
                                             </div>
                                         </div>
 
@@ -1175,6 +1175,7 @@
                                                 <div class="s-i-c-2">
                                                     <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
                                                     <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" value="" onchange="secondary_image_changed(this,null)" multiple>
+                                                    <input class="d-none" type="text" value="[]" name="deleted_secondary_img" id="deleted_secondary_img">
                                                 </div>
                                             </div>
 
@@ -1619,9 +1620,6 @@
                     <!-- App js -->
                     <script src="/assets/js/app.min.js"></script>
 
-
-
-
                     <!-- add_product tableBody external js -->
                     <script>
                         // const { functions } = require("lodash");
@@ -1989,9 +1987,23 @@
                         // });
 
                         const removeSecondaryImg = (tag) => {
+                            let deleted_secondary_img = document.querySelector('#deleted_secondary_img');
+                            let img_array = JSON.parse(deleted_secondary_img.value);
+                            console.log(img_array);
                             let parentImgContainer = tag.parentNode.parentNode;
                             let imge_cotainer = tag.parentNode;
-                            parentImgContainer.removeChild(imge_cotainer);
+                            // parentImgContainer.removeChild(imge_cotainer);
+
+                            console.log(tag.parentNode);
+                            let pp = tag.parentNode
+                            let background = window.getComputedStyle(pp);
+                            const backgroundImageUrl = background.backgroundImage;
+                            const imageUrl = backgroundImageUrl.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+                            console.log(imageUrl);
+
+                            img_array.push(imageUrl);
+                            deleted_secondary_img.setAttribute('value', JSON.stringify(img_array));
+                            console.log(img_array);
                         };
 
                         const secondary_image_changed = (tag, ind) => {

@@ -460,7 +460,7 @@
         }
 
         .menu {
-            list - style: none;
+            list-style: none;
             padding: 0.2em 0.5em;
             background: #f2f2f2;
             border: 1px solid #363a43;
@@ -2631,7 +2631,7 @@
                 </div>
 
                 <!-- Access the cart data in your EJS file -->
-                <div class="d-flex align-items-center justify-content-around mt-3 text-dark">
+                <div class="d-flex align-items-center justify-content-around mt-3 text-dark bg-light p-3">
                     <span>Product Image</span>
                     <span>Name</span>
                     <span>Quantity</span>
@@ -2640,39 +2640,68 @@
                     <span>Action</span>
                 </div>
 
+
+                <!-- <table>
+                    <thead class="mt-3">
+
+                        <th class="text-dark text-center">Product Image</th>
+                        <th class="text-dark text-center">Name</th>
+                        <th class="text-dark text-center">Quantity</th>
+                        <th class="text-dark text-center">Price</th>
+                        <th class="text-dark text-center">Total</th>
+                        <th class="text-dark text-center">Action</th>
+                    </thead>
+                    <tbody>
+                        <td></td>
+
+                    </tbody>
+
+                </table> -->
+
                 <% const cart=locals.session.cart || []; %>
                     <% if (cart.length> 0) { %>
                         <!--If cart is not empty, render each product -->
                         <% cart.forEach(product=> { %>
-                            <div class="d-flex align-items-center gap-3 mt-3" id="productcartContainer_<%=product.id%>">
-                                <div class="bottom-product-img">
+                            <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
+
+                                <div class="bottom-product-img ms-4 mb-3">
                                     <a href="/product_details">
                                         <img src="<%= product.primary_image %>" width="60" alt="<%= product.name %>">
                                     </a>
                                 </div>
-                                <div class="">
+                                <div class="ms-4 mb-3">
                                     <h6 class="mb-0 fw-light mb-1">
-                                        <%= product.name %>
+                                        <span>
+                                            <%= product.name %>
+
+                                        </span>
                                     </h6>
                                     <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
                                 </div>
 
-                                <div class="d-flex justify-center md:w-1/5  mr-2">
+                                <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
                                     <span onclick="change_quantity_value('plus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
                                     <span class="quantity-counter p-2" id="input">
                                         <%= product.quantity %>
                                     </span>
                                     <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
                                 </div>
-                                <div>
-                                    <%= product.selling_price %>
+                                <div class="ms-3 mb-3">
+                                    <span>
+                                        <%= product.selling_price %>
+                                    </span>
+
                                 </div>
-                                <div id="total_<%= product.id%>">
-                                    T- <%= product.total %>TK
+                                <div class="ms-3 mb-3" id="total_<%= product.id%>">
+                                    <span>
+                                        <%= product.total %> TK
+                                    </span>
+
                                 </div>
-                                <div class="ms-auto fs-5">
+                                <div class="fs-5 me-2 mb-3">
                                     <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
                                 </div>
+
                             </div>
                             <hr>
                             <% }); %>
@@ -2692,7 +2721,7 @@
     <!--end right cart-->
 
     <!-- checkout  modal -->
-    <div class="offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+    <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
         <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
         <div class="offcanvas-header bg-section-2">
             <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
@@ -2740,7 +2769,6 @@
                                         </div>
                                         <div class="inputInformation">
                                             <div class="phone-container">
-                                                <!-- customer_name, mobile, dob, country, address, zip_code, date, otp_num, email -->
                                                 <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input">
                                                 <label for="phone" class="lavel phone-lavel">Phone Number</label>
                                                 <div class="setCodeDropdown">
@@ -2778,7 +2806,7 @@
                                                     <!-- <span>left site</span> -->
                                                     <div class="checkoutDropdown">
                                                         <div class="select" id="textColoSet">
-                                                            <input class="d-none" type="text" id="delivery_charge" name="delivery_charge">
+                                                            <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
                                                             <span class="mimi22">Select</span>
                                                             <div class="caret"></div>
                                                         </div>

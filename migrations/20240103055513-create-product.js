@@ -30,15 +30,15 @@ module.exports = {
       },
       primary_image: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       category_image: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       secondary_image: {
         type: Sequelize.STRING(5000),
-        allowNull: false,
+        allowNull: true,
       },
       product_type: {
         type: Sequelize.STRING,

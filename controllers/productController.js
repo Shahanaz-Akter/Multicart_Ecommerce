@@ -206,29 +206,37 @@ const example = async (req, res) => {
 
 
 const postEditProduct = async (req, res) => {
+
+    const { name, buying_price, selling_price, price, discount, product_category, primary_image, secondary_image, description, product_type, colorVariants, sizeVariants, total_qty, date, quantitys,
+        deleted_secondary_img } = req.body;
     let id = req.params.id;
+
+    console.log(name, buying_price, selling_price, discount, product_category, primary_image, secondary_image, description, product_type, colorVariants, sizeVariants, total_qty, date, quantitys,
+        deleted_secondary_img);
+
     let record = await models.Product.findOne({
         where: {
             'id': id
         }
     });
-    await record.update({
-        'name': req.body.name,
-        'buying_price': req.body.buying_price,
-        'selling_price': req.body.selling_price,
-        'discount': req.body.discount,
-        'product_category': req.body.product_category,
-        'primary_image': '',
-        'secondary_image': '',
-        'description': req.body.description,
-        'product_type': req.body.product_type,
-        'colorVariants': '',
-        'sizeVariants': '',
-        'total_qty': req.body.total_qty,
-        'product_code': Math.floor(Math.random() * 1000) + 1,
-        'date': req.body.date,
-        'quantitys': req.body.quantitys,
-    });
+
+    // await record.update({
+    //     'name': name,
+    //     'buying_price': buying_price,
+    //     'selling_price': selling_price,
+    //     'discount': discount,
+    //     'product_category': product_category,
+    //     'primary_image': '',
+    //     'secondary_image': '',
+    //     'description': description,
+    //     'product_type': product_type,
+    //     'colorVariants': '',
+    //     'sizeVariants': '',
+    //     'total_qty': total_qty,
+    //     'product_code': Math.floor(Math.random() * 1000) + 1,
+    //     'date': date,
+    //     'quantitys': quantitys,
+    // });
     // console.log(record);
     res.redirect('/product/product_list');
 }

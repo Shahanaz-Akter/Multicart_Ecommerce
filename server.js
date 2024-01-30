@@ -55,7 +55,7 @@
 //20240123101230-create-order.js
 // sequelize db:migrate:undo (last migrate file will be removed only) or sequelize db:migrate:undo --name migration-file-name
 //sequelize db:migrate:undo:all all will be undo
-// sequelize db:migrate:undo --name 20240101064209-create-customer.js  specific undo migrate
+// sequelize db:migrate:undo --name 20240103055513-create-product.js  specific undo migrate
 //sequelize migration:generate --name add-extra-field-to-customer add one field in db and i need to manually replace the models fields name
 // 20240103055513-create-product
 //control + c for stop server

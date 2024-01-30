@@ -51,66 +51,67 @@ const add_cart_product = async (product_id) => {
 
                 const mainParent = document.createElement('div');
                 mainParent.setAttribute('id', `productcartContainer_${response.data.record.id}`);
-                mainParent.classList.add('d-flex', 'align-items-center', 'justify-content-around', 'm-1');
+                // <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
+
+                mainParent.classList.add('d-flex', 'align-items-center', 'gap-3', 'justify-content-around', 'mt-3');
 
                 // parent 1
                 const p1 = document.createElement('div');
-                p1.classList.add('bottom-product-img');
+                p1.classList.add('bottom-product-img', 'ms-4', 'mb-3');
                 const aTag = document.createElement('a');
                 aTag.setAttribute('href', '/product_details');
                 const img = document.createElement('img');
                 img.src = response.data.record.primary_image;
                 img.width = '60';
                 // img.classList.add('text', 'center');
-                img.alt = 'Not Available';
+                img.alt = `${response.data.record.name}`;
                 aTag.appendChild(img);
                 p1.appendChild(aTag);
                 // console.log(p1);
 
                 const p2 = document.createElement('div');
+                p2.classList.add('ms-4', 'mb-3');
                 const h6Tag = document.createElement('h6');
                 h6Tag.classList.add('mb-0', 'fw-light', 'mb-1');
-                const pTag = document.createElement('p');
-                pTag.classList.add('mb-0');
 
-                pTag.innerHTML = `<strong>${response.data.record.name}</strong>`; //৳
+                h6Tag.innerHTML = `<span>${response.data.record.name}</span>`; //৳
                 p2.appendChild(h6Tag);
-                p2.appendChild(pTag);
 
                 // parent 3
                 const p3 = document.createElement('div');
-                p3.classList.add('flex', 'justify-center', 'md:w-1/5', 'mr-2');
+                p3.classList.add('flex', 'justify-center', 'md:w-1/5', 'mr-2', 'mb-3', 'ms-3');
                 p3.innerHTML = ` 
         <span onclick="change_quantity_value('plus',${response.data.record.id} , this)" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
       <span class="quantity-counter p-2">1</span>
       <span onclick="change_quantity_value('minus',${response.data.record.id}, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
         `;
-                p3.classList.add('text', 'center');
-
 
                 // parent 4
                 const p4 = document.createElement('div');
-                p4.innerHTML = `<strong>${response.data.record.selling_price}</strong>`;
+                p4.classList.add('ms-3', 'mb-3');
+                p4.innerHTML = `<span>${response.data.record.selling_price}</span>`;
 
                 // parent 5
                 const p5 = document.createElement('div');
-                p5.innerHTML = `<strong id="total_${response.data.record.id}">Total- ${response.data.record.selling_price}</strong>`;
+                p5.classList.add('ms-3', 'mb-3');
+                p5.innerHTML = `<span id="total_${response.data.record.id}">${response.data.record.selling_price} TK</span>`;
 
                 // parent 6
                 const p6 = document.createElement('div');
-                p6.classList.add('ms-auto', 'fs-5');
+                p6.classList.add('me-2', 'fs-5', "mb-3");
                 p6.innerHTML = `<span onclick="deleteSessionProduct(${response.data.record.id})" class="link-dark"> <i class="bi bi-trash"></i></ span> `;
 
                 const hrTag = document.createElement('hr');
+                hrTag.setAttribute('id', `hr_for_${response.data.record.id}`);
                 mainParent.appendChild(p1);
                 mainParent.appendChild(p2);
                 mainParent.appendChild(p3);
                 mainParent.appendChild(p4);
                 mainParent.appendChild(p5);
                 mainParent.appendChild(p6);
-                mainParent.appendChild(hrTag);
 
                 mainCart.appendChild(mainParent);
+                mainCart.appendChild(hrTag);
                 console.log(mainCart);
             }
             else {
@@ -146,8 +147,11 @@ const setDeliveryCharge = (price) => {
 }
 
 // orderlist js
-const orderList = () => {
-    // console.log('hello');
+const orderList = async () => {
+
+    let none_modal = document.querySelector('.none_modal');
+    var modal = bootstrap.Offcanvas.getInstance(none_modal)
+
     let phone = document.querySelector('#mobile').value;
     let email = document.querySelector('#email').value;
     let fullName = document.querySelector('#fullName').value;
@@ -155,21 +159,29 @@ const orderList = () => {
     let areaSector = document.querySelector('#areaSector').value;
     let addressCheck = document.querySelector('#addressCheck').value;
     console.log(phone, email, fullName, delivery_charge, areaSector, addressCheck, subT);
-    let orderResponse = axios.post('/post_checkout', { phone, email, fullName, delivery_charge, areaSector, addressCheck, subT })
+    let orderResponse = await axios.post('/post_checkout', { phone, email, fullName, delivery_charge, areaSector, addressCheck, subT });
+
+    if (orderResponse) {
+        // console.log('hello');
+        modal.hide();
+    }
+
 }
 
 // delete session js
 const deleteSessionProduct = async (id) => {
     console.log(id);
     let container = document.querySelector(`#productcartContainer_${id}`);
+    let hr = document.querySelector(`#hr_for_${id}`);
     let response = await axios.post('/delete_session_product', { id });
     if (response.data.success == true) {
         container.remove();
+        hr.remove();
+        // container.parentNode.
     }
 }
 
 // for quantiy incremnet decrement
-
 const change_quantity_value = async (reason, id, tag) => {
 
     const response = await axios.post('/product/product_increment', { product_id: id, reason: reason });
