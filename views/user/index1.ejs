@@ -20,7 +20,7 @@
   <link href="/front_assets/css/style.css" rel="stylesheet">
   <link href="/front_assets/css/dark-theme.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Product Details</title>
+  <title>Landing Page</title>
   <style>
     * {
       box-sizing: border-box;
@@ -64,7 +64,7 @@
       /* background: linear-gradient(#146fb6, #633693); */
       /* background-image: url("../../front_assets/img/checkout_1.png"); */
       /* background-color: #146fb6; */
-      background - color: #4B5563;
+      background-color: #4B5563;
 
       /* background-size: cover; */
       margin: 10% auto;
@@ -92,13 +92,22 @@
 
     .backContent {
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr;
+      display: flex;
+      /* display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            grid-template-rows: 1fr; */
+    }
+
+    .leftSection {
+      flex: 1;
+    }
+
+    .rightSection {
+      flex: 1;
     }
 
     .contactContainer {
-      background - color: white;
+      background-color: white;
       margin-top: -82px;
       border-radius: 17px;
     }
@@ -109,14 +118,18 @@
       align-items: center;
       padding: 10px 18px;
       /* background: linear-gradient(#146fb6, #633693); */
-      background: #4B5563;
+      background: #146FB6;
       color: white;
       border-top-left-radius: 17px;
       border-top-right-radius: 17px;
     }
 
+    .active {
+      font-weight: 100 !important;
+    }
+
     .contactContainer .contactHead .headTitle {
-      font - size: 25px;
+      font-size: 25px;
       font-weight: 600;
     }
 
@@ -134,14 +147,14 @@
     }
 
     .bodyHead .userIcon {
-      background - color: #f4f3f8;
+      background-color: #f4f3f8;
       padding: 2px;
       border-radius: 50%;
       font-size: 25px;
     }
 
     .bodyHead .text {
-      padding - left: 5px;
+      padding-left: 5px;
       font-weight: 600;
     }
 
@@ -154,7 +167,7 @@
     .phone-container .lavel {
       position: absolute;
       left: 10px;
-      top: 7px;
+      /* top: 7px; */
       transition: all 0.2s;
       padding: 5px 2px 0 80px;
       z-index: 1;
@@ -163,7 +176,7 @@
 
     .phone-container .text-input {
       /* padding: 0.8rem; */
-      padding: 16px 16px 16px 80px;
+      /* padding: 16px 16px 16px 80px; */
       width: 100%;
       height: 50px;
       border: 2px solid #146FB6;
@@ -204,16 +217,10 @@
       top: -18px;
     }
 
-    .text-input::placeholder {
-      font - size: 16px;
-      opacity: 0;
-      transition: all 0.3s;
-    }
 
-    .text-input:focus::placeholder {
-      opacity: 1;
-      animation-delay: 0.2s;
-    }
+
+
+
 
     /* css for country code dropdown menue  */
 
@@ -233,7 +240,7 @@
     }
 
     .phoneDropdown * {
-      box - sizing: border-box;
+      box-sizing: border-box;
     }
 
     .countrySelect {
@@ -281,7 +288,7 @@
     }
 
     .countryMenu {
-      list - style: none;
+      list-style: none;
       padding: 0.2em 0.5em;
       background: #f2f2f2;
       border: 1px solid #363a43;
@@ -388,15 +395,11 @@
                                                 top: -10px;
 } */
     .text-input::placeholder {
-      font - size: 16px;
-      opacity: 0;
+      font-size: 16px;
+
       transition: all 0.3s;
     }
 
-    .text-input:focus::placeholder {
-      opacity: 1;
-      animation-delay: 0.2s;
-    }
 
     .text-input:focus+.full-name::after {
       content: "*";
@@ -416,7 +419,7 @@
     }
 
     .checkoutDropdown * {
-      box - sizing: border-box;
+      box-sizing: border-box;
     }
 
     .select {
@@ -460,7 +463,7 @@
     }
 
     .menu {
-      list - style: none;
+      list-style: none;
       padding: 0.2em 0.5em;
       background: #f2f2f2;
       border: 1px solid #363a43;
@@ -507,7 +510,7 @@
 
     .itemContainer {
       height: 320px;
-      overflow-y: scroll;
+      /* overflow-y: scroll; */
       margin-bottom: 30px;
     }
 
@@ -526,12 +529,12 @@
     }
 
     .addCardImg img {
-      border - radius: 5px;
+      border-radius: 5px;
       max-width: 100px;
     }
 
     .addCardText {
-      padding - left: 10px;
+      padding-left: 10px;
     }
 
     .addCardText {
@@ -582,23 +585,23 @@
     }
 
     .address-check {
-      margin - top: 8px;
+      margin-top: 8px;
     }
 
     .address-check input {
-      accent - color: #3e68af;
+      accent-color: #3e68af;
       width: 12px;
       height: 12px;
       transform: scale(1.5);
     }
 
     .address-check label {
-      margin - left: 8px;
+      margin-left: 8px;
       font-size: 16px;
     }
 
     .contactFooter {
-      background - color: white;
+      background-color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -625,45 +628,109 @@
       color: white;
     }
 
+
+
+    /* @media only screen and (min-width: 1301px) {
+            .desktop_right {
+                display: none !important;
+            }
+        } */
+
+
     @media only screen and (max-width: 1300px) {
 
       /* CSS rules for large screens */
-      .modal - contentCheckout {
+      .modal-contentCheckout {
         width: 70%;
       }
+
+
     }
 
     @media only screen and (max-width: 1150px) {
 
       /* CSS rules for large screens */
-      .modal - contentCheckout {
+      .modal-contentCheckout {
         width: 85%;
         margin: 15% auto;
       }
+
+
     }
 
     @media only screen and (max-width: 800px) {
-      .modal - contentCheckout {
+      .modal-contentCheckout {
         width: 90%;
         margin: 20% auto;
       }
+
+
     }
 
     @media only screen and (max-width: 800px) {
-      .modal - contentCheckout {
+      .modal-contentCheckout {
         width: 90%;
         margin: 20% auto;
+      }
+
+      .desktop_right {
+        display: none !important;
       }
     }
 
     @media only screen and (max-width: 750px) {
-      .modal - contentCheckout {
-        overflow - y: scroll;
+
+
+      .contactContainer .contactHead {
+        background: #146FB6 !important;
+      }
+
+      .modal-contentCheckout {
+        margin: 0px !important;
+      }
+
+      .cart-list {
+        width: 100vw;
+        margin: 0px !important;
+        padding: 0 !important;
+        left: 0;
+      }
+
+
+
+      .modal-contentCheckout {
+        /* overflow-y: scroll; */
+        height: auto;
         padding: 10px;
       }
 
+      .itemContainer {
+        height: auto;
+      }
+
+      .mobile-checkout-title {
+        display: block !important;
+        margin-bottom: 8px;
+      }
+
+      .desktop-checkout-title {
+        display: none !important;
+      }
+
+      .contactBody {
+        border-radius: 8px;
+      }
+
+      .rightSection {
+        padding: 0;
+      }
+
+      .leftSection {
+        margin-top: 10px;
+      }
+
       .backContent {
-        display: block;
+        flex-direction: column-reverse;
       }
 
       .contactBody {
@@ -671,21 +738,24 @@
       }
 
       .contactContainer {
-        margin - top: 0;
+        margin-top: 0;
       }
 
       .contactBody {
-        overflow - y: visible;
-        height: 630px;
+        overflow-y: visible;
+        height: auto;
       }
 
       .address-check label {
-        margin - left: 8px;
+        margin-left: 8px;
         font-size: 15px;
       }
 
       .contactContainer .contactHead {
-        background: linear-gradient(#633693, #146fb6);
+
+        /* background: linear-gradient(#633693, #146fb6); */
+        background: #146fb6;
+
       }
 
       .setCodeDropdown {
@@ -812,9 +882,12 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/shop">Shop</a>
+                  </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                      Shop
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="/shop" data-bs-toggle="dropdown">
+                      Category
                     </a>
                     <div class="dropdown-menu dropdown-large-menu">
                       <div class="row">
@@ -954,7 +1027,7 @@
                 <a class="nav-link" href="/login"><i class="bi bi-person"></i></a>
               </li>
 
-              <li class="nav-item d-none d-md-block">
+              <li class="nav-item d-none d-md-none">
                 <a class="nav-link lowercase" href="/logout">SessionOut</a>
               </li>
             </ul>
@@ -1028,7 +1101,9 @@
                       color: white;
                     }
                   </style>
-                  <a onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
+                  <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
+
+                  <a onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3" id="liveToastBtn"></i></a>
                   <a href="" data-bs-toggle="modal" data-bs-target="#plusIconModal_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
                   <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
                 </div>
@@ -1643,7 +1718,7 @@
 
                           <a href="/product/product_details/<%=product.id%>">
                             <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
-                              <!-- <img src="/front_assets/img/best-sellar/01.webp" class="card-img-top" alt="..."> -->
+
                             </div>
                           </a>
                         </div>
@@ -1813,7 +1888,6 @@
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 
                   <%products.forEach(product=>{ %>
-
                     <div class="col">
                       <div class="card">
                         <div class="position-relative overflow-hidden">
@@ -1826,7 +1900,6 @@
                           </div>
                           <a href="/product/product_details/<%=product.id%>">
                             <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
-                              <!-- <img src="/front_assets/img/trending-product/01.webp" class="card-img-top" alt="..."> -->
                             </div>
                           </a>
                         </div>
@@ -1861,7 +1934,7 @@
                                 <div class="wrap-modal-slider">
 
                                   <div class="slider-for">
-                                    <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
+                                    <%let secondaryImageArray=JSON.parse(product.secondary_image);%>
                                       <%if(Array.isArray(secondaryImageArray)){%>
                                         <% secondaryImageArray.forEach(images=> {%>
                                           <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
@@ -2186,7 +2259,6 @@
           </div>
         </section>
         <!--end tabular product-->
-
 
         <!--start features-->
         <section class="product-thumb-slider section-padding">
@@ -2623,7 +2695,7 @@
 
   <!--right cart-->
   <div class="offcanvas offcanvas-end cart_modal" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header bg-section-2">
+    <div class="offcanvas-header bg-section-2 ">
       <h5 class="mb-0 fw-bold cartCount" id="offcanvasRightLabel"></h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
@@ -2634,10 +2706,8 @@
         </div>
 
         <!-- Access the cart data in your EJS file -->
-        <div class="d-flex align-items-center justify-content-around mt-3 text-dark">
-          <span>
-            Image
-          </span>
+        <div class="d-flex align-items-center justify-content-around mt-3 text-dark bg-light p-3">
+          <span>Product Image</span>
           <span>Name</span>
           <span>Quantity</span>
           <span>Price</span>
@@ -2645,74 +2715,78 @@
           <span>Action</span>
         </div>
 
+
+        <!-- <table>
+                    <thead class="mt-3">
+
+                        <th class="text-dark text-center">Product Image</th>
+                        <th class="text-dark text-center">Name</th>
+                        <th class="text-dark text-center">Quantity</th>
+                        <th class="text-dark text-center">Price</th>
+                        <th class="text-dark text-center">Total</th>
+                        <th class="text-dark text-center">Action</th>
+                    </thead>
+                    <tbody>
+                        <td></td>
+
+                    </tbody>
+
+                </table> -->
+
         <% const cart=locals.session.cart || []; %>
           <% if (cart.length> 0) { %>
-            < !--If cart is not empty, render each product -->
-              <% cart.forEach(product=> { %>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                  <div class="bottom-product-img">
-                    <a href="/product_details">
-                      <img src="<%= product.image %>" width="60" alt="<%= product.name %>">
-                    </a>
-                  </div>
-                  <div class="">
-                    <h6 class="mb-0 fw-light mb-1">
-                      <%= product.name %>
-                    </h6>
-                    <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
-                  </div>
+            <!--If cart is not empty, render each product -->
+            <% cart.forEach(product=> { %>
+              <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
 
-                  <div class="d-flex justify-center md:w-1/5 mr-2">
-                    <a href="" class="px-3 py-2 font-bold border hover:border-gray-800" id="increment">+</a>
-                    <span class="quantity-counter p-2" id="input">1</span>
-                    <a href="" class="px-3 py-2 font-bold border hover:border-gray-800" id="decrement">-</a>
-                  </div>
-
-                  <div class="ms-auto fs-5">
-                    <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-                  </div>
+                <div class="bottom-product-img ms-4 mb-3">
+                  <a href="/product_details">
+                    <img src="<%= product.primary_image %>" width="60" alt="<%= product.name %>">
+                  </a>
                 </div>
-                <hr>
-                <% }); %>
-                  <% } else { %>
-                    <!-- If cart is empty, display a message or alternative content -->
-                    <p></p>
-                    <% } %>
+                <div class="ms-4 mb-3">
+                  <h6 class="mb-0 fw-light mb-1">
+                    <span>
+                      <%= product.name %>
 
-                      <!-- <div class="flex justify-center md:w-1/5 mr-2 mt-4">
-          <a href="" class="px-3 py-2 font-bold border hover:border-gray-800">+</a>
-          <span class="quantity-counter p-2">1</span>
-          <a href="" class="px-3 py-2 font-bold border hover:border-gray-800">-</a>
-        </div> -->
-                      <!-- ekhane kaj -->
-                      <!-- <div class="d-flex align-items-center gap-3">
+                    </span>
+                  </h6>
+                  <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
+                </div>
 
-          <div class="bottom-product-img">
-            <a href="/product_details">
-              <img src="/front_assets/img/new-arrival/01.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X ৳59.00</strong>
-            </p>
-          </div>
-          <div class="parent">
-            <div class="">
-              <button id="decrement"><i class="fas fa-minus"></i></button>
-              <input type="number" id="input" readonly value="1">
-              <button id="increment"><i class="fas fa-plus"></i></button>
-            </div>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr> -->
+                <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
+                  <span onclick="change_quantity_value('plus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
+                  <span class="quantity-counter p-2" id="input">
+                    <%= product.quantity %>
+                  </span>
+                  <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+                </div>
+                <div class="ms-3 mb-3">
+                  <span>
+                    <%= product.selling_price %>
+                  </span>
 
+                </div>
+                <div class="ms-3 mb-3" id="total_<%= product.id%>">
+                  <span>
+                    <%= product.total %> TK
+                  </span>
+
+                </div>
+                <div class="fs-5 me-2 mb-3">
+                  <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
+                </div>
+
+              </div>
+              <hr id="hr_for_<%= product.id%>">
+              <% }); %>
+                <% } else { %>
+                  <!-- If cart is empty, display a message or alternative content -->
+                  <p></p>
+                  <% } %>
       </div>
     </div>
-    <div class="offcanvas-footer p-3 border-top">
+    <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
       <div class="d-grid">
         <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
       </div>
@@ -2721,11 +2795,10 @@
   </div>
   <!--end right cart-->
 
-
   <!-- checkout  modal -->
-  <div class="offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+  <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
     <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-    <div class="offcanvas-header bg-section-2">
+    <div class="offcanvas-header bg-section-2 d-none">
       <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
     </div>
 
@@ -2750,11 +2823,11 @@
                   }
 
                   .offcanvas-header {
-                    border - bottom: #146FB6;
+                    border-bottom: #146FB6;
                   }
                 </style>
 
-                <div class="contactHead d-flex justify-content-between">
+                <div class="contactHead d-flex justify-content-between desktop-checkout-title">
                   <span class="headTitle">Checkout</span>
                   <div class="offcanvas-header bg-section-0">
                     <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
@@ -2763,7 +2836,7 @@
                   <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
                   <!-- <span class="checkoutClose">&times;</span> -->
                 </div>
-                <form action="/post_checkout" method="post">
+                <div>
                   <div class="contactBody">
                     <div class="bodyHead" id="createScroll">
                       <span class="userIcon"> <i class='bx bx-user'></i></span>
@@ -2771,15 +2844,12 @@
                     </div>
                     <div class="inputInformation">
                       <div class="phone-container">
-                        <!-- customer_name, mobile, dob, country, address, zip_code, date, otp_num, email -->
-                        <input type="text" name="mobile" id="phone" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input">
-                        <label for="phone" class="lavel phone-lavel">Phone Number</label>
+                        <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
+                        <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
                         <div class="setCodeDropdown">
                           <div class="phoneDropdown">
-                            <div class="countrySelect">
-                              <span class="countrySelected">+880</span>
-                              <div class="countryCaret"></div>
-                            </div>
+
+
                             <!-- <ul class="countryMenu">
                                                                                                                                                         <li class="active">+91</li>
                                                                                                                                                         <li>+880</li>
@@ -2802,23 +2872,25 @@
                         <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
                         <label for="fullName" class="lavel full-name">Full Name</label>
                       </div>
+
+
                       <div class="input_dropdown">
                         <div>
                           <!-- <span>left site</span> -->
                           <div class="checkoutDropdown">
                             <div class="select" id="textColoSet">
-                              <input class="d-none" type="text" id="delivery_charge" name="delivery_charge">
+                              <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
                               <span class="mimi22">Select</span>
                               <div class="caret"></div>
                             </div>
 
                             <ul class="menu">
-                              <li id="city1" class="active">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
+                              <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
                               </li>
-                              <li id="city2" class="active">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
+                              <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
                               <!-- <li>Noakhali</li>
-                                                                                                                                                    <li>Comilla</li>
-                                                                                                                                                    <li>Uttara</li> -->
+                                                                                                                                                <li>Comilla</li>
+                                                                                                                                                <li>Uttara</li> -->
                             </ul>
                           </div>
                         </div>
@@ -2846,15 +2918,38 @@
 
                     </div>
                   </div>
-                  <div class="contactFooter">
+                  <div class="contactFooter" onclick="orderList()">
                     <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
-                    <button type="submit" class="ProceedBtn">Submit Order</button>
+                    <button type="" class="ProceedBtn">Submit Order</button>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
 
-            <div class="rightSection" id="phone_1st">
+            <div class="rightSection " id="phone_1st">
+              <div class="contactContainer mobile-checkout-title" style="display: none;">
+                <style>
+                  .btn-close {
+                    color: white !important;
+                    opacity: unset;
+                  }
+
+                  .offcanvas-header {
+                    border-bottom: #146FB6;
+                  }
+                </style>
+
+                <div class="contactHead d-flex justify-content-between ">
+                  <span class="headTitle">Checkout</span>
+                  <div class="offcanvas-header bg-section-0">
+                    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                  <!-- <span class="checkoutClose">&times;</span> -->
+                </div>
+              </div>
+
               <h4 style="text-decoration: ;">Total Amount</h4>
               <hr style="color:white!important">
 
@@ -2862,24 +2957,44 @@
                 <div class="addItem addCard">
 
                   <div class="addCardText">
-                    <div class="mb-3"> Subtotal: 2500 TK</div>
-                    <div class="mb-3"> Delivery: 60 TK</div>
-                    <div class="mb-3"> Discount: 10%</div>
+                    <div class="mb-3"> Subtotal: 00.00 TK</div>
+                    <div class="mb-3"> Delivery: 00 TK</div>
+                    <!-- <div class="mb-3"> Discount: 10%</div> -->
                   </div>
                 </div>
 
               </div>
               <div class="totalPrice">
                 <span>Total:</span>
-                <span>3,000 <span>&#2547;</span></span>
+                <span id="total_amount">00.00 <span>&#2547;</span></span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
 
   </div>
+  <!-- checkout  modal end-->
+
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <!-- <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Product</strong>
+                <small>1 seconds ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div> -->
+      <div class="toast-body fw-bold" style="background: #d1e7dd;">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+
+        <span class="ms-2">Product Added Successfully...</span>
+      </div>
+    </div>
+  </div>
+
+
 
   <!--Start Back To Top Button-->
   <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -2892,8 +3007,27 @@
   <script src="/front_assets/js/main.js"></script>
   <script src="/front_assets/js/index.js"></script>
   <script src="/front_assets/js/loader.js"></script>
-  <script src="../../front_assets/js/axios_post.js"></script>
+  <script>
 
+    // var cartData = '<%= JSON.stringify(locals.session) %>';
+    // console.log(cartData);
+    // Add more session variables as needed
+  </script>
+  <script src="../../front_assets/js/axios_post.js"></script>
+  <script>
+    // // for quantiy incremnet decrement
+
+    // const change_quantity_value = async (reason, id, tag) => {
+
+    //     const response = await axios.post('/product/product_increment', { product_id: id, reason: reason });
+    //     // console.log(tag.parentNode);
+
+    //     tag.parentNode.children[1].innerHTML = await response.data.qty;
+    //     let total_holder = document.querySelector(`#total_${id}`);
+    //     total_holder.innerHTML = "T- " + await response.data.total + 'TK';
+    //     console.log(response);
+    // }
+  </script>
   <!--  checkout js-->
   <script>
 
@@ -2933,6 +3067,7 @@
       let mimi22 = dropdown.querySelector(".mimi22");
 
       select.addEventListener("click", () => {
+
         select.classList.toggle("select-clicked");
         caret.classList.toggle("caret-rotate");
         menu.classList.toggle("menu-open");
@@ -3054,6 +3189,45 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- add product to the cart dynamically -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- 
+    <script>
+        const orderList = () => {
+            // console.log('hello');
+            let phone = document.querySelector('#mobile').value;
+            let email = document.querySelector('#email').value;
+            let fullName = document.querySelector('#fullName').value;
+            let delivery_charge = document.querySelector('#delivery_charge').value;
+            let areaSector = document.querySelector('#areaSector').value;
+            let addressCheck = document.querySelector('#addressCheck').value;
+            console.log(phone, email, fullName, delivery_charge, areaSector, addressCheck, subT);
+            let orderResponse = axios.post('/post_checkout', { phone, email, fullName, delivery_charge, areaSector, addressCheck, subT })
+        }
+    </script> -->
+
+  <!-- <script>
+        const deleteSessionProduct = async (id) => {
+            console.log(id);
+            let container = document.querySelector(`#productcartContainer_${id}`);
+            let response = await axios.post('/delete_session_product', { id });
+            if (response.data.success == true) {
+                container.remove();
+            }
+        }
+    </script> -->
+
+
+  <script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+      toastTrigger.addEventListener('click', () => {
+        const toast = new bootstrap.Toast(toastLiveExample)
+
+        toast.show()
+      })
+    }
+  </script>
 </body>
 
 </html>

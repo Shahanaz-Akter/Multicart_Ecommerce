@@ -4,8 +4,6 @@ const router = express.Router();
 const { shop, Logout, userView, aboutUs, productDetails, cart, category, Login, postLogin, register, postReview, post_checkout, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory } = require('../controllers/userController');
 
-
-
 router.get('/ses', (req, res) => {
     res.send(req.session.cart);
 });
@@ -65,7 +63,6 @@ router.post('/delete_session_product', async (req, res) => {
     })
 
 });
-
 
 
 router.get('/', userView);

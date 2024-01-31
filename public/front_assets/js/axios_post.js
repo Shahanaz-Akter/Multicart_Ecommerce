@@ -151,20 +151,40 @@ const setDeliveryCharge = (price) => {
     document.querySelector('.totalPrice').children[1].innerHTML = `${t} ৳`;
 }
 
-// orderlist js
-const orderList = async () => {
+// Orderlist JS
 
+const orderList = async () => {
     let none_modal = document.querySelector('.none_modal');
     var modal = bootstrap.Offcanvas.getInstance(none_modal)
 
     let phone = document.querySelector('#mobile').value;
+
+    // console.log('bbb: ', phone);
+    if(phone.length!==11){
+        alert('Required 11 Digits Phone Number');
+        return 
+    }
+    
     let email = document.querySelector('#email').value;
+    // Validate email format
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Enter a Valid Email Address');
+        return;
+    }
     let fullName = document.querySelector('#fullName').value;
     let delivery_charge = document.querySelector('#delivery_charge').value;
+    console.log(delivery_charge);
+    // 01836549237
+    if(!(delivery_charge)){
+        alert('Enter Delivery Charge');
+        return
+     }
+    // console.log('delivery charge ', deliver_charge);
     let areaSector = document.querySelector('#areaSector').value;
     let addressCheck = document.querySelector('#addressCheck').value;
-    console.log(phone, email, fullName, delivery_charge, areaSector, addressCheck, subT);
-    let orderResponse = await axios.post('/post_checkout', { phone, email, fullName, delivery_charge, areaSector, addressCheck, subT });
+    // console.log(phone, email, fullName, delivery_charge, areaSector, addressCheck, subT);
+    let orderResponse = await axios.post('/post_checkout', { phone, email, fullName, deliver_charge, areaSector, addressCheck, subT });
 
     if (orderResponse) {
         // console.log('hello');
