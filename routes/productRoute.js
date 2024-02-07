@@ -10,7 +10,7 @@ router.get('/add_product', addProduct);
 router.post('/post_add_product', upload.fields([
     { name: 'primary_image', maxCount: 1 },
     { name: 'category_image', maxCount: 1 },
-    { name: 'secondary_image', maxCount: Infinity }, // Assuming you want to upload up to 5 secondary images
+    { name: 'secondary_image', maxCount: Infinity },
 
 ]), postAddProduct);
 
