@@ -986,20 +986,20 @@
 
                                 <div class="row">
 
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-6 row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-6 row mb-3">
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Product Name</label>
                                                 <input type="text" class="form-control" placeholder="HP Elite Book" name="name" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label class="" style="">Product Category</label>
+                                                <label class="" style="">Product_Category</label>
                                                 <div class=" position-relative single-contact-info productName" style="margin-top: 7px">
-                                                    <input required type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;">
+                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;">
                                                     <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1000" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Mens and Boys Fashion</div>
                                                         <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Womens and Girls Fashion</div>
@@ -1018,7 +1018,7 @@
 
 
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label class="" style="">Product Types</label>
                                                 <div class="position-relative single-contact-info productName" style="margin-top: 7px">
@@ -1035,66 +1035,75 @@
 
 
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Buying Price</label>
-                                                <input type="number" class="form-control" placeholder="1" name="buying_price">
+                                                <input required type="number" class="form-control" placeholder="1" name="buying_price">
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Selling Price</label>
-                                                <input type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
+                                                <input required type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
 
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Discount</label>
                                                 <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <label for="date" class="form-label">Date</label>
-                                            <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
+                                            <!-- <input class="form-control custom-date-input" value="" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min=""> -->
+                                            <input class="form-control custom-date-input" value="" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
                                         </div>
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <script>
+                                            // Get the current date
+                                            let currenDate = new Date();
+
+                                            // Format the date as YYYY-MM-DD (required format for input type="date")
+                                            let formattedDate = currenDate.toISOString().split('T')[0];
+
+                                            // Set the value of the input field
+                                            document.getElementById('date').value = formattedDate;
+
+                                        </script>
+
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Total Quantity</label>
                                                 <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Price</label>
                                                 <input type="number" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                                <label>Old Price</label>
+                                                <input type="number" class="form-control" placeholder="700" name="old_price" onkeypress="return event.keyCode != 13;">
+                                            </div>
+                                        </div>
 
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="main-img-container mt-2">
                                                 <!-- <p>*All Image size should be 300/300.</p> -->
                                                 <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
                                                 <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
                                                 <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
                                             </div>
-                                            <% if (error3) { %>
-                                                <p class="text-danger">
-                                                    <%= error3 %>
-                                                </p>
-                                                <% } %>
-                                        </div>
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Old Price</label>
-                                                <input type="number" class="form-control" placeholder="700" name="old_price" onkeypress="return event.keyCode != 13;">
-                                            </div>
+
                                         </div>
 
 
@@ -1129,11 +1138,7 @@
                                                 <div class="s-i-c-2">
                                                     <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
                                                     <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
-                                                    <% if (error2) { %>
-                                                        <p class="text-danger mt-2">
-                                                            <%= error2 %>
-                                                        </p>
-                                                        <% } %>
+
                                                 </div>
 
                                             </div>
@@ -1464,7 +1469,7 @@
                                         <div class="col-12 col-md-12 col-xl-6 col-lg-6">
                                             <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">
                                                 <label>Description</label>
-                                                <textarea name="description" class="form-control" cols="10" rows="7" value="">Product Description...</textarea>
+                                                <textarea name="description" class="form-control" cols="10" rows="7" value=""></textarea>
                                             </div>
                                         </div>
                                         <!-- <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">

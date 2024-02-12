@@ -23,7 +23,7 @@
 
 //npm init -y or npm init->package.json  // initialize a new Node.js project using npm init
 //npm install ->package-lock.json
-//npm install express ejs express-ejs-layouts 
+//npm install express ejs express-ejs-layouts
 //npm install multer for uploading image on node js with any database
 
 //npm install mongodb
@@ -39,17 +39,17 @@
 //npm install axios  for installing otp axios package and have to import it on the top of the file
 
 //npm install --save sequelize for talking database
-//npm install --g sequelize cli globally installed in your node js project 
+//npm install --g sequelize cli globally installed in your node js project
 // after using this command have to add this piece of code in package.json file
 // "scripts": {
 //     "sequelize": "sequelize"
-//   }" 
+//   }"
 
 //npm install --g sequelize cli
 //npm run sequelize init for creating mode, migrations, config and seeds folder
 
 //creating model with migrtaions structure
-//sequelize db:migrate connect to the db migrate 
+//sequelize db:migrate connect to the db migrate
 
 // 20240103055513-create-product.js
 //20240123101230-create-order.js

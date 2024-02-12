@@ -11,6 +11,8 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: true,
+
       },
       buying_price: {
         type: Sequelize.DOUBLE,
@@ -26,11 +28,11 @@ module.exports = {
       },
       product_category: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       primary_image: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       category_image: {
         type: Sequelize.STRING,
@@ -42,28 +44,42 @@ module.exports = {
       },
       product_type: {
         type: Sequelize.STRING,
+        allowNull: true,
+
       },
       description: {
         type: Sequelize.STRING,
+        allowNull: true,
+
 
       },
       colorVariants: {
         type: Sequelize.STRING(1000),
+        allowNull: true,
+
 
       },
       sizeVariants: {
         type: Sequelize.STRING(1000),
+        allowNull: true,
+
       },
       total_qty: {
         type: Sequelize.INTEGER,
+        allowNull: true,
+
 
       },
       product_code: {
         type: Sequelize.INTEGER,
+        allowNull: true,
+
         // allowNull: false,
       },
       date: {
         type: Sequelize.STRING,
+        allowNull: true,
+
       },
       quantitys: {
         type: Sequelize.STRING(1000),
@@ -71,10 +87,14 @@ module.exports = {
       },
       price: {
         type: Sequelize.DOUBLE,
+        allowNull: true,
+
 
       },
       old_price: {
         type: Sequelize.DOUBLE,
+        allowNull: true,
+
       },
       createdAt: {
         allowNull: false,

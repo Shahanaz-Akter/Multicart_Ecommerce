@@ -8,7 +8,7 @@ const addProduct = async (req, res) => {
     let error3 = req.query.error3;
     // console.log(error1);
 
-    res.render('product/add_product.ejs', { error1, error2, error3 });
+    res.render('product/add_product.ejs', { error1 });
 };
 
 const postAddProduct = async (req, res) => {
@@ -21,17 +21,18 @@ const postAddProduct = async (req, res) => {
         if (!req.files || !req.files['primary_image']) {
             res.redirect(`/product/add_product/?error1=${encodeURIComponent('Primary Image Required')}`);
         }
-
-        if (!req.files || !req.files['secondary_image']) {
-            res.redirect(`/product/add_product/?error2=${encodeURIComponent('Secondary Image Required')}`);
-        }
-        if (!req.files || !req.files['category_image']) {
-            res.redirect(`/product/add_product/?error3=${encodeURIComponent('category Image  Required')}`);
-        }
+        // if (!req.files || !req.files['secondary_image']) {
+        //     res.redirect(`/product/add_product/?error2=${encodeURIComponent('Secondary Image Required')}`);
+        // }
+        // if (!req.files || !req.files['category_image']) {
+        //     res.redirect(`/product/add_product/?error3=${encodeURIComponent('category Image  Required')}`);
+        // }
         // console.log(req.files);
         let secondaryImages = [];
-        for (let i = 0; i < req.files['secondary_image'].length; i++) {
-            secondaryImages.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
+        if (req.files['secondary_image'] != undefined) {
+            for (let i = 0; i < req.files['secondary_image'].length; i++) {
+                secondaryImages.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
+            }
         }
 
         let result = await models.Product.create({
@@ -41,7 +42,7 @@ const postAddProduct = async (req, res) => {
             'discount': req.body.discount,
             'product_category': req.body.product_category,
             'primary_image': '/front_assets/new_img/' + req.files['primary_image'][0].filename,
-            'category_image': '/front_assets/new_img/' + req.files['category_image'][0].filename,
+            'category_image': req.files['category_image'] ? '/front_assets/new_img/' + req.files['category_image'][0].filename : null,
             'secondary_image': JSON.stringify(secondaryImages),
             'description': req.body.description,
             'product_type': req.body.product_type,
