@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Add Product</title>
+    <title>Add Order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -13,6 +13,7 @@
 
     <!-- App favicon --colorVariant-->
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="icon" href="../../front_assets/img/l2.png" type="image/jpg" />
 
     <!-- Plugins css -->
     <link href="/assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
@@ -969,12 +970,12 @@
                         <!-- Start Content-->
                         <div class="bg-white p-3 mb-2" style="border-radius: 5px;">
 
-                            <h4 class="text-black font-bold mb-3">Add Product</h4>
+                            <h4 class="text-black font-bold mb-3">Add Order</h4>
 
                             <div style="color: rgb(97 97 97); margin-right: 0.5rem">
-                                <span>Product</span>
+                                <span>Order</span>
                                 <span>></span>
-                                <span>Add Product</span>
+                                <span>Add Order</span>
                             </div>
                         </div>
 
@@ -982,87 +983,103 @@
                         <div class="container-fluid card" style="padding: 20px;">
 
                             <!-- new Add product code Start  -->
-                            <form action="/product/post_add_product" method="post" enctype="multipart/form-data">
+                            <form action="/order/post_add_order" method="post" enctype="multipart/form-data">
 
                                 <div class="row">
+                                    <span class="text-start">
+                                        <div class="btn btn-warning mb-2 text-white fw-bold">Customer Entry: </div>
+                                    </span>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="customer_name" class="form-label">Customer Name</label>
+                                        <input class="form-control" id="customer_name" type="text" name="customer_name" placeholder="Sahanaz Akter">
+                                    </div>
+
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
+                                        <label for="dob" class="form-label">Date of Birth</label>
+                                        <input class="form-control custom-date-input" id="dob" type="date" name="dob " placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+                                    </div>
+
+                                    <style>
+                                        .select2-container--default .select2-selection--single {
+                                            background: #FCFCFC !important;
+                                            color: #444 !important;
+                                        }
+
+                                        .form-control {
+                                            background: #FCFCFC !important;
+                                            color: #444 !important;
+                                        }
+                                    </style>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="mobile1" class="form-label">Mobile</label>
+                                        <input type="text" id="mobile1" class="form-control" placeholder="00 000 000 000" name="mobile1" style="background: #FCFCFC!important;" required>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" id="email" class="form-control" placeholder="xyx@gmail.com" name="email" style="background: #FCFCFC!important;">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="country" class="form-label">Country</label>
+                                        <input type="text" id="country" class="form-control" placeholder="Dhaka" name="country" style="background: #FCFCFC!important;">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" id="address " class="form-control" placeholder="Halmate Station, NY, USA" name="address" style="background: #FCFCFC!important;">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="zip_code" class="form-label">Zip Code</label>
+                                        <input type="text" id="zip_code " class="form-control" placeholder="9766767" name="zip_code" style="background: #FCFCFC!important;">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
+                                        <label for="dob" class="form-label">Date of Join</label>
+                                        <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
+                                    </div>
+
+
+                                    <span class="text-start">
+                                        <div class="btn btn-danger mb-2 fw-bold">Order Entry: </div>
+                                    </span>
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6 row mb-3">
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Product Name</label>
-                                                <input type="text" class="form-control" placeholder="HP Elite Book" name="name" onkeypress="return event.keyCode != 13;">
+                                                <label for="mobile">Mobile</label>
+                                                <input required type="text" class="form-control" placeholder="019********" name="mobile" onkeypress="return event.keyCode != 13;" id="mobile">
                                             </div>
                                         </div>
-
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label class="" style="">Product_Category</label>
-                                                <div class=" position-relative single-contact-info productName" style="margin-top: 7px">
-                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1000, null)" autocomplete="off" id="contentsTitleInput_1000" name="product_category" onkeypress="return event.keyCode != 13;">
-                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1000" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Mens and Boys Fashion</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Womens and Girls Fashion</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Home and Gadgets</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Kitchen & Dining</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Health & Beauty</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Baby & Kids</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Shaver & Trimmer</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Electronics</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label class="" style="">Product Types</label>
-                                                <div class="position-relative single-contact-info productName" style="margin-top: 7px">
-                                                    <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1001, null)" autocomplete="off" id="contentsTitleInput_1001" name="product_type" onkeypress="return event.keyCode != 13;">
-                                                    <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1001" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Trending</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">New Arrival</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Best Seller</div>
-                                                        <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Special Offer</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
 
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Buying Price</label>
-                                                <input required type="number" class="form-control" placeholder="1" name="buying_price">
+                                                <label for="address">Address</label>
+                                                <input required type="number" class="form-control" placeholder="Barisal" name="address" id="address">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Selling Price</label>
-                                                <input required type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
+                                                <label>Delivery charge</label>
+                                                <input required type="number" class="form-control" placeholder="00" name="delivery_charge" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
-
-
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Discount</label>
-                                                <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;">
+                                                <label for="discount">Discount</label>
+                                                <input type="text" class="form-control" placeholder="0%" name="discount" onkeypress="return event.keyCode != 13;" id="discount">
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                        <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <label for="date" class="form-label">Date</label>
-                                            <!-- <input class="form-control custom-date-input" value="" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min=""> -->
                                             <input class="form-control custom-date-input" value="" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
-                                        </div>
+                                        </div> -->
 
                                         <script>
                                             // Get the current date
@@ -1076,40 +1093,19 @@
 
                                         </script>
 
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Total Quantity</label>
-                                                <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Price</label>
-                                                <input type="number" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;">
-                                            </div>
-                                        </div>
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Old Price</label>
-                                                <input type="number" class="form-control" placeholder="700" name="old_price" onkeypress="return event.keyCode != 13;">
+                                                <label for="sub_total">Sub Total</label>
+                                                <input required type="number" class="form-control" placeholder="00.00" name="sub_total" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
-
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="main-img-container mt-2">
-                                                <!-- <p>*All Image size should be 300/300.</p> -->
-                                                <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
-                                                <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
-                                                <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                                <label for="total_amount">Total Amount</label>
+                                                <input type="text" class="form-control" placeholder="00.00" name="total_amount" onkeypress="return event.keyCode != 13;" id="total_amount">
                                             </div>
-
                                         </div>
-
-
-
-
-
                                     </div>
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6" style="border: 2px solid transparent;">
@@ -1118,15 +1114,11 @@
 
                                                 <div class="main-img-container mt-2">
                                                     <!-- <p>*All Image size should be 300/300.</p> -->
-                                                    <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width:180px;border-radius:5px;"
+                                                    <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Not present" style="width:180px;border-radius:5px;"
                                                         id="main-img-preview">
                                                     <label for="mainImg" class="btn btn-dark mt-2">Set Primary Image</label>
                                                     <input type="file" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
-                                                    <% if (error1) { %>
-                                                        <p class="text-danger mt-1">
-                                                            <%= error1 %>
-                                                        </p>
-                                                        <% } %>
+
                                                 </div>
                                             </div>
 
@@ -1147,341 +1139,6 @@
                                     </div>
                                 </div>
 
-                                <div style="margin-top: 10px;">
-                                    <div class="d-flex justify-content-start">
-                                        <!-- <input type="checkbox" class=""> -->
-
-                                        <input type="checkbox" id="myCheckbox" class="mt-2 ms-2" style=" width: 20px;height: 20px;cursor:pointer;">
-                                        <h3 class="ms-2">Product Variant</h3>
-                                    </div>
-                                </div>
-
-                                <!-- disable product section -->
-                                <section class="enable_div" style="display: none;">
-                                    <div class="" style="margin-top: 0px;">
-
-                                        <div class="row " id="varient_container_">
-
-                                            <!-- color -->
-                                            <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
-                                                <div style="background-color:white; border-radius:5px; padding:10px;">
-                                                    <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="colorVariant">
-                                                        Color
-                                                        <span onclick="this.parentNode.parentNode.parentNode.remove()">
-                                                            <i class="mdi mdi-close" style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
-                                                        </span>
-                                                    </label>
-
-                                                    <div class="position-relative">
-                                                        <ul class="colorInputUL" id="colorInputUL" style=" margin-bottom: 0px;" onclick="showColorDropDown(this)">
-                                                            <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="variantColor" placeholder="Select or write  Color" onkeypress="return event.keyCode != 13;">
-                                                        </ul>
-                                                        <div class="dropdownBox d-none" id="colorDropdownBox" style="height: 200px; overflow-y: auto;">
-                                                            <ul>
-                                                                <li onclick="getValueFronDropDown(this)">Red</li>
-                                                                <li onclick="getValueFronDropDown(this)">Blue</li>
-                                                                <li onclick="getValueFronDropDown(this)">Black</li>
-                                                                <li onclick="getValueFronDropDown(this)">Pink</li>
-                                                                <li onclick="getValueFronDropDown(this)">Yellow</li>
-                                                                <li onclick="getValueFronDropDown(this)">White</li>
-                                                                <li onclick="getValueFronDropDown(this)">Brown</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- size -->
-                                            <div class="col-lg-4 col-md-6 col-sm-12 colorVariantBox mt-3">
-                                                <div style="background-color:white; border-radius:5px; padding:10px;">
-                                                    <label class="varient_label inline-block d-flex justify-content-between align-items-center" for="sizeVariant">Size
-                                                        <span onclick="this.parentNode.parentNode.parentNode.remove()">
-                                                            <i class="mdi mdi-close" style="font-size:20px;color:red;border-radius:50%;cursor:pointer;"></i>
-                                                        </span>
-                                                    </label>
-                                                    <div class="position-relative">
-                                                        <ul class="colorInputUL" id="sizeInputUL" style="margin-bottom: 0px;" onclick="showColorDropDown(this)">
-                                                            <input class="tagIntpus" type="text" name="sizeVariants" spellcheck="false" id="sizeVariant" placeholder="Select or write Size" onkeypress="return event.keyCode != 13;">
-                                                        </ul>
-                                                        <div class="dropdownBox d-none" id="sizedropdownBox" style="height: 200px; overflow-y: auto;">
-                                                            <ul>
-                                                                <li onclick="getValueFronDropDown(this)">SM</li>
-                                                                <li onclick="getValueFronDropDown(this)">LG</li>
-                                                                <li onclick="getValueFronDropDown(this)">MD</li>
-                                                                <li onclick="getValueFronDropDown(this)">XL</li>
-                                                                <li onclick="getValueFronDropDown(this)">XXL</li>
-                                                                <li onclick="getValueFronDropDown(this)">35</li>
-                                                                <li onclick="getValueFronDropDown(this)">36</li>
-                                                                <li onclick="getValueFronDropDown(this)">38</li>
-                                                                <li onclick="getValueFronDropDown(this)">40</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-lg-12 col-md-12 col-sm-12 colorVariantBox mt-3 d-md-flex d-xl-flex d-sm-flex text-center justify-content-start align-items-center">
-                                                <span class="addVarientSpan ms-2 d-none" style="background-color:#2871FF;padding:8px 20px;border-radius:5px;color:white;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#addVarientModal">Add Varient</span>
-
-                                                <div class="populateBtn delete-table-data mt-0 mt-sm-0 ms-2" style="">
-                                                    <span onclick="Populate_variant_table(this, null)">Populate variant table</span>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="modal fade" id="addVarientModal" tabindex="-1" aria-labelledby="addVarientLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title ms-2" id="addVarientLabel">Add Varient</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body" style="padding: 100px;">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <label>Varient Name</label>
-                                                                    <input type="text" class="form-control" id="modal_varient_name" style="padding: 10px 20px;">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 pt-5 colorVariantBox">
-                                                                <label class="varient_label" for="creaateVariant">Varient Attributes</label>
-                                                                <div class="position-relative">
-                                                                    <ul class="colorInputUL" id="addNewVarient" style=" margin-bottom: 0px;" onclick="showVarientBox(this)">
-                                                                        <input class="tagIntpus" type="text" name="colorVariants" spellcheck="false" id="makeVariant" placeholder="Write or Click Here" onkeypress="return event.keyCode != 13;">
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary" onclick="save_varient(this, null)">Save
-                                                            Varient</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <script>
-                                            let ulTag;
-                                            let input;
-                                            let dropdownBox;
-                                            let varientRemove = 0;
-
-                                            let tags = [];
-                                            let colorTags = [];
-                                            let SizeTags = [];
-
-                                            let oldColorDropdown = '';
-                                            let dropdownOldTag = '';
-
-                                            const showColorDropDown = (tag) => {
-                                                dropdownBox = tag.parentNode.children[1];
-                                                ulTag = tag;
-                                                if (oldColorDropdown && !oldColorDropdown.classList.contains('d-none') && dropdownOldTag != tag) {
-                                                    console.log("inside the if conditon ", oldColorDropdown, !oldColorDropdown.classList.contains('d-none'));
-                                                    oldColorDropdown.classList.add('d-none');
-                                                }
-
-                                                input = tag.querySelector("input");
-                                                dropdownBox.classList.toggle("d-none");
-                                                dropdownOldTag = tag;
-                                                oldColorDropdown = dropdownBox;
-                                            }
-                                            const showVarientBox = (tag) => {
-                                                ulTag = tag;
-                                                console.log("remove tag from show varient");
-                                                varientRemove = 1;
-                                                input = tag.querySelector("input");
-                                            }
-
-
-                                            const getValueFronDropDown = (tag) => {
-                                                ulTag = tag.parentNode.parentNode.parentNode.children[0];
-                                                let value = tag.innerText;
-                                                let li = ulTag.children.length
-                                                tags = [];
-                                                if (ulTag.children.length > 1) {
-                                                    ulTag.querySelectorAll("li").forEach(li => {
-                                                        tags.push(li.innerText)
-                                                    });
-                                                }
-                                                tags.push(value);
-                                                createTag(ulTag);
-                                                tag.style.backgroundColor = "#f0f0f0"
-                                                tag.style.color = "#888"
-                                                tag.style.cursor = "not-allowed";
-                                                tag.style.pointerEvents = "none"
-                                                dropdownBox.classList.add("d-none");
-                                            }
-
-
-
-                                            function createTag(ulTag) {
-                                                ulTag.querySelectorAll("li").forEach(li => li.remove());
-                                                tags.slice().reverse().forEach(tag => {
-                                                    let liTag = `<li>${tag} <i class="mdi mdi-close" onclick="remove(this, '${tag}')"></i></li>`;
-                                                    ulTag.insertAdjacentHTML("afterbegin", liTag);
-                                                });
-
-                                            }
-                                            const enableLiTag = (tag, value) => {
-                                                console.log("test space value == ", `"${value}"`);
-                                                let liText = "";
-                                                if (value.endsWith(" ")) {
-                                                    value = value.slice(0, -1);
-                                                }
-                                                console.log("test space liText == ", tag, `'${value}'`);
-                                                let dropdownLi = tag.querySelectorAll("li");
-                                                $(dropdownLi).each(function (index, element) {
-                                                    if (element.innerText.endsWith(" ")) {
-                                                        let elementInnerText = element.innerText.slice(0, -1);
-                                                        if (elementInnerText == value) {
-                                                            element.style.removeProperty("background-color");
-                                                            element.style.removeProperty("color");
-                                                            element.style.removeProperty("cursor");
-                                                            element.style.removeProperty("pointer-events");
-                                                        }
-                                                    }
-                                                    else {
-                                                        if (element.innerText == value) {
-                                                            element.style.removeProperty("background-color");
-                                                            element.style.removeProperty("color");
-                                                            element.style.removeProperty("cursor");
-                                                            element.style.removeProperty("pointer-events");
-
-                                                        }
-                                                    }
-
-
-
-
-                                                })
-                                            }
-
-                                            function remove(element, tag) {
-                                                // if (varientRemove == 1) {
-                                                //     let index  = tags.indexOf(tag);
-                                                //     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-                                                //     element.parentElement.remove();
-                                                //     varientRemove = 0;
-                                                // }
-                                                // else{
-                                                let dropdownUl = element.parentNode.parentNode.parentNode.children[1].children[0];
-                                                enableLiTag(dropdownUl, tag);
-
-                                                let index = tags.indexOf(tag);
-                                                tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-                                                element.parentElement.remove();
-                                                // }
-                                            }
-
-                                            function addTag(e) {
-                                                let inputParent = e.target.parentNode;
-                                                let allInput = inputParent.querySelectorAll("input")
-                                                for (let i = 0; i < allInput.length; i++) {
-                                                    if (allInput[i].classList.contains('tagIntpus')) {
-                                                        if (e.key == "Enter" || e.keyCode == 32) {
-                                                            if (dropdownBox) {
-                                                                dropdownBox.classList.add("d-none");
-                                                            }
-
-                                                            tags = [];
-
-
-                                                            let tag = e.target.value.replace(/\s+/g, ' ');
-                                                            let allText = e.target.value.replace(/\s+/g, ' ');
-                                                            if (tag.length > 1 && !tags.includes(tag)) {
-                                                                console.log("tag tag ", ulTag);
-                                                                if (tags.length < 10) {
-                                                                    if (ulTag.children.length > 1) {
-                                                                        ulTag.querySelectorAll("li").forEach(li => {
-                                                                            li = li.innerText.split(" ")
-                                                                            tags.push(li[0])
-                                                                        });
-                                                                    }
-                                                                    tag.split(',' || " ").forEach(tag => {
-
-                                                                        tag = tag.split(' ');
-                                                                        if (!tags.includes(tag[0])) {
-                                                                            tags.push(tag[0])
-                                                                        }
-
-                                                                        else {
-                                                                            e.target.value = "";
-                                                                        }
-                                                                        console.log("log from split = ", tags, tag);
-                                                                        createTag(ulTag);
-                                                                    });
-                                                                }
-                                                            }
-                                                            e.target.value = "";
-                                                        }
-                                                    }
-
-                                                }
-                                            }
-                                            document.addEventListener("keyup", addTag)
-                                        </script>
-
-                                    </div>
-
-                                    <!-- product variant -->
-                                    <div class="ms-2">
-                                        <div class="newVariantTable" style="margin: 30px 0 30px 0;">
-                                            <div class="d-flex justify-content-between ">
-                                                <!-- <h3>Product Variant</h3> -->
-                                            </div>
-
-                                            <p>Please Provide all information correctly to manage your products with
-                                                our inventory service.
-                                            </p>
-
-                                            <div class="table-responsive h-auto" data-simplebar style="padding: 0px;">
-                                                <table id="ddssrr" style="table-layout: fixed;">
-
-                                                    <thead class="tableHead" id="tableHead" style="">
-                                                        <tr style="height: 60px;" id="tableHeadTr">
-                                                            <th class="varient_table_label" style="border-top-left-radius: 10px">Color</th>
-                                                            <th class="varient_table_label">Size</th>
-                                                            <th>Quantity</th>
-                                                            <th style="border-top-right-radius: 10px">Actions</th>
-                                                        </tr>
-
-                                                    </thead>
-
-                                                    <tbody id="product_table">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </section>
-
-                                <div id="table_content_container" class="newVariantTable TableOfContents" style="">
-                                    <div class="row mt-2 mb-2">
-                                        <div class="col-12 col-md-12 col-xl-6 col-lg-6">
-                                            <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">
-                                                <label>Description</label>
-                                                <textarea name="description" class="form-control" cols="10" rows="7" value=""></textarea>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">
-                                            <div class="form-group" style="background-color: white; border-radius :5px; padding:20px">
-                                                <label>Additional Information</label>
-                                                <textarea name="additional_information" class="form-control" cols="40" rows="7" value="Additional Information..........."></textarea>
-                                            </div>
-                                        </div> -->
-                                    </div>
-
-
-                                </div>
 
                                 <div class="ms-3" style="display: flex; justify-content: left;">
                                     <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">

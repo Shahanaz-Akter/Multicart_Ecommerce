@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="/front_assets/img/favicon-32x32.jpg" type="image/jpg" />
+    <!-- <link rel="icon" href="/front_assets/img/favicon-32x32.jpg" type="image/jpg" /> -->
+    <link rel="icon" href="../../front_assets/img/l2.png" type="image/jpg" />
 
     <!-- CSS files -->
     <link href="/front_assets/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +24,14 @@
     <title>Health and Beauty Category</title>
     <!-- css checkout -->
     <link href="/front_assets/css/checkout.css" rel="stylesheet">
-
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: poppins, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -1338,8 +1346,14 @@
                                 <div class="ms-4 mb-3">
                                     <h6 class="mb-0 fw-light mb-1">
                                         <span>
-                                            <%= product.name %>
-
+                                            <% const maxWords=2;%>
+                                                <% const words=product.name.split(' '); %>
+                                                                                            <%const numWords = words.length;%>
+                                                                                            <%console.log(numWords)%>
+                                        
+                                                                                            <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                                                            <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                                                           <%= numWords < maxWords ? truncatedName : truncatedName + ' ..' %>
                                         </span>
                                     </h6>
                                     <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->

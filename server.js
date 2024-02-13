@@ -111,6 +111,8 @@ app.use('/product', require('./routes/productRoute'));
 app.use('/expense', require('./routes/expenseRoute'));
 app.use('/customer', require('./routes/customerRoute'));
 app.use('/report', require('./routes/reportRoute'));
+app.use('/order', require('./routes/orderRoute'));
+
 // app.use('/admin', require('./routes/adminRoute'));
 
 // const connectDB = require('./db_config/db');

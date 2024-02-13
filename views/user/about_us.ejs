@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--favicon-->
-  <link rel="icon" href="images/favicon-32x32.webp" type="image/webp" />
+  <link rel="icon" href="../../front_assets/img/l2.png" type="image/jpg" />
   <!-- CSS files -->
   <link href="/front_assets/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
@@ -550,8 +550,14 @@
                 <div class="ms-4 mb-3">
                   <h6 class="mb-0 fw-light mb-1">
                     <span>
-                      <%= product.name %>
-
+                      <% const maxWords=2;%>
+                        <% const words=product.name.split(' '); %>
+                                                                        <%const numWords = words.length;%>
+                                                                        <%console.log(numWords)%>
+                    
+                                                                        <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                                        <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                                       <%= numWords < maxWords ? truncatedName : truncatedName + ' ..' %>
                     </span>
                   </h6>
                   <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->

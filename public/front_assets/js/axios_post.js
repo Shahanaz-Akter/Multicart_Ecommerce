@@ -78,8 +78,32 @@ const add_cart_product = async (product_id) => {
                 p2.classList.add('ms-4', 'mb-3');
                 const h6Tag = document.createElement('h6');
                 h6Tag.classList.add('mb-0', 'fw-light', 'mb-1');
+                // <span>
+                //     <% const maxWords=2;%>
+                //     <% const words=product.name.split(' '); %>
+                //     <%const numWords = words.length;%>
+                //     <%console.log(numWords)%>
 
-                h6Tag.innerHTML = `<span>${response.data.record.name}</span>`; //৳
+                //     <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                //     <% const remainingText = words.slice(maxWords).join(' ');%>
+                //     <%= numWords < maxWords ? truncatedName : truncatedName + ' ..' %>
+                // </span>
+
+                const maxWords = 2;
+                const words = response.data.record.name.split(' ');
+                const numWords = words.length;
+                // console.log(numWords);
+
+                const truncatedName = words.slice(0, maxWords).join(' ');
+                numWords < maxWords ? h6Tag.innerHTML = `<span>${truncatedName}..</span>` : h6Tag.innerHTML = `<span>${truncatedName}</span>` + ' ..'
+
+                // if (numWords > maxWords) {
+                //     h6Tag.innerHTML = `<span>${truncatedName}..</span>`;
+                // }
+                // else {
+                //     h6Tag.innerHTML = `<span>${truncatedName}</span>`;
+                // }
+
                 p2.appendChild(h6Tag);
 
                 // parent 3
@@ -160,11 +184,11 @@ const orderList = async () => {
     let phone = document.querySelector('#mobile').value;
 
     // console.log('bbb: ', phone);
-    if(phone.length!==11){
+    if (phone.length !== 11) {
         alert('Required 11 Digits Phone Number');
-        return 
+        return
     }
-    
+
     let email = document.querySelector('#email').value;
     // Validate email format
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -176,10 +200,10 @@ const orderList = async () => {
     let delivery_charge = document.querySelector('#delivery_charge').value;
     console.log(delivery_charge);
     // 01836549237
-    if(!(delivery_charge)){
+    if (!(delivery_charge)) {
         alert('Enter Delivery Charge');
         return
-     }
+    }
     // console.log('delivery charge ', deliver_charge);
     let areaSector = document.querySelector('#areaSector').value;
     let addressCheck = document.querySelector('#addressCheck').value;
