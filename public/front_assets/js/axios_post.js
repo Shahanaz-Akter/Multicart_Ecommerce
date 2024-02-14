@@ -15,14 +15,14 @@ const add_cart_product = async (product_id) => {
 
         // Send a POST request to the server
         const response = await axios.post('/product/post_cart_product', { product_id });
-        console.log('Response data: ', response.data.add_on_html);
-        console.log('Response cart: ', response.data.cart);
+        // console.log('Response data: ', response.data.add_on_html);
+        // console.log('Response cart: ', response.data.cart);
 
         // Check if the request was successful
         if (await response.status === 200) {
             console.log('Data sent successfully');
             const cartList = document.getElementById('cartList');
-            console.log('gggg: ', response.data.record);
+            // console.log('gggg: ', response.data.record);
 
             console.log('Sessions Products:', response.data.cart);
 
@@ -78,21 +78,10 @@ const add_cart_product = async (product_id) => {
                 p2.classList.add('ms-4', 'mb-3');
                 const h6Tag = document.createElement('h6');
                 h6Tag.classList.add('mb-0', 'fw-light', 'mb-1');
-                // <span>
-                //     <% const maxWords=2;%>
-                //     <% const words=product.name.split(' '); %>
-                //     <%const numWords = words.length;%>
-                //     <%console.log(numWords)%>
-
-                //     <% const truncatedName = words.slice(0, maxWords).join(' ');%>
-                //     <% const remainingText = words.slice(maxWords).join(' ');%>
-                //     <%= numWords < maxWords ? truncatedName : truncatedName + ' ..' %>
-                // </span>
 
                 const maxWords = 2;
                 const words = response.data.record.name.split(' ');
                 const numWords = words.length;
-                // console.log(numWords);
 
                 const truncatedName = words.slice(0, maxWords).join(' ');
                 numWords < maxWords ? h6Tag.innerHTML = `<span>${truncatedName}..</span>` : h6Tag.innerHTML = `<span>${truncatedName}</span>` + ' ..'
@@ -141,7 +130,7 @@ const add_cart_product = async (product_id) => {
 
                 mainCart.appendChild(mainParent);
                 mainCart.appendChild(hrTag);
-                console.log(mainCart);
+                // console.log(mainCart);
             }
             else {
                 console.log('Failed to send data:', response.statusText);
@@ -169,7 +158,7 @@ const calculate_subtotal = async () => {
 }
 
 const setDeliveryCharge = (price) => {
-    deliver_charge = price
+    deliver_charge = price;
     document.querySelector('.addCardText').children[1].innerHTML = `Delivery: ${price} TK`;
     let t = subT + deliver_charge;
     document.querySelector('.totalPrice').children[1].innerHTML = `${t} ৳`;

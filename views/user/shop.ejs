@@ -263,7 +263,14 @@
                                         <div class="card-body">
                                             <div class="product-info text-center">
                                                 <h6 class="mb-1 fw-bold product-name">
-                                                    <%=product.name%>
+                                                    <% const maxWords=2;%>
+                                                        <% const words=product.name.split(' '); %>
+                                                                                                    <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                                                                    <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                                                                    <%= truncatedName %>
+                                                                                                    <%if(remainingText){%>
+                                                                                                    <%= truncatedName %>..
+                                                                                                        <%}%>
                                                 </h6>
                                                 <div class="ratings mb-1 h6">
                                                     <i class="bi bi-star-fill text-warning"></i>
@@ -294,362 +301,367 @@
                                                                 <%const secondaryImageArray=JSON.parse(product.secondary_image);%>
                                                                     <%if(Array.isArray(secondaryImageArray)){%>
                                                                         <% secondaryImageArray.forEach(images=> {%>
-                                                                            <!-- <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                            <div>
-                                                                                <img src="<%=images%>" alt="" class="img-fluid">
-                                                                            </div>
-                                                                            <%});%>
+                                                                            <!-- <div class="" style="background: url(' <%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                            <div>
+                                                                <img src="<%=images%>" alt="" class="img-fluid">
+                                                            </div>
+                                                            <%});%>
 
-                                                                                <%}else { %>
-                                                                                    <p>No secondary Images Available.</p>
-                                                                                    <% }%>
+                                                                <%}else { %>
+                                                                    <p>No secondary Images Available.</p>
+                                                                    <% }%>
 
+                                            </div>
+
+                                            <div class="slider-nav mt-3">
+
+                                                <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
+                                                    <%if(Array.isArray(secondaryImageArray1)){%>
+                                                        <% secondaryImageArray.forEach(img=> {%>
+                                                            <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                            <div>
+                                                                <img src="<%=img%>" alt="" class="img-fluid">
                                                             </div>
 
-                                                            <div class="slider-nav mt-3">
+                                                            <%});%>
 
-                                                                <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
-                                                                    <%if(Array.isArray(secondaryImageArray1)){%>
-                                                                        <% secondaryImageArray.forEach(img=> {%>
-                                                                            <!-- <div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                                            <div>
-                                                                                <img src="<%=img%>" alt="" class="img-fluid">
-                                                                            </div>
+                                                                <%}else { %>
+                                                                    <p>No secondary Images Available.</p>
+                                                                    <% }%>
+                                            </div>
 
-                                                                            <%});%>
+                                        </div>
 
-                                                                                <%}else { %>
-                                                                                    <p>No secondary Images Available.</p>
-                                                                                    <% }%>
-                                                            </div>
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <div class="product-info">
+                                            <h4 class="product-title fw-bold mb-1">
+                                                <%=product.name%>
+                                            </h4>
+                                            <p class="mb-0">Women Pink & Off-White Printed Kurta with Palazzos</p>
+                                            <div class="product-rating">
+                                                <div class="hstack gap-2 border p-1 mt-3 width-content">
+                                                    <div><span class="rating-number">4.8</span><i class="bi bi-star-fill ms-1 text-success"></i></div>
+                                                    <div class="vr"></div>
+                                                    <div>162 Ratings</div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="product-price d-flex align-items-center gap-3">
+                                                <div class="h4 fw-bold">৳<%=product.selling_price%>
+                                                </div>
+                                                <div class="h5 fw-light text-muted text-decoration-line-through">৳2089</div>
+                                                <div class="h4 fw-bold text-danger">(<%=product.discount%>% off)</div>
+                                            </div>
+                                            <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
 
-                                                        </div>
+                                            <div class="more-colors mt-3">
+                                                <h6 class="fw-bold mb-3">More Colors</h6>
+                                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                    <div class="color-box bg-red"></div>
+                                                    <div class="color-box bg-primary"></div>
+                                                    <div class="color-box bg-yellow"></div>
+                                                    <div class="color-box bg-purple"></div>
+                                                    <div class="color-box bg-green"></div>
+                                                </div>
+                                            </div>
 
+                                            <div class="size-chart mt-3">
+                                                <h6 class="fw-bold mb-3">Select Size</h6>
+                                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                    <div class="">
+                                                        <button type="button" class="rounded-0">XS</button>
                                                     </div>
-                                                    <div class="col-12 col-xl-6">
-                                                        <div class="product-info">
-                                                            <h4 class="product-title fw-bold mb-1">
-                                                                <%=product.name%>
-                                                            </h4>
-                                                            <p class="mb-0">Women Pink & Off-White Printed Kurta with Palazzos</p>
-                                                            <div class="product-rating">
-                                                                <div class="hstack gap-2 border p-1 mt-3 width-content">
-                                                                    <div><span class="rating-number">4.8</span><i class="bi bi-star-fill ms-1 text-success"></i></div>
-                                                                    <div class="vr"></div>
-                                                                    <div>162 Ratings</div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <div class="product-price d-flex align-items-center gap-3">
-                                                                <div class="h4 fw-bold">৳<%=product.selling_price%>
-                                                                </div>
-                                                                <div class="h5 fw-light text-muted text-decoration-line-through">৳2089</div>
-                                                                <div class="h4 fw-bold text-danger">(<%=product.discount%>% off)</div>
-                                                            </div>
-                                                            <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
-
-                                                            <div class="more-colors mt-3">
-                                                                <h6 class="fw-bold mb-3">More Colors</h6>
-                                                                <div class="d-flex align-items-center gap-2 flex-wrap">
-                                                                    <div class="color-box bg-red"></div>
-                                                                    <div class="color-box bg-primary"></div>
-                                                                    <div class="color-box bg-yellow"></div>
-                                                                    <div class="color-box bg-purple"></div>
-                                                                    <div class="color-box bg-green"></div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="size-chart mt-3">
-                                                                <h6 class="fw-bold mb-3">Select Size</h6>
-                                                                <div class="d-flex align-items-center gap-2 flex-wrap">
-                                                                    <div class="">
-                                                                        <button type="button" class="rounded-0">XS</button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="rounded-0">S</button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="rounded-0">M</button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="rounded-0">L</button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="rounded-0">XL</button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="rounded-0">XXL</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-buttons mt-3">
-                                                                <div class="buttons d-flex flex-column gap-3 mt-4">
-                                                                    <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
-                                                                    <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
-                                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
-                                                                </div>
-                                                            </div>
-                                                            <hr class="my-3">
-                                                            <div class="product-share">
-                                                                <h6 class="fw-bold mb-3">Share This Product</h6>
-                                                                <div class="d-flex align-items-center gap-2 flex-wrap">
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-twitter"><i class="bi bi-twitter"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-facebook"><i class="bi bi-facebook"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-linkden"><i class="bi bi-linkedin"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-youtube"><i class="bi bi-youtube"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-pinterest"><i class="bi bi-pinterest"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
+                                                    <div class="">
+                                                        <button type="button" class="rounded-0">S</button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="rounded-0">M</button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="rounded-0">L</button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="rounded-0">XL</button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="rounded-0">XXL</button>
                                                     </div>
                                                 </div>
-                                                <!--end row-->
+                                            </div>
+                                            <div class="cart-buttons mt-3">
+                                                <div class="buttons d-flex flex-column gap-3 mt-4">
+                                                    <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
+                                                    <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
+                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                                </div>
+                                            </div>
+                                            <hr class="my-3">
+                                            <div class="product-share">
+                                                <h6 class="fw-bold mb-3">Share This Product</h6>
+                                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                    <div class="">
+                                                        <button type="button" class="btn-social bg-twitter"><i class="bi bi-twitter"></i></button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="btn-social bg-facebook"><i class="bi bi-facebook"></i></button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="btn-social bg-linkden"><i class="bi bi-linkedin"></i></button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="btn-social bg-youtube"><i class="bi bi-youtube"></i></button>
+                                                    </div>
+                                                    <div class="">
+                                                        <button type="button" class="btn-social bg-pinterest"><i class="bi bi-pinterest"></i></button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-                                <!--plusIconModal end-->
-                                <%});%>
+                                <!--end row-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--plusIconModal end-->
+            <%});%>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!--end tabular product-->
+
+    <!--start features-->
+    <section class="product-thumb-slider section-padding">
+        <div class="container">
+            <div class="text-center pb-3">
+                <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
+                <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-4 g-4">
+                <div class="col d-flex">
+                    <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
+                        <div class="card-body text-center">
+                            <div class="h1 fw-bold my-2 text-primary">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <h5 class="fw-bold">Free Delivery</h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex">
+                    <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
+                        <div class="card-body text-center">
+                            <div class="h1 fw-bold my-2 text-danger">
+                                <i class="bi bi-credit-card"></i>
+                            </div>
+                            <h5 class="fw-bold">Secure Payment</h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex">
+                    <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
+                        <div class="card-body text-center">
+                            <div class="h1 fw-bold my-2 text-success">
+                                <i class="bi bi-minecart-loaded"></i>
+                            </div>
+                            <h5 class="fw-bold">Free Returns</h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex">
+                    <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
+                        <div class="card-body text-center">
+                            <div class="h1 fw-bold my-2 text-warning">
+                                <i class="bi bi-headset"></i>
+                            </div>
+                            <h5 class="fw-bold">24/7 Support</h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--end tabular product-->
+            <!--end row-->
+        </div>
+    </section>
+    <!--end features-->
 
-        <!--start features-->
-        <section class="product-thumb-slider section-padding">
-            <div class="container">
-                <div class="text-center pb-3">
-                    <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
-                    <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+
+    <!--start special product-->
+    <section class="section-padding bg-section-2">
+        <div class="container">
+            <div class="card border-0 rounded-0 p-3 depth">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <img src="/front_assets/img/extra-images/promo-large.webp" class="img-fluid rounded-0" alt="...">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-body">
+                            <h3 class="fw-bold">New Features of Trending Products</h3>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
+                                </li>
+                                <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
+                                </li>
+                                <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
+                                </li>
+                                <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
+                                </li>
+                            </ul>
+                            <div class="buttons mt-4 d-flex flex-column flex-lg-row gap-3">
+                                <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Buy Now</a>
+                                <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row row-cols-1 row-cols-lg-4 g-4">
-                    <div class="col d-flex">
-                        <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
-                            <div class="card-body text-center">
-                                <div class="h1 fw-bold my-2 text-primary">
-                                    <i class="bi bi-truck"></i>
-                                </div>
-                                <h5 class="fw-bold">Free Delivery</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+            </div>
+        </div>
+    </section>
+    <!--start special product-->
+
+
+    <!--start Brands-->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center pb-3">
+                <h3 class="mb-0 h3 fw-bold">Shop By Brands</h3>
+                <p class="mb-0 text-capitalize">Select your favorite brands and purchase</p>
+            </div>
+            <div class="brands">
+                <div class="row row-cols-2 row-cols-lg-5 g-4">
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/01.webp" class="img-fluid" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
-                        <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
-                            <div class="card-body text-center">
-                                <div class="h1 fw-bold my-2 text-danger">
-                                    <i class="bi bi-credit-card"></i>
-                                </div>
-                                <h5 class="fw-bold">Secure Payment</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/02.webp" class="img-fluid" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
-                        <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
-                            <div class="card-body text-center">
-                                <div class="h1 fw-bold my-2 text-success">
-                                    <i class="bi bi-minecart-loaded"></i>
-                                </div>
-                                <h5 class="fw-bold">Free Returns</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/03.webp" class="img-fluid" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex">
-                        <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
-                            <div class="card-body text-center">
-                                <div class="h1 fw-bold my-2 text-warning">
-                                    <i class="bi bi-headset"></i>
-                                </div>
-                                <h5 class="fw-bold">24/7 Support</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/04.webp" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/05.webp" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/06.webp" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/07.webp" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/08.webp" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/09.webp" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border rounded brand-box">
+                            <div class="d-flex align-items-center">
+                                <a href="javascript:;">
+                                    <img src="/front_assets/img/brands/10.webp" class="img-fluid" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--end row-->
             </div>
-        </section>
-        <!--end features-->
+        </div>
+    </section>
+    <!--end Brands-->
 
 
-        <!--start special product-->
-        <section class="section-padding bg-section-2">
-            <div class="container">
-                <div class="card border-0 rounded-0 p-3 depth">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-lg-6 text-center">
-                            <img src="/front_assets/img/extra-images/promo-large.webp" class="img-fluid rounded-0" alt="...">
-                        </div>
-                        <div class="col-lg-6">
+    <!--start cartegory slider-->
+    <section class="cartegory-slider section-padding bg-section-2">
+        <div class="container">
+            <div class="text-center pb-3">
+                <h3 class="mb-0 h3 fw-bold">Top Categories</h3>
+                <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
+            </div>
+            <div class="cartegory-box">
+
+                <%products.slice(0,7).forEach(all_products=>{%>
+                    <a href="#">
+                        <div class="card">
                             <div class="card-body">
-                                <h3 class="fw-bold">New Features of Trending Products</h3>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
-                                    </li>
-                                    <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
-                                    </li>
-                                    <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
-                                    </li>
-                                    <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
-                                    </li>
-                                </ul>
-                                <div class="buttons mt-4 d-flex flex-column flex-lg-row gap-3">
-                                    <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Buy Now</a>
-                                    <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--start special product-->
-
-
-        <!--start Brands-->
-        <section class="section-padding">
-            <div class="container">
-                <div class="text-center pb-3">
-                    <h3 class="mb-0 h3 fw-bold">Shop By Brands</h3>
-                    <p class="mb-0 text-capitalize">Select your favorite brands and purchase</p>
-                </div>
-                <div class="brands">
-                    <div class="row row-cols-2 row-cols-lg-5 g-4">
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/01.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/02.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/03.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/04.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/05.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/06.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/07.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/08.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/09.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border rounded brand-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:;">
-                                        <img src="/front_assets/img/brands/10.webp" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end row-->
-                </div>
-            </div>
-        </section>
-        <!--end Brands-->
-
-
-        <!--start cartegory slider-->
-        <section class="cartegory-slider section-padding bg-section-2">
-            <div class="container">
-                <div class="text-center pb-3">
-                    <h3 class="mb-0 h3 fw-bold">Top Categories</h3>
-                    <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
-                </div>
-                <div class="cartegory-box">
-
-                    <%products.slice(0,7).forEach(all_products=>{%>
-                        <a href="#">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="overflow-hidden">
-                                        <!-- <img src="<%=all_products.category_image%>" class="card-img-top rounded-0" alt="..."> -->
-                                        <div class="" style="background: url('<%=all_products.category_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
-                                        </div>
+                                <div class="overflow-hidden">
+                                    <!-- <img src="<%=all_products.category_image%>" class="card-img-top rounded-0" alt="..."> -->
+                                    <div class="" style="background: url('<%=all_products.category_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
                                     </div>
-                                    <div class="text-center">
-                                        <h5 class="mb-1 cartegory-name mt-3 fw-bold">
-                                            <%=all_products.name%>
+                                </div>
+                                <div class="text-center">
+                                    <h5 class="mb-1 cartegory-name mt-3 fw-bold">
+
+                                        <% const maxWords=2;%>
+                                            <% const words=all_products.name.split(' '); %>
+                                                <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                <%= truncatedName %> 
                                         </h5>
                                         <h6 class="mb-0 product-number fw-bold">
                                             <%=all_products.total_qty%>
@@ -916,11 +928,11 @@
                                 </div>
 
                                 <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
-                                    <span onclick="change_quantity_value('plus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
-                                    <span class="quantity-counter p-2" id="input">
-                                        <%= product.quantity %>
-                                    </span>
-                                    <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+                                    <span onclick="change_quantity_value(' plus',<%=product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
+                                                <span class="quantity-counter p-2" id="input">
+                                                    <%= product.quantity %>
+                                                </span>
+                                                <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
                                 </div>
                                 <div class="ms-3 mb-3">
                                     <span>
@@ -945,395 +957,395 @@
                                     <!-- If cart is empty, display a message or alternative content -->
                                     <p></p>
                                     <% } %>
+                        </div>
             </div>
-        </div>
-        <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
-            <div class="d-grid">
-                <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
+            <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
+                <div class="d-grid">
+                    <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
+                </div>
             </div>
+
         </div>
+        <!--end right cart-->
 
-    </div>
-    <!--end right cart-->
+        <!-- checkout  modal -->
+        <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+            <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+            <div class="offcanvas-header bg-section-2 d-none">
+                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+            </div>
 
-    <!-- checkout  modal -->
-    <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
-        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-        <div class="offcanvas-header bg-section-2 d-none">
-            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-        </div>
+            <div class="offcanvas-body">
 
-        <div class="offcanvas-body">
+                <div class="cart-list">
 
-            <div class="cart-list">
+                    <!-- Modal content -->
+                    <div class="modal-contentCheckout">
+                        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
 
-                <!-- Modal content -->
-                <div class="modal-contentCheckout">
-                    <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+                        <!-- <p>Some text in the Modal..</p> -->
+                        <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
 
-                    <!-- <p>Some text in the Modal..</p> -->
-                    <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
+                            <div class="leftSection" id="phone_2nd">
+                                <div class="contactContainer">
 
-                        <div class="leftSection" id="phone_2nd">
-                            <div class="contactContainer">
+                                    <style>
+                                        .btn-close {
+                                            color: white !important;
+                                            opacity: unset;
+                                        }
 
-                                <style>
-                                    .btn-close {
-                                        color: white !important;
-                                        opacity: unset;
-                                    }
+                                        .offcanvas-header {
+                                            border-bottom: #146FB6;
+                                        }
+                                    </style>
 
-                                    .offcanvas-header {
-                                        border-bottom: #146FB6;
-                                    }
-                                </style>
-
-                                <div class="contactHead d-flex justify-content-between desktop-checkout-title">
-                                    <span class="headTitle">Checkout</span>
-                                    <div class="offcanvas-header bg-section-0">
-                                        <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                    </div>
-                                    <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                    <!-- <span class="checkoutClose">&times;</span> -->
-                                </div>
-                                <div class="rightSection " id="phone_1st">
-                                    <div class="contactContainer mobile-checkout-title" style="display: none;">
-                                        <style>
-                                            .btn-close {
-
-                                                opacity: unset;
-                                            }
-
-                                            .offcanvas-header {
-                                                border-bottom: #146FB6;
-                                            }
-                                        </style>
-
-                                        <div class="contactHead d-flex justify-content-between ">
-                                            <span class="headTitle">Checkout</span>
-                                            <div class="offcanvas-header bg-section-0">
-                                                <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                            </div>
-                                            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                            <!-- <span class="checkoutClose">&times;</span> -->
+                                    <div class="contactHead d-flex justify-content-between desktop-checkout-title">
+                                        <span class="headTitle">Checkout</span>
+                                        <div class="offcanvas-header bg-section-0">
+                                            <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
+                                        <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                        <!-- <span class="checkoutClose">&times;</span> -->
                                     </div>
+                                    <div class="rightSection " id="phone_1st">
+                                        <div class="contactContainer mobile-checkout-title" style="display: none;">
+                                            <style>
+                                                .btn-close {
 
-                                    <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
-                                    <hr style="">
-                                    <div class="itemContainer">
-                                        <div class="addItem addCard">
+                                                    opacity: unset;
+                                                }
 
-                                            <div class="addCardText">
-                                                <div class="mb-2"> Subtotal: 00.00 TK</div>
-                                                <div class="mb-2"> Delivery: 00 TK</div>
-                                                <!-- <div class="mb-3"> Discount: 10%</div> -->
+                                                .offcanvas-header {
+                                                    border-bottom: #146FB6;
+                                                }
+                                            </style>
+
+                                            <div class="contactHead d-flex justify-content-between ">
+                                                <span class="headTitle">Checkout</span>
+                                                <div class="offcanvas-header bg-section-0">
+                                                    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                </div>
+                                                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                                <!-- <span class="checkoutClose">&times;</span> -->
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div class="totalPrice">
-                                        <span>Total: </span>
-                                        <span id="total_amount"> 00.00 <span>&#2547;</span></span>
-                                    </div>
-                                </div>
+                                        <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
+                                        <hr style="">
+                                        <div class="itemContainer">
+                                            <div class="addItem addCard">
 
-                                <div>
-                                    <div class="contactBody">
-                                        <div class="bodyHead" id="createScroll">
-                                            <span class="userIcon"> <i class='bx bx-user'></i></span>
-
-                                            <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
-                                        </div>
-                                        <div class="inputInformation">
-                                            <div class="phone-container">
-                                                <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
-                                                <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
-                                                <div class="setCodeDropdown">
-                                                    <div class="phoneDropdown">
-                                                    </div>
+                                                <div class="addCardText">
+                                                    <div class="mb-2"> Subtotal: 00.00 TK</div>
+                                                    <div class="mb-2"> Delivery: 00 TK</div>
+                                                    <!-- <div class="mb-3"> Discount: 10%</div> -->
                                                 </div>
                                             </div>
-                                            <div class="input-container mt-3">
-                                                <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
-                                                <label for="email" class="lavel">Email</label>
-                                            </div>
-                                            <div class="bodyHead mb-2">
-                                                <span class="userIcon"> <i class='bx bx-map'></i></span>
-                                                <!-- <span class="text">Delivery Information</span> -->
-                                            </div>
-                                            <div class="input-container">
-                                                <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
-                                                <label for="fullName" class="lavel full-name">Full Name</label>
-                                            </div>
 
+                                        </div>
+                                        <div class="totalPrice">
+                                            <span>Total: </span>
+                                            <span id="total_amount"> 00.00 <span>&#2547;</span></span>
+                                        </div>
+                                    </div>
 
-                                            <div class="input_dropdown">
-                                                <div>
-                                                    <!-- <span>left site</span> -->
-                                                    <div class="checkoutDropdown">
-                                                        <div class="select" id="textColoSet">
-                                                            <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
-                                                            <span class="mimi22">Select</span>
-                                                            <div class="caret"></div>
+                                    <div>
+                                        <div class="contactBody">
+                                            <div class="bodyHead" id="createScroll">
+                                                <span class="userIcon"> <i class='bx bx-user'></i></span>
+
+                                                <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
+                                            </div>
+                                            <div class="inputInformation">
+                                                <div class="phone-container">
+                                                    <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
+                                                    <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
+                                                    <div class="setCodeDropdown">
+                                                        <div class="phoneDropdown">
                                                         </div>
-
-                                                        <ul class="menu">
-                                                            <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
-                                                            </li>
-                                                            <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
-                                                        </ul>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <!-- <span>right site</span> -->
-                                                    <!-- <div class="input-container">
+                                                <div class="input-container mt-3">
+                                                    <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
+                                                    <label for="email" class="lavel">Email</label>
+                                                </div>
+                                                <div class="bodyHead mb-2">
+                                                    <span class="userIcon"> <i class='bx bx-map'></i></span>
+                                                    <!-- <span class="text">Delivery Information</span> -->
+                                                </div>
+                                                <div class="input-container">
+                                                    <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
+                                                    <label for="fullName" class="lavel full-name">Full Name</label>
+                                                </div>
+
+
+                                                <div class="input_dropdown">
+                                                    <div>
+                                                        <!-- <span>left site</span> -->
+                                                        <div class="checkoutDropdown">
+                                                            <div class="select" id="textColoSet">
+                                                                <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
+                                                                <span class="mimi22">Select</span>
+                                                                <div class="caret"></div>
+                                                            </div>
+
+                                                            <ul class="menu">
+                                                                <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
+                                                                </li>
+                                                                <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <!-- <span>right site</span> -->
+                                                        <!-- <div class="input-container">
                                                                                                                                             <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                                 <label for="City" class="lavel City-name">City</label>
                                                                                                                                         </div> -->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- <div class="input-container mb-3">
+                                                <!-- <div class="input-container mb-3">
                                                                                                                                     <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                         <label for="HouseNumber" class="lavel house-number">House Number</label>
                                                                                                                                 </div> -->
-                                            <div style="margin-bottom: 20px;" class="input-container">
-                                                <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
-                                                <label for="areaSector" class="lavel area-sector">Area /Address</label>
-                                            </div>
-                                            <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
-                                            <div class="address-check">
-                                                <input type="checkbox" name="addressCheck" id="addressCheck">
-                                                <label for="addressCheck">Billing and delivery address same.</label>
-                                            </div>
+                                                <div style="margin-bottom: 20px;" class="input-container">
+                                                    <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
+                                                    <label for="areaSector" class="lavel area-sector">Area /Address</label>
+                                                </div>
+                                                <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
+                                                <div class="address-check">
+                                                    <input type="checkbox" name="addressCheck" id="addressCheck">
+                                                    <label for="addressCheck">Billing and delivery address same.</label>
+                                                </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="contactFooter" onclick="orderList()">
-                                        <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
-                                        <button type="" class="ProceedBtn">Submit Order</button>
+                                        <div class="contactFooter" onclick="orderList()">
+                                            <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
+                                            <button type="" class="ProceedBtn">Submit Order</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
 
 
+                        <!-- drag cursor js -->
+                        <script>
+                            let isDragging = false;
+                            let initialX;
+                            let initialY;
+                            let currentX;
+                            let currentY;
 
+                            const card = document.getElementById('phoneModal');
+
+                            card.addEventListener('mousedown', (e) => {
+                                isDragging = true;
+                                initialX = e.clientX;
+                                initialY = e.clientY;
+                            });
+
+                            document.addEventListener('mousemove', (e) => {
+                                if (!isDragging) return;
+                                currentX = e.clientX - initialX;
+                                currentY = e.clientY - initialY;
+
+                                card.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                            });
+
+                            document.addEventListener('mouseup', () => {
+                                isDragging = false;
+                            });
+
+                        </script>
                     </div>
-
-
-                    <!-- drag cursor js -->
-                    <script>
-                        let isDragging = false;
-                        let initialX;
-                        let initialY;
-                        let currentX;
-                        let currentY;
-
-                        const card = document.getElementById('phoneModal');
-
-                        card.addEventListener('mousedown', (e) => {
-                            isDragging = true;
-                            initialX = e.clientX;
-                            initialY = e.clientY;
-                        });
-
-                        document.addEventListener('mousemove', (e) => {
-                            if (!isDragging) return;
-                            currentX = e.clientX - initialX;
-                            currentY = e.clientY - initialY;
-
-                            card.style.transform = `translate(${currentX}px, ${currentY}px)`;
-                        });
-
-                        document.addEventListener('mouseup', () => {
-                            isDragging = false;
-                        });
-
-                    </script>
                 </div>
             </div>
+
         </div>
+        <!-- checkout  modal end-->
 
-    </div>
-    <!-- checkout  modal end-->
+        <!--start quick view-->
 
-    <!--start quick view-->
+        <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!--End Back To Top Button-->
 
-    <!--Start Back To Top Button-->
-    <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
-    <!--End Back To Top Button-->
+        <!-- JavaScript files -->
+        <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/front_assets/js/jquery.min.js"></script>
+        <script src="/front_assets/plugins/slick/slick.min.js"></script>
+        <script src="/front_assets/js/main.js"></script>
+        <script src="/front_assets/js/index.js"></script>
+        <script src="/front_assets/js/loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- JavaScript files -->
-    <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/front_assets/js/jquery.min.js"></script>
-    <script src="/front_assets/plugins/slick/slick.min.js"></script>
-    <script src="/front_assets/js/main.js"></script>
-    <script src="/front_assets/js/index.js"></script>
-    <script src="/front_assets/js/loader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- increment or decrement input css -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- add product to the cart dynamically -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- increment or decrement input css -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- add product to the cart dynamically -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!--  checkout js-->
+        <script>
 
-    <!--  checkout js-->
-    <script>
+            // When the user clicks on the button, open the modal
+            // btn.onclick = function () {
+            //   console.log(modal.style);
+            //   modal.style.display = "";
+            // };
 
-        // When the user clicks on the button, open the modal
-        // btn.onclick = function () {
-        //   console.log(modal.style);
-        //   modal.style.display = "";
-        // };
+            // When the user clicks on <span> (x), close the modal
+            // span.onclick = function() {
+            //   modal.style.display = "none";
+            // }
 
-        // When the user clicks on <span> (x), close the modal
-        // span.onclick = function() {
-        //   modal.style.display = "none";
-        // }
+            // When the user clicks anywhere outside of the modal, close it
 
-        // When the user clicks anywhere outside of the modal, close it
+            // window.onclick = function(event) {
+            //   if (event.target == modal) {
+            //     modal.style.display = "none";
+            //   }
+            // }
+            // let checkoutNone = () => {
+            //   modal.style.display = "none";
+            // };
 
-        // window.onclick = function(event) {
-        //   if (event.target == modal) {
-        //     modal.style.display = "none";
-        //   }
-        // }
-        // let checkoutNone = () => {
-        //   modal.style.display = "none";
-        // };
+            // javaScript for dropdown menu
+            // for dropdown option
+            let dropdowns = document.querySelectorAll(".checkoutDropdown");
+            // console.log(dropdowns);
 
-        // javaScript for dropdown menu
-        // for dropdown option
-        let dropdowns = document.querySelectorAll(".checkoutDropdown");
-        // console.log(dropdowns);
+            dropdowns.forEach((dropdown) => {
+                let select = dropdown.querySelector(".select");
+                let caret = dropdown.querySelector(".caret");
+                let menu = dropdown.querySelector(".menu");
+                let options = dropdown.querySelectorAll(".menu li");
+                let selected = dropdown.querySelector(".selected");
+                let mimi22 = dropdown.querySelector(".mimi22");
 
-        dropdowns.forEach((dropdown) => {
-            let select = dropdown.querySelector(".select");
-            let caret = dropdown.querySelector(".caret");
-            let menu = dropdown.querySelector(".menu");
-            let options = dropdown.querySelectorAll(".menu li");
-            let selected = dropdown.querySelector(".selected");
-            let mimi22 = dropdown.querySelector(".mimi22");
-
-            select.addEventListener("click", () => {
-                select.classList.toggle("select-clicked");
-                caret.classList.toggle("caret-rotate");
-                menu.classList.toggle("menu-open");
-            });
-
-            options.forEach((option) => {
-                option.addEventListener("click", () => {
-                    console.log('like option', option.textContent, selected);
-                    mimi22.innerText = option.textContent;
-                    if (mimi22.innerText == option.textContent) {
-                        if (mimi22.innerText == "Delivery address") {
-                            document.getElementById("textColoSet").style.color = "#9b9c9d";
-                        } else {
-                            document.getElementById("textColoSet").style.color = "black";
-                        }
-                    }
-                    select.classList.remove("select-clicked");
-                    caret.classList.remove("caret-rotate");
-                    menu.classList.remove("menu-open");
-
-                    options.forEach((option) => {
-                        option.classList.remove("active");
-                    });
-
-                    option.classList.add("active");
-                });
-            });
-        });
-
-        // for country code  option
-        let codeDropdowns = document.querySelectorAll(".phoneDropdown");
-
-        codeDropdowns.forEach((dropdown) => {
-            let select = dropdown.querySelector(".countrySelect");
-            let caret = dropdown.querySelector(".countryCaret");
-            let menu = dropdown.querySelector(".countryMenu");
-            let options = dropdown.querySelectorAll(".countryMenu li");
-            let selected = dropdown.querySelector(".countrySelected");
-
-            select.addEventListener("click", () => {
-                select.classList.toggle("select-clicked");
-                caret.classList.toggle("caret-rotate");
-                menu.classList.toggle("menu-open");
-            });
-
-            options.forEach((option) => {
-                option.addEventListener("click", () => {
-                    console.log("inner text test", option.innerText);
-                    selected.innerText = option.innerText;
-                    select.classList.remove("select-clicked");
-                    caret.classList.remove("caret-rotate");
+                select.addEventListener("click", () => {
+                    select.classList.toggle("select-clicked");
+                    caret.classList.toggle("caret-rotate");
                     menu.classList.toggle("menu-open");
+                });
 
-                    options.forEach((option) => {
-                        option.classList.remove("active");
+                options.forEach((option) => {
+                    option.addEventListener("click", () => {
+                        // console.log('like option', option.textContent, selected);
+                        mimi22.innerText = option.textContent;
+                        if (mimi22.innerText == option.textContent) {
+                            if (mimi22.innerText == "Delivery address") {
+                                document.getElementById("textColoSet").style.color = "#9b9c9d";
+                            } else {
+                                document.getElementById("textColoSet").style.color = "black";
+                            }
+                        }
+                        select.classList.remove("select-clicked");
+                        caret.classList.remove("caret-rotate");
+                        menu.classList.remove("menu-open");
+
+                        options.forEach((option) => {
+                            option.classList.remove("active");
+                        });
+
+                        option.classList.add("active");
                     });
-
-                    option.classList.add("active");
                 });
             });
-        });
 
-        // scroll bar
+            // for country code  option
+            let codeDropdowns = document.querySelectorAll(".phoneDropdown");
 
-        var $doc = $("#createScroll");
-        var $win = $(window);
-        var itemstoshow = 5;
+            codeDropdowns.forEach((dropdown) => {
+                let select = dropdown.querySelector(".countrySelect");
+                let caret = dropdown.querySelector(".countryCaret");
+                let menu = dropdown.querySelector(".countryMenu");
+                let options = dropdown.querySelectorAll(".countryMenu li");
+                let selected = dropdown.querySelector(".countrySelected");
 
-        $(".infinite")
-            .filter(function (index) {
-                return $(this).offset().top > $win.height();
-            })
-            .hide();
+                select.addEventListener("click", () => {
+                    select.classList.toggle("select-clicked");
+                    caret.classList.toggle("caret-rotate");
+                    menu.classList.toggle("menu-open");
+                });
 
-        $(window).scroll(function () {
-            if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
-                $(".infinite:hidden:lt(" + itemstoshow + ")").show();
-            }
-        });
+                options.forEach((option) => {
+                    option.addEventListener("click", () => {
+                        console.log("inner text test", option.innerText);
+                        selected.innerText = option.innerText;
+                        select.classList.remove("select-clicked");
+                        caret.classList.remove("caret-rotate");
+                        menu.classList.toggle("menu-open");
 
-        // mediaQuery and responsive
-        let ovearflows = document.querySelectorAll(".addCardText p");
+                        options.forEach((option) => {
+                            option.classList.remove("active");
+                        });
 
-        const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+                        option.classList.add("active");
+                    });
+                });
+            });
 
-        ovearflows.forEach((ovearflow) => {
-            if (ovearflow.innerHTML.length > 90) {
-                ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
-            }
+            // scroll bar
 
-            if (mediaQuery1300.matches) {
-                console.log("match");
-                if (ovearflow.innerHTML.length > 71) {
-                    ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+            var $doc = $("#createScroll");
+            var $win = $(window);
+            var itemstoshow = 5;
+
+            $(".infinite")
+                .filter(function (index) {
+                    return $(this).offset().top > $win.height();
+                })
+                .hide();
+
+            $(window).scroll(function () {
+                if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
+                    $(".infinite:hidden:lt(" + itemstoshow + ")").show();
                 }
+            });
+
+            // mediaQuery and responsive
+            let ovearflows = document.querySelectorAll(".addCardText p");
+
+            const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+
+            ovearflows.forEach((ovearflow) => {
+                if (ovearflow.innerHTML.length > 90) {
+                    ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
+                }
+
+                if (mediaQuery1300.matches) {
+                    console.log("match");
+                    if (ovearflow.innerHTML.length > 71) {
+                        ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+                    }
+                }
+            });
+
+            const mediaQuery750 = window.matchMedia("(max-width: 750px)");
+
+            if (mediaQuery750.matches) {
+                let phoneModal = document.getElementById("phoneModal");
+                let phone_2nd = document.getElementById("phone_2nd");
+                let phone_1st = document.getElementById("phone_1st");
+                phoneModal.insertBefore(phone_1st, phone_2nd);
             }
-        });
+        </script>
 
-        const mediaQuery750 = window.matchMedia("(max-width: 750px)");
-
-        if (mediaQuery750.matches) {
-            let phoneModal = document.getElementById("phoneModal");
-            let phone_2nd = document.getElementById("phone_2nd");
-            let phone_1st = document.getElementById("phone_1st");
-            phoneModal.insertBefore(phone_1st, phone_2nd);
-        }
-    </script>
-
-    <script src="../../front_assets/js/axios_post.js"></script>
+        <script src="../../front_assets/js/axios_post.js"></script>
 
 
-    <!-- increment or decrement input css -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- add product to the cart dynamically -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- increment or decrement input css -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- add product to the cart dynamically -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </body>
 

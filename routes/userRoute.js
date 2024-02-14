@@ -54,10 +54,10 @@ router.post('/product/calculate_subtotal', (req, res) => {
 
 router.post('/delete_session_product', async (req, res) => {
     let id = req.body.id;
-    console.log('Id is: ', id);
+    // console.log('Id is: ', id);
     let sessionProduct = req.session.cart;
     req.session.cart = sessionProduct.filter(element => element.id !== id);
-    console.log('bye: ', req.session.cart);
+    // console.log('bye: ', req.session.cart);
     res.send({
         success: true
     })

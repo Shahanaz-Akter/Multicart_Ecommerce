@@ -47,7 +47,6 @@ const addLogo = async (req, res) => {
         order: [['createdAt', 'DESC']],
         raw: true,
     });
-    // console.log('hi', record);
     res.render('logo/add_logo.ejs', { record });
 }
 const addBanner = async (req, res) => {
@@ -56,8 +55,7 @@ const addBanner = async (req, res) => {
         raw: true,
     });
 
-    // console.log('Banner: ', banner);
-    // console.log(banner.banner_image);
+
 
     // let bannerImageArray = [];
 

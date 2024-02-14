@@ -323,18 +323,14 @@
                                     <h6 class="mb-1 fw-bold product-name" id="productTitle">
                                         <% const maxWords=2;%>
                                             <% const words=product.name.split(' '); %>
-                                                <%console.log(words);%>
-                                                <% const truncatedName = words.slice(0, maxWords).join(' ');%>
-                                                <% const remainingText = words.slice(maxWords).join(' ');%>
-                                                <%= truncatedName %>                         
+                                                        <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                        <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                        <%= truncatedName %>                         
                                                     <% if (remainingText) { %>
                                                             <a href="/product/product_details/<%=product.id%>"><span class="text-black">.....</span></a>
                                                         <% } %>
                                     </h6>
                                    
-                                   
-
-
                                                 <div class="ratings mb-1 h6">
                                                     <i class="bi bi-star-fill text-warning"></i>
                                                     <i class="bi bi-star-fill text-warning"></i>
@@ -565,7 +561,6 @@
                                                 <h6 class="mb-1 fw-bold product-name">
                                                     <% const maxWords=2;%>
                                                         <% const words=product.name.split(' '); %>
-                                                        <%console.log(words);%>
                                                         <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                         <% const remainingText = words.slice(maxWords).join(' ');%>
                                                         <%= truncatedName %>                         
@@ -757,7 +752,6 @@
                                             <h6 class="mb-1 fw-bold product-name">
                                                 <% const maxWords=2;%>
                                                     <% const words=product.name.split(' '); %>
-                                                <%console.log(words);%>
                                                 <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                 <% const remainingText = words.slice(maxWords).join(' ');%>
                                                 <%= truncatedName %>                         
@@ -952,7 +946,6 @@
                                                 <h6 class="mb-1 fw-bold product-name">
                                                     <% const maxWords=2;%>
                                                         <% const words=product.name.split(' '); %>
-                                                                                                <%console.log(words);%>
                                                                                                 <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                                                                 <% const remainingText = words.slice(maxWords).join(' ');%>
                                                                                                 <%= truncatedName %>                         
@@ -1143,7 +1136,6 @@
                                                     <h6 class="mb-1 fw-bold product-name">
                                                         <% const maxWords=2;%>
                                                             <% const words=product.name.split(' '); %>
-                                                                                                <%console.log(words);%>
                                                                                                 <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                                                                 <% const remainingText = words.slice(maxWords).join(' ');%>
                                                                                                 <%= truncatedName %>                         
@@ -1337,7 +1329,6 @@
                                                         <h6 class="mb-1 fw-bold product-name">
                                                             <% const maxWords=2;%>
                                                                 <% const words=product.name.split(' '); %>
-                                                                                                <%console.log(words);%>
                                                                                                 <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                                                                 <% const remainingText = words.slice(maxWords).join(' ');%>
                                                                                                 <%= truncatedName %>                         
@@ -1735,7 +1726,12 @@
                                         </div>
                                         <div class="text-center">
                                             <h5 class="mb-1 cartegory-name mt-3 fw-bold">
-                                                <%=all_products.name%>
+                                                <% const maxWords=2;%>
+                                                    <% const words=all_products.name.split(' '); %>
+                                                                                                <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                                                                <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                                                                <%= truncatedName %>                         
+                                                                                                    
                                             </h5>
                                             <h6 class="mb-0 product-number fw-bold">
                                                 <%=all_products.total_qty%>
@@ -2001,475 +1997,474 @@
                                                 <% const maxWords=2;%>
                                                     <% const words=product.name.split(' '); %>
                                                     <%const numWords = words.length;%>
-                                                    <%console.log(numWords)%>
 
                                                     <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                     <% const remainingText = words.slice(maxWords).join(' ');%>
                                                    <%= numWords < maxWords ? truncatedName : truncatedName + ' ..' %>
+                                                        </span>
+                                                        </h6>
+                                                        <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
+                                        </div>
+
+                                        <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
+                                            <span onclick="change_quantity_value(' plus',<%=product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+
                                             </span>
-                                        </h6>
-                                        <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
-                                    </div>
+                                            <span class="quantity-counter p-2" id="input">
+                                                <%= product.quantity %>
+                                            </span>
+                                            <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+                                        </div>
+                                        <div class="ms-3 mb-3">
+                                            <span>
+                                                <%= product.selling_price %>
+                                            </span>
 
-                                    <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
-                                        <span onclick="change_quantity_value(' plus',<%=product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+
-                                        </span>
-                                        <span class="quantity-counter p-2" id="input">
-                                            <%= product.quantity %>
-                                        </span>
-                                        <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
-                                    </div>
-                                    <div class="ms-3 mb-3">
-                                        <span>
-                                            <%= product.selling_price %>
-                                        </span>
+                                        </div>
+                                        <div class="ms-3 mb-3" id="total_<%= product.id%>">
+                                            <span>
+                                                <%= product.total %> TK
+                                            </span>
 
-                                    </div>
-                                    <div class="ms-3 mb-3" id="total_<%= product.id%>">
-                                        <span>
-                                            <%= product.total %> TK
-                                        </span>
+                                        </div>
+                                        <div class="fs-5 me-2 mb-3">
+                                            <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
+                                        </div>
 
                                     </div>
-                                    <div class="fs-5 me-2 mb-3">
-                                        <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
-                                    </div>
-
+                                    <hr id="hr_for_<%= product.id%>">
+                                    <% }); %>
+                                        <% } else { %>
+                                            <!-- If cart is empty, display a message or alternative content -->
+                                            <p></p>
+                                            <% } %>
                                 </div>
-                                <hr id="hr_for_<%= product.id%>">
-                                <% }); %>
-                                    <% } else { %>
-                                        <!-- If cart is empty, display a message or alternative content -->
-                                        <p></p>
-                                        <% } %>
                 </div>
-            </div>
-            <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
-                <div class="d-grid">
-                    <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
+                <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
+                    <div class="d-grid">
+                        <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
+                    </div>
                 </div>
+
             </div>
+            <!--end right cart-->
 
-        </div>
-        <!--end right cart-->
+            <!-- checkout  modal -->
+            <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+                <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+                <div class="offcanvas-header bg-section-2 d-none">
+                    <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                </div>
 
-        <!-- checkout  modal -->
-        <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
-            <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-            <div class="offcanvas-header bg-section-2 d-none">
-                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-            </div>
+                <div class="offcanvas-body">
 
-            <div class="offcanvas-body">
+                    <div class="cart-list">
 
-                <div class="cart-list">
+                        <!-- Modal content -->
+                        <div class="modal-contentCheckout">
+                            <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
 
-                    <!-- Modal content -->
-                    <div class="modal-contentCheckout">
-                        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+                            <!-- <p>Some text in the Modal..</p> -->
+                            <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
 
-                        <!-- <p>Some text in the Modal..</p> -->
-                        <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
+                                <div class="leftSection" id="phone_2nd">
+                                    <div class="contactContainer">
 
-                            <div class="leftSection" id="phone_2nd">
-                                <div class="contactContainer">
+                                        <style>
+                                            .btn-close {
+                                                color: white !important;
+                                                opacity: unset;
+                                            }
 
-                                    <style>
-                                        .btn-close {
-                                            color: white !important;
-                                            opacity: unset;
-                                        }
+                                            .offcanvas-header {
+                                                border-bottom: #146FB6;
+                                            }
+                                        </style>
 
-                                        .offcanvas-header {
-                                            border-bottom: #146FB6;
-                                        }
-                                    </style>
-
-                                    <div class="contactHead d-flex justify-content-between desktop-checkout-title">
-                                        <span class="headTitle">Checkout</span>
-                                        <div class="offcanvas-header bg-section-0">
-                                            <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                        </div>
-                                        <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                        <!-- <span class="checkoutClose">&times;</span> -->
-                                    </div>
-                                    <div class="rightSection " id="phone_1st">
-                                        <div class="contactContainer mobile-checkout-title" style="display: none;">
-                                            <style>
-                                                .btn-close {
-
-                                                    opacity: unset;
-                                                }
-
-                                                .offcanvas-header {
-                                                    border-bottom: #146FB6;
-                                                }
-                                            </style>
-
-                                            <div class="contactHead d-flex justify-content-between ">
-                                                <span class="headTitle">Checkout</span>
-                                                <div class="offcanvas-header bg-section-0">
-                                                    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                </div>
-                                                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                                <!-- <span class="checkoutClose">&times;</span> -->
+                                        <div class="contactHead d-flex justify-content-between desktop-checkout-title">
+                                            <span class="headTitle">Checkout</span>
+                                            <div class="offcanvas-header bg-section-0">
+                                                <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                             </div>
+                                            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                            <!-- <span class="checkoutClose">&times;</span> -->
                                         </div>
+                                        <div class="rightSection " id="phone_1st">
+                                            <div class="contactContainer mobile-checkout-title" style="display: none;">
+                                                <style>
+                                                    .btn-close {
 
-                                        <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
-                                        <hr style="">
-                                        <div class="itemContainer">
-                                            <div class="addItem addCard">
+                                                        opacity: unset;
+                                                    }
 
-                                                <div class="addCardText">
-                                                    <div class="mb-2"> Subtotal: 00.00 TK</div>
-                                                    <div class="mb-2"> Delivery: 00 TK</div>
-                                                    <!-- <div class="mb-3"> Discount: 10%</div> -->
+                                                    .offcanvas-header {
+                                                        border-bottom: #146FB6;
+                                                    }
+                                                </style>
+
+                                                <div class="contactHead d-flex justify-content-between ">
+                                                    <span class="headTitle">Checkout</span>
+                                                    <div class="offcanvas-header bg-section-0">
+                                                        <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                    </div>
+                                                    <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                                    <!-- <span class="checkoutClose">&times;</span> -->
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="totalPrice">
-                                            <span>Total: </span>
-                                            <span id="total_amount"> 00.00 <span>&#2547;</span></span>
-                                        </div>
-                                    </div>
 
-                                    <div>
-                                        <div class="contactBody">
-                                            <div class="bodyHead" id="createScroll">
-                                                <span class="userIcon"> <i class='bx bx-user'></i></span>
+                                            <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
+                                            <hr style="">
+                                            <div class="itemContainer">
+                                                <div class="addItem addCard">
 
-                                                <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
-                                            </div>
-                                            <div class="inputInformation">
-                                                <div class="phone-container">
-                                                    <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
-                                                    <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
-                                                    <div class="setCodeDropdown">
-                                                        <div class="phoneDropdown">
-                                                        </div>
+                                                    <div class="addCardText">
+                                                        <div class="mb-2"> Subtotal: 00.00 TK</div>
+                                                        <div class="mb-2"> Delivery: 00 TK</div>
+                                                        <!-- <div class="mb-3"> Discount: 10%</div> -->
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="totalPrice">
+                                                <span>Total: </span>
+                                                <span id="total_amount"> 00.00 <span>&#2547;</span></span>
+                                            </div>
+                                        </div>
 
-                                                <div class="input-container mt-3">
-                                                    <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
-                                                    <label for="email" class="lavel">Email</label>
-                                                </div>
-                                                <div class="bodyHead mb-2">
-                                                    <span class="userIcon"> <i class='bx bx-map'></i></span>
-                                                    <!-- <span class="text">Delivery Information</span> -->
-                                                </div>
-                                                <div class="input-container">
-                                                    <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
-                                                    <label for="fullName" class="lavel full-name">Full Name</label>
-                                                </div>
+                                        <div>
+                                            <div class="contactBody">
+                                                <div class="bodyHead" id="createScroll">
+                                                    <span class="userIcon"> <i class='bx bx-user'></i></span>
 
-
-                                                <div class="input_dropdown">
-                                                    <div>
-                                                        <!-- <span>left site</span> -->
-                                                        <div class="checkoutDropdown">
-                                                            <div class="select" id="textColoSet">
-                                                                <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
-                                                                <span class="mimi22">Select</span>
-                                                                <div class="caret"></div>
+                                                    <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
+                                                </div>
+                                                <div class="inputInformation">
+                                                    <div class="phone-container">
+                                                        <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
+                                                        <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
+                                                        <div class="setCodeDropdown">
+                                                            <div class="phoneDropdown">
                                                             </div>
-
-                                                            <ul class="menu">
-                                                                <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
-                                                                </li>
-                                                                <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
-                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <!-- <span>right site</span> -->
-                                                        <!-- <div class="input-container">
+
+                                                    <div class="input-container mt-3">
+                                                        <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
+                                                        <label for="email" class="lavel">Email</label>
+                                                    </div>
+                                                    <div class="bodyHead mb-2">
+                                                        <span class="userIcon"> <i class='bx bx-map'></i></span>
+                                                        <!-- <span class="text">Delivery Information</span> -->
+                                                    </div>
+                                                    <div class="input-container">
+                                                        <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
+                                                        <label for="fullName" class="lavel full-name">Full Name</label>
+                                                    </div>
+
+
+                                                    <div class="input_dropdown">
+                                                        <div>
+                                                            <!-- <span>left site</span> -->
+                                                            <div class="checkoutDropdown">
+                                                                <div class="select" id="textColoSet">
+                                                                    <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
+                                                                    <span class="mimi22">Select</span>
+                                                                    <div class="caret"></div>
+                                                                </div>
+
+                                                                <ul class="menu">
+                                                                    <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
+                                                                    </li>
+                                                                    <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <!-- <span>right site</span> -->
+                                                            <!-- <div class="input-container">
                                                                                                                                             <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                                 <label for="City" class="lavel City-name">City</label>
                                                                                                                                         </div> -->
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!-- <div class="input-container mb-3">
+                                                    <!-- <div class="input-container mb-3">
                                                                                                                                     <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                         <label for="HouseNumber" class="lavel house-number">House Number</label>
                                                                                                                                 </div> -->
-                                                <div style="margin-bottom: 20px;" class="input-container">
-                                                    <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
-                                                    <label for="areaSector" class="lavel area-sector">Area /Address</label>
-                                                </div>
-                                                <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
-                                                <div class="address-check">
-                                                    <input type="checkbox" name="addressCheck" id="addressCheck">
-                                                    <label for="addressCheck">Billing and delivery address same.</label>
-                                                </div>
+                                                    <div style="margin-bottom: 20px;" class="input-container">
+                                                        <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
+                                                        <label for="areaSector" class="lavel area-sector">Area /Address</label>
+                                                    </div>
+                                                    <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
+                                                    <div class="address-check">
+                                                        <input type="checkbox" name="addressCheck" id="addressCheck">
+                                                        <label for="addressCheck">Billing and delivery address same.</label>
+                                                    </div>
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="contactFooter" onclick="orderList()">
-                                            <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
-                                            <button type="" class="ProceedBtn">Submit Order</button>
+                                            <div class="contactFooter" onclick="orderList()">
+                                                <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
+                                                <button type="" class="ProceedBtn">Submit Order</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
                             </div>
 
 
+                            <!-- drag cursor js -->
+                            <script>
+                                let isDragging = false;
+                                let initialX;
+                                let initialY;
+                                let currentX;
+                                let currentY;
 
+                                const card = document.getElementById('phoneModal');
+
+                                card.addEventListener('mousedown', (e) => {
+                                    isDragging = true;
+                                    initialX = e.clientX;
+                                    initialY = e.clientY;
+                                });
+
+                                document.addEventListener('mousemove', (e) => {
+                                    if (!isDragging) return;
+                                    currentX = e.clientX - initialX;
+                                    currentY = e.clientY - initialY;
+
+                                    card.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                                });
+
+                                document.addEventListener('mouseup', () => {
+                                    isDragging = false;
+                                });
+
+                            </script>
                         </div>
-
-
-                        <!-- drag cursor js -->
-                        <script>
-                            let isDragging = false;
-                            let initialX;
-                            let initialY;
-                            let currentX;
-                            let currentY;
-
-                            const card = document.getElementById('phoneModal');
-
-                            card.addEventListener('mousedown', (e) => {
-                                isDragging = true;
-                                initialX = e.clientX;
-                                initialY = e.clientY;
-                            });
-
-                            document.addEventListener('mousemove', (e) => {
-                                if (!isDragging) return;
-                                currentX = e.clientX - initialX;
-                                currentY = e.clientY - initialY;
-
-                                card.style.transform = `translate(${currentX}px, ${currentY}px)`;
-                            });
-
-                            document.addEventListener('mouseup', () => {
-                                isDragging = false;
-                            });
-
-                        </script>
                     </div>
                 </div>
+
             </div>
+            <!-- checkout  modal end-->
 
-        </div>
-        <!-- checkout  modal end-->
-
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <!-- <div class="toast-header">
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <!-- <div class="toast-header">
                 <img src="..." class="rounded me-2" alt="...">
                 <strong class="me-auto">Product</strong>
                 <small>1 seconds ago</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div> -->
-                <div class="toast-body fw-bold" style="background: #d1e7dd;">
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    <div class="toast-body fw-bold" style="background: #d1e7dd;">
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
 
-                    <span class="ms-2">Product Added Successfully...</span>
+                        <span class="ms-2">Product Added Successfully...</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
 
-        <!--Start Back To Top Button-->
-        <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
-        <!--End Back To Top Button-->
+            <!--Start Back To Top Button-->
+            <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+            <!--End Back To Top Button-->
 
-        <!-- JavaScript files -->
-        <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
-        <script src="/front_assets/js/jquery.min.js"></script>
-        <script src="/front_assets/plugins/slick/slick.min.js"></script>
-        <script src="/front_assets/js/main.js"></script>
-        <script src="/front_assets/js/index.js"></script>
-        <script src="/front_assets/js/loader.js"></script>
-        <script>
+            <!-- JavaScript files -->
+            <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
+            <script src="/front_assets/js/jquery.min.js"></script>
+            <script src="/front_assets/plugins/slick/slick.min.js"></script>
+            <script src="/front_assets/js/main.js"></script>
+            <script src="/front_assets/js/index.js"></script>
+            <script src="/front_assets/js/loader.js"></script>
+            <script>
 
-            // var cartData = '<%= JSON.stringify(locals.session) %>';
-            // console.log(cartData);
-            // Add more session variables as needed
-        </script>
-        <script src="../../front_assets/js/axios_post.js"></script>
-        <script>
-            // // for quantiy incremnet decrement
+                // var cartData = '<%= JSON.stringify(locals.session) %>';
+                // console.log(cartData);
+                // Add more session variables as needed
+            </script>
+            <script src="../../front_assets/js/axios_post.js"></script>
+            <script>
+                // // for quantiy incremnet decrement
 
-            // const change_quantity_value = async (reason, id, tag) => {
+                // const change_quantity_value = async (reason, id, tag) => {
 
-            //     const response = await axios.post('/product/product_increment', { product_id: id, reason: reason });
-            //     // console.log(tag.parentNode);
+                //     const response = await axios.post('/product/product_increment', { product_id: id, reason: reason });
+                //     // console.log(tag.parentNode);
 
-            //     tag.parentNode.children[1].innerHTML = await response.data.qty;
-            //     let total_holder = document.querySelector(`#total_${id}`);
-            //     total_holder.innerHTML = "T- " + await response.data.total + 'TK';
-            //     console.log(response);
-            // }
-        </script>
-        <!--  checkout js-->
-        <script>
+                //     tag.parentNode.children[1].innerHTML = await response.data.qty;
+                //     let total_holder = document.querySelector(`#total_${id}`);
+                //     total_holder.innerHTML = "T- " + await response.data.total + 'TK';
+                //     console.log(response);
+                // }
+            </script>
+            <!--  checkout js-->
+            <script>
 
-            // When the user clicks on the button, open the modal
-            // btn.onclick = function () {
-            //   console.log(modal.style);
-            //   modal.style.display = "";
-            // };
+                // When the user clicks on the button, open the modal
+                // btn.onclick = function () {
+                //   console.log(modal.style);
+                //   modal.style.display = "";
+                // };
 
-            // When the user clicks on <span> (x), close the modal
-            // span.onclick = function() {
-            //   modal.style.display = "none";
-            // }
+                // When the user clicks on <span> (x), close the modal
+                // span.onclick = function() {
+                //   modal.style.display = "none";
+                // }
 
-            // When the user clicks anywhere outside of the modal, close it
+                // When the user clicks anywhere outside of the modal, close it
 
-            // window.onclick = function(event) {
-            //   if (event.target == modal) {
-            //     modal.style.display = "none";
-            //   }
-            // }
-            // let checkoutNone = () => {
-            //   modal.style.display = "none";
-            // };
+                // window.onclick = function(event) {
+                //   if (event.target == modal) {
+                //     modal.style.display = "none";
+                //   }
+                // }
+                // let checkoutNone = () => {
+                //   modal.style.display = "none";
+                // };
 
-            // javaScript for dropdown menu
-            // for dropdown option
-            let dropdowns = document.querySelectorAll(".checkoutDropdown");
-            // console.log(dropdowns);
+                // javaScript for dropdown menu
+                // for dropdown option
+                let dropdowns = document.querySelectorAll(".checkoutDropdown");
+                // console.log(dropdowns);
 
-            dropdowns.forEach((dropdown) => {
-                let select = dropdown.querySelector(".select");
-                let caret = dropdown.querySelector(".caret");
-                let menu = dropdown.querySelector(".menu");
-                let options = dropdown.querySelectorAll(".menu li");
-                let selected = dropdown.querySelector(".selected");
-                let mimi22 = dropdown.querySelector(".mimi22");
+                dropdowns.forEach((dropdown) => {
+                    let select = dropdown.querySelector(".select");
+                    let caret = dropdown.querySelector(".caret");
+                    let menu = dropdown.querySelector(".menu");
+                    let options = dropdown.querySelectorAll(".menu li");
+                    let selected = dropdown.querySelector(".selected");
+                    let mimi22 = dropdown.querySelector(".mimi22");
 
-                select.addEventListener("click", () => {
+                    select.addEventListener("click", () => {
 
-                    select.classList.toggle("select-clicked");
-                    caret.classList.toggle("caret-rotate");
-                    menu.classList.toggle("menu-open");
-                });
-
-                options.forEach((option) => {
-                    let deliveryPrice = document.getElementById('delivery_charge')
-                    option.addEventListener("click", () => {
-                        console.log('like option', option.textContent, deliveryPrice, selected);
-                        mimi22.innerText = option.textContent;
-                        if (option.getAttribute('id') === 'city1') {
-                            console.log("log 1 ==");
-                            deliveryPrice.value = 60;
-                        }
-                        else if (option.getAttribute('id') === 'city2') {
-                            console.log("log 2 ==");
-                            deliveryPrice.value = 150;
-                        }
-                        if (mimi22.innerText == option.textContent) {
-                            if (mimi22.innerText == "Delivery address") {
-                                document.getElementById("textColoSet").style.color = "#9b9c9d";
-                            } else {
-                                document.getElementById("textColoSet").style.color = "black";
-                            }
-                        }
-                        select.classList.remove("select-clicked");
-                        caret.classList.remove("caret-rotate");
-                        menu.classList.remove("menu-open");
-
-                        options.forEach((option) => {
-                            option.classList.remove("active");
-                        });
-
-                        option.classList.add("active");
-                    });
-                });
-            });
-
-            // for country code  option
-            let codeDropdowns = document.querySelectorAll(".phoneDropdown");
-
-            codeDropdowns.forEach((dropdown) => {
-                let select = dropdown.querySelector(".countrySelect");
-                let caret = dropdown.querySelector(".countryCaret");
-                let menu = dropdown.querySelector(".countryMenu");
-                let options = dropdown.querySelectorAll(".countryMenu li");
-                let selected = dropdown.querySelector(".countrySelected");
-
-                select.addEventListener("click", () => {
-                    select.classList.toggle("select-clicked");
-                    caret.classList.toggle("caret-rotate");
-                    menu.classList.toggle("menu-open");
-                });
-
-                options.forEach((option) => {
-                    option.addEventListener("click", () => {
-                        console.log("inner text test", option.innerText);
-                        selected.innerText = option.innerText;
-                        select.classList.remove("select-clicked");
-                        caret.classList.remove("caret-rotate");
+                        select.classList.toggle("select-clicked");
+                        caret.classList.toggle("caret-rotate");
                         menu.classList.toggle("menu-open");
+                    });
 
-                        options.forEach((option) => {
-                            option.classList.remove("active");
+                    options.forEach((option) => {
+                        let deliveryPrice = document.getElementById('delivery_charge')
+                        option.addEventListener("click", () => {
+                            console.log('like option', option.textContent, deliveryPrice, selected);
+                            mimi22.innerText = option.textContent;
+                            if (option.getAttribute('id') === 'city1') {
+                                console.log("log 1 ==");
+                                deliveryPrice.value = 60;
+                            }
+                            else if (option.getAttribute('id') === 'city2') {
+                                console.log("log 2 ==");
+                                deliveryPrice.value = 150;
+                            }
+                            if (mimi22.innerText == option.textContent) {
+                                if (mimi22.innerText == "Delivery address") {
+                                    document.getElementById("textColoSet").style.color = "#9b9c9d";
+                                } else {
+                                    document.getElementById("textColoSet").style.color = "black";
+                                }
+                            }
+                            select.classList.remove("select-clicked");
+                            caret.classList.remove("caret-rotate");
+                            menu.classList.remove("menu-open");
+
+                            options.forEach((option) => {
+                                option.classList.remove("active");
+                            });
+
+                            option.classList.add("active");
                         });
-
-                        option.classList.add("active");
                     });
                 });
-            });
 
-            // scroll bar
+                // for country code  option
+                let codeDropdowns = document.querySelectorAll(".phoneDropdown");
 
-            var $doc = $("#createScroll");
-            var $win = $(window);
-            var itemstoshow = 5;
+                codeDropdowns.forEach((dropdown) => {
+                    let select = dropdown.querySelector(".countrySelect");
+                    let caret = dropdown.querySelector(".countryCaret");
+                    let menu = dropdown.querySelector(".countryMenu");
+                    let options = dropdown.querySelectorAll(".countryMenu li");
+                    let selected = dropdown.querySelector(".countrySelected");
 
-            $(".infinite")
-                .filter(function (index) {
-                    return $(this).offset().top > $win.height();
-                })
-                .hide();
+                    select.addEventListener("click", () => {
+                        select.classList.toggle("select-clicked");
+                        caret.classList.toggle("caret-rotate");
+                        menu.classList.toggle("menu-open");
+                    });
 
-            $(window).scroll(function () {
-                if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
-                    $(".infinite:hidden:lt(" + itemstoshow + ")").show();
-                }
-            });
+                    options.forEach((option) => {
+                        option.addEventListener("click", () => {
+                            console.log("inner text test", option.innerText);
+                            selected.innerText = option.innerText;
+                            select.classList.remove("select-clicked");
+                            caret.classList.remove("caret-rotate");
+                            menu.classList.toggle("menu-open");
 
-            // mediaQuery and responsive
-            let ovearflows = document.querySelectorAll(".addCardText p");
+                            options.forEach((option) => {
+                                option.classList.remove("active");
+                            });
 
-            const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+                            option.classList.add("active");
+                        });
+                    });
+                });
 
-            ovearflows.forEach((ovearflow) => {
-                if (ovearflow.innerHTML.length > 90) {
-                    ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
-                }
+                // scroll bar
 
-                if (mediaQuery1300.matches) {
-                    console.log("match");
-                    if (ovearflow.innerHTML.length > 71) {
-                        ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+                var $doc = $("#createScroll");
+                var $win = $(window);
+                var itemstoshow = 5;
+
+                $(".infinite")
+                    .filter(function (index) {
+                        return $(this).offset().top > $win.height();
+                    })
+                    .hide();
+
+                $(window).scroll(function () {
+                    if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
+                        $(".infinite:hidden:lt(" + itemstoshow + ")").show();
                     }
+                });
+
+                // mediaQuery and responsive
+                let ovearflows = document.querySelectorAll(".addCardText p");
+
+                const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+
+                ovearflows.forEach((ovearflow) => {
+                    if (ovearflow.innerHTML.length > 90) {
+                        ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
+                    }
+
+                    if (mediaQuery1300.matches) {
+                        console.log("match");
+                        if (ovearflow.innerHTML.length > 71) {
+                            ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+                        }
+                    }
+                });
+
+                const mediaQuery750 = window.matchMedia("(max-width: 750px)");
+
+                if (mediaQuery750.matches) {
+                    let phoneModal = document.getElementById("phoneModal");
+                    let phone_2nd = document.getElementById("phone_2nd");
+                    let phone_1st = document.getElementById("phone_1st");
+                    phoneModal.insertBefore(phone_1st, phone_2nd);
                 }
-            });
+            </script>
 
-            const mediaQuery750 = window.matchMedia("(max-width: 750px)");
+            <!-- increment or decrement input css -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <!-- add product to the cart dynamically -->
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-            if (mediaQuery750.matches) {
-                let phoneModal = document.getElementById("phoneModal");
-                let phone_2nd = document.getElementById("phone_2nd");
-                let phone_1st = document.getElementById("phone_1st");
-                phoneModal.insertBefore(phone_1st, phone_2nd);
-            }
-        </script>
-
-        <!-- increment or decrement input css -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- add product to the cart dynamically -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-        <!-- 
+            <!-- 
     <script>
         const orderList = () => {
             // console.log('hello');
@@ -2484,7 +2479,7 @@
         }
     </script> -->
 
-        <!-- <script>
+            <!-- <script>
         const deleteSessionProduct = async (id) => {
             console.log(id);
             let container = document.querySelector(`#productcartContainer_${id}`);
@@ -2496,17 +2491,17 @@
     </script> -->
 
 
-        <script>
-            const toastTrigger = document.getElementById('liveToastBtn')
-            const toastLiveExample = document.getElementById('liveToast')
-            if (toastTrigger) {
-                toastTrigger.addEventListener('click', () => {
-                    const toast = new bootstrap.Toast(toastLiveExample)
+            <script>
+                const toastTrigger = document.getElementById('liveToastBtn')
+                const toastLiveExample = document.getElementById('liveToast')
+                if (toastTrigger) {
+                    toastTrigger.addEventListener('click', () => {
+                        const toast = new bootstrap.Toast(toastLiveExample)
 
-                    toast.show()
-                })
-            }
-        </script>
+                        toast.show()
+                    })
+                }
+            </script>
 </body>
 
 </html>

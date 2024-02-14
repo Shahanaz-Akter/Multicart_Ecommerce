@@ -13,9 +13,9 @@ const addProduct = async (req, res) => {
 
 const postAddProduct = async (req, res) => {
     // Use multer to handle file uploads
-    console.log(req.body.colorVariantsVariants);
+    // console.log(req.body.colorVariantsVariants);
 
-    console.log(req.body.sizeVariants);
+    // console.log(req.body.sizeVariants);
 
     try {
         if (!req.files || !req.files['primary_image']) {
@@ -59,7 +59,7 @@ const postAddProduct = async (req, res) => {
         // console.log(typeof (JSON.parse(result.secondary_image)));
         // console.log(JSON.parse(result.secondary_image));
         // console.log(typeof (JSON.parse(result.secondary_image)));
-        console.log(result);
+        // console.log(result);
 
         res.redirect('/product/Product_list');
     }
@@ -195,7 +195,7 @@ const example = async (req, res) => {
         // console.log(typeof (JSON.parse(result.secondary_image)));
         // console.log(JSON.parse(result.secondary_image));
         // console.log(typeof (JSON.parse(result.secondary_image)));
-        console.log(result);
+        // console.log(result);
 
         res.redirect('/product/Product_list');
     }

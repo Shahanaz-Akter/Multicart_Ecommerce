@@ -29,7 +29,18 @@
     <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- my data table  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 
+    <style>
+        #manualTbl_wrapper {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
     <!-- add_products external css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 
@@ -176,7 +187,6 @@
             width: 100%;
         }
     </style>
-
 
     <style>
         #addProduct {
@@ -989,11 +999,12 @@
                                     <span class="text-start">
                                         <div class="btn btn-warning mb-2 text-white fw-bold">Customer Entry: </div>
                                     </span>
+
+
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                         <label for="customer_name" class="form-label">Customer Name</label>
                                         <input class="form-control" id="customer_name" type="text" name="customer_name" placeholder="Sahanaz Akter">
                                     </div>
-
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
                                         <label for="dob" class="form-label">Date of Birth</label>
@@ -1011,6 +1022,7 @@
                                             color: #444 !important;
                                         }
                                     </style>
+
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                         <label for="mobile1" class="form-label">Mobile</label>
@@ -1039,10 +1051,71 @@
                                         <label for="dob" class="form-label">Date of Join</label>
                                         <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
                                     </div>
-
+                                </div>
+                                <div class="row">
 
                                     <span class="text-start">
-                                        <div class="btn btn-danger mb-2 fw-bold">Order Entry: </div>
+                                        <div class="btn btn-dark mb-2 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#inventory_access">Inventory Product Entry: </div>
+                                    </span>
+                                    <!-- items -->
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="name" class="form-label">Product ID</label>
+                                        <input type="text" id="id " class="form-control" placeholder="1" name="id" style="background: #FCFCFC!important;">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="name" class="form-label">Product Name</label>
+                                        <input type="text" id="name " class="form-control" placeholder="Name" name="name" style="background: #FCFCFC!important;">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Quantity</label>
+                                            <input type="text" class="form-control" placeholder="2" name="qty" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Total Quantity</label>
+                                            <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Price</label>
+                                            <input type="text" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Buying Price</label>
+                                            <input required type="number" class="form-control" placeholder="1" name="buying_price">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Selling Price</label>
+                                            <input required type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="main-img-container mt-2">
+                                            <!-- <p>*All Image size should be 300/300.</p> -->
+                                            <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
+                                            <br>
+                                            <label for="mainImg1" class="btn btn-dark mt-2">Primary Image</label>
+                                            <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="primary_image">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <span class="text-start">
+                                        <div class="btn btn-danger mb-0   fw-bold">Order Entry: </div>
                                     </span>
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6 row mb-3">
@@ -1139,655 +1212,764 @@
                                     </div>
                                 </div>
 
-
-                                <div class="ms-3" style="display: flex; justify-content: left;">
-                                    <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
-                                        Upload
-                                    </button>
-
-                                    <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
-                                        Cancel
-                                    </button>
-                                </div>
-
-                            </form>
-
-                            <!-- new Add product code End  -->
-
-
-                            <div class="row d-none">
-
-                                <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                    <label for="warehouse" class="form-label">Select Warehouse</label>
-                                    <select class="form-control" data-toggle="select2" data-width="100%" name="warehouse" style="background: #FCFCFC!important;">
-                                        <option>Warehouse</option>
-                                        <optgroup label="">
-                                            <option value="united_state">United State</option>
-                                            <option value="canada">Canada</option>
-                                            <option value="maxico">Maxico</option>
-                                            <option value="france">France</option>
-                                            <option value="germany">Germany</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-
-
-
-                                <!-- <style>
-                                    .select2-container--default .select2-selection--single .select2-selection__rendered {
-                                        background: #FCFCFC !important;
-                                        color: #444;
-
-                                    }
-                                   </styl> -->
-
-
-                                <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                    <div class="mb-3">
-                                        <label class="form-label">Amount</label>
-                                        <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470" style="background: #FCFCFC!important;">
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <!-- container-fluid -->
-
                         </div>
-                        <!-- content -->
 
-                        <%- include('../layouts/footer.ejs') -%>
 
+                        <div class="ms-3" style="display: flex; justify-content: left;">
+                            <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
+                                Upload
+                            </button>
+
+                            <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
+                                Cancel
+                            </button>
+                        </div>
+
+                        </form>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="inventory_access" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">All Inventory Products</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style>
+                                            .dt-buttons {
+                                                display: none;
+                                            }
+                                        </style>
+
+                                        <div id="manualOrderTbl_filter" class="dataTables_filter row">
+                                            <div class="col-12 col-md-8 col-lg-8 col-xl-8 mb-3">
+                                            </div>
+                                            <style>
+                                                .form-control {
+                                                    padding: 8px 8px
+                                                }
+                                            </style>
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                <select id="filterSelect2" class="form-control " aria-controls="manualOrderTbl">
+                                                    <option value="">Select Category</option>
+                                                    <option value="Mens and Boys Fashion">Mens and Boys Fashion</option>
+                                                    <option value="Womens and Girls Fashion">Womens and Girls Fashion</option>
+                                                    <option value="HOME & GADGETS">HOME & GADGETS</option>
+                                                    <option value="KITCHEN & DINING">KITCHEN & DINING</option>
+                                                    <option value="HEALTH & BEAUTY">HEALTH & BEAUTY</option>
+                                                    <option value="BABY & KIDS">BABY & KIDS</option>
+                                                    <option value="SHAVER & TRIMMER">SHAVER & TRIMMER</option>
+                                                    <option value="ELECTRONICS">ELECTRONICS</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+
+                                        <table id="manualOrderTbl" class="display nowrap" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th><input type="checkbox" id="select-all-checkbox"></th>
+                                                    <th>SL</th>
+                                                    <th>Primary Image</th>
+                                                    <th>Product Name</th>
+                                                    <th>Category Name</th>
+                                                    <th>Selling Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%items.forEach(item=>{%>
+
+                                                    <% const maxWords=1;%>
+                                                        <% const words=item.name.split(' '); %>
+                                                        <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                        <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                    
+                                                        <tr>
+                                                            <td><input type="checkbox" class="row-checkbox"></td>
+                                                            <td>
+                                                                <%=item.id%>
+                                                            </td>
+
+                                                            <td>
+                                                                <div class="" style="background: url(' <%=item.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 110px;width:110px;">
+                                    </div>
+                                    </td>
+
+                                    <td>
+
+                                        <% if (remainingText) { %>
+                                            <%= truncatedName %>..
+                                                <% }else{%>
+                                                    <%= truncatedName %>
+                                                        <%} %>
+
+                                    </td>
+                                    <td>
+                                        <%=item.product_category%>
+                                    </td>
+                                    <td>
+                                        <%=item.selling_price%>
+                                    </td>
+
+                                    </tr>
+
+                                    <%})%>
+                                        </tbody>
+
+
+                                        </table>
+
+                                        <script>
+                                            $(document).ready(function () {
+
+                                                $('#filterSelect2').change(function () {
+                                                    var category = $(this).val();
+                                                    $('#manualOrderTbl').DataTable().column(3).search(category).draw();
+                                                });
+                                            });
+                                        </script>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- End Page content -->
 
+                    <!-- new Add product code End  -->
+
+
+
+                    <!-- container-fluid -->
 
                 </div>
-                <!-- END wrapper -->
+                <!-- content -->
 
-                <!-- Right Sidebar -->
-                <%- include('../layouts/right_sidebar.ejs') -%>
+                <%- include('../layouts/footer.ejs') -%>
 
-                    <!-- /Right-bar -->
+    </div>
+    <!-- End Page content -->
 
-                    <!-- Right bar overlay-->
-                    <div class="rightbar-overlay"></div>
 
-                    <!-- Vendor -->
+    </div>
+    <!-- END wrapper -->
 
-                    <script src="/assets/libs/jquery/jquery.min.js"></script>
+    <!-- Right Sidebar -->
+    <%- include('../layouts/right_sidebar.ejs') -%>
 
-                    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-                    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
-                    <script src="/assets/libs/node-waves/waves.min.js"></script>
-                    <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-                    <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-                    <script src="/assets/libs/feather-icons/feather.min.js"></script>
+        <!-- /Right-bar -->
 
-                    <script src="/assets/libs/selectize/js/standalone/selectize.min.js"></script>
-                    <script src="/assets/libs/mohithg-switchery/switchery.min.js"></script>
-                    <script src="/assets/libs/multiselect/js/jquery.multi-select.js"></script>
-                    <script src="/assets/libs/select2/js/select2.min.js"></script>
-                    <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
-                    <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
-                    <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-                    <script src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
 
-                    <!-- Init js-->
-                    <script src="/assets/js/pages/form-advanced.init.js"></script>
+        <!-- table js jquery -->
+        <script src="/assets/libs/jquery/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+        <!-- Vendor -->
+        <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/assets/libs/node-waves/waves.min.js"></script>
+        <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+        <script src="/assets/libs/feather-icons/feather.min.js"></script>
 
-                    <!-- App js -->
-                    <script src="/assets/js/app.min.js"></script>
+        <script src="/assets/libs/selectize/js/standalone/selectize.min.js"></script>
+        <script src="/assets/libs/mohithg-switchery/switchery.min.js"></script>
+        <script src="/assets/libs/multiselect/js/jquery.multi-select.js"></script>
+        <script src="/assets/libs/select2/js/select2.min.js"></script>
+        <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
+        <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
+        <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        <script src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 
-                    <!-- add_product tableBody external js -->
-                    <script>
-                        // const { functions } = require("lodash");
+        <!-- Init js-->
+        <script src="/assets/js/pages/form-advanced.init.js"></script>
 
-                        let count = 0;
-                        const main_image_changed = (tag, ind) => {
-                            let imgTag;
-                            if (ind) {
-                                imgTag = document.getElementById(`main-img-preview_${ind}`);
-                            } else {
-                                imgTag = document.getElementById(`main-img-preview`);
+        <!-- App js -->
+        <script src="/assets/js/app.min.js"></script>
+        <script>
+            var table;
+
+            $(document).ready(function () {
+                table = $('#manualOrderTbl').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'],
+                    scrollX: true,
+                    scrollY: true,
+                    select: {
+                        style: 'multi', // Enable multiple row selection
+                        selector: 'td input', // Use the first column for selection
+                    },
+                });
+
+                $('#select-all-checkbox').on('click', function () {
+                    var isChecked = $(this).prop('checked');
+                    $('input.row-checkbox', table.rows().nodes()).prop('checked', isChecked);
+                    table.rows().select(isChecked);
+                });
+
+
+            });
+        </script>
+
+        <!-- add_product tableBody external js -->
+        <script>
+            // const { functions } = require("lodash");
+
+            let count = 0;
+            const main_image_changed = (tag, ind) => {
+                let imgTag;
+                if (ind) {
+                    imgTag = document.getElementById(`main-img-preview_${ind}`);
+                } else {
+                    imgTag = document.getElementById(`main-img-preview`);
+                }
+                // imgTag.classList.remove("d-none");
+                if (tag.files && tag.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgTag.setAttribute("src", e.target.result);
+                    };
+                    reader.readAsDataURL(tag.files[0]);
+                }
+                // let imge = document.getElementById("main-img-preview");
+
+            };
+
+            //image category
+            const main_image_changed1 = (tag, ind) => {
+                let imgTag;
+                if (ind) {
+                    imgTag = document.getElementById(`main-img-preview1_${ind}`);
+                } else {
+                    imgTag = document.getElementById(`main-img-preview1`);
+                }
+                // imgTag.classList.remove("d-none");
+                if (tag.files && tag.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgTag.setAttribute("src", e.target.result);
+                    };
+                    reader.readAsDataURL(tag.files[0]);
+                }
+                // let imge = document.getElementById("main-img-preview");
+
+            };
+
+            // js for single image and carosel image delete
+            const deleteSliderSingleImg = (tag) => {
+                let deletedNode = tag.parentNode;
+                let deleteFromParentNode = tag.parentNode.parentNode;
+
+                if (deletedNode) {
+                    deleteFromParentNode.removeChild(deletedNode);
+                    topUploadParent.style.display = "block";
+                }
+            };
+            function getCombinations(arrays, prefix = [], results = []) {
+                if (prefix.length === arrays.length) {
+                    results.push(prefix.slice());
+                    return;
+                }
+
+                for (let i = 0; i < arrays[prefix.length].length; i++) {
+                    prefix.push(arrays[prefix.length][i]);
+                    getCombinations(arrays, prefix, results);
+                    prefix.pop();
+                }
+                return results;
+            }
+
+            const Populate_variant_table = (tag, num) => {
+                let labelParent;
+                let table;
+                let tableHeadTr;
+
+                if (num) {
+                    labelParent = document.getElementById(`varient_container__${num}`);
+                    table = document.getElementById(`product_table_${num}`);
+                    tableHeadTr = document.getElementById(`tableHeadTr_${num}`);
+
+
+                } else {
+                    labelParent = document.getElementById(`varient_container_`);
+                    table = document.getElementById(`product_table`);
+                    tableHeadTr = document.getElementById(`tableHeadTr`);
+                }
+                let all_varient_table_labels = tableHeadTr.querySelectorAll(".varient_table_label");
+
+                Array.from(all_varient_table_labels).forEach(element => {
+                    element.remove();
+                })
+
+                let varient_labels = labelParent.querySelectorAll("label")
+                let varient_uls = labelParent.querySelectorAll(".colorInputUL");
+
+                //  for (let i = 0; i < varient_labels.length; i++) {
+                //     const element = varient_labels[i];
+                //     console.log("varient_labels == ", varient_labels[i]); 
+                //  }
+                //  for (let i = 0; i < varient_uls.length; i++) {
+                //     const element = varient_uls[i];
+                //     console.log("varient_labels == ", varient_uls[i]); 
+                //  }
+
+
+                let varient_table_labels = [];
+
+
+                const values = []; //aikhane problem
+                let emptyUlIndex = [];
+
+                $(varient_uls).each(function (index, element) {
+                    // console.log('element == ', element, element.querySelectorAll("li").length, 'index == ', index);
+                    let inputArray = [];
+                    if (element.querySelectorAll("li").length != "0") {
+                        varient_table_labels.push(all_varient_table_labels[index]);
+                        element.querySelectorAll("li").forEach(li => {
+                            inputArray.push(li.innerText)
+                        });
+                        values.push(inputArray)
+                    }
+                    else emptyUlIndex.push(index)
+                });
+                console.log("emptyUlIndex === ", emptyUlIndex);
+
+                const combinations = getCombinations(values);
+
+                for (let i = varient_labels.length - 1; i >= 0; i--) {
+                    console.log("the varient is === ", varient_labels[i]);
+                    if (!emptyUlIndex.includes(i)) {
+                        console.log("varient_labels each === ", i, varient_labels[i].textContent);
+                        let th = document.createElement("th");
+                        th.classList.add("varient_table_label");
+                        th.innerHTML = varient_labels[i].textContent;
+                        tableHeadTr.prepend(th);
+                        console.log("tableHeadTr == ", tableHeadTr);
+                    }
+                    else console.log("include here ==");
+                }
+
+
+
+
+                // Array.from(varient_labels).reverse().forEach(label=>{
+                //     let th = document.createElement("th");
+                //     th.classList.add("varient_table_label");
+                //     th.innerHTML = label.textContent;
+                //     tableHeadTr.prepend(th); 
+                // });
+
+                tableHeadTr.children[0].style.borderTopLeftRadius = "10px"
+                table.innerHTML = "";
+                console.log(combinations);
+
+                combinations.forEach((combination, key) => {
+                    let tr = document.createElement("tr");
+                    tr.classList.add("tableBody");
+                    combination.forEach((comb) => {
+                        let td = document.createElement("td");
+                        td.innerHTML = comb;
+                        tr.appendChild(td);
+                        console.log('hi', tr);
+                    });
+
+
+                    let input4 = document.createElement("input");
+                    input4.setAttribute("name", "quantitys[]");
+                    input4.classList.add("myInput");
+                    input4.setAttribute("placeholder", "Qunatity");
+                    let td4 = document.createElement("td");
+                    td4.appendChild(input4);
+                    tr.appendChild(td4);
+
+
+                    let icon = document.createElement("i");
+                    icon.classList.add(
+                        "mdi",
+                        "mdi-delete",
+                        "text-danger",
+                        "delete-table-data"
+                    );
+                    icon.setAttribute("id", "td_" + key);
+                    icon.setAttribute("onclick", "tableDataDelete(this)");
+                    icon.style.fontSize = "20px"
+                    let td7 = document.createElement("td");
+                    td7.style.textAlign = "center";
+                    td7.appendChild(icon);
+                    tr.appendChild(td7);
+                    table.appendChild(tr);
+                });
+                let tableDataleftBox = table.querySelectorAll("tr")
+                let tableLastRow = tableDataleftBox[tableDataleftBox.length - 1];
+                let tableDataList = tableLastRow.querySelectorAll("td");
+                let firstTableData = tableDataList[0];
+                let lastTableData = tableDataList[tableDataList.length - 1];
+                firstTableData.style.borderBottomLeftRadius = "10px"
+                lastTableData.style.borderBottomRightRadius = "10px"
+
+            };
+            // End Populate_variant_table function 
+
+            const tableDataDelete = (tag) => {
+                // let table = document.getElementById("product_table");
+                let deleteItem = tag.parentNode.parentNode;
+                let parentTable = tag.parentNode.parentNode.parentNode;
+                // console.log("the table is = ", table, deleteItem, parentTable);
+                parentTable.removeChild(deleteItem);
+            };
+
+            const table_content_dropdown_add = (tag, num) => {
+                count += 1;
+                let table_content = document.getElementById("table_content_dropdown_");
+                let table_content_container;
+                let new_content = table_content.cloneNode(true);
+                if (num) {
+                    table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
+                    // let new_content = table_content.cloneNode(true);
+                    new_content.setAttribute("id", `table_content_dropdown_${num}_${count}`);
+
+                    var innerIDs = [];
+
+                    function collectInnerIDs(element) {
+                        if (element.hasAttribute("onclick")) {
+                            let onchangeIS = element.getAttribute("onclick");
+                            var onclickParts = onchangeIS.split(',' || ' ');
+                            if (onclickParts[0] == "deleteTableContent(this") {
+                                console.log("what is element === ", element);
+                                element.setAttribute("onclick", onclickParts[0] + ', ' + num + ')');
                             }
-                            // imgTag.classList.remove("d-none");
-                            if (tag.files && tag.files[0]) {
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                    imgTag.setAttribute("src", e.target.result);
-                                };
-                                reader.readAsDataURL(tag.files[0]);
-                            }
-                            // let imge = document.getElementById("main-img-preview");
-
-                        };
-
-                        //image category
-                        const main_image_changed1 = (tag, ind) => {
-                            let imgTag;
-                            if (ind) {
-                                imgTag = document.getElementById(`main-img-preview1_${ind}`);
-                            } else {
-                                imgTag = document.getElementById(`main-img-preview1`);
-                            }
-                            // imgTag.classList.remove("d-none");
-                            if (tag.files && tag.files[0]) {
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                    imgTag.setAttribute("src", e.target.result);
-                                };
-                                reader.readAsDataURL(tag.files[0]);
-                            }
-                            // let imge = document.getElementById("main-img-preview");
-
-                        };
-
-                        // js for single image and carosel image delete
-                        const deleteSliderSingleImg = (tag) => {
-                            let deletedNode = tag.parentNode;
-                            let deleteFromParentNode = tag.parentNode.parentNode;
-
-                            if (deletedNode) {
-                                deleteFromParentNode.removeChild(deletedNode);
-                                topUploadParent.style.display = "block";
-                            }
-                        };
-                        function getCombinations(arrays, prefix = [], results = []) {
-                            if (prefix.length === arrays.length) {
-                                results.push(prefix.slice());
-                                return;
-                            }
-
-                            for (let i = 0; i < arrays[prefix.length].length; i++) {
-                                prefix.push(arrays[prefix.length][i]);
-                                getCombinations(arrays, prefix, results);
-                                prefix.pop();
-                            }
-                            return results;
                         }
 
-                        const Populate_variant_table = (tag, num) => {
-                            let labelParent;
-                            let table;
-                            let tableHeadTr;
-
-                            if (num) {
-                                labelParent = document.getElementById(`varient_container__${num}`);
-                                table = document.getElementById(`product_table_${num}`);
-                                tableHeadTr = document.getElementById(`tableHeadTr_${num}`);
-
-
-                            } else {
-                                labelParent = document.getElementById(`varient_container_`);
-                                table = document.getElementById(`product_table`);
-                                tableHeadTr = document.getElementById(`tableHeadTr`);
-                            }
-                            let all_varient_table_labels = tableHeadTr.querySelectorAll(".varient_table_label");
-
-                            Array.from(all_varient_table_labels).forEach(element => {
-                                element.remove();
-                            })
-
-                            let varient_labels = labelParent.querySelectorAll("label")
-                            let varient_uls = labelParent.querySelectorAll(".colorInputUL");
-
-                            //  for (let i = 0; i < varient_labels.length; i++) {
-                            //     const element = varient_labels[i];
-                            //     console.log("varient_labels == ", varient_labels[i]); 
-                            //  }
-                            //  for (let i = 0; i < varient_uls.length; i++) {
-                            //     const element = varient_uls[i];
-                            //     console.log("varient_labels == ", varient_uls[i]); 
-                            //  }
-
-
-                            let varient_table_labels = [];
-
-
-                            const values = []; //aikhane problem
-                            let emptyUlIndex = [];
-
-                            $(varient_uls).each(function (index, element) {
-                                // console.log('element == ', element, element.querySelectorAll("li").length, 'index == ', index);
-                                let inputArray = [];
-                                if (element.querySelectorAll("li").length != "0") {
-                                    varient_table_labels.push(all_varient_table_labels[index]);
-                                    element.querySelectorAll("li").forEach(li => {
-                                        inputArray.push(li.innerText)
-                                    });
-                                    values.push(inputArray)
-                                }
-                                else emptyUlIndex.push(index)
-                            });
-                            console.log("emptyUlIndex === ", emptyUlIndex);
-
-                            const combinations = getCombinations(values);
-
-                            for (let i = varient_labels.length - 1; i >= 0; i--) {
-                                console.log("the varient is === ", varient_labels[i]);
-                                if (!emptyUlIndex.includes(i)) {
-                                    console.log("varient_labels each === ", i, varient_labels[i].textContent);
-                                    let th = document.createElement("th");
-                                    th.classList.add("varient_table_label");
-                                    th.innerHTML = varient_labels[i].textContent;
-                                    tableHeadTr.prepend(th);
-                                    console.log("tableHeadTr == ", tableHeadTr);
-                                }
-                                else console.log("include here ==");
-                            }
-
-
-
-
-                            // Array.from(varient_labels).reverse().forEach(label=>{
-                            //     let th = document.createElement("th");
-                            //     th.classList.add("varient_table_label");
-                            //     th.innerHTML = label.textContent;
-                            //     tableHeadTr.prepend(th); 
-                            // });
-
-                            tableHeadTr.children[0].style.borderTopLeftRadius = "10px"
-                            table.innerHTML = "";
-                            console.log(combinations);
-
-                            combinations.forEach((combination, key) => {
-                                let tr = document.createElement("tr");
-                                tr.classList.add("tableBody");
-                                combination.forEach((comb) => {
-                                    let td = document.createElement("td");
-                                    td.innerHTML = comb;
-                                    tr.appendChild(td);
-                                    console.log('hi', tr);
-                                });
-
-
-                                let input4 = document.createElement("input");
-                                input4.setAttribute("name", "quantitys[]");
-                                input4.classList.add("myInput");
-                                input4.setAttribute("placeholder", "Qunatity");
-                                let td4 = document.createElement("td");
-                                td4.appendChild(input4);
-                                tr.appendChild(td4);
-
-
-                                let icon = document.createElement("i");
-                                icon.classList.add(
-                                    "mdi",
-                                    "mdi-delete",
-                                    "text-danger",
-                                    "delete-table-data"
-                                );
-                                icon.setAttribute("id", "td_" + key);
-                                icon.setAttribute("onclick", "tableDataDelete(this)");
-                                icon.style.fontSize = "20px"
-                                let td7 = document.createElement("td");
-                                td7.style.textAlign = "center";
-                                td7.appendChild(icon);
-                                tr.appendChild(td7);
-                                table.appendChild(tr);
-                            });
-                            let tableDataleftBox = table.querySelectorAll("tr")
-                            let tableLastRow = tableDataleftBox[tableDataleftBox.length - 1];
-                            let tableDataList = tableLastRow.querySelectorAll("td");
-                            let firstTableData = tableDataList[0];
-                            let lastTableData = tableDataList[tableDataList.length - 1];
-                            firstTableData.style.borderBottomLeftRadius = "10px"
-                            lastTableData.style.borderBottomRightRadius = "10px"
-
-                        };
-                        // End Populate_variant_table function 
-
-                        const tableDataDelete = (tag) => {
-                            // let table = document.getElementById("product_table");
-                            let deleteItem = tag.parentNode.parentNode;
-                            let parentTable = tag.parentNode.parentNode.parentNode;
-                            // console.log("the table is = ", table, deleteItem, parentTable);
-                            parentTable.removeChild(deleteItem);
-                        };
-
-                        const table_content_dropdown_add = (tag, num) => {
-                            count += 1;
-                            let table_content = document.getElementById("table_content_dropdown_");
-                            let table_content_container;
-                            let new_content = table_content.cloneNode(true);
-                            if (num) {
-                                table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
-                                // let new_content = table_content.cloneNode(true);
-                                new_content.setAttribute("id", `table_content_dropdown_${num}_${count}`);
-
-                                var innerIDs = [];
-
-                                function collectInnerIDs(element) {
-                                    if (element.hasAttribute("onclick")) {
-                                        let onchangeIS = element.getAttribute("onclick");
-                                        var onclickParts = onchangeIS.split(',' || ' ');
-                                        if (onclickParts[0] == "deleteTableContent(this") {
-                                            console.log("what is element === ", element);
-                                            element.setAttribute("onclick", onclickParts[0] + ', ' + num + ')');
-                                        }
-                                    }
-
-                                    for (var i = 0; i < element.children.length; i++) {
-                                        collectInnerIDs(element.children[i]);
-                                    }
-                                }
-
-                                collectInnerIDs(new_content);
-                            }
-                            else {
-                                table_content_container = document.getElementById(`table_content_dropdown_box`)
-                                new_content.setAttribute("id", "table_content_dropdown_" + count);
-                            }
-
-                            new_content.classList.remove("d-none");
-                            let firstChild = new_content.children[0];
-                            let input = firstChild.children[0].children[1].children[0];
-                            let dropDownMenu = firstChild.children[0].children[1].children[1];
-                            console.log('firstChild', firstChild, input, dropDownMenu);
-
-                            input.setAttribute("id", "contentsTitleInput_" + count);
-                            input.setAttribute("onclick", "showContentDropdown(" + count + ")");
-                            dropDownMenu.setAttribute("id", "dropdownMenu_" + count);
-                            table_content_container.appendChild(new_content);
-                        };
-
-                        const deleteTableContent = (tag, num) => {
-                            let table_content_container;
-                            if (num) {
-                                table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
-                            }
-                            else {
-                                table_content_container = document.getElementById(`table_content_dropdown_box`)
-                            }
-                            let table_content = tag.parentNode.parentNode;
-                            console.log("table_content", table_content_container, table_content);
-                            table_content_container.removeChild(table_content);
-                        };
-
-                        const cancel = () => {
-                            let product_table = document.getElementById("product_table");
-                            const allInput = $(".main-contact-area").find("input");
-                            const allSelect = $(".main-contact-area").find("select");
-                            const allTextarea = $(".main-contact-area").find("textarea");
-                            for (let i = 0; i < allInput.length; i++) {
-                                allInput[i].value = "";
-                            }
-                            for (let i = 0; i < allSelect.length; i++) {
-                                // allSelect[i].value = "";
-                                allSelect[i].selectedIndex = 0;
-                            }
-                            product_table.innerHTML = "";
-                            for (let i = 0; i < allTextarea.length; i++) {
-                                allTextarea[i].value = "";
-                            }
-                        };
-
-                        let findInput = 0;
-                        let oldDropdownContent = '';
-
-                        const showContentDropdown = (id, num) => {
-                            let dropdownMenu_s;
-                            if (num) {
-                                dropdownMenu_s = document.getElementById(`dropdownMenu_${id}_${num}`);
-                            }
-                            else {
-                                dropdownMenu_s = document.getElementById(`dropdownMenu_${id}`);
-                            }
-                            if (oldDropdownContent && !oldDropdownContent.classList.contains('d-none') && findInput != id) {
-                                oldDropdownContent.classList.add('d-none')
-                            }
-                            dropdownMenu_s.classList.toggle("d-none");
-                            findInput = id;
-                            oldDropdownContent = dropdownMenu_s
-                        };
-
-
-
-                        document.addEventListener("click", function (event) {
-                            var target = event.target
-                            let dropdownBox = document.querySelectorAll(".dropdownBox");
-                            if (target.tagName != 'INPUT') {
-                                for (let i = 0; i < dropdownBox.length; i++) {
-                                    if (!dropdownBox[i].classList.contains('d-none')) {
-                                        dropdownBox[i].classList.add("d-none");
-                                    }
-                                }
-                            }
-                        })
-
-                        let allInputTags = document.querySelectorAll('input');
-                        $(allInputTags).each(function (index, element) {
-                            element.addEventListener("input", function (e) {
-                                let dropdownBox = document.querySelectorAll(".dropdownBox");
-                                for (let i = 0; i < dropdownBox.length; i++) {
-                                    console.log("dropdownBox[i]", dropdownBox[i]);
-                                    if (!dropdownBox[i].classList.contains('d-none')) {
-                                        dropdownBox[i].classList.add("d-none");
-                                    }
-                                }
-                            })
-                        })
-
-                        function selectOption(tag, num) {
-
-                            let textInput;
-                            if (num) {
-                                textInput = document.getElementById(`contentsTitleInput_${findInput}_${num}`);
-                            }
-                            else {
-                                textInput = document.getElementById(`contentsTitleInput_${findInput}`);
-
-                            }
-                            let text = tag.textContent;
-                            textInput.value = text;
-
-                            let parent = tag.parentNode;
-                            parent.classList.add("d-none");
+                        for (var i = 0; i < element.children.length; i++) {
+                            collectInnerIDs(element.children[i]);
                         }
+                    }
+
+                    collectInnerIDs(new_content);
+                }
+                else {
+                    table_content_container = document.getElementById(`table_content_dropdown_box`)
+                    new_content.setAttribute("id", "table_content_dropdown_" + count);
+                }
+
+                new_content.classList.remove("d-none");
+                let firstChild = new_content.children[0];
+                let input = firstChild.children[0].children[1].children[0];
+                let dropDownMenu = firstChild.children[0].children[1].children[1];
+                console.log('firstChild', firstChild, input, dropDownMenu);
+
+                input.setAttribute("id", "contentsTitleInput_" + count);
+                input.setAttribute("onclick", "showContentDropdown(" + count + ")");
+                dropDownMenu.setAttribute("id", "dropdownMenu_" + count);
+                table_content_container.appendChild(new_content);
+            };
+
+            const deleteTableContent = (tag, num) => {
+                let table_content_container;
+                if (num) {
+                    table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
+                }
+                else {
+                    table_content_container = document.getElementById(`table_content_dropdown_box`)
+                }
+                let table_content = tag.parentNode.parentNode;
+                console.log("table_content", table_content_container, table_content);
+                table_content_container.removeChild(table_content);
+            };
+
+            const cancel = () => {
+                let product_table = document.getElementById("product_table");
+                const allInput = $(".main-contact-area").find("input");
+                const allSelect = $(".main-contact-area").find("select");
+                const allTextarea = $(".main-contact-area").find("textarea");
+                for (let i = 0; i < allInput.length; i++) {
+                    allInput[i].value = "";
+                }
+                for (let i = 0; i < allSelect.length; i++) {
+                    // allSelect[i].value = "";
+                    allSelect[i].selectedIndex = 0;
+                }
+                product_table.innerHTML = "";
+                for (let i = 0; i < allTextarea.length; i++) {
+                    allTextarea[i].value = "";
+                }
+            };
+
+            let findInput = 0;
+            let oldDropdownContent = '';
+
+            const showContentDropdown = (id, num) => {
+                let dropdownMenu_s;
+                if (num) {
+                    dropdownMenu_s = document.getElementById(`dropdownMenu_${id}_${num}`);
+                }
+                else {
+                    dropdownMenu_s = document.getElementById(`dropdownMenu_${id}`);
+                }
+                if (oldDropdownContent && !oldDropdownContent.classList.contains('d-none') && findInput != id) {
+                    oldDropdownContent.classList.add('d-none')
+                }
+                dropdownMenu_s.classList.toggle("d-none");
+                findInput = id;
+                oldDropdownContent = dropdownMenu_s
+            };
 
 
 
-                        const openAdditionalSection = () => {
-                            let area = document.getElementById("AdditionalArea");
-                            area.classList.remove("d-none");
+            document.addEventListener("click", function (event) {
+                var target = event.target
+                let dropdownBox = document.querySelectorAll(".dropdownBox");
+                if (target.tagName != 'INPUT') {
+                    for (let i = 0; i < dropdownBox.length; i++) {
+                        if (!dropdownBox[i].classList.contains('d-none')) {
+                            dropdownBox[i].classList.add("d-none");
+                        }
+                    }
+                }
+            })
+
+            let allInputTags = document.querySelectorAll('input');
+            $(allInputTags).each(function (index, element) {
+                element.addEventListener("input", function (e) {
+                    let dropdownBox = document.querySelectorAll(".dropdownBox");
+                    for (let i = 0; i < dropdownBox.length; i++) {
+                        console.log("dropdownBox[i]", dropdownBox[i]);
+                        if (!dropdownBox[i].classList.contains('d-none')) {
+                            dropdownBox[i].classList.add("d-none");
+                        }
+                    }
+                })
+            })
+
+            function selectOption(tag, num) {
+
+                let textInput;
+                if (num) {
+                    textInput = document.getElementById(`contentsTitleInput_${findInput}_${num}`);
+                }
+                else {
+                    textInput = document.getElementById(`contentsTitleInput_${findInput}`);
+
+                }
+                let text = tag.textContent;
+                textInput.value = text;
+
+                let parent = tag.parentNode;
+                parent.classList.add("d-none");
+            }
+
+
+
+            const openAdditionalSection = () => {
+                let area = document.getElementById("AdditionalArea");
+                area.classList.remove("d-none");
+            };
+
+            // window.addEventListener("click", function (event) {
+            //     const dropdownMenu = document.getElementById("dropdownMenu_" + findInput);
+            //     console.log("dropdownMenu", dropdownMenu);
+            //     const textInput = document.getElementById(
+            //         "contentsTitleInput_" + findInput
+            //     );
+            //     let allClassList = dropdownMenu.classList.value;
+            //     const classListArray = allClassList.split(" ");
+            //     classListArray.find((className) => {
+            //         if (!textInput.contains(event.target)) {
+            //             if (!className.includes("d-none")) {
+            //                 dropdownMenu.classList.add("d-none");
+            //             }
+            //         }
+            //     });
+            // });
+
+            const removeSecondaryImg = (tag) => {
+                let parentImgContainer = tag.parentNode.parentNode;
+                let imge_cotainer = tag.parentNode;
+                parentImgContainer.removeChild(imge_cotainer);
+            };
+
+            const secondary_image_changed = (tag, ind) => {
+                // const previewContainer = document.getElementById("secondary-img-container");
+                let previewContainer;
+                if (ind) {
+                    previewContainer = document.getElementById(`secondary-img-container_${ind}`);
+                } else {
+                    previewContainer = document.getElementById(`secondary-img-container`);
+                }
+                // const previewContainer = document.querySelector(
+                //     ".secondary-img-container"
+                // );
+                // const secondaryImageAdder = document.querySelector(
+                //     ".secondary-img-container"
+                // );
+
+                // previewContainer.innerHTML = ''; // Clear previous previews
+                if (tag.files && tag.files.length > 0) {
+                    for (let i = 0; i < tag.files.length; i++) {
+                        const file = tag.files[i];
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            // const input = document.createElement("input");
+                            // input.type = "file";
+                            // input.classList.add("d-none");
+                            // input.files[0] = reader.result;
+                            // input.setAttribute("name", "secondary_images[]");
+                            // const fileList = new DataTransfer(); // Create a new FileList object and add the selected file to it
+                            // fileList.items.add(file);
+                            // console.log('previewContainer',fileList);
+                            // input.files = fileList.files; // Assign the new FileList to the main page image field
+
+                            const div = document.createElement("div");
+                            div.style.width = "90px";
+                            div.style.height = "90px";
+                            div.style.background = `url(${e.target.result})`;
+                            div.style.backgroundSize = 'cover';
+                            div.style.marginRight = "8px";
+                            div.style.marginBottom = "8px";
+
+                            div.classList.add("position-relative");
+                            const span = document.createElement("span");
+                            span.innerHTML =
+                                '<i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;"></i>';
+                            span.classList.add("position-absolute");
+                            // span.setAttribute("onclick", `removeSecondaryImg(${i})`);
+                            span.setAttribute("onclick", `removeSecondaryImg(this)`);
+                            span.style.top = "0";
+                            span.style.right = "0px";
+                            span.style.cursor = "pointer";
+                            div.append(span);
+                            // const img = document.createElement("img");
+                            // img.src = e.target.result;
+                            // img.alt = `Preview Image ${i + 1}`;
+                            // img.style.width = "100%";
+                            // img.style.height = "auto";
+                            // console.log(img);
+                            div.setAttribute("id", `secondary_img_preview_${i}`);
+                            // div.append(input);
+                            // div.append(img);
+                            previewContainer.prepend(div);
                         };
-
-                        // window.addEventListener("click", function (event) {
-                        //     const dropdownMenu = document.getElementById("dropdownMenu_" + findInput);
-                        //     console.log("dropdownMenu", dropdownMenu);
-                        //     const textInput = document.getElementById(
-                        //         "contentsTitleInput_" + findInput
-                        //     );
-                        //     let allClassList = dropdownMenu.classList.value;
-                        //     const classListArray = allClassList.split(" ");
-                        //     classListArray.find((className) => {
-                        //         if (!textInput.contains(event.target)) {
-                        //             if (!className.includes("d-none")) {
-                        //                 dropdownMenu.classList.add("d-none");
-                        //             }
-                        //         }
-                        //     });
-                        // });
-
-                        const removeSecondaryImg = (tag) => {
-                            let parentImgContainer = tag.parentNode.parentNode;
-                            let imge_cotainer = tag.parentNode;
-                            parentImgContainer.removeChild(imge_cotainer);
-                        };
-
-                        const secondary_image_changed = (tag, ind) => {
-                            // const previewContainer = document.getElementById("secondary-img-container");
-                            let previewContainer;
-                            if (ind) {
-                                previewContainer = document.getElementById(`secondary-img-container_${ind}`);
-                            } else {
-                                previewContainer = document.getElementById(`secondary-img-container`);
-                            }
-                            // const previewContainer = document.querySelector(
-                            //     ".secondary-img-container"
-                            // );
-                            // const secondaryImageAdder = document.querySelector(
-                            //     ".secondary-img-container"
-                            // );
-
-                            // previewContainer.innerHTML = ''; // Clear previous previews
-                            if (tag.files && tag.files.length > 0) {
-                                for (let i = 0; i < tag.files.length; i++) {
-                                    const file = tag.files[i];
-                                    const reader = new FileReader();
-                                    reader.onload = function (e) {
-                                        // const input = document.createElement("input");
-                                        // input.type = "file";
-                                        // input.classList.add("d-none");
-                                        // input.files[0] = reader.result;
-                                        // input.setAttribute("name", "secondary_images[]");
-                                        // const fileList = new DataTransfer(); // Create a new FileList object and add the selected file to it
-                                        // fileList.items.add(file);
-                                        // console.log('previewContainer',fileList);
-                                        // input.files = fileList.files; // Assign the new FileList to the main page image field
-
-                                        const div = document.createElement("div");
-                                        div.style.width = "90px";
-                                        div.style.height = "90px";
-                                        div.style.background = `url(${e.target.result})`;
-                                        div.style.backgroundSize = 'cover';
-                                        div.style.marginRight = "8px";
-                                        div.style.marginBottom = "8px";
-
-                                        div.classList.add("position-relative");
-                                        const span = document.createElement("span");
-                                        span.innerHTML =
-                                            '<i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;"></i>';
-                                        span.classList.add("position-absolute");
-                                        // span.setAttribute("onclick", `removeSecondaryImg(${i})`);
-                                        span.setAttribute("onclick", `removeSecondaryImg(this)`);
-                                        span.style.top = "0";
-                                        span.style.right = "0px";
-                                        span.style.cursor = "pointer";
-                                        div.append(span);
-                                        // const img = document.createElement("img");
-                                        // img.src = e.target.result;
-                                        // img.alt = `Preview Image ${i + 1}`;
-                                        // img.style.width = "100%";
-                                        // img.style.height = "auto";
-                                        // console.log(img);
-                                        div.setAttribute("id", `secondary_img_preview_${i}`);
-                                        // div.append(input);
-                                        // div.append(img);
-                                        previewContainer.prepend(div);
-                                    };
-                                    reader.readAsDataURL(tag.files[i]);
-                                }
-                                //   previewContainer.append(secondaryImageAdder);
-                            }
-                        };
+                        reader.readAsDataURL(tag.files[i]);
+                    }
+                    //   previewContainer.append(secondaryImageAdder);
+                }
+            };
 
 
-                        const save_varient = (tag, num) => {
-                            console.log('save the varient ====');
-                            let varient_container;
-                            let custom_variant;
-                            let newVarientUl;
-                            let modal_varient_name;
-                            let varientLabelInput;
-                            let varientTagUlInput;
-                            if (num) {
-                                varient_container = document.getElementById(`varient_container__${num}`);
-                                custom_variant = document.getElementById(`custom_variant_${num}`);
-                                newVarientUl = document.getElementById(`addNewVarient_${num}`)
-                                modal_varient_name = document.getElementById(`modal_varient_name_${num}`).value;
-                                varientLabelInput = document.getElementById(`modal_varient_name_${num}`)
-                                varientTagUlInput = document.getElementById(`addNewVarient_${num}`)
+            const save_varient = (tag, num) => {
+                console.log('save the varient ====');
+                let varient_container;
+                let custom_variant;
+                let newVarientUl;
+                let modal_varient_name;
+                let varientLabelInput;
+                let varientTagUlInput;
+                if (num) {
+                    varient_container = document.getElementById(`varient_container__${num}`);
+                    custom_variant = document.getElementById(`custom_variant_${num}`);
+                    newVarientUl = document.getElementById(`addNewVarient_${num}`)
+                    modal_varient_name = document.getElementById(`modal_varient_name_${num}`).value;
+                    varientLabelInput = document.getElementById(`modal_varient_name_${num}`)
+                    varientTagUlInput = document.getElementById(`addNewVarient_${num}`)
 
-                            } else {
-                                varient_container = document.getElementById(`varient_container_`);
-                                custom_variant = document.getElementById(`custom_variant`);
-                                newVarientUl = document.getElementById("addNewVarient")
-                                modal_varient_name = document.getElementById("modal_varient_name").value;
-                                varientLabelInput = document.getElementById(`modal_varient_name`)
-                                varientTagUlInput = document.getElementById(`addNewVarient`)
-                            }
+                } else {
+                    varient_container = document.getElementById(`varient_container_`);
+                    custom_variant = document.getElementById(`custom_variant`);
+                    newVarientUl = document.getElementById("addNewVarient")
+                    modal_varient_name = document.getElementById("modal_varient_name").value;
+                    varientLabelInput = document.getElementById(`modal_varient_name`)
+                    varientTagUlInput = document.getElementById(`addNewVarient`)
+                }
 
 
-                            // let modal_varient_name = document.querySelector(
-                            //     "#modal_varient_name"
-                            // ).value;
+                // let modal_varient_name = document.querySelector(
+                //     "#modal_varient_name"
+                // ).value;
 
-                            // let varient_container = document.querySelector("#varient_container_");
-                            // varient_container.classList.add("colorVariantBox");
-                            let data = [];
-                            let varientLi = newVarientUl.querySelectorAll("li");
-                            varientLi.forEach((li) => {
-                                data.push(li.innerText)
-                            })
-                            // let data = $(custom_variant).select2("val");
+                // let varient_container = document.querySelector("#varient_container_");
+                // varient_container.classList.add("colorVariantBox");
+                let data = [];
+                let varientLi = newVarientUl.querySelectorAll("li");
+                varientLi.forEach((li) => {
+                    data.push(li.innerText)
+                })
+                // let data = $(custom_variant).select2("val");
 
-                            let colorVariantBox = document.createElement("div");
-                            colorVariantBox.classList.add("col-lg-4", "col-md-6", "col-sm-12", "colorVariantBox", "mt-3");
-                            let variantInnderBox = document.createElement('div')
-                            variantInnderBox.style.backgroundColor = "white";
-                            variantInnderBox.style.borderRadius = "5px";
-                            variantInnderBox.style.padding = "10px";
-                            let label2 = document.createElement("label");
-                            label2.classList.add('varient_label', "inline-block", "d-flex", "justify-content-between", "align-items-center");
-                            label2.innerText = modal_varient_name;
-                            // label2.classList.add("inline-block");
-                            // label2.classList.add("varient_label");
-                            // label2.classList.add("d-flex");
-                            // label2.classList.add("justify-content-between");
-                            // label2.classList.add("align-items-center");
-                            // label2.style.marginTop = "20px";
-                            // x-mark
-                            let x_span = document.createElement("span");
-                            x_span.setAttribute(
-                                "onclick",
-                                "this.parentNode.parentNode.parentNode.remove()"
-                            );
-                            x_span.innerHTML =
-                                '<i class="fa-solid mdi mdi-close" style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i>';
-                            label2.append(x_span);
-                            let dropdownPositionDiv = document.createElement("div");
-                            dropdownPositionDiv.classList.add("position-relative")
-                            let ul = document.createElement("ul");
-                            ul.classList.add('colorInputUL');
-                            ul.style.marginBottom = "0px";
-                            ul.setAttribute("onclick", "showColorDropDown(this)");
-                            let inputInUL = document.createElement("input");
-                            inputInUL.setAttribute("class", "tagIntpus");
-                            inputInUL.setAttribute("type", "text");
-                            inputInUL.setAttribute("spellcheck", "false");
-                            inputInUL.setAttribute("placeholder", "Write here for tag");
-                            inputInUL.setAttribute("onkeypress", "return event.keyCode != 13;");
-                            ul.append(inputInUL);
+                let colorVariantBox = document.createElement("div");
+                colorVariantBox.classList.add("col-lg-4", "col-md-6", "col-sm-12", "colorVariantBox", "mt-3");
+                let variantInnderBox = document.createElement('div')
+                variantInnderBox.style.backgroundColor = "white";
+                variantInnderBox.style.borderRadius = "5px";
+                variantInnderBox.style.padding = "10px";
+                let label2 = document.createElement("label");
+                label2.classList.add('varient_label', "inline-block", "d-flex", "justify-content-between", "align-items-center");
+                label2.innerText = modal_varient_name;
+                // label2.classList.add("inline-block");
+                // label2.classList.add("varient_label");
+                // label2.classList.add("d-flex");
+                // label2.classList.add("justify-content-between");
+                // label2.classList.add("align-items-center");
+                // label2.style.marginTop = "20px";
+                // x-mark
+                let x_span = document.createElement("span");
+                x_span.setAttribute(
+                    "onclick",
+                    "this.parentNode.parentNode.parentNode.remove()"
+                );
+                x_span.innerHTML =
+                    '<i class="fa-solid mdi mdi-close" style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i>';
+                label2.append(x_span);
+                let dropdownPositionDiv = document.createElement("div");
+                dropdownPositionDiv.classList.add("position-relative")
+                let ul = document.createElement("ul");
+                ul.classList.add('colorInputUL');
+                ul.style.marginBottom = "0px";
+                ul.setAttribute("onclick", "showColorDropDown(this)");
+                let inputInUL = document.createElement("input");
+                inputInUL.setAttribute("class", "tagIntpus");
+                inputInUL.setAttribute("type", "text");
+                inputInUL.setAttribute("spellcheck", "false");
+                inputInUL.setAttribute("placeholder", "Write here for tag");
+                inputInUL.setAttribute("onkeypress", "return event.keyCode != 13;");
+                ul.append(inputInUL);
 
-                            let dropdownOptionBox = document.createElement('div');
-                            dropdownOptionBox.classList.add("dropdownBox", "d-none");
-                            dropdownOptionBox.style.height = "200px";
-                            dropdownOptionBox.style.overflowY = "auto"
-                            let dropdownUL = document.createElement('ul');
-                            data.forEach((element) => {
-                                let li = document.createElement("li");
-                                onclick = "getValueFronDropDown(this)"
-                                li.setAttribute("onclick", "getValueFronDropDown(this)")
-                                li.textContent = element;
-                                dropdownUL.append(li);
-                            });
+                let dropdownOptionBox = document.createElement('div');
+                dropdownOptionBox.classList.add("dropdownBox", "d-none");
+                dropdownOptionBox.style.height = "200px";
+                dropdownOptionBox.style.overflowY = "auto"
+                let dropdownUL = document.createElement('ul');
+                data.forEach((element) => {
+                    let li = document.createElement("li");
+                    onclick = "getValueFronDropDown(this)"
+                    li.setAttribute("onclick", "getValueFronDropDown(this)")
+                    li.textContent = element;
+                    dropdownUL.append(li);
+                });
 
-                            // dropdownOptionBox.append(ul);
-                            dropdownOptionBox.append(dropdownUL);
-                            dropdownPositionDiv.append(ul);
-                            dropdownPositionDiv.append(dropdownOptionBox);
-                            variantInnderBox.append(label2);
-                            variantInnderBox.append(dropdownPositionDiv);
-                            colorVariantBox.append(variantInnderBox);
-                            varient_container.append(colorVariantBox)
+                // dropdownOptionBox.append(ul);
+                dropdownOptionBox.append(dropdownUL);
+                dropdownPositionDiv.append(ul);
+                dropdownPositionDiv.append(dropdownOptionBox);
+                variantInnderBox.append(label2);
+                variantInnderBox.append(dropdownPositionDiv);
+                colorVariantBox.append(variantInnderBox);
+                varient_container.append(colorVariantBox)
 
-                            // Create a new script element
-                            const newScript = document.createElement("script");
+                // Create a new script element
+                const newScript = document.createElement("script");
 
-                            // Set the script content
-                            newScript.textContent = `
+                // Set the script content
+                newScript.textContent = `
                                 $("#varient-select2-${modal_varient_name}").select2({
                                 tags: true,
                                 tokenSeparators: [',', ' '],
@@ -1797,47 +1979,50 @@
                                 });
                                 `;
 
-                            // Append the new script to the document body
-                            document.body.appendChild(newScript);
+                // Append the new script to the document body
+                document.body.appendChild(newScript);
 
-                            varientLabelInput.value = '';
-                            let varientTagUlInputLi = varientTagUlInput.querySelectorAll('li');
-                            for (let i = 0; i < varientTagUlInputLi.length; i++) {
-                                console.log(varientTagUlInputLi[i]);
-                                varientTagUlInputLi[i].remove();
-                                // removarientTagUlInputLi[i];
-                            }
-                            //  console.log("varientTagInput", varientTagInput.querySelectorAll('li'));;
-                        };
+                varientLabelInput.value = '';
+                let varientTagUlInputLi = varientTagUlInput.querySelectorAll('li');
+                for (let i = 0; i < varientTagUlInputLi.length; i++) {
+                    console.log(varientTagUlInputLi[i]);
+                    varientTagUlInputLi[i].remove();
+                    // removarientTagUlInputLi[i];
+                }
+                //  console.log("varientTagInput", varientTagInput.querySelectorAll('li'));;
+            };
 
-                    </script>
+        </script>
 
-                    <!-- hide and show enable checkbox -->
-                    <script>
-                        $('#myCheckbox').click(function () {
-                            if ($(this).is(':checked')) {
-                                $('.enable_div').show();
+        <!-- hide and show enable checkbox -->
+        <script>
+            $('#myCheckbox').click(function () {
+                if ($(this).is(':checked')) {
+                    $('.enable_div').show();
 
-                            } else {
-                                $('.enable_div').hide();
-                            }
-                        });
+                } else {
+                    $('.enable_div').hide();
+                }
+            });
 
-                    </script>
+        </script>
 
-                    <!-- date setup js in min attributes -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+        <!-- date setup js in min attributes -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
 
-                    <script>
-                        // Set the timezone to Bangladesh
-                        moment.tz.setDefault("Asia/Dhaka");
-                        // Get the current date in "YYYY-MM-DD" format
-                        var currentDate = moment().format("YYYY-MM-DD");
-                        console.log('currentDate', currentDate);
-                        // Set the min attribute of the date input
-                        document.getElementById("date").min = currentDate;
-                    </script>
+        <script>
+            // Set the timezone to Bangladesh
+            moment.tz.setDefault("Asia/Dhaka");
+            // Get the current date in "YYYY-MM-DD" format
+            var currentDate = moment().format("YYYY-MM-DD");
+            console.log('currentDate', currentDate);
+            // Set the min attribute of the date input
+            document.getElementById("date").min = currentDate;
+        </script>
+
+
+
 
 
 

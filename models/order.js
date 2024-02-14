@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     sub_total: DataTypes.DOUBLE,
     total: DataTypes.DOUBLE,
     discount: DataTypes.DOUBLE,
-    total_amount: DataTypes.DOUBLE
+    total_amount: DataTypes.DOUBLE,
+    status: DataTypes.STRING,
 
   }, {
     sequelize,

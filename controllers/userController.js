@@ -368,7 +368,7 @@ const shop = async (req, res) => {
             order: [['createdAt', 'DESC']],
             raw: true,
         });
-        console.log(logo_img);
+        // console.log(logo_img);
         res.render('user/shop.ejs', { products, logo_img, locals: { session: req.session } });
     }
 
