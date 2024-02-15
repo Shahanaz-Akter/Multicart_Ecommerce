@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "root12345",
+    "password": null,
     "database": "multicart_ecommerce",
-    "host": "database-1.clyo04k0oiqj.ap-south-1.rds.amazonaws.com",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
