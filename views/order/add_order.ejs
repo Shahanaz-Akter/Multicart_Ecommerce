@@ -992,10 +992,120 @@
                         <!-- Start Content-->
                         <div class="container-fluid card" style="padding: 20px;">
 
-                            <!-- new Add product code Start  -->
+                            <!-- new Add order -->
                             <form action="/order/post_add_order" method="post" enctype="multipart/form-data">
 
-                                <div class="row">
+
+                                <div class="row mb-2">
+                                    <span class="text-start">
+                                        <div class="btn btn-dark mb-2 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#inventory_access">Inventory Product Entry: </div>
+                                    </span>
+                                    <!-- items -->
+                                    <table id="showOrderTbl" class="display nowrap" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox" id="select-all-checkbox"></th>
+                                                <!-- <th>SL</th> -->
+                                                <th>Name</th>
+                                                <th>Quantity</th>
+                                                <th>Image</th>
+                                                <th>Selling Price</th>
+                                            </tr>
+                                        </thead>
+                                        <style>
+                                            .form-control1 {
+                                                color: #242945;
+                                                border: 1px solid transparent;
+                                                /* background-color: #EBEBEB; */
+                                                border-radius: 2px;
+                                                font-size: 14px;
+                                                padding: 5px 8px;
+                                                width: 30%;
+                                                -webkit-transition: all ease 0.5s;
+                                                transition: all ease 0.5s;
+                                                margin-top: 7px;
+                                            }
+                                        </style>
+                                        <tbody class="">
+
+                                            <!-- <tr>
+                                                <td><input type="checkbox" class="row-checkbox"></td>
+                                                <td>1</td>
+                                                <td>
+                                                    Product name
+                                                </td>
+                                                <td>
+                                                    Quantity
+                                                </td>
+                                                <td>
+                                                    <img src="../../front_assets/img1.jpg" alt="" height="100px;width:100px;">
+
+                                                </td>
+                                                <td>
+                                                    123
+                                                </td>
+                                            </tr> -->
+
+
+
+
+                                        </tbody>
+
+                                    </table>
+                                    <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="name" class="form-label">Product ID</label>
+                                        <input type="text" id="id " class="form-control" placeholder="1" name="id" style="background: #FCFCFC!important;">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="name" class="form-label">Product Name</label>
+                                        <input type="text" id="name " class="form-control" placeholder="Name" name="name" style="background: #FCFCFC!important;">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Quantity</label>
+                                            <input type="text" class="form-control" placeholder="2" name="qty" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Total Quantity</label>
+                                            <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Price</label>
+                                            <input type="text" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Buying Price</label>
+                                            <input required type="number" class="form-control" placeholder="1" name="buying_price">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Selling Price</label>
+                                            <input required type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div> -->
+                                    <!-- 
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="main-img-container mt-2">
+                                            <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
+                                            <br>
+                                            <label for="mainImg1" class="btn btn-dark mt-2">Primary Image</label>
+                                            <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="primary_image">
+                                        </div>
+                                    </div> -->
+
+                                </div>
+
+
+                                <div class="row mb-2">
                                     <span class="text-start">
                                         <div class="btn btn-warning mb-2 text-white fw-bold">Customer Entry: </div>
                                     </span>
@@ -1052,65 +1162,9 @@
                                         <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
                                     </div>
                                 </div>
-                                <div class="row">
 
-                                    <span class="text-start">
-                                        <div class="btn btn-dark mb-2 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#inventory_access">Inventory Product Entry: </div>
-                                    </span>
-                                    <!-- items -->
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="name" class="form-label">Product ID</label>
-                                        <input type="text" id="id " class="form-control" placeholder="1" name="id" style="background: #FCFCFC!important;">
-                                    </div>
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="name" class="form-label">Product Name</label>
-                                        <input type="text" id="name " class="form-control" placeholder="Name" name="name" style="background: #FCFCFC!important;">
-                                    </div>
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Quantity</label>
-                                            <input type="text" class="form-control" placeholder="2" name="qty" onkeypress="return event.keyCode != 13;">
-                                        </div>
-                                    </div>
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Total Quantity</label>
-                                            <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Price</label>
-                                            <input type="text" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Buying Price</label>
-                                            <input required type="number" class="form-control" placeholder="1" name="buying_price">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                            <label>Selling Price</label>
-                                            <input required type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <div class="main-img-container mt-2">
-                                            <!-- <p>*All Image size should be 300/300.</p> -->
-                                            <img class="" src="../../front_assets/img1.jpg" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
-                                            <br>
-                                            <label for="mainImg1" class="btn btn-dark mt-2">Primary Image</label>
-                                            <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="primary_image">
-                                        </div>
-
-                                    </div>
-                                </div>
 
                                 <div class="row">
 
@@ -1159,12 +1213,7 @@
                                             let currenDate = new Date();
 
                                             // Format the date as YYYY-MM-DD (required format for input type="date")
-                                            let formattedDate = currenDate.toISOString().split('T')[0];
-
-                                            // Set the value of the input field
-                                            document.getElementById('date').value = formattedDate;
-
-                                        </script>
+                                            let formattedDate = currenDate.toISOString().split(' T')[0]; // Set the value of the input field document.getElementById('date').value=formattedDate; </script>
 
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
@@ -1212,146 +1261,156 @@
                                     </div>
                                 </div>
 
-                        </div>
+                            </form>
 
 
-                        <div class="ms-3" style="display: flex; justify-content: left;">
-                            <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
-                                Upload
-                            </button>
+                            <div class="ms-3" style="display: flex; justify-content: left;">
+                                <div type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
+                                    Upload
+                                </div>
 
-                            <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
-                                Cancel
-                            </button>
-                        </div>
+                                <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
+                                    Cancel
+                                </button>
+                            </div>
 
-                        </form>
+                            </form>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="inventory_access" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">All Inventory Products</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <style>
-                                            .dt-buttons {
-                                                display: none;
-                                            }
-                                        </style>
-
-                                        <div id="manualOrderTbl_filter" class="dataTables_filter row">
-                                            <div class="col-12 col-md-8 col-lg-8 col-xl-8 mb-3">
-                                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="inventory_access" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">All Inventory Products</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
                                             <style>
-                                                .form-control {
-                                                    padding: 8px 8px
+                                                .dt-buttons {
+                                                    display: none;
                                                 }
                                             </style>
-                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                                <select id="filterSelect2" class="form-control " aria-controls="manualOrderTbl">
-                                                    <option value="">Select Category</option>
-                                                    <option value="Mens and Boys Fashion">Mens and Boys Fashion</option>
-                                                    <option value="Womens and Girls Fashion">Womens and Girls Fashion</option>
-                                                    <option value="HOME & GADGETS">HOME & GADGETS</option>
-                                                    <option value="KITCHEN & DINING">KITCHEN & DINING</option>
-                                                    <option value="HEALTH & BEAUTY">HEALTH & BEAUTY</option>
-                                                    <option value="BABY & KIDS">BABY & KIDS</option>
-                                                    <option value="SHAVER & TRIMMER">SHAVER & TRIMMER</option>
-                                                    <option value="ELECTRONICS">ELECTRONICS</option>
-                                                </select>
 
+                                            <div id="manualOrderTbl_filter" class="dataTables_filter row">
+                                                <div class="col-12 col-md-8 col-lg-8 col-xl-8 mb-3">
+                                                </div>
+                                                <style>
+                                                    .form-control {
+                                                        padding: 8px 8px
+                                                    }
+                                                </style>
+                                                <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                    <select id="filterSelect2" class="form-control " aria-controls="manualOrderTbl">
+                                                        <option value="">Select Category</option>
+                                                        <option value="Mens and Boys Fashion">Mens and Boys Fashion</option>
+                                                        <option value="Womens and Girls Fashion">Womens and Girls Fashion</option>
+                                                        <option value="HOME & GADGETS">HOME & GADGETS</option>
+                                                        <option value="KITCHEN & DINING">KITCHEN & DINING</option>
+                                                        <option value="HEALTH & BEAUTY">HEALTH & BEAUTY</option>
+                                                        <option value="BABY & KIDS">BABY & KIDS</option>
+                                                        <option value="SHAVER & TRIMMER">SHAVER & TRIMMER</option>
+                                                        <option value="ELECTRONICS">ELECTRONICS</option>
+                                                    </select>
+
+                                                </div>
                                             </div>
-                                        </div>
 
 
-                                        <table id="manualOrderTbl" class="display nowrap" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th><input type="checkbox" id="select-all-checkbox"></th>
-                                                    <th>SL</th>
-                                                    <th>Primary Image</th>
-                                                    <th>Product Name</th>
-                                                    <th>Category Name</th>
-                                                    <th>Selling Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <%items.forEach(item=>{%>
+                                            <table id="manualOrderTbl" class="display nowrap" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input type="checkbox" id="select-all-checkbox"></th>
+                                                        <th>SL</th>
+                                                        <th>Primary Image</th>
+                                                        <th>Product Name</th>
+                                                        <th>Category Name</th>
+                                                        <th>Selling Price</th>
+                                                        <th>Add</th>
 
-                                                    <% const maxWords=1;%>
-                                                        <% const words=item.name.split(' '); %>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%if(items!==null){%>
+                                                        <%items.forEach(item=>{%>
+
+                                                            <% const maxWords=1;%>
+                                                                <% const words=item.name.split(' '); %>
                                                         <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                         <% const remainingText = words.slice(maxWords).join(' ');%>
                                                     
-                                                        <tr>
-                                                            <td><input type="checkbox" class="row-checkbox"></td>
-                                                            <td>
-                                                                <%=item.id%>
-                                                            </td>
+                                        <tr>
+                                            <td><input type="checkbox" class="row-checkbox"></td>
+                                            <td>
+                                                <%=item.id%>
+                                            </td>
 
-                                                            <td>
-                                                                <div class="" style="background: url(' <%=item.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 110px;width:110px;">
+                                            <td>
+                                         <div class="" style="background: url(' <%=item.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 110px;width:110px;">
+                                        </div>
+                                        </td>
+
+                                        <td>
+
+                                            <% if (remainingText) { %>
+                                                <%= truncatedName %>..
+                                                    <% }else{%>
+                                                        <%= truncatedName %>
+                                                            <%} %>
+
+                                        </td>
+                                        <td>
+                                            <%=item.product_category%>
+                                        </td>
+                                        <td>
+                                            <%=item.selling_price%>
+                                        </td>
+                                        <td>
+                                            <span onclick="add_product(<%=JSON.stringify(item)%>)">Add Product</span>
+
+                                        </td>
+                                        </tr>
+
+                                        <%})%>
+
+                                            <%}else{%>
+                                                <p>There is no Products</p>
+                                                <%}%>
+                                                    </tbody>
+
+
+                                                    </table>
+
+                                                    <script>
+                                                        $(document).ready(function () {
+
+                                                            $('#filterSelect2').change(function () {
+                                                                var category = $(this).val();
+                                                                $('#manualOrderTbl').DataTable().column(3).search(category).draw();
+                                                            });
+                                                        });
+                                                    </script>
                                     </div>
-                                    </td>
-
-                                    <td>
-
-                                        <% if (remainingText) { %>
-                                            <%= truncatedName %>..
-                                                <% }else{%>
-                                                    <%= truncatedName %>
-                                                        <%} %>
-
-                                    </td>
-                                    <td>
-                                        <%=item.product_category%>
-                                    </td>
-                                    <td>
-                                        <%=item.selling_price%>
-                                    </td>
-
-                                    </tr>
-
-                                    <%})%>
-                                        </tbody>
-
-
-                                        </table>
-
-                                        <script>
-                                            $(document).ready(function () {
-
-                                                $('#filterSelect2').change(function () {
-                                                    var category = $(this).val();
-                                                    $('#manualOrderTbl').DataTable().column(3).search(category).draw();
-                                                });
-                                            });
-                                        </script>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <div type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="submit_order()">Submit</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- new Add product code End  -->
+
+
+
+                        <!-- container-fluid -->
+
                     </div>
+                    <!-- content -->
 
-                    <!-- new Add product code End  -->
-
-
-
-                    <!-- container-fluid -->
+                    <%- include('../layouts/footer.ejs') -%>
 
                 </div>
-                <!-- content -->
-
-                <%- include('../layouts/footer.ejs') -%>
-
-    </div>
-    <!-- End Page content -->
+                <!-- End Page content -->
 
 
     </div>
@@ -1399,7 +1458,21 @@
             var table;
 
             $(document).ready(function () {
+
                 table = $('#manualOrderTbl').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'],
+                    scrollX: true,
+                    scrollY: true,
+                    select: {
+                        style: 'multi', // Enable multiple row selection
+                        selector: 'td input', // Use the first column for selection
+                    },
+                });
+            });
+            $(document).ready(function () {
+                table = $('#showOrderTbl').DataTable({
                     dom: 'Bfrtip',
                     buttons: [
                         'copy', 'csv', 'excel', 'pdf', 'print'],
@@ -2010,22 +2083,18 @@
         <!-- date setup js in min attributes -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
-
         <script>
             // Set the timezone to Bangladesh
             moment.tz.setDefault("Asia/Dhaka");
             // Get the current date in "YYYY-MM-DD" format
             var currentDate = moment().format("YYYY-MM-DD");
-            console.log('currentDate', currentDate);
+            // console.log('currentDate', currentDate);
             // Set the min attribute of the date input
             document.getElementById("date").min = currentDate;
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-
-
-
-
-
+        <script src="/front_assets/js/custom.js"></script>
 
 </body>
 

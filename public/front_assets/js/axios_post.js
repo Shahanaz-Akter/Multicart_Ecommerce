@@ -79,19 +79,17 @@ const add_cart_product = async (product_id) => {
                 const h6Tag = document.createElement('h6');
                 h6Tag.classList.add('mb-0', 'fw-light', 'mb-1');
 
-                const maxWords = 2;
-                const words = response.data.record.name.split(' ');
-                const numWords = words.length;
-
-                const truncatedName = words.slice(0, maxWords).join(' ');
-                numWords < maxWords ? h6Tag.innerHTML = `<span>${truncatedName}..</span>` : h6Tag.innerHTML = `<span>${truncatedName}</span>` + ' ..'
-
-                // if (numWords > maxWords) {
-                //     h6Tag.innerHTML = `<span>${truncatedName}..</span>`;
-                // }
-                // else {
-                //     h6Tag.innerHTML = `<span>${truncatedName}</span>`;
-                // }
+                let maxWords = 2;
+                let words = response.data.record.name.split(' ');
+                let numWords = words.length;
+                let truncatedName = words.slice(0, maxWords).join(' ');
+                let remainingText = words.slice(maxWords).join(' ');
+                if (remainingText) {
+                    h6Tag.innerHTML = `<span>${truncatedName}..</span>`
+                }
+                else {
+                    h6Tag.innerHTML = `<span>${truncatedName}</span>`
+                }
 
                 p2.appendChild(h6Tag);
 
@@ -239,3 +237,4 @@ const change_quantity_value = async (reason, id, tag) => {
     total_holder.innerHTML = "T- " + await response.data.total + 'TK';
     console.log(response);
 }
+

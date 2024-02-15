@@ -255,22 +255,25 @@
                                                 <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
                                             </div>
                                             <a href="/product/product_details/<%=product.id%>">
-                                                <div class="" style="background: url('<%=product.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
-                                                    <!-- <img src="/front_assets/img/new-arrival/01.jpg" class="card-img-top" alt="..."> -->
-                                                </div>
+                                                <!-- <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
+                                                </div> -->
+                                                <img src="<%=product.primary_image%>" class="card-img-top" alt="...">
+
                                             </a>
                                         </div>
                                         <div class="card-body">
                                             <div class="product-info text-center">
                                                 <h6 class="mb-1 fw-bold product-name">
-                                                    <% const maxWords=2;%>
+                                                    <% const maxWords=1;%>
                                                         <% const words=product.name.split(' '); %>
-                                                                                                    <% const truncatedName = words.slice(0, maxWords).join(' ');%>
-                                                                                                    <% const remainingText = words.slice(maxWords).join(' ');%>
-                                                                                                    <%= truncatedName %>
-                                                                                                    <%if(remainingText){%>
-                                                                                                    <%= truncatedName %>..
-                                                                                                        <%}%>
+                                                        <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                        <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                        
+                                                        <%if(remainingText){%>
+                                                        <%= truncatedName %>..
+                                                            <%}else{%>
+                                                            <%= truncatedName %>
+                                                            <%}%>
                                                 </h6>
                                                 <div class="ratings mb-1 h6">
                                                     <i class="bi bi-star-fill text-warning"></i>
@@ -645,127 +648,124 @@
             </div>
             <div class="cartegory-box">
 
-                <%products.slice(0,7).forEach(all_products=>{%>
+                <%products.forEach(all_products=>{%>
                     <a href="#">
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-hidden">
-                                    <!-- <img src="<%=all_products.category_image%>" class="card-img-top rounded-0" alt="..."> -->
-                                    <div class="" style="background: url('<%=all_products.category_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
-                                    </div>
+                                    <img src="<%=all_products.category_image%>" class="card-img-top rounded-0" alt="...">
+                                    <!-- <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
+                                    </div> -->
                                 </div>
                                 <div class="text-center">
                                     <h5 class="mb-1 cartegory-name mt-3 fw-bold">
 
-                                        <% const maxWords=2;%>
-                                            <% const words=all_products.name.split(' '); %>
-                                                <% const truncatedName = words.slice(0, maxWords).join(' ');%>
-                                                <% const remainingText = words.slice(maxWords).join(' ');%>
-                                                <%= truncatedName %> 
-                                        </h5>
-                                        <h6 class="mb-0 product-number fw-bold">
-                                            <%=all_products.total_qty%>
-                                        </h6>
-                                    </div>
+
+                                        <%= all_products.product_category %>
+                                    </h5>
+                                    <h6 class="mb-0 product-number fw-bold">
+                                        <%=all_products.total_qty%>
+                                    </h6>
                                 </div>
                             </div>
-                        </a>
-                        <%})%>
-                </div>
+                        </div>
+                    </a>
+                    <%})%>
             </div>
-        </section>
-        <!--end cartegory slider-->
+        </div>
+    </section>
+    <!--end cartegory slider-->
 
 
-        <!--subscribe banner-->
-        <section class="product-thumb-slider subscribe-banner p-5">
-            <div class="row">
-                <div class="col-12 col-lg-6 mx-auto">
-                    <div class="text-center">
-                        <h3 class="mb-0 fw-bold text-white">Get Latest Update by <br> Subscribe Our Newslater</h3>
-                        <div class="mt-3">
-                            <input type="text" class="form-control form-control-lg bubscribe-control rounded-0 px-5 py-3" placeholder="Enter your email">
-                        </div>
-                        <div class="mt-3 d-grid">
-                            <button type="button" class="btn btn-lg btn-ecomm bubscribe-button px-5 py-3">Subscribe</button>
-                        </div>
+    <!--subscribe banner-->
+    <section class="product-thumb-slider subscribe-banner p-5">
+        <div class="row">
+            <div class="col-12 col-lg-6 mx-auto">
+                <div class="text-center">
+                    <h3 class="mb-0 fw-bold text-white">Get Latest Update by <br> Subscribe Our Newslater</h3>
+                    <div class="mt-3">
+                        <input type="text" class="form-control form-control-lg bubscribe-control rounded-0 px-5 py-3" placeholder="Enter your email">
+                    </div>
+                    <div class="mt-3 d-grid">
+                        <button type="button" class="btn btn-lg btn-ecomm bubscribe-button px-5 py-3">Subscribe</button>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--subscribe banner-->
+        </div>
+    </section>
+    <!--subscribe banner-->
 
 
-        <!--start blog-->
-        <section class="section-padding">
-            <div class="container">
-                <div class="text-center pb-3">
-                    <h3 class="mb-0 fw-bold">Latest Blog</h3>
-                    <p class="mb-0 text-capitalize">Check our latest news</p>
-                </div>
-                <div class="blog-cards">
-                    <div class="row row-cols-1 row-cols-lg-3 g-4">
-                        <div class="col">
-                            <div class="card">
-                                <img src="/front_assets/img/blog/03-01.jpg" class="card-img-top rounded-0" alt="...">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center gap-4">
-                                        <div class="posted-by">
-                                            <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                                        </div>
-                                        <div class="posted-date">
-                                            <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title fw-bold mt-3">Blog title here</h5>
-                                    <p class="mb-0">Some quick example text to build on the card title and make.</p>
-                                    <a href="#" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="/front_assets/img/blog/03-02.jpg" class="card-img-top rounded-0" alt="...">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center gap-4">
-                                        <div class="posted-by">
-                                            <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                                        </div>
-                                        <div class="posted-date">
-                                            <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title fw-bold mt-3">Blog title here</h5>
-                                    <p class="mb-0">Some quick example text to build on the card title and make.</p>
-                                    <a href="#" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img src="/front_assets/img/blog/03-03.jpg" class="card-img-top rounded-0" alt="...">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center gap-4">
-                                        <div class="posted-by">
-                                            <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                                        </div>
-                                        <div class="posted-date">
-                                            <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title fw-bold mt-3">Blog title here</h5>
-                                    <p class="mb-0">Some quick example text to build on the card title and make.</p>
-                                    <a href="#" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!--end row-->
-                </div>
+    <!--start blog-->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center pb-3">
+                <h3 class="mb-0 fw-bold">Latest Blog</h3>
+                <p class="mb-0 text-capitalize">Check our latest news</p>
             </div>
-        </section>
-        <!--end blog-->
+            <div class="blog-cards">
+                <div class="row row-cols-1 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="card">
+                            <img src="/front_assets/img/blog/03-01.jpg" class="card-img-top rounded-0" alt="...">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center gap-4">
+                                    <div class="posted-by">
+                                        <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
+                                    </div>
+                                    <div class="posted-date">
+                                        <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
+                                    </div>
+                                </div>
+                                <h5 class="card-title fw-bold mt-3">Blog title here</h5>
+                                <p class="mb-0">Some quick example text to build on the card title and make.</p>
+                                <a href="#" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="/front_assets/img/blog/03-02.jpg" class="card-img-top rounded-0" alt="...">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center gap-4">
+                                    <div class="posted-by">
+                                        <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
+                                    </div>
+                                    <div class="posted-date">
+                                        <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
+                                    </div>
+                                </div>
+                                <h5 class="card-title fw-bold mt-3">Blog title here</h5>
+                                <p class="mb-0">Some quick example text to build on the card title and make.</p>
+                                <a href="#" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="/front_assets/img/blog/03-03.jpg" class="card-img-top rounded-0" alt="...">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center gap-4">
+                                    <div class="posted-by">
+                                        <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
+                                    </div>
+                                    <div class="posted-date">
+                                        <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
+                                    </div>
+                                </div>
+                                <h5 class="card-title fw-bold mt-3">Blog title here</h5>
+                                <p class="mb-0">Some quick example text to build on the card title and make.</p>
+                                <a href="#" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+    </section>
+    <!--end blog-->
 
 
     </div>
@@ -929,10 +929,10 @@
 
                                 <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
                                     <span onclick="change_quantity_value(' plus',<%=product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
-                                                <span class="quantity-counter p-2" id="input">
-                                                    <%= product.quantity %>
-                                                </span>
-                                                <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+                                    <span class="quantity-counter p-2" id="input">
+                                        <%= product.quantity %>
+                                    </span>
+                                    <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
                                 </div>
                                 <div class="ms-3 mb-3">
                                     <span>
@@ -957,395 +957,395 @@
                                     <!-- If cart is empty, display a message or alternative content -->
                                     <p></p>
                                     <% } %>
-                        </div>
             </div>
-            <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
-                <div class="d-grid">
-                    <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
-                </div>
-            </div>
-
         </div>
-        <!--end right cart-->
-
-        <!-- checkout  modal -->
-        <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
-            <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-            <div class="offcanvas-header bg-section-2 d-none">
-                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+        <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
+            <div class="d-grid">
+                <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
             </div>
+        </div>
 
-            <div class="offcanvas-body">
+    </div>
+    <!--end right cart-->
 
-                <div class="cart-list">
+    <!-- checkout  modal -->
+    <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+        <div class="offcanvas-header bg-section-2 d-none">
+            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+        </div>
 
-                    <!-- Modal content -->
-                    <div class="modal-contentCheckout">
-                        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+        <div class="offcanvas-body">
 
-                        <!-- <p>Some text in the Modal..</p> -->
-                        <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
+            <div class="cart-list">
 
-                            <div class="leftSection" id="phone_2nd">
-                                <div class="contactContainer">
+                <!-- Modal content -->
+                <div class="modal-contentCheckout">
+                    <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
 
-                                    <style>
-                                        .btn-close {
-                                            color: white !important;
-                                            opacity: unset;
-                                        }
+                    <!-- <p>Some text in the Modal..</p> -->
+                    <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
 
-                                        .offcanvas-header {
-                                            border-bottom: #146FB6;
-                                        }
-                                    </style>
+                        <div class="leftSection" id="phone_2nd">
+                            <div class="contactContainer">
 
-                                    <div class="contactHead d-flex justify-content-between desktop-checkout-title">
-                                        <span class="headTitle">Checkout</span>
-                                        <div class="offcanvas-header bg-section-0">
-                                            <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                        </div>
-                                        <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                        <!-- <span class="checkoutClose">&times;</span> -->
+                                <style>
+                                    .btn-close {
+                                        color: white !important;
+                                        opacity: unset;
+                                    }
+
+                                    .offcanvas-header {
+                                        border-bottom: #146FB6;
+                                    }
+                                </style>
+
+                                <div class="contactHead d-flex justify-content-between desktop-checkout-title">
+                                    <span class="headTitle">Checkout</span>
+                                    <div class="offcanvas-header bg-section-0">
+                                        <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                     </div>
-                                    <div class="rightSection " id="phone_1st">
-                                        <div class="contactContainer mobile-checkout-title" style="display: none;">
-                                            <style>
-                                                .btn-close {
+                                    <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                    <!-- <span class="checkoutClose">&times;</span> -->
+                                </div>
+                                <div class="rightSection " id="phone_1st">
+                                    <div class="contactContainer mobile-checkout-title" style="display: none;">
+                                        <style>
+                                            .btn-close {
 
-                                                    opacity: unset;
-                                                }
+                                                opacity: unset;
+                                            }
 
-                                                .offcanvas-header {
-                                                    border-bottom: #146FB6;
-                                                }
-                                            </style>
+                                            .offcanvas-header {
+                                                border-bottom: #146FB6;
+                                            }
+                                        </style>
 
-                                            <div class="contactHead d-flex justify-content-between ">
-                                                <span class="headTitle">Checkout</span>
-                                                <div class="offcanvas-header bg-section-0">
-                                                    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                </div>
-                                                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                                <!-- <span class="checkoutClose">&times;</span> -->
+                                        <div class="contactHead d-flex justify-content-between ">
+                                            <span class="headTitle">Checkout</span>
+                                            <div class="offcanvas-header bg-section-0">
+                                                <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                             </div>
-                                        </div>
-
-                                        <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
-                                        <hr style="">
-                                        <div class="itemContainer">
-                                            <div class="addItem addCard">
-
-                                                <div class="addCardText">
-                                                    <div class="mb-2"> Subtotal: 00.00 TK</div>
-                                                    <div class="mb-2"> Delivery: 00 TK</div>
-                                                    <!-- <div class="mb-3"> Discount: 10%</div> -->
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="totalPrice">
-                                            <span>Total: </span>
-                                            <span id="total_amount"> 00.00 <span>&#2547;</span></span>
+                                            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                            <!-- <span class="checkoutClose">&times;</span> -->
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <div class="contactBody">
-                                            <div class="bodyHead" id="createScroll">
-                                                <span class="userIcon"> <i class='bx bx-user'></i></span>
+                                    <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
+                                    <hr style="">
+                                    <div class="itemContainer">
+                                        <div class="addItem addCard">
 
-                                                <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
+                                            <div class="addCardText">
+                                                <div class="mb-2"> Subtotal: 00.00 TK</div>
+                                                <div class="mb-2"> Delivery: 00 TK</div>
+                                                <!-- <div class="mb-3"> Discount: 10%</div> -->
                                             </div>
-                                            <div class="inputInformation">
-                                                <div class="phone-container">
-                                                    <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
-                                                    <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
-                                                    <div class="setCodeDropdown">
-                                                        <div class="phoneDropdown">
-                                                        </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="totalPrice">
+                                        <span>Total: </span>
+                                        <span id="total_amount"> 00.00 <span>&#2547;</span></span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="contactBody">
+                                        <div class="bodyHead" id="createScroll">
+                                            <span class="userIcon"> <i class='bx bx-user'></i></span>
+
+                                            <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
+                                        </div>
+                                        <div class="inputInformation">
+                                            <div class="phone-container">
+                                                <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
+                                                <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
+                                                <div class="setCodeDropdown">
+                                                    <div class="phoneDropdown">
                                                     </div>
                                                 </div>
-                                                <div class="input-container mt-3">
-                                                    <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
-                                                    <label for="email" class="lavel">Email</label>
-                                                </div>
-                                                <div class="bodyHead mb-2">
-                                                    <span class="userIcon"> <i class='bx bx-map'></i></span>
-                                                    <!-- <span class="text">Delivery Information</span> -->
-                                                </div>
-                                                <div class="input-container">
-                                                    <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
-                                                    <label for="fullName" class="lavel full-name">Full Name</label>
-                                                </div>
+                                            </div>
+                                            <div class="input-container mt-3">
+                                                <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
+                                                <label for="email" class="lavel">Email</label>
+                                            </div>
+                                            <div class="bodyHead mb-2">
+                                                <span class="userIcon"> <i class='bx bx-map'></i></span>
+                                                <!-- <span class="text">Delivery Information</span> -->
+                                            </div>
+                                            <div class="input-container">
+                                                <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
+                                                <label for="fullName" class="lavel full-name">Full Name</label>
+                                            </div>
 
 
-                                                <div class="input_dropdown">
-                                                    <div>
-                                                        <!-- <span>left site</span> -->
-                                                        <div class="checkoutDropdown">
-                                                            <div class="select" id="textColoSet">
-                                                                <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
-                                                                <span class="mimi22">Select</span>
-                                                                <div class="caret"></div>
-                                                            </div>
-
-                                                            <ul class="menu">
-                                                                <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
-                                                                </li>
-                                                                <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
-                                                            </ul>
+                                            <div class="input_dropdown">
+                                                <div>
+                                                    <!-- <span>left site</span> -->
+                                                    <div class="checkoutDropdown">
+                                                        <div class="select" id="textColoSet">
+                                                            <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
+                                                            <span class="mimi22">Select</span>
+                                                            <div class="caret"></div>
                                                         </div>
+
+                                                        <ul class="menu">
+                                                            <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
+                                                            </li>
+                                                            <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
+                                                        </ul>
                                                     </div>
-                                                    <div>
-                                                        <!-- <span>right site</span> -->
-                                                        <!-- <div class="input-container">
+                                                </div>
+                                                <div>
+                                                    <!-- <span>right site</span> -->
+                                                    <!-- <div class="input-container">
                                                                                                                                             <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                                 <label for="City" class="lavel City-name">City</label>
                                                                                                                                         </div> -->
-                                                    </div>
                                                 </div>
-                                                <!-- <div class="input-container mb-3">
+                                            </div>
+                                            <!-- <div class="input-container mb-3">
                                                                                                                                     <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                         <label for="HouseNumber" class="lavel house-number">House Number</label>
                                                                                                                                 </div> -->
-                                                <div style="margin-bottom: 20px;" class="input-container">
-                                                    <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
-                                                    <label for="areaSector" class="lavel area-sector">Area /Address</label>
-                                                </div>
-                                                <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
-                                                <div class="address-check">
-                                                    <input type="checkbox" name="addressCheck" id="addressCheck">
-                                                    <label for="addressCheck">Billing and delivery address same.</label>
-                                                </div>
-
+                                            <div style="margin-bottom: 20px;" class="input-container">
+                                                <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
+                                                <label for="areaSector" class="lavel area-sector">Area /Address</label>
                                             </div>
+                                            <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
+                                            <div class="address-check">
+                                                <input type="checkbox" name="addressCheck" id="addressCheck">
+                                                <label for="addressCheck">Billing and delivery address same.</label>
+                                            </div>
+
                                         </div>
-                                        <div class="contactFooter" onclick="orderList()">
-                                            <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
-                                            <button type="" class="ProceedBtn">Submit Order</button>
-                                        </div>
+                                    </div>
+                                    <div class="contactFooter" onclick="orderList()">
+                                        <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
+                                        <button type="" class="ProceedBtn">Submit Order</button>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
 
 
-                        <!-- drag cursor js -->
-                        <script>
-                            let isDragging = false;
-                            let initialX;
-                            let initialY;
-                            let currentX;
-                            let currentY;
 
-                            const card = document.getElementById('phoneModal');
-
-                            card.addEventListener('mousedown', (e) => {
-                                isDragging = true;
-                                initialX = e.clientX;
-                                initialY = e.clientY;
-                            });
-
-                            document.addEventListener('mousemove', (e) => {
-                                if (!isDragging) return;
-                                currentX = e.clientX - initialX;
-                                currentY = e.clientY - initialY;
-
-                                card.style.transform = `translate(${currentX}px, ${currentY}px)`;
-                            });
-
-                            document.addEventListener('mouseup', () => {
-                                isDragging = false;
-                            });
-
-                        </script>
                     </div>
+
+
+                    <!-- drag cursor js -->
+                    <script>
+                        let isDragging = false;
+                        let initialX;
+                        let initialY;
+                        let currentX;
+                        let currentY;
+
+                        const card = document.getElementById('phoneModal');
+
+                        card.addEventListener('mousedown', (e) => {
+                            isDragging = true;
+                            initialX = e.clientX;
+                            initialY = e.clientY;
+                        });
+
+                        document.addEventListener('mousemove', (e) => {
+                            if (!isDragging) return;
+                            currentX = e.clientX - initialX;
+                            currentY = e.clientY - initialY;
+
+                            card.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                        });
+
+                        document.addEventListener('mouseup', () => {
+                            isDragging = false;
+                        });
+
+                    </script>
                 </div>
             </div>
-
         </div>
-        <!-- checkout  modal end-->
 
-        <!--start quick view-->
+    </div>
+    <!-- checkout  modal end-->
 
-        <!--Start Back To Top Button-->
-        <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
-        <!--End Back To Top Button-->
+    <!--start quick view-->
 
-        <!-- JavaScript files -->
-        <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
-        <script src="/front_assets/js/jquery.min.js"></script>
-        <script src="/front_assets/plugins/slick/slick.min.js"></script>
-        <script src="/front_assets/js/main.js"></script>
-        <script src="/front_assets/js/index.js"></script>
-        <script src="/front_assets/js/loader.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!--End Back To Top Button-->
 
-        <!-- increment or decrement input css -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- add product to the cart dynamically -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- JavaScript files -->
+    <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/front_assets/js/jquery.min.js"></script>
+    <script src="/front_assets/plugins/slick/slick.min.js"></script>
+    <script src="/front_assets/js/main.js"></script>
+    <script src="/front_assets/js/index.js"></script>
+    <script src="/front_assets/js/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <!--  checkout js-->
-        <script>
+    <!-- increment or decrement input css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- add product to the cart dynamically -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-            // When the user clicks on the button, open the modal
-            // btn.onclick = function () {
-            //   console.log(modal.style);
-            //   modal.style.display = "";
-            // };
+    <!--  checkout js-->
+    <script>
 
-            // When the user clicks on <span> (x), close the modal
-            // span.onclick = function() {
-            //   modal.style.display = "none";
-            // }
+        // When the user clicks on the button, open the modal
+        // btn.onclick = function () {
+        //   console.log(modal.style);
+        //   modal.style.display = "";
+        // };
 
-            // When the user clicks anywhere outside of the modal, close it
+        // When the user clicks on <span> (x), close the modal
+        // span.onclick = function() {
+        //   modal.style.display = "none";
+        // }
 
-            // window.onclick = function(event) {
-            //   if (event.target == modal) {
-            //     modal.style.display = "none";
-            //   }
-            // }
-            // let checkoutNone = () => {
-            //   modal.style.display = "none";
-            // };
+        // When the user clicks anywhere outside of the modal, close it
 
-            // javaScript for dropdown menu
-            // for dropdown option
-            let dropdowns = document.querySelectorAll(".checkoutDropdown");
-            // console.log(dropdowns);
+        // window.onclick = function(event) {
+        //   if (event.target == modal) {
+        //     modal.style.display = "none";
+        //   }
+        // }
+        // let checkoutNone = () => {
+        //   modal.style.display = "none";
+        // };
 
-            dropdowns.forEach((dropdown) => {
-                let select = dropdown.querySelector(".select");
-                let caret = dropdown.querySelector(".caret");
-                let menu = dropdown.querySelector(".menu");
-                let options = dropdown.querySelectorAll(".menu li");
-                let selected = dropdown.querySelector(".selected");
-                let mimi22 = dropdown.querySelector(".mimi22");
+        // javaScript for dropdown menu
+        // for dropdown option
+        let dropdowns = document.querySelectorAll(".checkoutDropdown");
+        // console.log(dropdowns);
 
-                select.addEventListener("click", () => {
-                    select.classList.toggle("select-clicked");
-                    caret.classList.toggle("caret-rotate");
-                    menu.classList.toggle("menu-open");
-                });
+        dropdowns.forEach((dropdown) => {
+            let select = dropdown.querySelector(".select");
+            let caret = dropdown.querySelector(".caret");
+            let menu = dropdown.querySelector(".menu");
+            let options = dropdown.querySelectorAll(".menu li");
+            let selected = dropdown.querySelector(".selected");
+            let mimi22 = dropdown.querySelector(".mimi22");
 
-                options.forEach((option) => {
-                    option.addEventListener("click", () => {
-                        // console.log('like option', option.textContent, selected);
-                        mimi22.innerText = option.textContent;
-                        if (mimi22.innerText == option.textContent) {
-                            if (mimi22.innerText == "Delivery address") {
-                                document.getElementById("textColoSet").style.color = "#9b9c9d";
-                            } else {
-                                document.getElementById("textColoSet").style.color = "black";
-                            }
+            select.addEventListener("click", () => {
+                select.classList.toggle("select-clicked");
+                caret.classList.toggle("caret-rotate");
+                menu.classList.toggle("menu-open");
+            });
+
+            options.forEach((option) => {
+                option.addEventListener("click", () => {
+                    // console.log('like option', option.textContent, selected);
+                    mimi22.innerText = option.textContent;
+                    if (mimi22.innerText == option.textContent) {
+                        if (mimi22.innerText == "Delivery address") {
+                            document.getElementById("textColoSet").style.color = "#9b9c9d";
+                        } else {
+                            document.getElementById("textColoSet").style.color = "black";
                         }
-                        select.classList.remove("select-clicked");
-                        caret.classList.remove("caret-rotate");
-                        menu.classList.remove("menu-open");
-
-                        options.forEach((option) => {
-                            option.classList.remove("active");
-                        });
-
-                        option.classList.add("active");
-                    });
-                });
-            });
-
-            // for country code  option
-            let codeDropdowns = document.querySelectorAll(".phoneDropdown");
-
-            codeDropdowns.forEach((dropdown) => {
-                let select = dropdown.querySelector(".countrySelect");
-                let caret = dropdown.querySelector(".countryCaret");
-                let menu = dropdown.querySelector(".countryMenu");
-                let options = dropdown.querySelectorAll(".countryMenu li");
-                let selected = dropdown.querySelector(".countrySelected");
-
-                select.addEventListener("click", () => {
-                    select.classList.toggle("select-clicked");
-                    caret.classList.toggle("caret-rotate");
-                    menu.classList.toggle("menu-open");
-                });
-
-                options.forEach((option) => {
-                    option.addEventListener("click", () => {
-                        console.log("inner text test", option.innerText);
-                        selected.innerText = option.innerText;
-                        select.classList.remove("select-clicked");
-                        caret.classList.remove("caret-rotate");
-                        menu.classList.toggle("menu-open");
-
-                        options.forEach((option) => {
-                            option.classList.remove("active");
-                        });
-
-                        option.classList.add("active");
-                    });
-                });
-            });
-
-            // scroll bar
-
-            var $doc = $("#createScroll");
-            var $win = $(window);
-            var itemstoshow = 5;
-
-            $(".infinite")
-                .filter(function (index) {
-                    return $(this).offset().top > $win.height();
-                })
-                .hide();
-
-            $(window).scroll(function () {
-                if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
-                    $(".infinite:hidden:lt(" + itemstoshow + ")").show();
-                }
-            });
-
-            // mediaQuery and responsive
-            let ovearflows = document.querySelectorAll(".addCardText p");
-
-            const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
-
-            ovearflows.forEach((ovearflow) => {
-                if (ovearflow.innerHTML.length > 90) {
-                    ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
-                }
-
-                if (mediaQuery1300.matches) {
-                    console.log("match");
-                    if (ovearflow.innerHTML.length > 71) {
-                        ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
                     }
-                }
+                    select.classList.remove("select-clicked");
+                    caret.classList.remove("caret-rotate");
+                    menu.classList.remove("menu-open");
+
+                    options.forEach((option) => {
+                        option.classList.remove("active");
+                    });
+
+                    option.classList.add("active");
+                });
+            });
+        });
+
+        // for country code  option
+        let codeDropdowns = document.querySelectorAll(".phoneDropdown");
+
+        codeDropdowns.forEach((dropdown) => {
+            let select = dropdown.querySelector(".countrySelect");
+            let caret = dropdown.querySelector(".countryCaret");
+            let menu = dropdown.querySelector(".countryMenu");
+            let options = dropdown.querySelectorAll(".countryMenu li");
+            let selected = dropdown.querySelector(".countrySelected");
+
+            select.addEventListener("click", () => {
+                select.classList.toggle("select-clicked");
+                caret.classList.toggle("caret-rotate");
+                menu.classList.toggle("menu-open");
             });
 
-            const mediaQuery750 = window.matchMedia("(max-width: 750px)");
+            options.forEach((option) => {
+                option.addEventListener("click", () => {
+                    console.log("inner text test", option.innerText);
+                    selected.innerText = option.innerText;
+                    select.classList.remove("select-clicked");
+                    caret.classList.remove("caret-rotate");
+                    menu.classList.toggle("menu-open");
 
-            if (mediaQuery750.matches) {
-                let phoneModal = document.getElementById("phoneModal");
-                let phone_2nd = document.getElementById("phone_2nd");
-                let phone_1st = document.getElementById("phone_1st");
-                phoneModal.insertBefore(phone_1st, phone_2nd);
+                    options.forEach((option) => {
+                        option.classList.remove("active");
+                    });
+
+                    option.classList.add("active");
+                });
+            });
+        });
+
+        // scroll bar
+
+        var $doc = $("#createScroll");
+        var $win = $(window);
+        var itemstoshow = 5;
+
+        $(".infinite")
+            .filter(function (index) {
+                return $(this).offset().top > $win.height();
+            })
+            .hide();
+
+        $(window).scroll(function () {
+            if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
+                $(".infinite:hidden:lt(" + itemstoshow + ")").show();
             }
-        </script>
+        });
 
-        <script src="../../front_assets/js/axios_post.js"></script>
+        // mediaQuery and responsive
+        let ovearflows = document.querySelectorAll(".addCardText p");
+
+        const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+
+        ovearflows.forEach((ovearflow) => {
+            if (ovearflow.innerHTML.length > 90) {
+                ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
+            }
+
+            if (mediaQuery1300.matches) {
+                console.log("match");
+                if (ovearflow.innerHTML.length > 71) {
+                    ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+                }
+            }
+        });
+
+        const mediaQuery750 = window.matchMedia("(max-width: 750px)");
+
+        if (mediaQuery750.matches) {
+            let phoneModal = document.getElementById("phoneModal");
+            let phone_2nd = document.getElementById("phone_2nd");
+            let phone_1st = document.getElementById("phone_1st");
+            phoneModal.insertBefore(phone_1st, phone_2nd);
+        }
+    </script>
+
+    <script src="../../front_assets/js/axios_post.js"></script>
 
 
-        <!-- increment or decrement input css -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- add product to the cart dynamically -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- increment or decrement input css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- add product to the cart dynamically -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </body>
 

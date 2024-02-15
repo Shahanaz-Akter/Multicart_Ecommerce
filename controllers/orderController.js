@@ -24,7 +24,6 @@ const editOrder = async (req, res) => {
 
     res.redirect('/order/order_list');
     // console.log('edit');
-
 }
 
 const deleteOrder = async (req, res) => {
@@ -68,5 +67,6 @@ const statusChange = async (req, res) => {
         'status': 'okay'
     });
 }
+
 
 module.exports = { addOrder, orderList, editOrder, deleteOrder, statusChange }

@@ -273,15 +273,27 @@
 
                                             </div>
                                             <a href="/product/product_details/<%=products.id%>">
-                                                <div class="" style="background: url('<%=products.primary_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
-                                                    <!-- <img src="/front_assets/img/new-arrival/01.jpg" class="card-img-top" alt="..."> -->
-                                                </div>
+                                                <!-- <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
+                                                </div> -->
+                                                <img src="<%=products.primary_image%>" class="card-img-top" alt="...">
+
                                             </a>
                                         </div>
                                         <div class="card-body">
                                             <div class="product-info text-center">
                                                 <h6 class="mb-1 fw-bold product-name">
-                                                    <%=products.name%>
+
+                                                    <% const maxWords=1;%>
+                                                        <% const words=products.name.split(' '); %>
+                                                            <% const truncatedName = words.slice(0, maxWords).join(' ');%>
+                                                            <% const remainingText = words.slice(maxWords).join(' ');%>
+                                                            <%if(remainingText){%>
+                                                            <%= truncatedName %>..
+                                                                <%}else{%>
+                                                                <%= truncatedName %>
+                                                                <%}%>
+
+
                                                 </h6>
                                                 <div class="ratings mb-1 h6">
                                                     <i class="bi bi-star-fill text-warning"></i>
@@ -1077,29 +1089,29 @@
                 </div>
                 <div class="cartegory-box">
 
-                    <%products.slice(0,7).forEach(all_products=>{%>
+                    <%products.forEach(all_products=>{%>
                         <a href="#">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="overflow-hidden">
                                         <!-- <img src="<%=all_products.category_image%>" class="card-img-top rounded-0" alt="..."> -->
-                                        <div class="" style="background: url('<%=all_products.category_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
+                                        <div class="" style="background: url(' <%=all_products.category_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <h5 class="mb-1 cartegory-name mt-3 fw-bold">
+                                                <%=all_products.product_category%>
+                                            </h5>
+                                            <h6 class="mb-0 product-number fw-bold">
+                                                <%=all_products.total_qty%>
+                                            </h6>
                                         </div>
                                     </div>
-                                    <div class="text-center">
-                                        <h5 class="mb-1 cartegory-name mt-3 fw-bold">
-                                            <%=all_products.name%>
-                                        </h5>
-                                        <h6 class="mb-0 product-number fw-bold">
-                                            <%=all_products.total_qty%>
-                                        </h6>
-                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <%})%>
-                </div>
-            </div>
+                                </a>
+                                <%})%>
+                        </div>
+                    </div>
         </section>
         <!--end cartegory slider-->
 
