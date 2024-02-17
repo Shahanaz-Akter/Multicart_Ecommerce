@@ -993,174 +993,223 @@
                         <div class="container-fluid card" style="padding: 20px;">
 
                             <!-- new Add order -->
-                            <form action="/order/post_add_order" method="post" enctype="multipart/form-data">
-
+                            <form action="/order/post_add_order" method="post">
 
                                 <div class="row mb-2">
                                     <span class="text-start">
-                                        <div class="btn btn-dark mb-2 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#inventory_access">Inventory Product Entry: </div>
-                                    </span>
-                                    <!-- items -->
-                                    <table id="showOrderTbl" class="display nowrap" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th><input type="checkbox" id="select-all-checkbox"></th>
-                                                <!-- <th>SL</th> -->
-                                                <th>Name</th>
-                                                <th>Quantity</th>
-                                                <th>Image</th>
-                                                <th>Selling Price</th>
-                                            </tr>
-                                        </thead>
-                                        <style>
-                                            .form-control1 {
-                                                color: #242945;
-                                                border: 1px solid transparent;
-                                                /* background-color: #EBEBEB; */
-                                                border-radius: 2px;
-                                                font-size: 14px;
-                                                padding: 5px 8px;
-                                                width: 30%;
-                                                -webkit-transition: all ease 0.5s;
-                                                transition: all ease 0.5s;
-                                                margin-top: 7px;
-                                            }
-                                        </style>
-                                        <tbody class="">
-
-                                            <!-- <tr>
-                                                <td><input type="checkbox" class="row-checkbox"></td>
-                                                <td>1</td>
-                                                <td>
-                                                    Product name
-                                                </td>
-                                                <td>
-                                                    Quantity
-                                                </td>
-                                                <td>
-                                                    <img src="../../front_assets/img1.jpg" alt="" height="100px;width:100px;">
-
-                                                </td>
-                                                <td>
-                                                    123
-                                                </td>
-                                            </tr> -->
-
-
-
-
-                                        </tbody>
-
-                                    </table>
-                                </div>
-
-                                <div class="row mt-2">
-
-                                    <span class="text-start">
-                                        <div class="btn btn-danger mb-0   fw-bold">Order Entry: </div>
+                                        <div class="btn btn-dark mb-2 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#inventory_access">Inventory Product: </div>
                                     </span>
 
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-6 row mb-3">
-
+                                    <!-- <div class="row d-none">
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label for="mobile">Mobile</label>
-                                                <input required type="text" class="form-control" placeholder="019********" name="mobile" onkeypress="return event.keyCode != 13;" id="mobile">
+                                                <label>Product Name</label>
+                                                <input type="text" class="form-control" placeholder="HP Elite Book" name="name" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
-
-
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label for="address">Address</label>
-                                                <input required type="number" class="form-control" placeholder="Barisal" name="address" id="address">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label>Delivery charge</label>
-                                                <input required type="number" class="form-control" placeholder="00" name="delivery_charge" onkeypress="return event.keyCode != 13;">
+                                                <label>Selling Price</label>
+                                                <input  type="number" class="form-control" placeholder="1" name="selling_price" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label for="discount">Discount</label>
-                                                <input type="text" class="form-control" placeholder="0%" name="discount" onkeypress="return event.keyCode != 13;" id="discount">
+                                                <label>Discount</label>
+                                                <input type="text" class="form-control" placeholder="100%" name="discount" onkeypress="return event.keyCode != 13;">
                                             </div>
                                         </div>
-
-                                        <!-- <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <label for="date" class="form-label">Date</label>
                                             <input class="form-control custom-date-input" value="" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
+                                        </div>
+
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                                <label>Total Quantity</label>
+                                                <input type="text" class="form-control" placeholder="100%" name="total_qty" onkeypress="return event.keyCode != 13;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                                <label>Price</label>
+                                                <input type="number" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;">
+                                            </div>
+                                        </div>
+
+                                    </div> -->
+
+                                    <div class="product_parent row">
+                                        <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                            <label for="products">Products</label>
+                                            <input type="text" id="products" name="products[]" placeholder="" value="">
                                         </div> -->
 
-                                        <script>
-                                            // Get the current date
-                                            let currenDate = new Date();
+                                    </div>
+                                    <div>
+                                        <style>
+                                            #showOrderTbl_filter {
+                                                display: none;
+                                            }
+                                        </style>
+                                        <table id="showOrderTbl" class="display nowrap" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th><input type="checkbox" id="select-all-checkbox"></th>
+                                                    <th>SL</th>
+                                                    <th>Primary Image</th>
+                                                    <th>Product Name</th>
+                                                    <th>Selling Price</th>
+                                                    <th>Qty</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <!-- <style>
+                                                .dataTables_empty {
+                                                    display: none;
+                                                }
+                                            </style> -->
+                                            <tbody>
+                                                <!-- td record will be append one by one -->
+                                            </tbody>
 
-                                            // Format the date as YYYY-MM-DD (required format for input type="date")
-                                            let formattedDate = currenDate.toISOString().split(' T')[0]; // Set the value of the input field document.getElementById('date').value=formattedDate; </script>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row mb-2">
+
+                                    <span class="text-start mb-2">
+                                        <div class="btn btn-dark mb-0 fw-bold">Customer Entry: </div>
+                                    </span>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="name" class="form-label">Customer Name</label>
+                                        <input class="form-control" id="name" type="text" name="name" placeholder="Customer Name">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="mobile" class="form-label">Mobile</label>
+                                        <input type="text" id="mobile" class="form-control" placeholder="00 000 000 000" name="mobile" style="background: #FCFCFC!important;">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
+                                        <label for="birth" class="form-label">Date of Birth</label>
+                                        <input class="form-control custom-date-input1" id="birth" type="date" name="birth" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+                                    </div>
+
+                                    <style>
+                                        .select2-container--default .select2-selection--single {
+                                            background: #FCFCFC !important;
+                                            color: #444 !important;
+                                        }
+
+                                        .form-control {
+                                            background: #FCFCFC !important;
+                                            color: #444 !important;
+                                        }
+                                    </style>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" id="email" class="form-control" placeholder="xyx@gmail.com" name="email" style="background: #FCFCFC!important;">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="country" class="form-label">Country</label>
+                                        <input type="text" id="country" class="form-control" placeholder="Dhaka" name="country" style="background: #FCFCFC!important;">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" id="address " class="form-control" placeholder="Halmate Station, NY, USA" name="address" style="background: #FCFCFC!important;">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="zip_code" class="form-label">Zip Code</label>
+                                        <input type="text" id="zip_code " class="form-control" placeholder="9766767" name="zip_code" style="background: #FCFCFC!important;">
+                                    </div>
 
 
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label for="sub_total">Sub Total</label>
-                                                <input required type="number" class="form-control" placeholder="00.00" name="sub_total" onkeypress="return event.keyCode != 13;">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
-                                            <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                <label for="total_amount">Total Amount</label>
-                                                <input type="text" class="form-control" placeholder="00.00" name="total_amount" onkeypress="return event.keyCode != 13;" id="total_amount">
-                                            </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
+                                        <label for="date1" class="form-label">Date</label>
+                                        <input class="form-control custom-date-input" id="date1" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
+                                    </div>
+
+                                    <script>
+                                        // Get the current date
+                                        let currenDate = new Date();
+
+                                        // Format the date as YYYY-MM-DD ( format for input type="date")
+                                        let formattedDate = currenDate.toISOString().split('T')[0];
+
+                                        // Set the value of the input field
+                                        document.getElementById('date1').value = formattedDate;
+                                    </script>
+                                </div>
+
+                                <div class="row mb-2">
+
+                                    <span class="text-start mb-2">
+                                        <div class="btn btn-dark mb-0   fw-bold">Order Entry: </div>
+                                    </span>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label for="mobile">Mobile</label>
+                                            <input type="text" class="form-control" placeholder="019********" name="mobile1" onkeypress="return event.keyCode != 13;" id="mobile">
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-6" style="border: 2px solid transparent;">
-                                        <div class="row h-100">
-                                            <div class="col-md-5 col-lg-5 col-sm-12">
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <label for="customer_name" class="form-label">Customer Name</label>
+                                        <input class="form-control" id="customer_name" type="text" name="customer_name1" placeholder="Walk - in - Customer">
+                                    </div>
 
-                                                <div class="main-img-container mt-2">
-                                                    <!-- <p>*All Image size should be 300/300.</p> -->
-                                                    <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Not present" style="width:180px;border-radius:5px;"
-                                                        id="main-img-preview">
-                                                    <label for="mainImg" class="btn btn-dark mt-2">Set Primary Image</label>
-                                                    <input type="file" class="d-none" id="mainImg" onchange="main_image_changed(this,null)" name="primary_image">
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label>Delivery charge</label>
+                                            <input type="number" class="form-control" placeholder="00" name="delivery_charge" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label for="address">Address</label>
+                                            <input type="text" class="form-control" placeholder="Barisal" name="address1" id="address">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label for="sub_total">Sub Total</label>
+                                            <input type="number" class="form-control" placeholder="00.00" name="sub_total" onkeypress="return event.keyCode != 13;">
+                                        </div>
+                                    </div>
 
-                                                </div>
-                                            </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label for="total_amount">Total Amount</label>
+                                            <input type="text" class="form-control" placeholder="00.00" name="total_amount" onkeypress="return event.keyCode != 13;" id="total_amount">
+                                        </div>
+                                    </div> -->
 
-                                            <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent" style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
-                                                <div class="secondary-img-container" id="secondary-img-container">
-
-                                                </div>
-
-                                                <div class="s-i-c-2">
-                                                    <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
-                                                    <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
-
-                                                </div>
-
-                                            </div>
-
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                        <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
+                                            <label for="discount">Discount</label>
+                                            <input type="text" class="form-control" placeholder="0%" name="discount" onkeypress="return event.keyCode != 13;" id="discount">
                                         </div>
                                     </div>
                                 </div>
 
-                            </form>
-
-
-                            <div class="ms-3" style="display: flex; justify-content: left;">
-                                <div type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
-                                    Upload
+                                <div class="">
+                                    <button type="submit" class="btn btn-primary">
+                                        Upload
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        Cancel
+                                    </button>
                                 </div>
-
-                                <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
-                                    Cancel
-                                </button>
-                            </div>
 
                             </form>
 
@@ -1213,8 +1262,7 @@
                                                         <th>Product Name</th>
                                                         <th>Category Name</th>
                                                         <th>Selling Price</th>
-                                                        <th>Add</th>
-
+                                                        <th>Add Product</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -1252,8 +1300,10 @@
                                         <td>
                                             <%=item.selling_price%>
                                         </td>
+
+
                                         <td>
-                                            <span onclick="add_product(<%=JSON.stringify(item)%>)">Add Product</span>
+                                            <span onclick="add_product(<%=JSON.stringify(item)%>)"><span class="btn btn-warning">Add Product</span></span>
 
                                         </td>
                                         </tr>
@@ -1287,9 +1337,6 @@
                         </div>
 
                         <!-- new Add product code End  -->
-
-
-
                         <!-- container-fluid -->
 
                     </div>
@@ -1361,7 +1408,7 @@
                     },
                 });
 
-                $('#showOrderTbl').DataTable({
+                table = $('#showOrderTbl').DataTable({
                     dom: 'Bfrtip',
                     buttons: [
                         'copy', 'csv', 'excel', 'pdf', 'print'],
@@ -1372,6 +1419,7 @@
                         selector: 'td input', // Use the first column for selection
                     },
                 });
+
 
                 $('#select-all-checkbox').on('click', function () {
                     var isChecked = $(this).prop('checked');

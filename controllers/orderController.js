@@ -9,6 +9,91 @@ const addOrder = async (req, res) => {
     res.render('order/add_order.ejs', { items });
 }
 
+const postAddOrder = async (req, res) => {
+    console.log('Moy Moy');
+    let { name, mobile, birth, email, country, address, zip_code, date, mobile1, customer_name1, delivery_charge, address1, discount } = req.body;
+    let product_list = req.body.products;
+    console.log((req.body.products));
+    console.log('gggg');
+    console.log((req.body.qty));
+    let qty_arr = req.body.qty;
+
+    let sub_total = 0;
+    let arr1 = [];
+
+    product_list.forEach((e, index) => {
+        let ele = JSON.parse(e);
+        sub_total += ele.selling_price * parseInt(qty_arr[index]);
+        arr1.push(ele);
+    });
+    // Filter and map the product information
+    let arr2 = arr1.map((element, index) => {
+        return {
+            id: element.id,
+            // name: element.name,
+            primary_image: element.primary_image,
+            selling_price: element.selling_price,
+            total_qty: qty_arr[index]
+        };
+    });
+    console.log(arr2);
+    let data = {
+        'customer_name': name,
+        'mobile': mobile,
+        'dob': birth,
+        'email': email,
+        'country': country,
+        'address': address,
+        'zip_code': zip_code,
+        'date': date,
+
+        'products': arr2,
+        'mobile1': mobile1,
+        'customer_name1': customer_name1,
+        'delivery_charge': delivery_charge,
+        'address1': address1,
+        'sub_total': sub_total,
+
+        'discount': discount,
+    };
+    subT = 0;
+    try {
+        let customer = await models.Customer.create({
+            'customer_name': name,
+            'mobile': mobile,
+            'dob': birth,
+            'email': email,
+            'country': country,
+            'address': address,
+            'zip_code': zip_code,
+            'customer_id': Math.floor(Math.random() * 100) + 1,
+            'date': date,
+            'otp_num': 1234,
+        });
+
+        let order = await models.Order.create({
+            'mobile': mobile1,
+            'address': address1,
+            'delivery_charge': delivery_charge,
+            'products': JSON.stringify(arr2), //JSON.stringify(Products)
+            'sub_total': sub_total,
+            'total': null,
+            'total_amount': sub_total + parseInt(delivery_charge),
+            'discount': discount,
+            'status': null,
+        });
+
+        if (true) {
+            // console.log(data);
+            res.redirect('/order/add_order');
+        }
+    }
+
+    catch (err) {
+        console.log(err);
+    }
+}
+
 const orderList = async (req, res) => {
     // console.log('order list');
     try {
@@ -69,4 +154,4 @@ const statusChange = async (req, res) => {
 }
 
 
-module.exports = { addOrder, orderList, editOrder, deleteOrder, statusChange }
+module.exports = { addOrder, postAddOrder, orderList, editOrder, deleteOrder, statusChange }

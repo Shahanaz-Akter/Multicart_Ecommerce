@@ -318,10 +318,18 @@ const electronicsCategory = async (req, res) => {
 }
 
 const post_checkout = async (req, res) => {
-    let { phone, email, fullName, deliver_charge, areaSector, addressCheck, subT, dob, country, zip_code, date, otp_num, address, discount } = req.body;
+    // phone, email, fullName, deliver_charge, areaSector, addressCheck, subT 
+    let { fullName, phone, dob, email, country, address, zip_code, date, areaSector, addressCheck, deliver_charge, subT, discount } = req.body;
+
     // console.log(phone);
+    console.log('moi moi');
+
+    console.log(subT);
+    console.log(address);
+    console.log(deliver_charge);
+
     let sessionProducts = req.session.cart;
-    subT = 0;
+    // subT = 0;
     // console.log('0' + mobile, email, customer_name, delivery_charge, address, sub_total, total, discount);
     try {
         let customer = await models.Customer.create({
@@ -338,14 +346,15 @@ const post_checkout = async (req, res) => {
         });
         let order = await models.Order.create({
             'mobile': phone,
-            'customer_name': fullName,
+            'address': areaSector,
             'delivery_charge': deliver_charge,
-            'address': address,
+            'products': JSON.stringify(sessionProducts),
             'sub_total': subT,
             'total': null,
-            'products': JSON.stringify(sessionProducts),
             'total_amount': subT + parseInt(deliver_charge),
             'discount': discount,
+            'status': '',
+
         });
 
         // console.log(order);

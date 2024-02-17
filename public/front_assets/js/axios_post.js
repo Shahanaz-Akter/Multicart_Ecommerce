@@ -194,7 +194,7 @@ const orderList = async () => {
     // console.log('delivery charge ', deliver_charge);
     let areaSector = document.querySelector('#areaSector').value;
     let addressCheck = document.querySelector('#addressCheck').value;
-    // console.log(phone, email, fullName, delivery_charge, areaSector, addressCheck, subT);
+    // console.log(delivery_charge, areaSector, addressCheck, subT);
     let orderResponse = await axios.post('/post_checkout', { phone, email, fullName, deliver_charge, areaSector, addressCheck, subT });
 
     if (orderResponse) {
