@@ -738,9 +738,13 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/shop">Shop</a>
+            </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                Shop
+              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="/shop" data-bs-toggle="dropdown">
+                Category
               </a>
               <div class="dropdown-menu dropdown-large-menu">
                 <div class="row">
@@ -768,30 +772,30 @@
 
                   <!-- end col-3 -->
                   <!-- <div class="col-12 col-xl-4">
-                    <h6 class="large-menu-title">Electronics</h6>
-                    <ul class="list-unstyled">
-                      <li><a href="javascript:;">Mobiles</a>
-                      </li>
-                      <li><a href="javascript:;">Laptops</a>
-                      </li>
-                      <li><a href="javascript:;">Macbook</a>
-                      </li>
-                      <li><a href="javascript:;">Televisions</a>
-                      </li>
-                      <li><a href="javascript:;">Lighting</a>
-                      </li>
-                      <li><a href="javascript:;">Smart Watch</a>
-                      </li>
-                      <li><a href="javascript:;">Galaxy Phones</a>
-                      </li>
-                      <li><a href="javascript:;">PC Monitors</a>
-                      </li>
-                    </ul>
-                  </div> -->
+                              <h6 class="large-menu-title">Electronics</h6>
+                              <ul class="list-unstyled">
+                                <li><a href="javascript:;">Mobiles</a>
+                                </li>
+                                <li><a href="javascript:;">Laptops</a>
+                                </li>
+                                <li><a href="javascript:;">Macbook</a>
+                                </li>
+                                <li><a href="javascript:;">Televisions</a>
+                                </li>
+                                <li><a href="javascript:;">Lighting</a>
+                                </li>
+                                <li><a href="javascript:;">Smart Watch</a>
+                                </li>
+                                <li><a href="javascript:;">Galaxy Phones</a>
+                                </li>
+                                <li><a href="javascript:;">PC Monitors</a>
+                                </li>
+                              </ul>
+                            </div> -->
                   <!-- end col-3 -->
                   <div class="col-12 col-xl-4 d-none d-xl-block">
                     <div class="pramotion-banner1">
-                      <img src="/front_assets/img/menu-img.jpg" class="img-fluid" alt="" />
+                      <img src="/front_assets/img/menu-img.webp" class="img-fluid" alt="" />
                     </div>
                   </div>
                   <!-- end col-3 -->
@@ -799,7 +803,6 @@
                 <!-- end row -->
               </div>
             </li>
-
 
 
             <!-- <li class="nav-item dropdown">
@@ -947,15 +950,27 @@
               </div>
               <hr>
               <div class="product-price d-flex align-items-center gap-3">
-                <div class="h4 fw-bold">৳ <%=details_secondary_img.selling_price%>
-                </div>
-                <div class="h5 fw-light text-muted text-decoration-line-through">৳<%=details_secondary_img.buying_price%>
-                </div>
+                <!-- <div class="h4 fw-bold">৳ <%=details_secondary_img.selling_price%>
+                </div> -->
+                <!-- <div class="h5 fw-light text-muted text-decoration-line-through">৳<%=details_secondary_img.buying_price%>
+                </div> -->
                 <div class="h4 fw-bold text-danger">
-                  <%=details_secondary_img.discount%> off
+                  <%if(details_secondary_img.discount>0){%>
+                    <%let dis=details_secondary_img.selling_price *(details_secondary_img.discount/100)%>
+                      <%let c=details_secondary_img.selling_price-dis%>
+                        <span class="text-decoration-line-through text-danger">৳<%=details_secondary_img.selling_price%>
+                        </span>
+                        <span class="text-danger">৳<%=Math.round(c)%>
+                        </span>
+                        <%}else{%>
+                          <p class="text-danger">৳<%=details_secondary_img.selling_price%>
+                          </p>
+                          <p></p>
+                          <%}%>
+
                 </div>
               </div>
-              <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
+              <!-- <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p> -->
 
               <!-- <div class="more-colors mt-4">
                 <h6 class="fw-bold mb-3">More Colors</h6>
@@ -1024,7 +1039,7 @@
 
               <hr class="my-3">
               <div class="product-info">
-                <pre class="mb-3 text-wrap" style="font-family: poppins, sans-serif; font-size: 16px;white-space: pre-wrap!important"><%=details_secondary_img.description%></pre>
+                <pre class="mb-3 text-wrap text-justify" style="font-family: poppins, sans-serif; font-size: 16px;white-space: pre-wrap!important"><%=details_secondary_img.description%></pre>
                 <!-- <p class="mb-1">All the Lorem Ipsum generators on the Internet tend to repeat</p> -->
               </div>
               <!-- <hr class="my-3"> -->
@@ -1293,12 +1308,12 @@
                           <!-- <p class="mb-0 product-short-name text-center">
                             name
                           </p> -->
-                          <div class="product-price d-flex align-items-center gap-3 mt-2">
+                          <div class="product-price d-flex justify-content-center align-items-center gap-3 mt-2">
                             <div class="h6 fw-bold">৳<%=details_secondary_img.selling_price%>
                             </div>
-                            <div class="h6 fw-light text-muted text-decoration-line-through">৳<%=details_secondary_img.old_price%>
-                            </div>
-                            <div class="h6 fw-bold text-danger">(<%=details_secondary_img.discount%> off)</div>
+                            <!-- <div class="h6 fw-light text-muted text-decoration-line-through">৳<%=details_secondary_img.old_price%>
+                            </div> -->
+                            <div class="h6 fw-bold text-danger">(<%=details_secondary_img.discount%>%offer)</div>
                           </div>
                         </div>
                       </div>

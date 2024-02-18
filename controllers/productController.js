@@ -50,6 +50,7 @@ const postAddProduct = async (req, res) => {
             'sizeVariants': JSON.stringify(req.body.sizeVariants),
             'total_qty': req.body.total_qty,
             'product_code': Math.floor(Math.random() * 1000) + 1,
+            'old_price': req.body.old_price,
             'date': req.body.date,
             'quantitys': req.body.quantitys,
         });
