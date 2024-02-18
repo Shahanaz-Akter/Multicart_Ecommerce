@@ -97,6 +97,7 @@ const ProductDetails = async (req, res) => {
     });
 
     let reviews = await models.Review.findAll();
+
     res.render('product/product_details.ejs', { details_secondary_img, reviews, logo_img, locals: { session: req.session } });
 }
 
@@ -146,6 +147,32 @@ const postCartProduct = async (req, res) => {
 
 const editProduct = async (req, res) => {
     let id = req.params.id;
+    let { name, buying_price, selling_price, discount, product_category, description, product_type, total_qty, product_code, date, quantitys } = req.body;
+    // let pri_img = req.files['primary_image'][0].filename;
+    // let cate_img = req.files['category_image'][0].filename;
+    // let second_img= req.files['secondary_image']
+    // let sec_img=[];
+    // if (second_img) {
+    //     sec_img.push('/front_assets'+req.files['secondary_image'].filename);
+    // }
+    // let result = await models.Product.update({
+    //     'name': req.body.name,
+    //     'buying_price': req.body.buying_price,
+    //     'selling_price': req.body.selling_price,
+    //     'discount': req.body.discount,
+    //     'product_category': req.body.product_category,
+    //     'primary_image': '/front_assets/new_img/' + req.files['primary_image'][0].filename,
+    //     'category_image': req.files['category_image'] ? '/front_assets/new_img/' + req.files['category_image'][0].filename : null,
+    //     'secondary_image': JSON.stringify(secondaryImages),
+    //     'description': req.body.description,
+    //     'product_type': req.body.product_type,
+    //     'colorVariants': JSON.stringify(req.body.colorVariants),
+    //     'sizeVariants': JSON.stringify(req.body.sizeVariants),
+    //     'total_qty': req.body.total_qty,
+    //     'product_code': Math.floor(Math.random() * 1000) + 1,
+    //     'date': req.body.date,
+    //     'quantitys': req.body.quantitys,
+    // });
     let record = await models.Product.findOne({
         where: {
             'id': id

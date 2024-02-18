@@ -937,7 +937,7 @@
               <h4 class="product-title fw-bold mb-1">
                 <%=details_secondary_img.name%>
               </h4>
-              <p class="mb-0">Women Pink & Off-White Printed Kurta with Palazzos</p>
+              <!-- <p class="mb-0">Women Pink & Off-White Printed Kurta with Palazzos</p> -->
               <div class="product-rating">
                 <div class="hstack gap-2 border p-1 mt-3 width-content">
                   <div><span class="rating-number">4.8</span><i class="bi bi-star-fill ms-1 text-warning"></i></div>
@@ -1024,7 +1024,7 @@
 
               <hr class="my-3">
               <div class="product-info">
-                <pre class="mb-3" style="font-family: poppins, sans-serif; font-size: 16px;"><%=details_secondary_img.description%></pre>
+                <pre class="mb-3 text-wrap" style="font-family: poppins, sans-serif; font-size: 16px;white-space: pre-wrap!important"><%=details_secondary_img.description%></pre>
                 <!-- <p class="mb-1">All the Lorem Ipsum generators on the Internet tend to repeat</p> -->
               </div>
               <!-- <hr class="my-3"> -->
@@ -1085,75 +1085,75 @@
               <div class="customer-reviews">
                 <!-- User review form -->
                 <form action="/post_review/<%=details_secondary_img.id%>" method="post" class="mb-3" enctype="multipart/form-data">
+                  <%let len=reviews.length%>
+                    <h6 class="col-xl-6 fw-bold mb-3">Customer Reviews (<%=len%>)</h6>
+                    <!-- col-12 col-md-6 col-lg-6 col-xl-6 -->
+                    <div class="row">
+                      <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                        <label for="name" class="form-label"></label>
+                        <input class="form-control" type="text" name="name" placeholder="Name.." style="border:;">
+                      </span>
+                      <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                        <label for="" class="form-label"></label>
+                        <input class="form-control" type="text" name="comments" placeholder="Comments" style="border:;">
+                      </span>
+                      <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                        <label for="datt" class="form-label"></label>
+                        <input class="form-control custom-date-input" value="" id="datt" type="date" name="datt" pattern="\d{2}/\d{2}/\d{4}" min="">
+                        <!-- <input class="form-control" type="date" name="dates" id="datt" placeholder="Date" style="border:;" min=""> -->
+                      </span>
+                      <script>
+                        // Get the current date
+                        let currenDate = new Date();
+                        // Format the date as YYYY-MM-DD (required format for input type="date")
+                        let formattedDate = currenDate.toISOString().split('T')[0];
+                        // Set the value of the input field
+                        document.getElementById('datt').value = formattedDate;
 
-                  <h6 class="col-xl-6 fw-bold mb-3">Customer Reviews (100)</h6>
-                  <!-- col-12 col-md-6 col-lg-6 col-xl-6 -->
-                  <div class="row">
-                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
-                      <label for="name" class="form-label"></label>
-                      <input class="form-control" type="text" name="name" placeholder="Name.." style="border:;">
-                    </span>
-                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
-                      <label for="" class="form-label"></label>
-                      <input class="form-control" type="text" name="comments" placeholder="Comments" style="border:;">
-                    </span>
-                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
-                      <label for="datt" class="form-label"></label>
-                      <input class="form-control custom-date-input" value="" id="datt" type="date" name="datt" pattern="\d{2}/\d{2}/\d{4}" min="">
-                      <!-- <input class="form-control" type="date" name="dates" id="datt" placeholder="Date" style="border:;" min=""> -->
-                    </span>
-                    <script>
-                      // Get the current date
-                      let currenDate = new Date();
-                      // Format the date as YYYY-MM-DD (required format for input type="date")
-                      let formattedDate = currenDate.toISOString().split('T')[0];
-                      // Set the value of the input field
-                      document.getElementById('datt').value = formattedDate;
-
-                    </script>
+                      </script>
 
 
-                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
-                      <label for="thumbs_up" class="form-label"></label>
-                      <input class="form-control" type="number" name="thumbs_up" placeholder="Thumb_up" style="border:;">
-                    </span>
-                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
-                      <label for="thumbs_down" class="form-label"></label>
-                      <input class="form-control" type="number" name="thumbs_down" placeholder="Thumb_down" style="border:;">
-                    </span>
-                    <style>
-                      .form-control[type=file] {
-                        /* content: 'Select' !important; */
-                        background-color: white !important;
-                      }
+                      <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                        <label for="thumbs_up" class="form-label"></label>
+                        <input class="form-control" type="number" name="thumbs_up" placeholder="Thumb_up" style="border:;">
+                      </span>
+                      <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                        <label for="thumbs_down" class="form-label"></label>
+                        <input class="form-control" type="number" name="thumbs_down" placeholder="Thumb_down" style="border:;">
+                      </span>
+                      <style>
+                        .form-control[type=file] {
+                          /* content: 'Select' !important; */
+                          background-color: white !important;
+                        }
 
-                      .review_img {
-                        display: block;
-                        width: 100%;
-                        padding: 0.375rem 0.75rem;
-                        font-size: 1rem;
-                        font-weight: 400;
-                        line-height: 1.5;
-                        color: #212529;
-                        background-color: #fff;
-                        background-clip: padding-box;
-                        border: 1px solid #ced4da;
-                        -webkit-appearance: none;
-                        -moz-appearance: none;
-                        appearance: none;
-                        border-radius: 0.375rem;
-                        transition: border-color .15s ease-in-out,
-                          box-shadow .15s ease-in-out;
-                      }
-                    </style>
-                    <span class="col-6 col-md-3 col-lg-3 col-xl-3 mb-3">
-                      <label for="review_img" class="form-label  review_img mt-4" style="color: #BABEC2">Image</label>
-                      <input class="d-none" type="file" name="review_image" style="border:;" id="review_img">
-                    </span>
-                    <span class="col-6 col-md-1 col-lg-1 col-xl-1 mb-3">
-                      <button class="btn btn-primary mt-4" type="submit">Submit</button>
-                    </span>
-                  </div>
+                        .review_img {
+                          display: block;
+                          width: 100%;
+                          padding: 0.375rem 0.75rem;
+                          font-size: 1rem;
+                          font-weight: 400;
+                          line-height: 1.5;
+                          color: #212529;
+                          background-color: #fff;
+                          background-clip: padding-box;
+                          border: 1px solid #ced4da;
+                          -webkit-appearance: none;
+                          -moz-appearance: none;
+                          appearance: none;
+                          border-radius: 0.375rem;
+                          transition: border-color .15s ease-in-out,
+                            box-shadow .15s ease-in-out;
+                        }
+                      </style>
+                      <span class="col-6 col-md-3 col-lg-3 col-xl-3 mb-3">
+                        <label for="review_img" class="form-label  review_img mt-4" style="color: #BABEC2">Image</label>
+                        <input class="d-none" type="file" name="review_image" style="border:;" id="review_img">
+                      </span>
+                      <span class="col-6 col-md-1 col-lg-1 col-xl-1 mb-3">
+                        <button class="btn btn-primary mt-4" type="submit">Submit</button>
+                      </span>
+                    </div>
 
 
                 </form>
@@ -1290,9 +1290,9 @@
                         <img src="<%=secondary%>" alt="" class="card-img-top rounded-0">
                         <div class="card-body border-top">
                           <h5 class="mb-0 fw-bold product-short-title"></h5>
-                          <p class="mb-0 product-short-name">
-                            <%=details_secondary_img.description%>
-                          </p>
+                          <!-- <p class="mb-0 product-short-name text-center">
+                            name
+                          </p> -->
                           <div class="product-price d-flex align-items-center gap-3 mt-2">
                             <div class="h6 fw-bold">৳<%=details_secondary_img.selling_price%>
                             </div>

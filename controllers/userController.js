@@ -128,7 +128,7 @@ const postReview = async (req, res) => {
             'star': 'fa-star',
         });
 
-        console.log(review_list);
+        // console.log(review_list);
 
         res.redirect(`/product/product_details/${id}`);
 
