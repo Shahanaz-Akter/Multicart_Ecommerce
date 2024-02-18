@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../multer');
 
 const { shop, Logout, userView, aboutUs, productDetails, cart, category, Login, postLogin, register, postReview, post_checkout, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory } = require('../controllers/userController');
@@ -85,7 +86,9 @@ router.get('/logout', Logout);
 
 router.post('/post_login', postLogin);
 router.get('/register', register);
-router.post('/post_review/:id', postReview);
+router.post('/post_review/:id',
+    upload.fields([{ name: 'review_image', maxCount: 1 }]),
+    postReview);
 router.get('/cart', cart);
 router.post('/post_checkout', post_checkout);
 

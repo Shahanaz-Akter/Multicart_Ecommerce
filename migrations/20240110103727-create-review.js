@@ -10,7 +10,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true,
+
       },
       thumb: {
         type: Sequelize.STRING
@@ -21,7 +23,16 @@ module.exports = {
       comments: {
         type: Sequelize.STRING
       },
-      start: {
+      review_image: {
+        type: Sequelize.STRING
+      },
+      thumbs_up: {
+        type: Sequelize.INTEGER
+      },
+      thumbs_down: {
+        type: Sequelize.INTEGER
+      },
+      star: {
         type: Sequelize.STRING
       },
       date: {
@@ -40,4 +51,5 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Reviews');
   }
+
 };

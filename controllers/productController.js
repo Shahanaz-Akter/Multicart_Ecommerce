@@ -91,9 +91,13 @@ const ProductDetails = async (req, res) => {
             id: productId,
         }
     });
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
 
     let reviews = await models.Review.findAll();
-    res.render('product/product_details.ejs', { details_secondary_img, reviews, locals: { session: req.session } });
+    res.render('product/product_details.ejs', { details_secondary_img, reviews, logo_img, locals: { session: req.session } });
 }
 
 const postCartProduct = async (req, res) => {

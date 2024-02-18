@@ -10,12 +10,10 @@ const addOrder = async (req, res) => {
 }
 
 const postAddOrder = async (req, res) => {
-    console.log('Moy Moy');
     let { name, mobile, birth, email, country, address, zip_code, date, mobile1, customer_name1, delivery_charge, address1, discount } = req.body;
     let product_list = req.body.products;
     console.log((req.body.products));
-    console.log('gggg');
-    console.log((req.body.qty));
+    // console.log((req.body.qty));
     let qty_arr = req.body.qty;
 
     let sub_total = 0;
@@ -36,7 +34,7 @@ const postAddOrder = async (req, res) => {
             total_qty: qty_arr[index]
         };
     });
-    console.log(arr2);
+    // console.log(arr2);
     let data = {
         'customer_name': name,
         'mobile': mobile,
@@ -56,7 +54,6 @@ const postAddOrder = async (req, res) => {
 
         'discount': discount,
     };
-    subT = 0;
     try {
         let customer = await models.Customer.create({
             'customer_name': name,
@@ -84,8 +81,7 @@ const postAddOrder = async (req, res) => {
         });
 
         if (true) {
-            // console.log(data);
-            res.redirect('/order/add_order');
+            res.redirect('/order/order_list');
         }
     }
 

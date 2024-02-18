@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--favicon-->
   <!-- <link rel="icon" href="/front_assets/images/favicon-32x32.webp" type="image/webp" /> -->
-  <link rel="icon" href="../../front_assets/img/l2.png" type="image/jpg" />
+  <link rel="icon" href="../../front_assets/img/icon2.png" type="image/jpg" />
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 
@@ -712,14 +713,22 @@
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
       <a class="navbar-brand d-none d-xl-inline" href="/">
-        <img src="/front_assets/img/logo.webp" class="logo-img" alt="">
+
+        <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+        <%if(logo_img !=null){%>
+          <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+          <%}%>
       </a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list"></i>
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><img src="/front_assets/img/logo.webp" class="logo-img" alt="">
+          <div class="offcanvas-logo">
+            <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+            <%if(logo_img !=null){%>
+              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+              <%}%>
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -948,7 +957,7 @@
               </div>
               <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
 
-              <div class="more-colors mt-4">
+              <!-- <div class="more-colors mt-4">
                 <h6 class="fw-bold mb-3">More Colors</h6>
                 <div class="d-flex align-items-center gap-3">
                   <div class="">
@@ -996,7 +1005,7 @@
                     <button type="button">XXL</button>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="cart-buttons mt-3">
                 <div class="buttons d-flex flex-column flex-lg-row gap-3 mt-4">
                   <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 col-lg-6" onclick="add_cart_product(<%=details_secondary_img.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
@@ -1015,14 +1024,11 @@
 
               <hr class="my-3">
               <div class="product-info">
-                <h6 class="fw-bold mb-3">
-                  <%=details_secondary_img.description%>
-                </h6>
-                <p class="mb-1">All the Lorem Ipsum generators on the Internet tend to repeat</p>
-
+                <pre class="mb-3" style="font-family: poppins, sans-serif; font-size: 16px;"><%=details_secondary_img.description%></pre>
+                <!-- <p class="mb-1">All the Lorem Ipsum generators on the Internet tend to repeat</p> -->
               </div>
-              <hr class="my-3">
-              <div class="customer-ratings">
+              <!-- <hr class="my-3"> -->
+              <!-- <div class="customer-ratings">
                 <h6 class="fw-bold mb-3">Customer Ratings</h6>
                 <div class="d-flex align-items-center gap-4 gap-lg-5 flex-wrap flex-lg-nowrap">
                   <div class="">
@@ -1073,18 +1079,83 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <hr class="my-3">
               <div class="customer-reviews">
                 <!-- User review form -->
-                <form action="/post_review/<%=details_secondary_img.id%>" method="post" class="mb-3">
-                  <h6 class="col-xl-6 fw-bold mb-3">Customer Reviews (875)</h6>
+                <form action="/post_review/<%=details_secondary_img.id%>" method="post" class="mb-3" enctype="multipart/form-data">
+
+                  <h6 class="col-xl-6 fw-bold mb-3">Customer Reviews (100)</h6>
                   <!-- col-12 col-md-6 col-lg-6 col-xl-6 -->
-                  <span class="mb-3">
-                    <label for="" class="form-label"></label>
-                    <input class="form-control" type="text" name="comments" placeholder="Enter Review...." style="border:none;">
-                  </span>
+                  <div class="row">
+                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                      <label for="name" class="form-label"></label>
+                      <input class="form-control" type="text" name="name" placeholder="Name.." style="border:;">
+                    </span>
+                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                      <label for="" class="form-label"></label>
+                      <input class="form-control" type="text" name="comments" placeholder="Comments" style="border:;">
+                    </span>
+                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                      <label for="datt" class="form-label"></label>
+                      <input class="form-control custom-date-input" value="" id="datt" type="date" name="datt" pattern="\d{2}/\d{2}/\d{4}" min="">
+                      <!-- <input class="form-control" type="date" name="dates" id="datt" placeholder="Date" style="border:;" min=""> -->
+                    </span>
+                    <script>
+                      // Get the current date
+                      let currenDate = new Date();
+                      // Format the date as YYYY-MM-DD (required format for input type="date")
+                      let formattedDate = currenDate.toISOString().split('T')[0];
+                      // Set the value of the input field
+                      document.getElementById('datt').value = formattedDate;
+
+                    </script>
+
+
+                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                      <label for="thumbs_up" class="form-label"></label>
+                      <input class="form-control" type="number" name="thumbs_up" placeholder="Thumb_up" style="border:;">
+                    </span>
+                    <span class="col-6 col-md-4 col-lg-4 col-xl-4 mb-3">
+                      <label for="thumbs_down" class="form-label"></label>
+                      <input class="form-control" type="number" name="thumbs_down" placeholder="Thumb_down" style="border:;">
+                    </span>
+                    <style>
+                      .form-control[type=file] {
+                        /* content: 'Select' !important; */
+                        background-color: white !important;
+                      }
+
+                      .review_img {
+                        display: block;
+                        width: 100%;
+                        padding: 0.375rem 0.75rem;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        color: #212529;
+                        background-color: #fff;
+                        background-clip: padding-box;
+                        border: 1px solid #ced4da;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        border-radius: 0.375rem;
+                        transition: border-color .15s ease-in-out,
+                          box-shadow .15s ease-in-out;
+                      }
+                    </style>
+                    <span class="col-6 col-md-3 col-lg-3 col-xl-3 mb-3">
+                      <label for="review_img" class="form-label  review_img mt-4" style="color: #BABEC2">Image</label>
+                      <input class="d-none" type="file" name="review_image" style="border:;" id="review_img">
+                    </span>
+                    <span class="col-6 col-md-1 col-lg-1 col-xl-1 mb-3">
+                      <button class="btn btn-primary mt-4" type="submit">Submit</button>
+                    </span>
+                  </div>
+
+
                 </form>
 
                 <div class="reviews-wrapper">
@@ -1098,18 +1169,30 @@
                         </p>
                         <!-- <p class="mb-2">Lorem ipsum dolor sit amet qeum voluptte, suscipit optio praesentium expedita accusantium!.</p> -->
                         <div class="review-img">
-                          <img src="/front_assets/images/featured-products/05.webp" alt="" width="70">
+                          <!-- <img src="../../front_assets/img1.jpg" alt="" width="70"> -->
+                          <img src="<%=review.review_image%>" alt="" width="70">
+
                         </div>
                         <div class="d-flex flex-column flex-sm-row gap-3 mt-3">
                           <div class="hstack flex-grow-1 gap-3">
-                            <p class="mb-0">Jhon Deo</p>
+                            <p class="mb-0">
+                              <%=review.name%>.
+                            </p>
                             <div class="vr"></div>
-                            <div class="date-posted">12 June 2020</div>
+                            <div class="date-posted">
+                              <%= review.date%>
+                            </div>
                           </div>
                           <div class="hstack">
-                            <div class=""><i class="bi bi-hand-thumbs-up me-2"></i>68</div>
+                            <div class=""><i class="bi bi-hand-thumbs-up me-2"></i>
+                              <%= review.thumbs_up%>.
+                            </div>
+
                             <div class="mx-3"></div>
-                            <div class=""><i class="bi bi-hand-thumbs-down me-2"></i>24</div>
+                            <div class="">
+                              <i class="bi bi-hand-thumbs-down me-2"></i>
+                              <%= review.thumbs_down%>.
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1126,18 +1209,24 @@
                                 <%=review.comments%>.
                               </p>
                               <div class="review-img">
-                                <img src="/front_assets/images/featured-products/05.webp" alt="" width="70">
+                                <img src="<%=review.review_image%>" alt="" width="70">
                               </div>
                               <div class="d-flex flex-column flex-sm-row gap-3 mt-3">
                                 <div class="hstack flex-grow-1 gap-3">
                                   <p class="mb-0">Jhon Deo</p>
                                   <div class="vr"></div>
-                                  <div class="date-posted">12 June 2020</div>
+                                  <div class="date-posted">
+                                    <%=review.date%>
+                                  </div>
                                 </div>
                                 <div class="hstack">
-                                  <div class=""><i class="bi bi-hand-thumbs-up me-2"></i>68</div>
+                                  <div class=""><i class="bi bi-hand-thumbs-up me-2"></i>
+                                    <%=review.thumbs_up%>.
+                                  </div>
                                   <div class="mx-3"></div>
-                                  <div class=""><i class="bi bi-hand-thumbs-down me-2"></i>24</div>
+                                  <div class=""><i class="bi bi-hand-thumbs-down me-2"></i>
+                                    <%=review.thumbs_down%>.
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -1239,11 +1328,14 @@
       <div class="row row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
           <div class="footer-widget-6">
-            <img src="/front_assets/images/logo.webp" class="logo-img mb-3" alt="">
-            <h5 class="mb-3 fw-bold">About Us</h5>
-            <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+            <!-- <img src="/front_assets/images/logo.webp" class="logo-img mb-3" alt=""> -->
+            <%if(logo_img !=null){%>
+              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+              <%}%>
+                <h5 class="mb-3 fw-bold">About Us</h5>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
 
-            <a class="link-dark" href="javascript:;">Read More</a>
+                <a class="link-dark" href="javascript:;">Read More</a>
           </div>
         </div>
         <div class="col">

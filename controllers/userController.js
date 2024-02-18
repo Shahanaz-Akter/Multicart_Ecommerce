@@ -113,15 +113,22 @@ const register = async (req, res) => {
 const postReview = async (req, res) => {
     try {
         const id = req.params.id;
-        const { comments } = req.body;
+        // name, comments, datt, thumb_up, thumb_down, review_img
+        let { name, comments, datt, thumbs_up, thumbs_down } = req.body;
+        let img = "/front_assets/new_img/" + req.files['review_image'][0].filename;
         let review_list = await models.Review.create({
-            'name': 'John Doe',
+            'name': name,
             'comments': comments,
             'thumb': 'fa-thumbs-down',
             'like': 'fa-thumbs-up',
-            'date': Date.now(),
+            'thumbs_up': thumbs_up,
+            'thumbs_down': thumbs_down,
+            'review_image': img,
+            'date': datt,
             'star': 'fa-star',
         });
+
+        console.log(review_list);
 
         res.redirect(`/product/product_details/${id}`);
 
