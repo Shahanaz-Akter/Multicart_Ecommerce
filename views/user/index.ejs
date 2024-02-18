@@ -9,7 +9,6 @@
     <!-- <link rel="icon" href="../../front_assets/img/favicon-32x32.jpg" type="image/jpg" /> -->
     <link rel="icon" href="../../front_assets/img/icon2.png" type="image/jpg" />
 
-
     <!-- CSS files -->
     <link href="/front_assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
@@ -25,6 +24,7 @@
     <link href="/front_assets/css/checkout.css" rel="stylesheet">
 
     <title>Home</title>
+
     <style>
         * {
             margin: 0;
@@ -1906,21 +1906,25 @@
         <!--start footer-->
         <section class="footer-section bg-section-2 section-padding">
             <div class="container">
-
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-
+                <style>
+                    @media (max-width: 575.98px) {
+                        .child_clss {
+                            display: flex !important;
+                            justify-content: center !important;
+                            align-items: center !important;
+                        }
+                    }
+                </style>
+                <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
                     <div class="col">
                         <div class="footer-widget-6">
                             <div class="offcanvas-logo">
                                 <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
                                 <%if(logo_img!=null){%>
-
                                     <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
                                     <%}%>
                             </div>
                             <h5 class="mb-3 fw-bold">About Us</h5>
-
-
                             <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima
                                 dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
 
