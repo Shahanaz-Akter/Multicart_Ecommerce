@@ -13,10 +13,6 @@ const addProduct = async (req, res) => {
 
 const postAddProduct = async (req, res) => {
     // Use multer to handle file uploads
-    // console.log(req.body.colorVariantsVariants);
-
-    // console.log(req.body.sizeVariants);
-
     try {
         if (!req.files || !req.files['primary_image']) {
             res.redirect(`/product/add_product/?error1=${encodeURIComponent('Primary Image Required')}`);
@@ -34,7 +30,6 @@ const postAddProduct = async (req, res) => {
                 secondaryImages.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
             }
         }
-
         let result = await models.Product.create({
             'name': req.body.name,
             'buying_price': req.body.buying_price,
@@ -237,40 +232,56 @@ const example = async (req, res) => {
     }
 }
 
-
 const postEditProduct = async (req, res) => {
-
-    const { name, buying_price, selling_price, price, discount, product_category, primary_image, secondary_image, description, product_type, colorVariants, sizeVariants, total_qty, date, quantitys,
-        deleted_secondary_img } = req.body;
+    const { name, buying_price, selling_price, price, discount, product_category, description, product_type, total_qty, deleted_secondary_img, date } = req.body;
     let id = req.params.id;
+    let imgs = JSON.parse(deleted_secondary_img);
+    let filteredImages = imgs.map(url => url.replace("http://localhost:8000", ""));
+    // console.log('filtered_deleted images: ', filteredImages);
 
-    console.log(name, buying_price, selling_price, discount, product_category, primary_image, secondary_image, description, product_type, colorVariants, sizeVariants, total_qty, date, quantitys,
-        deleted_secondary_img);
-
-    let record = await models.Product.findOne({
-        where: {
-            'id': id
+    let requestedSecImage = [];
+    if (req.files['secondary_image'] != undefined) {
+        for (let i = 0; i < req.files['secondary_image'].length; i++) {
+            requestedSecImage.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
         }
+    }
+    // console.log('requested images: ', requestedSecImage);
+
+    JSON.stringify(requestedSecImage);
+
+    const previousRecord = await models.Product.findByPk(id);
+
+    let newSecondaryImages = JSON.parse(previousRecord.secondary_image).filter(image => {
+        return !filteredImages.includes(image);
+    });
+    JSON.stringify(newSecondaryImages);
+
+    // console.log(newSecondaryImages);
+
+    let new_arr = newSecondaryImages.concat(requestedSecImage);
+    // console.log('New Images', new_arr);
+
+    await previousRecord.update({
+        'name': name || previousRecord.name,
+        'buying_price': buying_price || previousRecord.buying_price,
+        'selling_price': selling_price || previousRecord.selling_price,
+        'discount': discount || previousRecord.discount,
+        'product_category': product_category,
+        'primary_image': req.files['primary_image'] && req.files['primary_image'][0] ? '/front_assets/new_img/' + req.files['primary_image'][0].filename : previousRecord.primary_image,
+        'secondary_image': JSON.stringify(new_arr) || previousRecord.secondary_image,
+        'category_image': req.files['category_image'] && req.files['category_image'][0] ? '/front_assets/new_img/' + req.files['category_image'][0].filename : previousRecord.category_image,
+        'description': description || previousRecord.description,
+        'product_type': product_type || previousRecord.product_type,
+        'colorVariants': null,
+        'sizeVariants': null,
+        'total_qty': total_qty || previousRecord.total_qty,
+        'product_code': Math.floor(Math.random() * 1000) + 1,
+        'date': date || previousRecord.date,
+        'quantitys': null,
     });
 
-    // await record.update({
-    //     'name': name,
-    //     'buying_price': buying_price,
-    //     'selling_price': selling_price,
-    //     'discount': discount,
-    //     'product_category': product_category,
-    //     'primary_image': '',
-    //     'secondary_image': '',
-    //     'description': description,
-    //     'product_type': product_type,
-    //     'colorVariants': '',
-    //     'sizeVariants': '',
-    //     'total_qty': total_qty,
-    //     'product_code': Math.floor(Math.random() * 1000) + 1,
-    //     'date': date,
-    //     'quantitys': quantitys,
-    // });
-    // console.log(record);
+    // console.log(previousRecord);
+
     res.redirect('/product/product_list');
 }
 const deleteProduct = async (req, res) => {

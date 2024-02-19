@@ -20,7 +20,11 @@ router.get('/category', productCategory);
 router.get('/product_details/:id', ProductDetails);
 
 router.get('/edit_product/:id', editProduct);
-router.post('/post_edit_product/:id', postEditProduct);
+router.post('/post_edit_product/:id', upload.fields([
+    { name: 'primary_image', maxCount: 1 },
+    { name: 'category_image', maxCount: 1 },
+    { name: 'secondary_image', maxCount: Infinity }]),
+    postEditProduct);
 
 router.get('/delete_product/:id', deleteProduct);
 router.post('/post_cart_product', postCartProduct);

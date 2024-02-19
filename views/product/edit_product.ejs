@@ -981,12 +981,10 @@
                         <div class="container-fluid card" style="padding: 20px;">
 
                             <!-- new Add product code Start  -->
-                            <form action="/product/post_edit_product/<%=record.id%>" method="post" enctype="">
+                            <form action="/product/post_edit_product/<%=record.id%>" method="post" enctype="multipart/form-data">
 
                                 <div class="row">
-
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6 row ">
-
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Product Name</label>
@@ -1077,7 +1075,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Discount</label>
@@ -1097,20 +1094,10 @@
                                             </div>
                                         </div>
 
-
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                             <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
                                                 <label>Price</label>
-                                                <input type="number" class="form-control" placeholder="400" name="price" onkeypress="return event.keyCode != 13;" value="<%=record.price%>">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                            <div class="main-img-container mt-2">
-                                                <!-- <p>*All Image size should be 300/300.</p> -->
-                                                <img class="" src="<%=record.category_image%>" alt="Not Available" style="width:180px;border-radius:5px;" id="main-img-preview1">
-                                                <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
-                                                <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
+                                                <input type="number" class="form-control" placeholder="400" name="<%=record.price%>" onkeypress="return event.keyCode != 13;" value="<%=record.price%>">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
@@ -1119,19 +1106,25 @@
                                                 <input type="number" class="form-control" placeholder="700" name="old_price" onkeypress="return event.keyCode != 13;" value="<%=record.old_price%>">
                                             </div>
                                         </div>
-                                    </div>
 
+                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                            <div class="main-img-container mt-2">
+                                                <!-- <p>*All Image size should be 300/300.</p> -->
+                                                <img class="" src="<%=record.category_image%>" alt="Not Available" style="width:auto;height:100px; border-radius:5px;" id="main-img-preview1">
+                                                <label for="mainImg1" class="btn btn-dark mt-2">Category Image</label>
+                                                <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <!-- Image value -->
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-6" style="border: 2px solid transparent;">
                                         <div class="row h-100">
                                             <div class="col-md-5 col-lg-5 col-sm-12">
-                                                <!-- 
-                                                <p>*Image size should be 300/300.</p> -->
-
+                                                <!--<p>*Image size should be 300/300.</p> -->
                                                 <div class="main-img-container mt-2">
-                                                    <img class="" src="<%=record.primary_image%>" alt="" style="width:180px;border-radius:5px;" id="main-img-preview">
-                                                    <label for="mainImg" class="btn btn-dark mt-2">Set Primary
+                                                    <img class="" src="<%=record.primary_image%>" alt="" style="width:auto;height:100px;border-radius:5px;" id="main-img-preview">
+                                                    <label for="mainImg" class="btn btn-dark mt-2"> Primary
                                                         Image</label>
                                                     <input type="file" for="mainImg" class="d-none" id="mainImg" value="<%=record.primary_image%>" onchange="main_image_changed(this,null)" name="primary_image">
                                                 </div>
@@ -1139,11 +1132,10 @@
 
                                             <div class="col-md-7 col-lg-7 col-sm-12" id="secondary_img_container_parent" style="border:2px dotted #D2D2D2; padding:10px; max-height:300px; overflow-y:auto;">
                                                 <div class="secondary-img-container" id="secondary-img-container">
-
                                                     <%if(record!=null && record.secondary_image!=null){%>
                                                         <%let images=JSON.parse(record.secondary_image)%>
                                                             <%images.forEach(img=>{ %>
-                                                                <div class="position-relative" id="secondary_img_preview_1" style="width: 90px; height: 90px; background: url('<%=img%>'); background-repeat: no-repeat;background-size: cover; margin-right: 8px; margin-bottom: 8px;">
+                                                                <div class="position-relative" id="secondary_img_preview_<%%=record.id>" style="width: 90px; height: 90px; background: url('<%=img%>'); background-repeat: no-repeat;background-size: cover; margin-right: 8px; margin-bottom: 8px;">
                                                                     <span class="position-absolute" onclick="removeSecondaryImg(this)" style="top: 0px; right: 0px; cursor: pointer;">
                                                                         <i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;">
                                                                         </i>
@@ -1171,7 +1163,7 @@
                                 <div id="table_content_container" class="newVariantTable TableOfContents" style="">
 
                                     <div class="row mt-2 mb-2">
-                                        <div class="col-12 col-md-12 col-xl-6 col-lg-6">
+                                        <div class="col-12 col-md-12 col-xl-6 col-lg-12">
                                             <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">
                                                 <label>Description</label>
                                                 <textarea name="description" class="form-control" cols="10" rows="7" value=""><%=record.description%></textarea>
@@ -1650,25 +1642,27 @@
                         //         }
                         //     });
                         // });
-
                         const removeSecondaryImg = (tag) => {
+                            // console.log(tag);
                             let deleted_secondary_img = document.querySelector('#deleted_secondary_img');
                             let img_array = JSON.parse(deleted_secondary_img.value);
                             console.log(img_array);
-                            let parentImgContainer = tag.parentNode.parentNode;
-                            let imge_cotainer = tag.parentNode;
-                            // parentImgContainer.removeChild(imge_cotainer);
 
-                            console.log(tag.parentNode);
+                            let parentImgContainer = tag.parentNode.parentNode;
+                            let image_container = tag.parentNode;
+                            image_container.style.display = 'none';
+                            // parentImgContainer.removeChild(image_container);
+
+                            // console.log(tag.parentNode);
                             let pp = tag.parentNode
                             let background = window.getComputedStyle(pp);
                             const backgroundImageUrl = background.backgroundImage;
                             const imageUrl = backgroundImageUrl.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
-                            console.log(imageUrl);
+                            // console.log(imageUrl);
 
                             img_array.push(imageUrl);
                             deleted_secondary_img.setAttribute('value', JSON.stringify(img_array));
-                            console.log(img_array);
+                            // console.log(img_array);
                         };
 
                         const secondary_image_changed = (tag, ind) => {
@@ -1737,7 +1731,6 @@
                                 //   previewContainer.append(secondaryImageAdder);
                             }
                         };
-
 
                         const save_varient = (tag, num) => {
                             console.log('save the varient ====');
@@ -1884,12 +1877,6 @@
 
                     <!-- date setup in min attributes -->
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            var currentDate = moment().format("YYYY-MM-DD");
-                            document.getElementById("date").min = currentDate;
-                        });
-                    </script>
 
 </body>
 
