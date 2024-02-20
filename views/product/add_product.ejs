@@ -1126,7 +1126,7 @@
                                                 <div class="s-i-c-2">
                                                     <label for="secondaryImg" class="btn btn-dark"><i class="mdi mdi-plus"></i></label>
                                                     <input type="file" for="secondaryImg" class="d-none" id="secondaryImg" name="secondary_image" onchange="secondary_image_changed(this,null)" multiple>
-                                                    <input class="" type="text" value="[]" name="deleted_secondary_img" id="deleted_secondary_img">
+                                                    <input class="d-none" type="text" value="[]" name="deleted_secondary_img" id="deleted_secondary_img">
                                                 </div>
                                             </div>
 
@@ -1987,8 +1987,9 @@
 
                                         div.classList.add("position-relative");
                                         const span = document.createElement("span");
-                                        span.innerHTML =
-                                            '<i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;"></i>';
+                                        // span.innerHTML ='<i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;"></i>';
+                                        span.innerHTML = '';
+
                                         span.classList.add("position-absolute");
                                         // span.setAttribute("onclick", `removeSecondaryImg(${i})`);
                                         span.setAttribute("onclick", `removeSecondaryImg(this)`);

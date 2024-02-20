@@ -1646,6 +1646,7 @@
                             // console.log(tag);
                             let deleted_secondary_img = document.querySelector('#deleted_secondary_img');
                             let img_array = JSON.parse(deleted_secondary_img.value);
+                            console.log('mimi1');
                             console.log(img_array);
 
                             let parentImgContainer = tag.parentNode.parentNode;
@@ -1657,12 +1658,15 @@
                             let pp = tag.parentNode
                             let background = window.getComputedStyle(pp);
                             const backgroundImageUrl = background.backgroundImage;
-                            const imageUrl = backgroundImageUrl.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
-                            // console.log(imageUrl);
+                            const imageUrlMatch = backgroundImageUrl.match(/url\(['"]?(.*?)['"]?\)/);
+                            const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
+                            //'/front_assets/new_img/1708427396900_user-5 - Copy - Copy - Copy.jpg'; 
+                            console.log(imageUrl); //'http://localhost:8000/front_assets/new_img/1708427396900_user-5%20-%20Copy%20-%20Copy%20-%20Copy.jpg'
+
 
                             img_array.push(imageUrl);
                             deleted_secondary_img.setAttribute('value', JSON.stringify(img_array));
-                            // console.log(img_array);
+                            console.log(img_array);
                         };
 
                         const secondary_image_changed = (tag, ind) => {

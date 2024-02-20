@@ -28,7 +28,12 @@ const postAddProduct = async (req, res) => {
         if (req.files['secondary_image'] != undefined) {
             for (let i = 0; i < req.files['secondary_image'].length; i++) {
                 secondaryImages.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
+                // let modifiedFileName = req.files['secondary_image'][i].filename.replace(/\s/g, '');
+                // secondaryImages.push('/front_assets/new_img/' + modifiedFileName);
+
             }
+            console.log('Adding product');
+            console.log(secondaryImages);
         }
         let result = await models.Product.create({
             'name': req.body.name,
@@ -236,16 +241,23 @@ const postEditProduct = async (req, res) => {
     const { name, buying_price, selling_price, price, discount, product_category, description, product_type, total_qty, deleted_secondary_img, date } = req.body;
     let id = req.params.id;
     let imgs = JSON.parse(deleted_secondary_img);
+    console.log('delted', imgs);
+
+
     let filteredImages = imgs.map(url => url.replace("http://localhost:8000", ""));
-    // console.log('filtered_deleted images: ', filteredImages);
+    console.log('filtered_deleted images: ', filteredImages);
+
+
 
     let requestedSecImage = [];
     if (req.files['secondary_image'] != undefined) {
         for (let i = 0; i < req.files['secondary_image'].length; i++) {
+            // let modifiedFileName = req.files['secondary_image'][i].filename.replace(/\s/g, '');
+            // requestedSecImage.push('/front_assets/new_img/' + modifiedFileName);
             requestedSecImage.push('/front_assets/new_img/' + req.files['secondary_image'][i].filename);
         }
     }
-    // console.log('requested images: ', requestedSecImage);
+    console.log('requested images: ', requestedSecImage);
 
     JSON.stringify(requestedSecImage);
 
@@ -259,7 +271,7 @@ const postEditProduct = async (req, res) => {
     // console.log(newSecondaryImages);
 
     let new_arr = newSecondaryImages.concat(requestedSecImage);
-    // console.log('New Images', new_arr);
+    console.log('New Images', new_arr);
 
     await previousRecord.update({
         'name': name || previousRecord.name,
