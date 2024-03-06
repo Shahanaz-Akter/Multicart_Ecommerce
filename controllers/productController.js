@@ -238,20 +238,28 @@ const example = async (req, res) => {
 }
 
 const postEditProduct = async (req, res) => {
-    const baseURL = `${req.protocol}://${req.headers.host}`;
-    // console.log(baseURL);
 
+    let baseURL = `${req.protocol}://${req.headers.host}`;
+    console.log('Base Url: ', baseURL);
 
     const { name, buying_price, selling_price, price, discount, product_category, description, product_type, total_qty, deleted_secondary_img, date } = req.body;
     let id = req.params.id;
     let imgs = JSON.parse(deleted_secondary_img);
-    // console.log('deleted', imgs);
+    console.log('Deleted Img List: ', imgs);
+
+    // try {
+    //     imgs.forEach(img => {
+    //         imgs = img.trim().replace(/%/g, '');
+    //     });
+    // }
+    // catch (err) {
+    //     console.log(err.message);
+    // }
+    // console.log('cleaned images:', imgs);
 
 
     let filteredImages = imgs.map(url => url.replace(baseURL, ""));
     console.log('filtered_deleted images: ', filteredImages);
-
-
 
     let requestedSecImage = [];
     if (req.files['secondary_image'] != undefined) {
@@ -268,12 +276,11 @@ const postEditProduct = async (req, res) => {
     const previousRecord = await models.Product.findByPk(id);
 
     let newSecondaryImages = JSON.parse(previousRecord.secondary_image).filter(image => {
-        console.log(image)
         return !filteredImages.includes(image);
     });
-    // JSON.stringify(newSecondaryImages);
+    JSON.stringify(newSecondaryImages);
 
-    console.log('existing remaining images ', newSecondaryImages);
+    console.log(newSecondaryImages);
 
     let new_arr = newSecondaryImages.concat(requestedSecImage);
     console.log('New Images', new_arr);

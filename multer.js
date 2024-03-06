@@ -7,7 +7,9 @@ const storage = multer.diskStorage({
         cb(null, "public/front_assets/new_img/");
     },
     filename: function (req, file, cb) {
-        const name = Date.now() + "_" + file.originalname;
+        let filename = file.originalname.trim(); //first and last space remove
+        filename = filename.replace(/\s+/g, ''); //middle space remove
+        const name = Date.now() + "_" + filename;
         cb(null, name);
     },
 });

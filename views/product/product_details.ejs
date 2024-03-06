@@ -920,9 +920,10 @@
                       <%details.slice(0,4).forEach(detailed_img=>{%>
                         <div class=" col">
                           <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="<%=detailed_img%>">
-                            <!-- <img src="<%=detailed_img%>" class="img-fluid" alt=""> -->
-                            <div class="" style="background: url('<%=detailed_img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 380px;width: auto;">
-                            </div>
+                            <!-- <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 380px;width: auto;">
+                            </div> -->
+                            <img src="<%=detailed_img%>" class="img-fluid" alt="Not available">
+
                           </div>
                         </div>
                         <%});%>

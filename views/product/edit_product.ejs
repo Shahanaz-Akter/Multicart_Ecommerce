@@ -1657,14 +1657,20 @@
                             // console.log(tag.parentNode);
                             let pp = tag.parentNode
                             let background = window.getComputedStyle(pp);
-                            const backgroundImageUrl = background.backgroundImage;
-                            const imageUrlMatch = backgroundImageUrl.match(/url\(['"]?(.*?)['"]?\)/);
-                            const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
+                            let backgroundImageUrl = background.backgroundImage;
+                            console.log('Url: ', backgroundImageUrl);
+
+                            backgroundImageUrl = backgroundImageUrl.substring(5, backgroundImageUrl.length - 2);
+                            backgroundImageUrl = backgroundImageUrl.trim().replace(/%20/g, ' ').replace(/%/g, '');
+
+                            console.log('bbackgroundImage Url: ', backgroundImageUrl);
+
+                            // const imageUrlMatch = backgroundImageUrl.match(/url\(['"]?(.*?)['"]?\)/);
+                            // const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
                             //'/front_assets/new_img/1708427396900_user-5 - Copy - Copy - Copy.jpg'; 
-                            console.log(imageUrl); //'http://localhost:8000/front_assets/new_img/1708427396900_user-5%20-%20Copy%20-%20Copy%20-%20Copy.jpg'
+                            // console.log(imageUrl); //'http://localhost:8000/front_assets/new_img/1708427396900_user-5%20-%20Copy%20-%20Copy%20-%20Copy.jpg'
 
-
-                            img_array.push(imageUrl);
+                            img_array.push(backgroundImageUrl);
                             deleted_secondary_img.setAttribute('value', JSON.stringify(img_array));
                             console.log(img_array);
                         };
