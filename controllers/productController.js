@@ -238,13 +238,17 @@ const example = async (req, res) => {
 }
 
 const postEditProduct = async (req, res) => {
+    const baseURL = `${req.protocol}://${req.headers.host}`;
+    // console.log(baseURL);
+
+
     const { name, buying_price, selling_price, price, discount, product_category, description, product_type, total_qty, deleted_secondary_img, date } = req.body;
     let id = req.params.id;
     let imgs = JSON.parse(deleted_secondary_img);
-    console.log('delted', imgs);
+    // console.log('deleted', imgs);
 
 
-    let filteredImages = imgs.map(url => url.replace("http://localhost:8000", ""));
+    let filteredImages = imgs.map(url => url.replace(baseURL, ""));
     console.log('filtered_deleted images: ', filteredImages);
 
 
@@ -264,11 +268,12 @@ const postEditProduct = async (req, res) => {
     const previousRecord = await models.Product.findByPk(id);
 
     let newSecondaryImages = JSON.parse(previousRecord.secondary_image).filter(image => {
+        console.log(image)
         return !filteredImages.includes(image);
     });
-    JSON.stringify(newSecondaryImages);
+    // JSON.stringify(newSecondaryImages);
 
-    // console.log(newSecondaryImages);
+    console.log('existing remaining images ', newSecondaryImages);
 
     let new_arr = newSecondaryImages.concat(requestedSecImage);
     console.log('New Images', new_arr);
