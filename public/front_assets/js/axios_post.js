@@ -58,7 +58,7 @@ const add_cart_product = async (product_id) => {
                 mainParent.setAttribute('id', `productcartContainer_${response.data.record.id}`);
                 // <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
 
-                mainParent.classList.add('d-flex', 'align-items-center', 'gap-3', 'justify-content-around', 'mt-3');
+                mainParent.classList.add('d-flex', 'align-items-center', 'gap-3', 'justify-content-around', 'mt-3', 'cart-item-session');
 
                 // parent 1
                 const p1 = document.createElement('div');
@@ -119,6 +119,7 @@ const add_cart_product = async (product_id) => {
 
                 const hrTag = document.createElement('hr');
                 hrTag.id = `hr_for_${response.data.record.id}`;
+                hrTag.classList.add('cart-item-session');
                 mainParent.appendChild(p1);
                 mainParent.appendChild(p2);
                 mainParent.appendChild(p3);
@@ -179,10 +180,13 @@ const orderList = async () => {
     let email = document.querySelector('#email').value;
     // Validate email format
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Enter a Valid Email Address');
-        return;
+    if (email) {
+        if (!emailRegex.test(email)) {
+            alert('Enter a Valid Email Address');
+            return;
+        }
     }
+
     let fullName = document.querySelector('#fullName').value;
     let delivery_charge = document.querySelector('#delivery_charge').value;
     console.log(delivery_charge);
@@ -199,7 +203,14 @@ const orderList = async () => {
 
     if (orderResponse) {
         // console.log('hello');
+        let prevCartItems = document.querySelectorAll('.cart-item-session');
+        let cartbadge = document.querySelector('.cart-badge');
+        cartbadge.innerHTML = '0';
+        Array.from(prevCartItems).forEach(ele => {
+            ele.remove()
+        })
         modal.hide();
+
     }
 
 }

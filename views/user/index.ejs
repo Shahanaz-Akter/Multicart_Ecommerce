@@ -312,21 +312,18 @@
                                         <!-- <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: auto;width: auto;">
                                         </div> -->
                                         <img src="<%=product.primary_image%>" class="card-img-top" alt="not available" style="width: 100%;">
-
-
-
                                         <%}else{%>
                                             <p>No Image is being uploaded</p>
                                             <%}%>
 
                                 </a>
                             </div>
-
-                            <div class="card-body">
-                                <div class="product-info text-center">
-                                    <h6 class="mb-1 fw-bold product-name" id="productTitle">
-                                        <% const maxWords=2;%>
-                                            <% const words=product.name.split(' '); %>
+                            <a href="/product/product_details/<%=product.id%>">
+                                <div class="card-body">
+                                    <div class="product-info text-center">
+                                        <h6 class="mb-1 fw-bold product-name" id="productTitle">
+                                            <% const maxWords=2;%>
+                                                <% const words=product.name.split(' '); %>
                                                         <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                         <% const remainingText = words.slice(maxWords).join(' ');%>
                                                         <%= truncatedName %>                         
@@ -356,6 +353,7 @@
                                                 
                                 </div>
                             </div>
+                             </a>
                         </div>
                         <%});%>
                 </div>
@@ -380,35 +378,35 @@
                                                 <%if(Array.isArray(secondaryImageArray)){%>
                                                     <% secondaryImageArray.forEach(images=> {%>
                                                         <!-- <div class="" style="background: url(' <%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                <div>
-                                                    <img src="<%=images%>" alt="" class="img-fluid">
-                                                </div>
-                                                <%});%>
+                                                    <div>
+                                                        <img src="<%=images%>" alt="" class="img-fluid">
+                                                    </div>
+                                                    <%});%>
 
-                                                    <%}else { %>
-                                                        <p>No secondary Images Available.</p>
-                                                        <% }%>
+                                                        <%}else { %>
+                                                            <p>No secondary Images Available.</p>
+                                                            <% }%>
+
+                                    </div>
+
+                                    <div class="slider-nav mt-3">
+
+                                        <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
+                                            <%if(Array.isArray(secondaryImageArray1)){%>
+                                                <% secondaryImageArray.forEach(img=> {%>
+                                                    <!--<div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
+                                                    <div>
+                                                        <img src="<%=img%>" alt="" class="img-fluid">
+                                                    </div>
+
+                                                    <%});%>
+
+                                                        <%}else { %>
+                                                            <p>No secondary Images Available.</p>
+                                                            <% }%>
+                                    </div>
 
                                 </div>
-
-                                <div class="slider-nav mt-3">
-
-                                    <%const secondaryImageArray1=JSON.parse(product.secondary_image);%>
-                                        <%if(Array.isArray(secondaryImageArray1)){%>
-                                            <% secondaryImageArray.forEach(img=> {%>
-                                                <!--<div class="" style="background: url('<%=img%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;"> -->
-                                                <div>
-                                                    <img src="<%=img%>" alt="" class="img-fluid">
-                                                </div>
-
-                                                <%});%>
-
-                                                    <%}else { %>
-                                                        <p>No secondary Images Available.</p>
-                                                        <% }%>
-                                </div>
-
-                            </div>
 
                         </div>
                         <div class="col-12 col-xl-6">
@@ -2095,7 +2093,7 @@
                                     </div>
                                     <div class="ms-3 mb-3" id="total_<%= product.id%>">
                                         <span>
-                                            <%= product.total %> TK
+                                            <%= product.total %>
                                         </span>
 
                                     </div>
@@ -2274,6 +2272,20 @@
                                                     <label for="addressCheck">Billing and delivery address same.</label>
                                                 </div>
 
+                                                <div>
+                                                    <p class="mb-2">Login With</p>
+                                                    <div class="social-login mb-4">
+                                                        <div class="row g-4">
+                                                            <div class="col-xl-6">
+                                                                <button type="button" class="btn bg-facebook btn-ecomm w-100 text-white"><i class="bi bi-facebook me-2"></i>Facebook</button>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <button type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="contactFooter" onclick="orderList()">
@@ -2340,8 +2352,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <!--Start Back To Top Button-->
         <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -2454,40 +2464,39 @@
             });
 
             // for country code  option
-            let codeDropdowns = document.querySelectorAll(".phoneDropdown");
+            // let codeDropdowns = document.querySelectorAll(".phoneDropdown");
 
-            codeDropdowns.forEach((dropdown) => {
-                let select = dropdown.querySelector(".countrySelect");
-                let caret = dropdown.querySelector(".countryCaret");
-                let menu = dropdown.querySelector(".countryMenu");
-                let options = dropdown.querySelectorAll(".countryMenu li");
-                let selected = dropdown.querySelector(".countrySelected");
+            // codeDropdowns.forEach((dropdown) => {
+            //     let select = dropdown.querySelector(".countrySelect");
+            //     let caret = dropdown.querySelector(".countryCaret");
+            //     let menu = dropdown.querySelector(".countryMenu");
+            //     let options = dropdown.querySelectorAll(".countryMenu li");
+            //     let selected = dropdown.querySelector(".countrySelected");
 
-                select.addEventListener("click", () => {
-                    select.classList.toggle("select-clicked");
-                    caret.classList.toggle("caret-rotate");
-                    menu.classList.toggle("menu-open");
-                });
+            //     select.addEventListener("click", () => {
+            //         select.classList.toggle("select-clicked");
+            //         caret.classList.toggle("caret-rotate");
+            //         menu.classList.toggle("menu-open");
+            //     });
 
-                options.forEach((option) => {
-                    option.addEventListener("click", () => {
-                        console.log("inner text test", option.innerText);
-                        selected.innerText = option.innerText;
-                        select.classList.remove("select-clicked");
-                        caret.classList.remove("caret-rotate");
-                        menu.classList.toggle("menu-open");
+            //     options.forEach((option) => {
+            //         option.addEventListener("click", () => {
+            //             console.log("inner text test", option.innerText);
+            //             selected.innerText = option.innerText;
+            //             select.classList.remove("select-clicked");
+            //             caret.classList.remove("caret-rotate");
+            //             menu.classList.toggle("menu-open");
 
-                        options.forEach((option) => {
-                            option.classList.remove("active");
-                        });
+            //             options.forEach((option) => {
+            //                 option.classList.remove("active");
+            //             });
 
-                        option.classList.add("active");
-                    });
-                });
-            });
+            //             option.classList.add("active");
+            //         });
+            //     });
+            // });
 
             // scroll bar
-
             var $doc = $("#createScroll");
             var $win = $(window);
             var itemstoshow = 5;

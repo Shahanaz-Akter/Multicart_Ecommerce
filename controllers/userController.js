@@ -364,10 +364,18 @@ const post_checkout = async (req, res) => {
 
         });
 
-        // console.log(order);
         if (order) {
-            res.redirect('/');
+            req.session.cart = [];
+
+            res.send({
+                success: true,
+            })
+        } else {
+            res.send({
+                success: false,
+            })
         }
+        // console.log(order);
     }
 
     catch (err) {
