@@ -90,22 +90,13 @@
                   <div class="col-12 col-xl-4">
                     <h6 class="large-menu-title">Fashion</h6>
                     <ul class="list-unstyled">
-                      <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
-                      </li>
-                      <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
-                      </li>
-                      <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
-                      </li>
-                      <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
-                      </li>
-                      <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
-                      </li>
-                      <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
-                      </li>
-                      <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
-                      </li>
-                      <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
-                      </li>
+                      <% for(let i=0; i<=unique_cate.length; i++){%>
+                        <li>
+                          <a href="/all_cate/<%=unique_cate[i]%>">
+                            <%=unique_cate[i]%>
+                          </a>
+                        </li>
+                        <%}%>
                     </ul>
                   </div>
 
@@ -374,7 +365,7 @@
                     d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z">
                   </path>
                 </svg>
-                <strong>কল করুন :</strong>
+                <strong>কল করুন : 01607100022</strong>
               </a>
 
               <hr class="my-3">
@@ -680,20 +671,41 @@
   <!--start footer-->
   <section class="footer-section bg-section-2 section-padding">
     <div class="container">
-      <div class="row row-cols-1 row-cols-lg-4 g-4">
+      <style>
+        @media (max-width: 575.98px) {
+          .child_clss {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+        }
+      </style>
+      <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
         <div class="col">
           <div class="footer-widget-6">
-            <!-- <img src="/front_assets/images/logo.webp" class="logo-img mb-3" alt=""> -->
-            <%if(logo_img !=null){%>
-              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-              <%}%>
-                <h5 class="mb-3 fw-bold">About Us</h5>
-                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+            <div class="offcanvas-logo">
+              <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
+              <%if(logo_img!=null){%>
+                <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                <%}%>
+            </div>
+            <h5 class="mb-3 fw-bold">About Us</h5>
+            <p class="mb-2">
+            <div class="mb-1">
+              Welcome to Gchieftain your go-to destination for an exciting array of innovative products! We're dedicated to bringing you the latest and most groundbreaking items, carefully curated for your enjoyment.
+            </div>
+            <div class="mb-1">
+              At Gchieftain we're passionate about sourcing unique products that stand out from the crowd. From cutting-edge gadgets to innovative fashion accessories, we're constantly on the lookout for what's pushing the boundaries of creativity and functionality.
+            </div>
+            <div>
+              Thank you for choosing Gchieftain as your destination for innovative products. Join us in exploring the latest trends and discovering must-have items that redefine the way you experience the world..
+            </div>
 
-                <a class="link-dark" href="javascript:;">Read More</a>
+            </p>
+            <a class="link-dark" href="javascript:;">Read More</a>
           </div>
         </div>
-        <div class="col">
+        <div class="col d-none">
           <div class="footer-widget-7">
             <h5 class="mb-3 fw-bold">Explore</h5>
             <ul class="widget-link list-unstyled">
@@ -707,7 +719,7 @@
             </ul>
           </div>
         </div>
-        <div class="col">
+        <div class="col d-none">
           <div class="footer-widget-8">
             <h5 class="mb-3 fw-bold">Company</h5>
             <ul class="widget-link list-unstyled">
@@ -724,50 +736,50 @@
           <div class="footer-widget-9">
             <h5 class="mb-3 fw-bold">Follow Us</h5>
             <div class="social-link d-flex align-items-center gap-2">
-              <a href="javascript:;"><i class="bi bi-facebook"></i></a>
-              <a href="javascript:;"><i class="bi bi-twitter"></i></a>
-              <a href="javascript:;"><i class="bi bi-linkedin"></i></a>
-              <a href="javascript:;"><i class="bi bi-youtube"></i></a>
-              <a href="javascript:;"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+              <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
+              <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-linkedin"></i></a>
+              <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
+              <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
             </div>
-            <div class="mb-4 mt-4">
+            <div class="mb-3 mt-3">
               <h5 class="mb-0 fw-bold">Support</h5>
-              <p class="mb-0 text-muted">support@example.com</p>
+              <p class="mb-0 text-muted">gchieftainbd@gmail.com</p>
             </div>
-            <div class="">
-              <h5 class="mb-0 fw-bold">Toll Free</h5>
-              <p class="mb-0 text-muted">1800- 8xx 2xx</p>
-            </div>
+            <!-- <div class="">
+                                  <h5 class="mb-0 fw-bold">Toll Free</h5>
+                                  <p class="mb-0 text-muted">1800- 8xx 2xx</p>
+                              </div> -->
           </div>
         </div>
       </div><!--end row-->
       <div class="my-5"></div>
-      <div class="row">
-        <div class="col-12">
-          <div class="text-center">
-            <h5 class="fw-bold mb-3">Download Mobile App</h5>
-          </div>
-          <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
-            <div>
-              <a href="javascript:;">
-                <img src=/front_assets/images/play-store.webp" width="160" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:;">
-                <img src=/front_assets/images/apple-store.webp" width="160" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div><!--end row-->
-
+      <!-- <div class="row">
+                      <div class="col-12">
+                          <div class="text-center">
+                              <h5 class="fw-bold mb-3">Download Mobile App</h5>
+                          </div>
+                          <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
+                              <div>
+                                  <a href="javascript:;">
+                                      <img src="/front_assets/img/play-store.jpg" width="160" alt="">
+                                  </a>
+                              </div>
+                              <div>
+                                  <a href="javascript:;">
+                                      <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div> -->
+      <!--end row-->
     </div>
   </section>
   <!--end footer-->
 
   <footer class="footer-strip text-center py-3 bg-section-2 border-top positon-absolute bottom-0">
-    <p class="mb-0 text-muted">© 2022. www.ztrios.com | All rights reserved.</p>
+    <p class="mb-0 text-muted">© 2022. www.ztrios.com</p>
   </footer>
 
   <!--right cart-->
@@ -954,7 +966,7 @@
                     <div class="addItem addCard">
 
                       <div class="addCardText">
-                        <div class="mb-2"> Subtotal: 00.00 TK</div>
+                        <div class="mb-2"> Subtotal: <span id="checkoutSubTotal">00.00</span> TK</div>
                         <div class="mb-2"> Delivery: 00 TK</div>
                         <!-- <div class="mb-3"> Discount: 10%</div> -->
                       </div>
@@ -1313,6 +1325,10 @@
       })
     }
   </script>
+
+
+
+  <!-- demo -->
 
 </body>
 

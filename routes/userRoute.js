@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const upload = require('../multer');
 
-const { shop, Logout, userView, aboutUs, productDetails, cart, category, Login, postLogin, register, postReview, post_checkout, menBoysCategory,
+const { shop, Logout, userView, aboutUs, productDetails, cart, category, Login, postLogin, register, postReview, post_checkout, allCate, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory } = require('../controllers/userController');
 
 router.get('/ses', (req, res) => {
@@ -71,6 +71,9 @@ router.get('/index', userView);
 router.get('/about_us', aboutUs);
 router.get('/shop', shop);
 router.get('/product_details', productDetails);
+
+
+router.get('/all_cate/:name', allCate);
 
 router.get('/product_category/categories/mens-and-boys-fashion', menBoysCategory);
 router.get('/product_category/categories/womens-and-girls-fashion', womensCategory);

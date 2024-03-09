@@ -40,178 +40,190 @@
     <!--start top header-->
     <header class="top-header">
         <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-            <a class="navbar-brand d-none d-xl-inline" href="/">
+            <a class="navbar-brand d-none d-xl-inline" href="/index">
 
-                <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+                <!-- <div class="offcanvas-logo">
+                    <img src="/front_assets/img/logo.webp" class="logo-img" alt="">
+                </a> -->
+
                 <%if(logo_img !=null){%>
                     <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
                     <%}%>
-            </a>
-            <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-                <i class="bi bi-list"></i>
-            </a>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-                <div class="offcanvas-header">
-                    <div class="offcanvas-logo">
-                        <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
-                        <%if(logo_img !=null){%>
-                            <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-                            <%}%>
-                    </div>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-
-                <div class="offcanvas-body primary-menu">
-                    <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/shop">Shop</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                                Category
-                            </a>
-                            <div class="dropdown-menu dropdown-large-menu">
-                                <div class="row">
-                                    <div class="col-12 col-xl-4">
-                                        <h6 class="large-menu-title">Fashion</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
-                                            </li>
-                                            <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- end col-3 -->
-                                    <!-- <div class="col-12 col-xl-4">
-                    <h6 class="large-menu-title">Electronics</h6>
-                    <ul class="list-unstyled">
-                      <li><a href="javascript:;">Mobiles</a>
-                      </li>
-                      <li><a href="javascript:;">Laptops</a>
-                      </li>
-                      <li><a href="javascript:;">Macbook</a>
-                      </li>
-                      <li><a href="javascript:;">Televisions</a>
-                      </li>
-                      <li><a href="javascript:;">Lighting</a>
-                      </li>
-                      <li><a href="javascript:;">Smart Watch</a>
-                      </li>
-                      <li><a href="javascript:;">Galaxy Phones</a>
-                      </li>
-                      <li><a href="javascript:;">PC Monitors</a>
-                      </li>
-                    </ul>
-                  </div> -->
-                                    <!-- end col-3 -->
-                                    <div class="col-12 col-xl-4 d-none d-xl-block">
-                                        <div class="pramotion-banner1">
-                                            <img src="/front_assets/img/menu-img.jpg" class="img-fluid" alt="" />
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
+                        <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                            <i class="bi bi-list"></i>
+                        </a>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+                            <div class="offcanvas-header">
+                                <div class="offcanvas-logo">
+                                    <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+                                    <%if(logo_img!=null){%>
+                                        <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                                        <%}%>
                                 </div>
-                                <!-- end row -->
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
-                        </li>
 
+                            <div class="offcanvas-body primary-menu">
+                                <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/shop">Shop</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="/shop" data-bs-toggle="dropdown">
+                                            Category
+                                        </a>
+                                        <div class="dropdown-menu dropdown-large-menu">
+                                            <div class="row">
+                                                <div class="col-12 col-xl-4">
+                                                    <h6 class="large-menu-title">Fashion</h6>
+                                                    <ul class="list-unstyled">
+                                                        <% for(let i=0; i<=unique_cate.length; i++){%>
+                                                            <li>
+                                                                <a href="/all_cate/<%=unique_cate[i]%>">
+                                                                    <%=unique_cate[i]%>
+                                                                </a>
+                                                            </li>
+                                                            <%}%>
+                                                                <!-- <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
+                                                                    </li> -->
+                                                                <!-- <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
+                                                            </li>
+                                                            <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
+                                                            </li>
+                                                            <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
+                                                            </li>
+                                                            <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
+                                                            </li>
+                                                            <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
+                                                            </li>
+                                                            <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
+                                                            </li>
+                                                            <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
+                                                            </li> -->
+                                                    </ul>
+                                                </div>
 
+                                                <!-- end col-3 -->
+                                                <!-- <div class="col-12 col-xl-4">
+                        <h6 class="large-menu-title">Electronics</h6>
+                        <ul class="list-unstyled">
+                          <li><a href="javascript:;">Mobiles</a>
+                          </li>
+                          <li><a href="javascript:;">Laptops</a>
+                          </li>
+                          <li><a href="javascript:;">Macbook</a>
+                          </li>
+                          <li><a href="javascript:;">Televisions</a>
+                          </li>
+                          <li><a href="javascript:;">Lighting</a>
+                          </li>
+                          <li><a href="javascript:;">Smart Watch</a>
+                          </li>
+                          <li><a href="javascript:;">Galaxy Phones</a>
+                          </li>
+                          <li><a href="javascript:;">PC Monitors</a>
+                          </li>
+                        </ul>
+                      </div> -->
+                                                <!-- end col-3 -->
+                                                <div class="col-12 col-xl-4 d-none d-xl-block">
+                                                    <div class="pramotion-banner1">
+                                                        <img src="/front_assets/img/menu-img.webp" class="img-fluid" alt="" />
+                                                    </div>
+                                                </div>
+                                                <!-- end col-3 -->
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </li>
 
-                        <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                Shop
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
-                <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-                <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
-                <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
-                <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
-                <li><a class="dropdown-item" href="address.html">Addresses</a></li>
-                <li><a class="dropdown-item" href="shop-grid.html">Shop Grid</a></li>
-                <li><a class="dropdown-item" href="#">Shop Grid 4</a></li>
-                <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
-                <li><a class="dropdown-item" href="search.html">Search</a></li>
-              </ul>
-            </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about_us">About Us</a>
-                        </li>
-                        <!-- <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">Contact</a>
-            </li> -->
+                                    <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                    Shop
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
+                    <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
+                    <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
+                    <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
+                    <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
+                    <li><a class="dropdown-item" href="address.html">Addresses</a></li>
+                    <li><a class="dropdown-item" href="#">Shop Grid</a></li>
+                    <li><a class="dropdown-item" href="#">Shop Grid 4</a></li>
+                    <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
+                    <li><a class="dropdown-item" href="search.html">Search</a></li>
+                  </ul>
+                </li> -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/about_us">About Us</a>
+                                    </li>
+                                    <!-- <li class="nav-item">
+                  <a class="nav-link" href="contact-us.html">Contact</a>
+                </li> -->
 
+                                    <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                    Blog
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                    <li><a class="dropdown-item" href="#">Blog Read</a></li>
+                  </ul>
+                </li> -->
 
-
-                        <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                Blog
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                <li><a class="dropdown-item" href="#">Blog Read</a></li>
-              </ul>
-            </li> -->
-
-                    </ul>
-                </div>
-            </div>
-            <ul class="navbar-nav secondary-menu flex-row">
-                <li class="nav-item">
-                    <a class="nav-link dark-mode-icon" href="javascript:;">
-                        <div class="mode-icon">
-                            <i class="bi bi-moon"></i>
+                                </ul>
+                            </div>
                         </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=""><i class="bi bi-search"></i></a>
-                </li>
-                <!-- <li class="nav-item">
-          <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
-        </li> -->
+                        <ul class="navbar-nav secondary-menu flex-row">
+                            <li class="nav-item">
+                                <a class="nav-link dark-mode-icon" href="javascript:;">
+                                    <div class="mode-icon">
+                                        <i class="bi bi-moon"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+                            </li>
+                            <!-- <li class="nav-item">
+              <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
+            </li> -->
 
-                <!-- <li class="nav-item" data-bs-toggle="modal" data-bs-target="#checkoutModal"> -->
-                <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-                    <a class="nav-link position-relative" href="javascript:;">
-                        <% let cart_total=locals.session.cart||[]%>
+                            <!-- <li class="nav-item" data-bs-toggle="modal" data-bs-target="#checkoutModal"> -->
+                            <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
+                                <a class="nav-link position-relative" href="javascript:;">
+                                    <% let cart_total=locals.session.cart||[]%>
 
-                            <% if(cart_total.length>0){%>
-                                <div class="cart-badge">
-                                    <%=cart_total.length%>
-                                </div>
-                                <%}else{%>
-                                    <div class="cart-badge">0</div>
-                                    <%}%>
+                                        <% if(cart_total.length>0){%>
+                                            <div class="cart-badge">
+                                                <%=cart_total.length%>
+                                            </div>
+                                            <%}else{%>
+                                                <div class="cart-badge">0</div>
+                                                <%}%>
 
-                                        <i class="bi bi-basket2"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
-                </li>
+                                                    <i class="bi bi-basket2"></i>
+                                </a>
+                            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-            </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
+                            </li>
+
+                            <li class="nav-item d-none d-md-block">
+                                <a class="nav-link" href="/login">Login</a>
+                            </li>
+                            <li class="nav-item d-block d-md-none">
+                                <a class="nav-link" href="/login"><i class="bi bi-person"></i></a>
+                            </li>
+
+                            <li class="nav-item d-none d-md-none">
+                                <a class="nav-link lowercase" href="/logout">SessionOut</a>
+                            </li>
+                        </ul>
         </nav>
     </header>
     <!--end top header-->
@@ -441,13 +453,17 @@
 
     <!--start features-->
     <section class="product-thumb-slider section-padding">
+
         <div class="container">
+            <div class=" d-flex justify-content-center">
+
+            </div>
             <div class="text-center pb-3">
                 <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
-                <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+                <!-- <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p> -->
             </div>
             <div class="row row-cols-1 row-cols-lg-4 g-4">
-                <div class="col d-flex">
+                <div class="col d-flex d-none">
                     <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
                         <div class="card-body text-center">
                             <div class="h1 fw-bold my-2 text-primary">
@@ -458,7 +474,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex">
+                <div class="col d-flex d-none">
                     <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
                         <div class="card-body text-center">
                             <div class="h1 fw-bold my-2 text-danger">
@@ -476,7 +492,7 @@
                                 <i class="bi bi-minecart-loaded"></i>
                             </div>
                             <h5 class="fw-bold">Free Returns</h5>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p> -->
                         </div>
                     </div>
                 </div>
@@ -487,7 +503,7 @@
                                 <i class="bi bi-headset"></i>
                             </div>
                             <h5 class="fw-bold">24/7 Support</h5>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p> -->
                         </div>
                     </div>
                 </div>
@@ -499,7 +515,7 @@
 
 
     <!--start special product-->
-    <section class="section-padding bg-section-2">
+    <section class="section-padding bg-section-2 d-none">
         <div class="container">
             <div class="card border-0 rounded-0 p-3 depth">
                 <div class="row align-items-center justify-content-center">
@@ -533,7 +549,7 @@
 
 
     <!--start Brands-->
-    <section class="section-padding">
+    <section class="section-padding d-none">
         <div class="container">
             <div class="text-center pb-3">
                 <h3 class="mb-0 h3 fw-bold">Shop By Brands</h3>
@@ -678,7 +694,7 @@
 
 
     <!--subscribe banner-->
-    <section class="product-thumb-slider subscribe-banner p-5">
+    <section class="product-thumb-slider subscribe-banner p-5 d-none">
         <div class="row">
             <div class="col-12 col-lg-6 mx-auto">
                 <div class="text-center">
@@ -697,7 +713,7 @@
 
 
     <!--start blog-->
-    <section class="section-padding">
+    <section class="section-padding d-none">
         <div class="container">
             <div class="text-center pb-3">
                 <h3 class="mb-0 fw-bold">Latest Blog</h3>
@@ -774,21 +790,41 @@
     <!--start footer-->
     <section class="footer-section bg-section-2 section-padding">
         <div class="container">
-            <div class="row row-cols-1 row-cols-lg-4 g-4">
+            <style>
+                @media (max-width: 575.98px) {
+                    .child_clss {
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                    }
+                }
+            </style>
+            <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
                 <div class="col">
-
                     <div class="footer-widget-6">
-                        <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
-                        <%if(logo_img !=null){%>
-                            <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-                            <%}%>
-                                <h5 class="mb-3 fw-bold">About Us</h5>
-                                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+                        <div class="offcanvas-logo">
+                            <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
+                            <%if(logo_img!=null){%>
+                                <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                                <%}%>
+                        </div>
+                        <h5 class="mb-3 fw-bold">About Us</h5>
+                        <p class="mb-2">
+                        <div class="mb-1">
+                            Welcome to Gchieftain your go-to destination for an exciting array of innovative products! We're dedicated to bringing you the latest and most groundbreaking items, carefully curated for your enjoyment.
+                        </div>
+                        <div class="mb-1">
+                            At Gchieftain we're passionate about sourcing unique products that stand out from the crowd. From cutting-edge gadgets to innovative fashion accessories, we're constantly on the lookout for what's pushing the boundaries of creativity and functionality.
+                        </div>
+                        <div>
+                            Thank you for choosing [Shop Name] as your destination for innovative products. Join us in exploring the latest trends and discovering must-have items that redefine the way you experience the world..
+                        </div>
 
-                                <a class="link-dark" href="javascript:;">Read More</a>
+                        </p>
+                        <a class="link-dark" href="javascript:;">Read More</a>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col d-none">
                     <div class="footer-widget-7">
                         <h5 class="mb-3 fw-bold">Explore</h5>
                         <ul class="widget-link list-unstyled">
@@ -802,7 +838,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col d-none">
                     <div class="footer-widget-8">
                         <h5 class="mb-3 fw-bold">Company</h5>
                         <ul class="widget-link list-unstyled">
@@ -819,51 +855,50 @@
                     <div class="footer-widget-9">
                         <h5 class="mb-3 fw-bold">Follow Us</h5>
                         <div class="social-link d-flex align-items-center gap-2">
-                            <a href="javascript:;"><i class="bi bi-facebook"></i></a>
-                            <a href="javascript:;"><i class="bi bi-twitter"></i></a>
-                            <a href="javascript:;"><i class="bi bi-linkedin"></i></a>
-                            <a href="javascript:;"><i class="bi bi-youtube"></i></a>
-                            <a href="javascript:;"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+                            <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
+                            <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-linkedin"></i></a>
+                            <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
+                            <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
                         </div>
                         <div class="mb-3 mt-3">
                             <h5 class="mb-0 fw-bold">Support</h5>
-                            <p class="mb-0 text-muted">support@example.com</p>
+                            <p class="mb-0 text-muted">gchieftainbd@gmail.com</p>
                         </div>
-                        <div class="">
-                            <h5 class="mb-0 fw-bold">Toll Free</h5>
-                            <p class="mb-0 text-muted">1800- 8xx 2xx</p>
-                        </div>
+                        <!-- <div class="">
+                                    <h5 class="mb-0 fw-bold">Toll Free</h5>
+                                    <p class="mb-0 text-muted">1800- 8xx 2xx</p>
+                                </div> -->
                     </div>
                 </div>
             </div><!--end row-->
             <div class="my-5"></div>
             <!-- <div class="row">
-        <div class="col-12">
-          <div class="text-center">
-            <h5 class="fw-bold mb-3">Download Mobile App</h5>
-          </div>
-          <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
-            <div>
-              <a href="javascript:;">
-                <img src="/front_assets/img/play-store.jpg" width="160" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:;">
-                <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div> -->
+                        <div class="col-12">
+                            <div class="text-center">
+                                <h5 class="fw-bold mb-3">Download Mobile App</h5>
+                            </div>
+                            <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
+                                <div>
+                                    <a href="javascript:;">
+                                        <img src="/front_assets/img/play-store.jpg" width="160" alt="">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="javascript:;">
+                                        <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
             <!--end row-->
-
         </div>
     </section>
     <!--end footer-->
 
     <footer class="footer-strip text-center py-3 bg-section-2 border-top positon-absolute bottom-0">
-        <!-- <p class="mb-0 text-muted">© 2022. www.ztrios.com | All rights reserved.</p> -->
+        <p class="mb-0 text-muted">© 2022. www.ztrios.com</p>
     </footer>
 
     <!--right cart-->

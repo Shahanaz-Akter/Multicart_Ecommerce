@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const bodyParser = require('body-parser');
 const models = require('../models');
+const Sequelize = require('sequelize');
 
 const Logout = async (req, res) => {
     // Clear the session
@@ -18,6 +19,9 @@ const Logout = async (req, res) => {
 const userView = async (req, res) => {
 
     let products = await models.Product.findAll();
+    let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+    console.log(unique_cate);
+
     // let logo_img = await models.Crm.findAll();
 
     let logo_img = await models.Crm.findOne({
@@ -54,14 +58,24 @@ const userView = async (req, res) => {
     // console.log(typeof (bn));
     // console.log("Array: ", bannerImageArray);
 
-    res.render('user/index.ejs', { products, logo_img, banner, locals: { session: req.session } });
+    res.render('user/index.ejs', { products, unique_cate, logo_img, banner, locals: { session: req.session } });
 }
 const aboutUs = async (req, res) => {
-    let logo_img = await models.Crm.findOne({
-        order: [['createdAt', 'DESC']],
-        raw: true,
-    });
-    res.render('user/about_us.ejs', { logo_img, locals: { session: req.session } });
+    try {
+        let products = await models.Product.findAll();
+        let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+        // console.log(unique_cate);
+
+        let logo_img = await models.Crm.findOne({
+            order: [['createdAt', 'DESC']],
+            raw: true,
+        });
+        res.render('user/about_us.ejs', { unique_cate, logo_img, locals: { session: req.session } });
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 }
 const productDetails = async (req, res) => {
     res.render('user/product_details.ejs', { locals: { session: req.session } });
@@ -137,6 +151,35 @@ const postReview = async (req, res) => {
         console.log('Storing reviews error: ', err);
     }
 
+}
+
+const allCate = async (req, res) => {
+    let pr_cate = req.params.name;
+    console.log(pr_cate);
+    let products = await models.Product.findAll();
+    let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+    // console.log(unique_cate);
+
+    let logo_img = await models.Crm.findOne({
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+
+    try {
+        let single_product = await models.Product.findAll({
+            where: {
+                product_category: pr_cate
+            }
+        });
+
+        let le = single_product.length;
+        // console.log("relevant product", single_product, le);
+        res.render('user/all_cate.ejs', { unique_cate, logo_img, pr_cate, record: single_product, locals: { session: req.session }, products });
+    }
+
+    catch (err) {
+        console.log('Error Fetching Products: ', err);
+    }
 }
 
 
@@ -387,13 +430,17 @@ const post_checkout = async (req, res) => {
 const shop = async (req, res) => {
 
     try {
+
         let products = await models.Product.findAll();
+        let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+        console.log(unique_cate);
+
         let logo_img = await models.Crm.findOne({
             order: [['createdAt', 'DESC']],
             raw: true,
         });
         // console.log(logo_img);
-        res.render('user/shop.ejs', { products, logo_img, locals: { session: req.session } });
+        res.render('user/shop.ejs', { products, unique_cate, logo_img, locals: { session: req.session } });
     }
 
     catch (err) {
@@ -403,6 +450,6 @@ const shop = async (req, res) => {
     // res.render('user/shop.ejs', { locals: { session: req.session } });
 }
 module.exports = {
-    shop, Logout, userView, aboutUs, productDetails, cart, category, Login, register, postReview, post_checkout, postLogin, menBoysCategory,
+    shop, Logout, userView, aboutUs, productDetails, cart, category, Login, register, postReview, post_checkout, postLogin, allCate, menBoysCategory,
     womensCategory, homeGadgetsCategory, kitchenDiningCategory, healthBeautyCategory, babyKidsCategory, shaverTrimmerCategory, electronicsCategory,
 }

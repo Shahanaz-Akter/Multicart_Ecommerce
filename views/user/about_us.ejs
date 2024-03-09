@@ -39,182 +39,190 @@
   <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-      <a class="navbar-brand d-none d-xl-inline" href="/">
-        <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+      <a class="navbar-brand d-none d-xl-inline" href="/index">
+
+        <!-- <div class="offcanvas-logo">
+                  <img src="/front_assets/img/logo.webp" class="logo-img" alt="">
+              </a> -->
+
         <%if(logo_img !=null){%>
           <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
           <%}%>
-      </a>
-      <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-        <i class="bi bi-list"></i>
-      </a>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-        <div class="offcanvas-header">
-          <div class="offcanvas-logo">
-            <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
-            <%if(logo_img !=null){%>
-              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-              <%}%>
-          </div>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-
-        <div class="offcanvas-body primary-menu">
-          <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/shop">Shop</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
-                Category
-              </a>
-              <div class="dropdown-menu dropdown-large-menu">
-                <div class="row">
-                  <div class="col-12 col-xl-4">
-                    <h6 class="large-menu-title">Fashion</h6>
-                    <ul class="list-unstyled">
-                      <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
-                      </li>
-                      <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
-                      </li>
-                      <li><a href="/product_category/categories/-and-gadgets">Home & GADGETS</a>
-                      </li>
-                      <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
-                      </li>
-                      <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
-                      </li>
-                      <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
-                      </li>
-                      <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
-                      </li>
-                      <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <!-- end col-3 -->
-                  <!-- <div class="col-12 col-xl-4">
-                  <h6 class="large-menu-title">Electronics</h6>
-                  <ul class="list-unstyled">
-                    <li><a href="javascript:;">Mobiles</a>
-                    </li>
-                    <li><a href="javascript:;">Laptops</a>
-                    </li>
-                    <li><a href="javascript:;">Macbook</a>
-                    </li>
-                    <li><a href="javascript:;">Televisions</a>
-                    </li>
-                    <li><a href="javascript:;">Lighting</a>
-                    </li>
-                    <li><a href="javascript:;">Smart Watch</a>
-                    </li>
-                    <li><a href="javascript:;">Galaxy Phones</a>
-                    </li>
-                    <li><a href="javascript:;">PC Monitors</a>
-                    </li>
-                  </ul>
-                </div> -->
-                  <!-- end col-3 -->
-                  <div class="col-12 col-xl-4 d-none d-xl-block">
-                    <div class="pramotion-banner1">
-                      <img src="/front_assets/img/menu-img.jpg" class="img-fluid" alt="" />
-                    </div>
-                  </div>
-                  <!-- end col-3 -->
+            <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <i class="bi bi-list"></i>
+            </a>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+              <div class="offcanvas-header">
+                <div class="offcanvas-logo">
+                  <!-- <img src="/front_assets/img/logo.webp" class="logo-img" alt=""> -->
+                  <%if(logo_img!=null){%>
+                    <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                    <%}%>
                 </div>
-                <!-- end row -->
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-            </li>
 
+              <div class="offcanvas-body primary-menu">
+                <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/shop">Shop</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="/shop" data-bs-toggle="dropdown">
+                      Category
+                    </a>
+                    <div class="dropdown-menu dropdown-large-menu">
+                      <div class="row">
+                        <div class="col-12 col-xl-4">
+                          <h6 class="large-menu-title">Fashion</h6>
+                          <ul class="list-unstyled">
+                            <% for(let i=0; i<=unique_cate.length; i++){%>
+                              <li>
+                                <a href="/all_cate/<%=unique_cate[i]%>">
+                                  <%=unique_cate[i]%>
+                                </a>
+                              </li>
+                              <%}%>
+                                <!-- <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
+                                                                  </li> -->
+                                <!-- <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
+                                                          </li>
+                                                          <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
+                                                          </li>
+                                                          <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
+                                                          </li>
+                                                          <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
+                                                          </li>
+                                                          <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
+                                                          </li>
+                                                          <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
+                                                          </li>
+                                                          <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
+                                                          </li> -->
+                          </ul>
+                        </div>
 
+                        <!-- end col-3 -->
+                        <!-- <div class="col-12 col-xl-4">
+                      <h6 class="large-menu-title">Electronics</h6>
+                      <ul class="list-unstyled">
+                        <li><a href="javascript:;">Mobiles</a>
+                        </li>
+                        <li><a href="javascript:;">Laptops</a>
+                        </li>
+                        <li><a href="javascript:;">Macbook</a>
+                        </li>
+                        <li><a href="javascript:;">Televisions</a>
+                        </li>
+                        <li><a href="javascript:;">Lighting</a>
+                        </li>
+                        <li><a href="javascript:;">Smart Watch</a>
+                        </li>
+                        <li><a href="javascript:;">Galaxy Phones</a>
+                        </li>
+                        <li><a href="javascript:;">PC Monitors</a>
+                        </li>
+                      </ul>
+                    </div> -->
+                        <!-- end col-3 -->
+                        <div class="col-12 col-xl-4 d-none d-xl-block">
+                          <div class="pramotion-banner1">
+                            <img src="/front_assets/img/menu-img.webp" class="img-fluid" alt="" />
+                          </div>
+                        </div>
+                        <!-- end col-3 -->
+                      </div>
+                      <!-- end row -->
+                    </div>
+                  </li>
 
-            <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-              Shop
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
-              <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-              <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
-              <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
-              <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
-              <li><a class="dropdown-item" href="address.html">Addresses</a></li>
-              <li><a class="dropdown-item" href="shop-grid.html">Shop Grid</a></li>
-              <li><a class="dropdown-item" href="shop-grid-type-4.html">Shop Grid 4</a></li>
-              <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
-              <li><a class="dropdown-item" href="search.html">Search</a></li>
-            </ul>
-          </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="/about_us">About Us</a>
-            </li>
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="contact-us.html">Contact</a>
-          </li> -->
+                  <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                  Shop
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
+                  <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
+                  <li><a class="dropdown-item" href="/product_details">Product Details</a></li>
+                  <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
+                  <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
+                  <li><a class="dropdown-item" href="address.html">Addresses</a></li>
+                  <li><a class="dropdown-item" href="#">Shop Grid</a></li>
+                  <li><a class="dropdown-item" href="#">Shop Grid 4</a></li>
+                  <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
+                  <li><a class="dropdown-item" href="search.html">Search</a></li>
+                </ul>
+              </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about_us">About Us</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                <a class="nav-link" href="contact-us.html">Contact</a>
+              </li> -->
 
+                  <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                  Blog
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                  <li><a class="dropdown-item" href="#">Blog Read</a></li>
+                </ul>
+              </li> -->
 
-
-            <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-              Blog
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-              <li><a class="dropdown-item" href="blog-read.html">Blog Read</a></li>
-            </ul>
-          </li> -->
-
-          </ul>
-        </div>
-      </div>
-      <ul class="navbar-nav secondary-menu flex-row">
-        <li class="nav-item">
-          <a class="nav-link dark-mode-icon" href="javascript:;">
-            <div class="mode-icon">
-              <i class="bi bi-moon"></i>
+                </ul>
+              </div>
             </div>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href=""><i class="bi bi-search"></i></a>
-        </li>
-        <!-- <li class="nav-item">
-        <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
-      </li> -->
+            <ul class="navbar-nav secondary-menu flex-row">
+              <li class="nav-item">
+                <a class="nav-link dark-mode-icon" href="javascript:;">
+                  <div class="mode-icon">
+                    <i class="bi bi-moon"></i>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+              </li>
+              <!-- <li class="nav-item">
+            <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
+          </li> -->
 
-        <!-- <li class="nav-item" data-bs-toggle="modal" data-bs-target="#checkoutModal"> -->
-        <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-          <a class="nav-link position-relative" href="javascript:;">
-            <% let cart_total=locals.session.cart||[]%>
+              <!-- <li class="nav-item" data-bs-toggle="modal" data-bs-target="#checkoutModal"> -->
+              <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
+                <a class="nav-link position-relative" href="javascript:;">
+                  <% let cart_total=locals.session.cart||[]%>
 
-              <% if(cart_total.length>0){%>
-                <div class="cart-badge">
-                  <%=cart_total.length%>
-                </div>
-                <%}else{%>
-                  <div class="cart-badge">0</div>
-                  <%}%>
+                    <% if(cart_total.length>0){%>
+                      <div class="cart-badge">
+                        <%=cart_total.length%>
+                      </div>
+                      <%}else{%>
+                        <div class="cart-badge">0</div>
+                        <%}%>
 
-                    <i class="bi bi-basket2"></i>
-          </a>
-        </li>
+                          <i class="bi bi-basket2"></i>
+                </a>
+              </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
-        </li>
+              <li class="nav-item">
+                <a class="nav-link" href=""><i class="bi bi-person-circle"></i></a>
+              </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item d-block d-md-none">
+                <a class="nav-link" href="/login"><i class="bi bi-person"></i></a>
+              </li>
 
-        <li class="nav-item">
-          <!-- <a class="nav-link lowercase" href="/logout">SessionOut</a> -->
-        </li>
-      </ul>
+              <li class="nav-item d-none d-md-none">
+                <a class="nav-link lowercase" href="/logout">SessionOut</a>
+              </li>
+            </ul>
     </nav>
   </header>
   <!--end top header-->
@@ -245,12 +253,16 @@
         <div class="row g-4">
           <div class="col-12 col-xl-6 col-md-6 col-lg-6">
             <h3 class="fw-bold">Our Story</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries.</p>
+            <p>Gchieftain.com was born out of a deep admiration for the ingenuity, craftsmanship, and diversity of products originating from China. Our founders, fueled by their passion for discovery and their desire to share the wonders of Chinese innovation with the world, embarked on a mission to
+              create a
+              platform where customers could easily access a curated selection of high-quality items.</p>
+
+            <p>Driven by our commitment to excellence and our belief in the power of commerce to foster connections across borders, we've carefully curated a collection that showcases the very best that China has to offer. From traditional arts to cutting-edge technology, each item in our store
+              tells a story of
+              creativity, quality, and authenticity.</p>
+            <p>With a dedication to customer satisfaction and a focus on providing a seamless shopping experience, Gchieftain.com has become a trusted destination for those seeking unique and innovative products from China. We're proud to play a part in bringing the best of Chinese culture and
+              craftsmanship to a
+              global audience..</p>
           </div>
           <div class="col-12 col-xl-6 col-md-6 col-lg-6">
             <img src="https://images.pexels.com/photos/7679877/pexels-photo-7679877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid" alt="">
@@ -264,12 +276,23 @@
         </div>
 
         <div class="row row-cols-1 row-cols-xl-3 g-4 why-choose">
+
           <div class="col d-flex">
             <div class="card rounded-0 shadow-none w-100">
               <div class="card-body">
                 <img src="images/icons/delivery.webp" width="60" alt="">
-                <h5 class="my-3 fw-bold">Free Shipping</h5>
-                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>
+                <h5 class="my-3 fw-bold">Curated Selection</h5>
+                <p class="mb-0">Gchieftain.com offers a meticulously curated selection of products, ensuring that each item meets our high standards of quality and authenticity.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-flex">
+            <div class="card rounded-0 shadow-none w-100">
+              <div class="card-body">
+                <img src="images/icons/money-bag.webp" width="60" alt="">
+                <h5 class="my-3 fw-bold">Diverse Range</h5>
+                <p class="mb-0">rom traditional handicrafts to modern innovations, our diverse range of products caters to a wide variety of interests and tastes.</p>
               </div>
             </div>
           </div>
@@ -277,12 +300,35 @@
             <div class="card rounded-0 shadow-none w-100">
               <div class="card-body">
                 <img src="images/icons/money-bag.webp" width="60" alt="">
-                <h5 class="my-3 fw-bold">100% Back Gaurantee</h5>
-                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>
+                <h5 class="my-3 fw-bold">Quality Assurance</h5>
+                <p class="mb-0">We prioritize quality in everything we do, from product selection to customer service, so you can shop with confidence knowing that you're getting the very best.</p>
               </div>
             </div>
           </div>
           <div class="col d-flex">
+            <div class="card rounded-0 shadow-none w-100">
+              <div class="card-body">
+                <img src="images/icons/money-bag.webp" width="60" alt="">
+                <h5 class="my-3 fw-bold">Global Reach</h5>
+                <p class="mb-0">With worldwide shipping and a commitment to customer satisfaction, we make it easy for customers around the globe to experience the best of Chinese innovation right at their doorstep.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col d-flex">
+            <div class="card rounded-0 shadow-none w-100">
+              <div class="card-body">
+                <img src="images/icons/money-bag.webp" width="60" alt="">
+                <h5 class="my-3 fw-bold">Passion for Innovation</h5>
+                <p class="mb-0">At Gchieftain.com, we're constantly on the lookout for the latest trends and emerging technologies, so you can trust that you're always getting the newest and most exciting products on the market. <br>
+
+                  Choose Gchieftain.com for an unparalleled shopping experience that celebrates the best of Chinese culture, craftsmanship, and innovation.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col d-flex d-none">
             <div class="card rounded-0 shadow-none w-100">
               <div class="card-body">
                 <img src="images/icons/support.webp" width="60" alt="">
@@ -293,13 +339,13 @@
           </div>
         </div>
 
-        <div class="separator section-padding">
+        <div class="separator section-padding d-none">
           <div class="line"></div>
           <h3 class="mb-0 h3 fw-bold">Shop By Brands</h3>
           <div class="line"></div>
         </div>
 
-        <div class="brands">
+        <div class="brands d-none">
           <div class="row row-cols-2 row-cols-lg-5 g-4">
             <div class="col">
               <div class="p-3 border rounded brand-box">
@@ -406,21 +452,41 @@
   <!--start footer-->
   <section class="footer-section bg-section-2 section-padding">
     <div class="container">
-      <div class="row row-cols-1 row-cols-lg-4 g-4">
+      <style>
+        @media (max-width: 575.98px) {
+          .child_clss {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+        }
+      </style>
+      <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
         <div class="col">
-
           <div class="footer-widget-6">
-            <!-- <img src="images/logo.webp" class="logo-img mb-3" alt=""> -->
-            <%if(logo_img !=null){%>
-              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-              <%}%>
-                <h5 class="mb-3 fw-bold">About Us</h5>
-                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+            <div class="offcanvas-logo">
+              <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
+              <%if(logo_img!=null){%>
+                <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                <%}%>
+            </div>
+            <h5 class="mb-3 fw-bold">About Us</h5>
+            <p class="mb-2">
+            <div class="mb-1">
+              Welcome to Gchieftain your go-to destination for an exciting array of innovative products! We're dedicated to bringing you the latest and most groundbreaking items, carefully curated for your enjoyment.
+            </div>
+            <div class="mb-1">
+              At Gchieftain we're passionate about sourcing unique products that stand out from the crowd. From cutting-edge gadgets to innovative fashion accessories, we're constantly on the lookout for what's pushing the boundaries of creativity and functionality.
+            </div>
+            <div>
+              Thank you for choosing [Shop Name] as your destination for innovative products. Join us in exploring the latest trends and discovering must-have items that redefine the way you experience the world..
+            </div>
 
-                <a class="link-dark" href="javascript:;">Read More</a>
+            </p>
+            <a class="link-dark" href="javascript:;">Read More</a>
           </div>
         </div>
-        <div class="col">
+        <div class="col d-none">
           <div class="footer-widget-7">
             <h5 class="mb-3 fw-bold">Explore</h5>
             <ul class="widget-link list-unstyled">
@@ -434,7 +500,7 @@
             </ul>
           </div>
         </div>
-        <div class="col">
+        <div class="col d-none">
           <div class="footer-widget-8">
             <h5 class="mb-3 fw-bold">Company</h5>
             <ul class="widget-link list-unstyled">
@@ -451,50 +517,50 @@
           <div class="footer-widget-9">
             <h5 class="mb-3 fw-bold">Follow Us</h5>
             <div class="social-link d-flex align-items-center gap-2">
-              <a href="javascript:;"><i class="bi bi-facebook"></i></a>
-              <a href="javascript:;"><i class="bi bi-twitter"></i></a>
-              <a href="javascript:;"><i class="bi bi-linkedin"></i></a>
-              <a href="javascript:;"><i class="bi bi-youtube"></i></a>
-              <a href="javascript:;"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+              <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
+              <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-linkedin"></i></a>
+              <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
+              <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
             </div>
-            <div class="mb-4 mt-4">
+            <div class="mb-3 mt-3">
               <h5 class="mb-0 fw-bold">Support</h5>
-              <p class="mb-0 text-muted">support@example.com</p>
+              <p class="mb-0 text-muted">gchieftainbd@gmail.com</p>
             </div>
-            <div class="">
-              <h5 class="mb-0 fw-bold">Toll Free</h5>
-              <p class="mb-0 text-muted">1800- 8xx 2xx</p>
-            </div>
+            <!-- <div class="">
+                                    <h5 class="mb-0 fw-bold">Toll Free</h5>
+                                    <p class="mb-0 text-muted">1800- 8xx 2xx</p>
+                                </div> -->
           </div>
         </div>
       </div><!--end row-->
       <div class="my-5"></div>
-      <div class="row">
-        <div class="col-12">
-          <div class="text-center">
-            <h5 class="fw-bold mb-3">Download Mobile App</h5>
-          </div>
-          <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
-            <div>
-              <a href="javascript:;">
-                <img src="images/play-store.webp" width="160" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:;">
-                <img src="images/apple-store.webp" width="160" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div><!--end row-->
-
+      <!-- <div class="row">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <h5 class="fw-bold mb-3">Download Mobile App</h5>
+                            </div>
+                            <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
+                                <div>
+                                    <a href="javascript:;">
+                                        <img src="/front_assets/img/play-store.jpg" width="160" alt="">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="javascript:;">
+                                        <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+      <!--end row-->
     </div>
   </section>
   <!--end footer-->
 
   <footer class="footer-strip text-center py-3 bg-section-2 border-top positon-absolute bottom-0">
-    <p class="mb-0 text-muted">© 2022. www.ztrios.com | All rights reserved.</p>
+    <p class="mb-0 text-muted">© 2022. www.ztrios.com</p>
   </footer>
 
   <!--right cart-->

@@ -86,6 +86,10 @@ const productCategory = async (req, res) => {
     res.render('product/category.ejs', { products });
 }
 const ProductDetails = async (req, res) => {
+    let products = await models.Product.findAll();
+    let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+    // console.log(unique_cate);
+
     const productId = req.params.id;
     let details_secondary_img = await models.Product.findOne({
         where: {
@@ -99,7 +103,7 @@ const ProductDetails = async (req, res) => {
 
     let reviews = await models.Review.findAll();
 
-    res.render('product/product_details.ejs', { details_secondary_img, reviews, logo_img, locals: { session: req.session } });
+    res.render('product/product_details.ejs', { unique_cate, details_secondary_img, reviews, logo_img, locals: { session: req.session } });
 }
 
 const postCartProduct = async (req, res) => {
@@ -130,6 +134,7 @@ const postCartProduct = async (req, res) => {
         // Update the session with the modified cart
         req.session.cart = cart;
         // console.log('Cart Items: ', cart);
+
         return res.send({
             'record': cart_data,
             'cart': cart,

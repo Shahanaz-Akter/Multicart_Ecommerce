@@ -12,7 +12,6 @@ if (count == 0) {
 }
 const add_cart_product = async (product_id) => {
     try {
-
         // Send a POST request to the server
         const response = await axios.post('/product/post_cart_product', { product_id });
         // console.log('Response data: ', response.data.add_on_html);
@@ -104,13 +103,150 @@ const add_cart_product = async (product_id) => {
 
                 // parent 4
                 const p4 = document.createElement('div');
-                p4.classList.add('ms-3', 'mb-3');
-                p4.innerHTML = `<span>${response.data.record.selling_price}</span>`;
+                p4.classList.add('ms-0', 'mb-3');
+                p4.innerHTML = `<span>${response.data.record.selling_price}TK</span>`;
 
                 // parent 5
                 const p5 = document.createElement('div');
                 p5.classList.add('ms-3', 'mb-3');
-                p5.innerHTML = `<span id="total_${response.data.record.id}">${response.data.record.selling_price} TK</span>`;
+                p5.innerHTML = `<span id="total_${response.data.record.id}">${response.data.record.selling_price}</span>`;
+
+                // parent 6
+                const p6 = document.createElement('div');
+                p6.classList.add('me-2', 'fs-5', "mb-3");
+                p6.innerHTML = `<span onclick="deleteSessionProduct(${response.data.record.id})" class="link-dark"> <i class="bi bi-trash"></i></ span> `;
+
+                const hrTag = document.createElement('hr');
+                hrTag.id = `hr_for_${response.data.record.id}`;
+                hrTag.classList.add('cart-item-session');
+                mainParent.appendChild(p1);
+                mainParent.appendChild(p2);
+                mainParent.appendChild(p3);
+                mainParent.appendChild(p4);
+                mainParent.appendChild(p5);
+                mainParent.appendChild(p6);
+
+                mainCart.appendChild(mainParent);
+                mainCart.appendChild(hrTag);
+                // console.log(mainCart);
+            }
+            else {
+                console.log('Failed to send data:', response.statusText);
+            }
+
+        }
+    }
+
+    catch (error) {
+        console.error('Error sending data:', error.message);
+    }
+
+}
+const buy_now = async (product_id) => {
+    try {
+
+
+        // Send a POST request to the server
+        const response = await axios.post('/product/post_cart_product', { product_id });
+        // console.log('Response data: ', response.data.add_on_html);
+        // console.log('Response cart: ', response.data.cart);
+
+        // Check if the request was successful
+        if (await response.status === 200) {
+            console.log('Data sent successfully');
+            const cartList = document.getElementById('cartList');
+            // console.log('gggg: ', response.data.record);
+
+            console.log('Sessions Products:', response.data.cart);
+
+            const isRecordIncluded = cartArr.some((item) => {
+                if (JSON.stringify(item) === JSON.stringify(response.data.record)) {
+                    return item;
+                }
+                // return Object.keys(response.data.record).every((key) => {
+                //   console.log(key);
+                //   return item[key] === response.data.record[key];
+                // });
+            });
+            let checkoutSubTotal = document.querySelector('#checkoutSubTotal');
+            checkoutSubTotal.textContent = response.data.record.selling_price;
+
+
+            if (!isRecordIncluded && response.data.add_on_html == true) {
+                let cartbadgeggg = document.querySelector('.cart-badge');
+                let cartCountggg = document.querySelector('.cartCount');
+
+                let countggg = parseInt(cartbadgeggg.innerHTML);
+                //increment cartlist
+                let c = ++countggg;
+                cartbadgeggg.innerHTML = c;
+
+                cartCountggg.innerHTML = c + " items to the cart";
+
+                cartArr.push(response.data.record);
+
+                // console.log('Cart Items:', cartArr);
+
+                //main parent
+                let mainCart = document.querySelector('.cart-list');
+
+                const mainParent = document.createElement('div');
+                mainParent.setAttribute('id', `productcartContainer_${response.data.record.id}`);
+                // <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
+
+                mainParent.classList.add('d-flex', 'align-items-center', 'gap-3', 'justify-content-around', 'mt-3', 'cart-item-session');
+
+                // parent 1
+                const p1 = document.createElement('div');
+                p1.classList.add('bottom-product-img', 'ms-4', 'mb-3');
+                const aTag = document.createElement('a');
+                aTag.setAttribute('href', '/product_details');
+                const img = document.createElement('img');
+                img.src = response.data.record.primary_image;
+                img.width = '60';
+                // img.classList.add('text', 'center');
+                img.alt = `${response.data.record.name}`;
+                aTag.appendChild(img);
+                p1.appendChild(aTag);
+                // console.log(p1);
+
+                const p2 = document.createElement('div');
+                p2.classList.add('ms-4', 'mb-3');
+                const h6Tag = document.createElement('h6');
+                h6Tag.classList.add('mb-0', 'fw-light', 'mb-1');
+
+                let maxWords = 2;
+                let words = response.data.record.name.split(' ');
+                let numWords = words.length;
+                let truncatedName = words.slice(0, maxWords).join(' ');
+                let remainingText = words.slice(maxWords).join(' ');
+                if (remainingText) {
+                    h6Tag.innerHTML = `<span>${truncatedName}..</span>`
+                }
+                else {
+                    h6Tag.innerHTML = `<span>${truncatedName}</span>`
+                }
+
+                p2.appendChild(h6Tag);
+
+                // parent 3
+                const p3 = document.createElement('div');
+                p3.classList.add('flex', 'justify-center', 'md:w-1/5', 'mr-2', 'mb-3', 'ms-3');
+                p3.innerHTML = ` 
+        <span onclick="change_quantity_value('plus',${response.data.record.id} , this)" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
+      <span class="quantity-counter p-2">1</span>
+      <span onclick="change_quantity_value('minus',${response.data.record.id}, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+        `;
+
+                // parent 4
+                const p4 = document.createElement('div');
+                p4.classList.add('ms-0', 'mb-3');
+                p4.innerHTML = `<span>${response.data.record.selling_price}TK</span>`;
+
+                // parent 5
+                const p5 = document.createElement('div');
+                p5.classList.add('ms-3', 'mb-3');
+                p5.innerHTML = `<span id="total_${response.data.record.id}">${response.data.record.selling_price}</span>`;
 
                 // parent 6
                 const p6 = document.createElement('div');
@@ -245,7 +381,7 @@ const change_quantity_value = async (reason, id, tag) => {
 
     tag.parentNode.children[1].innerHTML = await response.data.qty;
     let total_holder = document.querySelector(`#total_${id}`);
-    total_holder.innerHTML = "T- " + await response.data.total + 'TK';
+    total_holder.innerHTML = await response.data.total;
     console.log(response);
 }
 
