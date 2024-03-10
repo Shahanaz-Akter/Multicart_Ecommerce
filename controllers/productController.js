@@ -108,6 +108,9 @@ const ProductDetails = async (req, res) => {
 
 const postCartProduct = async (req, res) => {
     const { product_id } = req.body;
+    //buy now code
+    const { buy } = req.body;
+
     let specific_record = await models.Product.findOne({
         where: {
             id: product_id,
@@ -134,6 +137,16 @@ const postCartProduct = async (req, res) => {
         // Update the session with the modified cart
         req.session.cart = cart;
         // console.log('Cart Items: ', cart);
+
+        //buy now code
+        if ((buy) != null) {
+            return res.send({
+                'record': cart_data,
+                'cart': cart,
+                'add_on_html': true,
+                'buy': true
+            });
+        }
 
         return res.send({
             'record': cart_data,

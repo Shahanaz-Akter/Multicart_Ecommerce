@@ -142,7 +142,7 @@ const add_cart_product = async (product_id) => {
     }
 
 }
-const buy_now = async (product_id) => {
+const buy_now1 = async (product_id) => {
     try {
 
 
@@ -153,7 +153,7 @@ const buy_now = async (product_id) => {
 
         // Check if the request was successful
         if (await response.status === 200) {
-            console.log('Data sent successfully');
+            // console.log('Data sent successfully');
             const cartList = document.getElementById('cartList');
             // console.log('gggg: ', response.data.record);
 
@@ -283,6 +283,20 @@ const buy_now = async (product_id) => {
 const delivery_cal = (num) => {
 
 }
+//buy now code
+const buy_now = async (product_id, buy) => {
+    console.log(buy);
+    console.log(product_id);
+    const response = await axios.post('/product/post_cart_product', { product_id, buy });
+    console.log('Records: ', response.data.record);
+
+    if (await response.status === 200) {
+        let checkoutSubTotal = document.querySelector('#checkoutSubTotal');
+        checkoutSubTotal.textContent = response.data.record.selling_price;
+        // console.log('alu2');
+
+    }
+}
 
 const calculate_subtotal = async () => {
     const response = await axios.post('/product/calculate_subtotal');
@@ -298,21 +312,22 @@ const setDeliveryCharge = (price) => {
     let t = subT + deliver_charge;
     document.querySelector('.totalPrice').children[1].innerHTML = `${t} ৳`;
 }
-
-// Orderlist JS
-
+// Order-list JS
 const orderList = async () => {
     let none_modal = document.querySelector('.none_modal');
-    var modal = bootstrap.Offcanvas.getInstance(none_modal)
+    var modal = bootstrap.Offcanvas.getInstance(none_modal);
+
+    let checkoutSubTotal = document.querySelector('#checkoutSubTotal').value;
+    console.log('checkoutSubTotal: ', checkoutSubTotal);
+    let checkoutDelivery = document.querySelector('#checkoutDelivery').value;
+    console.log('checkoutDelivery: ', checkoutDelivery);
 
     let phone = document.querySelector('#mobile').value;
-
     // console.log('bbb: ', phone);
     if (phone.length !== 11) {
         alert('Required 11 Digits Phone Number');
         return
     }
-
     let email = document.querySelector('#email').value;
     // Validate email format
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -322,7 +337,6 @@ const orderList = async () => {
             return;
         }
     }
-
     let fullName = document.querySelector('#fullName').value;
     let delivery_charge = document.querySelector('#delivery_charge').value;
     console.log(delivery_charge);
@@ -335,7 +349,9 @@ const orderList = async () => {
     let areaSector = document.querySelector('#areaSector').value;
     let addressCheck = document.querySelector('#addressCheck').value;
     // console.log(delivery_charge, areaSector, addressCheck, subT);
-    let orderResponse = await axios.post('/post_checkout', { phone, email, fullName, deliver_charge, areaSector, addressCheck, subT });
+    let orderResponse = await axios.post('/post_checkout', {
+        phone, email, fullName, deliver_charge, areaSector, addressCheck, subT, checkoutSubTotal, checkoutDelivery
+    });
 
     if (orderResponse) {
         // console.log('hello');

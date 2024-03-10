@@ -23,6 +23,7 @@
   <link href="/front_assets/css/style.css" rel="stylesheet">
   <link href="/front_assets/css/dark-theme.css" rel="stylesheet">
   <link href="/front_assets/css/checkout.css" rel="stylesheet">
+  <link href="/front_assets/css/checkout.css" rel="stylesheet">
 
   <title>Product Details</title>
   <style>
@@ -352,10 +353,12 @@
                   </div>
                 </div>
               </div> -->
+
+
               <div class="cart-buttons mt-3">
                 <div class="buttons d-flex flex-column flex-lg-row gap-3 mt-4">
                   <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 col-lg-6" onclick="add_cart_product(<%=details_secondary_img.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
-                  <a href="javascript:;" class="btn btn-lg btn-success btn-ecomm px-5 py-3 col-lg-6" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"><i class="bi bi-basket2 me-2"></i>Buy Now</a>
+                  <a href="javascript:;" class="btn btn-lg btn-success btn-ecomm px-5 py-3 col-lg-6" onclick="buy_now(<%=details_secondary_img.id%>, buy='buy_now')" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"><i class="bi bi-basket2 me-2"></i>Buy Now</a>
                 </div>
               </div>
 
@@ -967,7 +970,7 @@
 
                       <div class="addCardText">
                         <div class="mb-2"> Subtotal: <span id="checkoutSubTotal">00.00</span> TK</div>
-                        <div class="mb-2"> Delivery: 00 TK</div>
+                        <div class="mb-2"> Delivery: <span id="checkoutDelivery">00.00</span> TK</div>
                         <!-- <div class="mb-3"> Discount: 10%</div> -->
                       </div>
                     </div>
@@ -1134,7 +1137,8 @@
   <!--End Back To Top Button-->
 
 
-  <!-- <script src="/front_assets/js/axios_post.js"></script> -->
+  <script src="../../front_assets/js/axios_post.js"></script>
+
   <!-- JavaScript files -->
   <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
   <script src="/front_assets/js/jquery.min.js"></script>
