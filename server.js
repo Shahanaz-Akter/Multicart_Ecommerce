@@ -70,6 +70,13 @@ const axios = require('axios');
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 5000; //if env port is not working then work 5000 port
 
+// api authentication code
+const passport = require("passport");
+const { facebook, facebookCallback, google, googleCallback } = require('./controllers/authController');
+require("./config/facebook");
+require("./config/google");
+// end authentication code also need below session code
+
 app.use(session({
     secret: 'some secret',
     cookies: 'maxAge: 30000',
@@ -77,7 +84,18 @@ app.use(session({
     saveUninitialized: true,
 })
 );
+// start auth api code
 
+passport.serializeUser(function (user, cb) {
+    cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+    cb(null, obj);
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+// end auth api code
 //From postman or view form for showing  of the requested value need to use this couple of this code 
 app.use(bodyParser.urlencoded({ extended: false }));
 

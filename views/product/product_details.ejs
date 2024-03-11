@@ -24,7 +24,24 @@
   <link href="/front_assets/css/dark-theme.css" rel="stylesheet">
   <link href="/front_assets/css/checkout.css" rel="stylesheet">
   <link href="/front_assets/css/checkout.css" rel="stylesheet">
-
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3628050850743550');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3628050850743550&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
   <title>Product Details</title>
   <style>
     * {
@@ -739,9 +756,9 @@
           <div class="footer-widget-9">
             <h5 class="mb-3 fw-bold">Follow Us</h5>
             <div class="social-link d-flex align-items-center gap-2">
-              <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-facebook"></i></a>
               <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
-              <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-linkedin"></i></a>
               <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
               <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
             </div>
@@ -969,8 +986,8 @@
                     <div class="addItem addCard">
 
                       <div class="addCardText">
-                        <div class="mb-2"> Subtotal: <span id="checkoutSubTotal">00.00</span> TK</div>
-                        <div class="mb-2"> Delivery: <span id="checkoutDelivery">00.00</span> TK</div>
+                        <div class="mb-2"> Subtotal: 00.00 TK</div>
+                        <div class="mb-2"> Delivery: 00.00 TK</div>
                         <!-- <div class="mb-3"> Discount: 10%</div> -->
                       </div>
                     </div>
@@ -1051,7 +1068,7 @@
                         <label for="addressCheck">Billing and delivery address same.</label>
                       </div>
 
-                      <div>
+                      <div class="d-none">
                         <p class="mb-2">Login With</p>
                         <div class="social-login mb-4">
                           <div class="row g-4">

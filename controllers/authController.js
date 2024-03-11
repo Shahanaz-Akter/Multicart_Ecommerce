@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const bodyParser = require('body-parser');
 const models = require('../models');
+const passport = require('passport');
 
 const register = async (req, res, next) => {
     res.render('auth/register.ejs');
@@ -102,4 +103,15 @@ const postChangePassword = async (req, res, next) => {
 
 }
 
-module.exports = { register, login, postLogin, postRegister, postForgetPassword, changePassword, postChangePassword };
+// authentication api code start
+const facebook = passport.authenticate("facebook", { scope: ['email', 'public_profile'] });
+const facebookCallback = passport.authenticate("facebook", { failureRedirect: "/auth/login" });
+
+const google = passport.authenticate("google", { scope: ["profile", 'email'] });
+const googleCallback = passport.authenticate("google", {
+    failureRedirect: "/auth/login"
+});
+// authentication api code end
+
+
+module.exports = { register, login, postLogin, postRegister, postForgetPassword, changePassword, postChangePassword, facebook, google, facebookCallback, googleCallback };

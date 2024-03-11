@@ -24,6 +24,24 @@
     <title>Category</title>
     <!-- css checkout -->
     <link href="/front_assets/css/checkout.css" rel="stylesheet">
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3628050850743550');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3628050850743550&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         * {
             margin: 0;
@@ -277,7 +295,7 @@
                                                 <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
                                                 <a href="javascript:;" onclick="add_cart_product(<%=products.id%>)"><i class="bi bi-basket3"></i></a>
                                                 <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modall<%=products.id%>"><i class="bi bi-zoom-in"></i></a>
-                                                <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                                <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=products.id%>,  buy='buy_now')"></i> </a>
 
                                             </div>
                                             <a href="/product/product_details/<%=products.id%>">
@@ -416,537 +434,538 @@
                                                                 <div class="buttons d-flex flex-column gap-3 mt-4">
                                                                     <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                                     <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
-                                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
-                                                                </div>
-                                                            </div>
-                                                            <hr class="my-3">
-                                                            <div class="product-share">
-                                                                <h6 class="fw-bold mb-3">Share This Product</h6>
-                                                                <div class="d-flex align-items-center gap-2 flex-wrap">
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-twitter"><i class="bi bi-twitter"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-facebook"><i class="bi bi-facebook"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-linkden"><i class="bi bi-linkedin"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-youtube"><i class="bi bi-youtube"></i></button>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <button type="button" class="btn-social bg-pinterest"><i class="bi bi-pinterest"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
+                                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=products.id%>,  buy=' buy_now')" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy
+                                                            Now</a>
+                                            </div>
+                                        </div>
+                                        <hr class="my-3">
+                                        <div class="product-share">
+                                            <h6 class="fw-bold mb-3">Share This Product</h6>
+                                            <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                <div class="">
+                                                    <button type="button" class="btn-social bg-twitter"><i class="bi bi-twitter"></i></button>
                                                 </div>
-                                                <!--end row-->
+                                                <div class="">
+                                                    <button type="button" class="btn-social bg-facebook"><i class="bi bi-facebook"></i></button>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" class="btn-social bg-linkden"><i class="bi bi-linkedin"></i></button>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" class="btn-social bg-youtube"><i class="bi bi-youtube"></i></button>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" class="btn-social bg-pinterest"><i class="bi bi-pinterest"></i></button>
+                                                </div>
                                             </div>
-
                                         </div>
+
                                     </div>
                                 </div>
-                                <!--end quick view-->
-                                <% }); %>
-
                         </div>
-
-                    </div>
-
-                    <div class="tab-pane fade" id="best-sellar">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/01.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/02.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/03.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="ribban bg-primary">New Fashion</div>
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/04.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/best-sellar/05.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="trending-product">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/01.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/02.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="ribban bg-warning text-dark">New Season</div>
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="/front_assets/img/trending-product/03.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/04.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/trending-product/05.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="special-offer">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/01.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/02.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="ribban">50% Discount</div>
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/03.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/04.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <div class="position-relative overflow-hidden">
-                                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                            <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                        </div>
-                                        <a href="product-details.html">
-                                            <img src="/front_assets/img/special-offer/05.webp" class="card-img-top" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-info text-center">
-                                            <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                            <div class="ratings mb-1 h6">
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                                <i class="bi bi-star-fill text-warning"></i>
-                                            </div>
-                                            <p class="mb-0 h6 fw-bold product-price">৳500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--end row-->
                     </div>
 
                 </div>
-
-
             </div>
+    </div>
+    <!--end quick view-->
+    <% }); %>
+
+        </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="best-sellar">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/best-sellar/01.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/best-sellar/02.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/best-sellar/03.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="ribban bg-primary">New Fashion</div>
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/best-sellar/04.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/best-sellar/05.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="trending-product">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/trending-product/01.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/trending-product/02.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="ribban bg-warning text-dark">New Season</div>
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="javascript:;">
+                                <img src="/front_assets/img/trending-product/03.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/trending-product/04.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/trending-product/05.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="special-offer">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/special-offer/01.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/special-offer/02.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="ribban">50% Discount</div>
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/special-offer/03.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/special-offer/04.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden">
+                            <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                            <a href="product-details.html">
+                                <img src="/front_assets/img/special-offer/05.webp" class="card-img-top" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-info text-center">
+                                <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                <div class="ratings mb-1 h6">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <p class="mb-0 h6 fw-bold product-price">৳500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+        </div>
         </section>
         <!--end tabular product-->
 
 
         <!--start features-->
-    <section class="product-thumb-slider section-padding">
-    
-        <div class="container">
-            <div class=" d-flex justify-content-center">
-    
+        <section class="product-thumb-slider section-padding">
+
+            <div class="container">
+                <div class=" d-flex justify-content-center">
+
+                </div>
+                <div class="text-center pb-3">
+                    <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
+                    <!-- <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p> -->
+                </div>
+                <div class="row row-cols-1 row-cols-lg-4 g-4">
+                    <div class="col d-flex d-none">
+                        <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-primary">
+                                    <i class="bi bi-truck"></i>
+                                </div>
+                                <h5 class="fw-bold">Free Delivery</h5>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex d-none">
+                        <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-danger">
+                                    <i class="bi bi-credit-card"></i>
+                                </div>
+                                <h5 class="fw-bold">Secure Payment</h5>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-success">
+                                    <i class="bi bi-minecart-loaded"></i>
+                                </div>
+                                <h5 class="fw-bold">Free Returns</h5>
+                                <!-- <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-warning">
+                                    <i class="bi bi-headset"></i>
+                                </div>
+                                <h5 class="fw-bold">24/7 Support</h5>
+                                <!-- <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
             </div>
-            <div class="text-center pb-3">
-                <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
-                <!-- <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p> -->
-            </div>
-            <div class="row row-cols-1 row-cols-lg-4 g-4">
-                <div class="col d-flex d-none">
-                    <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
-                        <div class="card-body text-center">
-                            <div class="h1 fw-bold my-2 text-primary">
-                                <i class="bi bi-truck"></i>
-                            </div>
-                            <h5 class="fw-bold">Free Delivery</h5>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex d-none">
-                    <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
-                        <div class="card-body text-center">
-                            <div class="h1 fw-bold my-2 text-danger">
-                                <i class="bi bi-credit-card"></i>
-                            </div>
-                            <h5 class="fw-bold">Secure Payment</h5>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex">
-                    <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
-                        <div class="card-body text-center">
-                            <div class="h1 fw-bold my-2 text-success">
-                                <i class="bi bi-minecart-loaded"></i>
-                            </div>
-                            <h5 class="fw-bold">Free Returns</h5>
-                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex">
-                    <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
-                        <div class="card-body text-center">
-                            <div class="h1 fw-bold my-2 text-warning">
-                                <i class="bi bi-headset"></i>
-                            </div>
-                            <h5 class="fw-bold">24/7 Support</h5>
-                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, consectetur!</p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end row-->
-        </div>
-    </section>
+        </section>
         <!--end features-->
 
 
@@ -1107,22 +1126,22 @@
                                     <div class="overflow-hidden">
                                         <!-- <img src="<%=all_products.category_image%>" class="card-img-top rounded-0" alt="..."> -->
                                         <div class="" style="background: url(' <%=all_products.category_image%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 200px;width: auto;">
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <h5 class="mb-1 cartegory-name mt-3 fw-bold">
-                                                <%=all_products.product_category%>
-                                            </h5>
-                                            <h6 class="mb-0 product-number fw-bold">
-                                                <%=all_products.total_qty%>
-                                            </h6>
                                         </div>
                                     </div>
+                                    <div class="text-center">
+                                        <h5 class="mb-1 cartegory-name mt-3 fw-bold">
+                                            <%=all_products.product_category%>
+                                        </h5>
+                                        <h6 class="mb-0 product-number fw-bold">
+                                            <%=all_products.total_qty%>
+                                        </h6>
+                                    </div>
                                 </div>
-                                </a>
-                                <%})%>
-                        </div>
-                    </div>
+                            </div>
+                        </a>
+                        <%})%>
+                </div>
+            </div>
         </section>
         <!--end cartegory slider-->
 
@@ -1218,96 +1237,96 @@
         <!--end blog-->
 
 
-    </div>
-    <!--end page content-->
+        </div>
+        <!--end page content-->
 
-    <!--start footer-->
-    <section class="footer-section bg-section-2 section-padding">
-        <div class="container">
-            <style>
-                @media (max-width: 575.98px) {
-                    .child_clss {
-                        display: flex !important;
-                        justify-content: center !important;
-                        align-items: center !important;
+        <!--start footer-->
+        <section class="footer-section bg-section-2 section-padding">
+            <div class="container">
+                <style>
+                    @media (max-width: 575.98px) {
+                        .child_clss {
+                            display: flex !important;
+                            justify-content: center !important;
+                            align-items: center !important;
+                        }
                     }
-                }
-            </style>
-            <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
-                <div class="col">
-                    <div class="footer-widget-6">
-                        <div class="offcanvas-logo">
-                            <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
-                            <%if(logo_img!=null){%>
-                                <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-                                <%}%>
-                        </div>
-                        <h5 class="mb-3 fw-bold">About Us</h5>
-                        <p class="mb-2">
-                        <div class="mb-1">
-                            Welcome to Gchieftain your go-to destination for an exciting array of innovative products! We're dedicated to bringing you the latest and most groundbreaking items, carefully curated for your enjoyment.
-                        </div>
-                        <div class="mb-1">
-                            At Gchieftain we're passionate about sourcing unique products that stand out from the crowd. From cutting-edge gadgets to innovative fashion accessories, we're constantly on the lookout for what's pushing the boundaries of creativity and functionality.
-                        </div>
-                        <div>
-                            Thank you for choosing Gchieftain as your destination for innovative products. Join us in exploring the latest trends and discovering must-have items that redefine the way you experience the world..
-                        </div>
+                </style>
+                <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col">
+                        <div class="footer-widget-6">
+                            <div class="offcanvas-logo">
+                                <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
+                                <%if(logo_img!=null){%>
+                                    <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                                    <%}%>
+                            </div>
+                            <h5 class="mb-3 fw-bold">About Us</h5>
+                            <p class="mb-2">
+                            <div class="mb-1">
+                                Welcome to Gchieftain your go-to destination for an exciting array of innovative products! We're dedicated to bringing you the latest and most groundbreaking items, carefully curated for your enjoyment.
+                            </div>
+                            <div class="mb-1">
+                                At Gchieftain we're passionate about sourcing unique products that stand out from the crowd. From cutting-edge gadgets to innovative fashion accessories, we're constantly on the lookout for what's pushing the boundaries of creativity and functionality.
+                            </div>
+                            <div>
+                                Thank you for choosing Gchieftain as your destination for innovative products. Join us in exploring the latest trends and discovering must-have items that redefine the way you experience the world..
+                            </div>
 
-                        </p>
-                        <a class="link-dark" href="javascript:;">Read More</a>
-                    </div>
-                </div>
-                <div class="col d-none">
-                    <div class="footer-widget-7">
-                        <h5 class="mb-3 fw-bold">Explore</h5>
-                        <ul class="widget-link list-unstyled">
-                            <li><a href="javascript:;">Fashion</a></li>
-                            <li><a href="javascript:;">Women</a></li>
-                            <li><a href="javascript:;">Furniture</a></li>
-                            <li><a href="javascript:;">Shoes</a></li>
-                            <li><a href="javascript:;">Topwear</a></li>
-                            <li><a href="javascript:;">Brands</a></li>
-                            <li><a href="javascript:;">Kids</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col d-none">
-                    <div class="footer-widget-8">
-                        <h5 class="mb-3 fw-bold">Company</h5>
-                        <ul class="widget-link list-unstyled">
-                            <li><a href="javascript:;">About Us</a></li>
-                            <li><a href="javascript:;">Contact Us</a></li>
-                            <li><a href="javascript:;">FAQ</a></li>
-                            <li><a href="javascript:;">Privacy</a></li>
-                            <li><a href="javascript:;">Terms</a></li>
-                            <li><a href="javascript:;">Complaints</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="footer-widget-9">
-                        <h5 class="mb-3 fw-bold">Follow Us</h5>
-                        <div class="social-link d-flex align-items-center gap-2">
-                            <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
-                            <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
-                            <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-linkedin"></i></a>
-                            <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
-                            <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
+                            </p>
+                            <a class="link-dark" href="javascript:;">Read More</a>
                         </div>
-                        <div class="mb-3 mt-3">
-                            <h5 class="mb-0 fw-bold">Support</h5>
-                            <p class="mb-0 text-muted">gchieftainbd@gmail.com</p>
+                    </div>
+                    <div class="col d-none">
+                        <div class="footer-widget-7">
+                            <h5 class="mb-3 fw-bold">Explore</h5>
+                            <ul class="widget-link list-unstyled">
+                                <li><a href="javascript:;">Fashion</a></li>
+                                <li><a href="javascript:;">Women</a></li>
+                                <li><a href="javascript:;">Furniture</a></li>
+                                <li><a href="javascript:;">Shoes</a></li>
+                                <li><a href="javascript:;">Topwear</a></li>
+                                <li><a href="javascript:;">Brands</a></li>
+                                <li><a href="javascript:;">Kids</a></li>
+                            </ul>
                         </div>
-                        <!-- <div class="">
+                    </div>
+                    <div class="col d-none">
+                        <div class="footer-widget-8">
+                            <h5 class="mb-3 fw-bold">Company</h5>
+                            <ul class="widget-link list-unstyled">
+                                <li><a href="javascript:;">About Us</a></li>
+                                <li><a href="javascript:;">Contact Us</a></li>
+                                <li><a href="javascript:;">FAQ</a></li>
+                                <li><a href="javascript:;">Privacy</a></li>
+                                <li><a href="javascript:;">Terms</a></li>
+                                <li><a href="javascript:;">Complaints</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget-9">
+                            <h5 class="mb-3 fw-bold">Follow Us</h5>
+                            <div class="social-link d-flex align-items-center gap-2">
+                                <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-facebook"></i></a>
+                                <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
+                                <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-linkedin"></i></a>
+                                <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
+                                <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <h5 class="mb-0 fw-bold">Support</h5>
+                                <p class="mb-0 text-muted">gchieftainbd@gmail.com</p>
+                            </div>
+                            <!-- <div class="">
                                     <h5 class="mb-0 fw-bold">Toll Free</h5>
                                     <p class="mb-0 text-muted">1800- 8xx 2xx</p>
                                 </div> -->
+                        </div>
                     </div>
-                </div>
-            </div><!--end row-->
-            <div class="my-5"></div>
-            <!-- <div class="row">
+                </div><!--end row-->
+                <div class="my-5"></div>
+                <!-- <div class="row">
                         <div class="col-12">
                             <div class="text-center">
                                 <h5 class="fw-bold mb-3">Download Mobile App</h5>
@@ -1326,39 +1345,39 @@
                             </div>
                         </div>
                     </div> -->
-            <!--end row-->
-        </div>
-    </section>
-    <!--end footer-->
+                <!--end row-->
+            </div>
+        </section>
+        <!--end footer-->
 
-    <footer class="footer-strip text-center py-3 bg-section-2 border-top positon-absolute bottom-0">
-        <p class="mb-0 text-muted">© 2022. www.ztrios.com</p>
-    </footer>
+        <footer class="footer-strip text-center py-3 bg-section-2 border-top positon-absolute bottom-0">
+            <p class="mb-0 text-muted">© 2022. www.ztrios.com</p>
+        </footer>
 
-    <!--right cart-->
-    <div class="offcanvas offcanvas-end cart_modal" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header bg-section-2">
-            <h5 class="mb-0 fw-bold cartCount" id="offcanvasRightLabel"></h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="cart-list">
-                <div class="bg-dark text-center">
-                    <div class="text-white px-5 py-3" style="">SHOPPING CART</div>
-                </div>
+        <!--right cart-->
+        <div class="offcanvas offcanvas-end cart_modal" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header bg-section-2">
+                <h5 class="mb-0 fw-bold cartCount" id="offcanvasRightLabel"></h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="cart-list">
+                    <div class="bg-dark text-center">
+                        <div class="text-white px-5 py-3" style="">SHOPPING CART</div>
+                    </div>
 
-                <!-- Access the cart data in your EJS file -->
-                <div class="d-flex align-items-center justify-content-around mt-3 text-dark bg-light p-3">
-                    <span>Product Image</span>
-                    <span>Name</span>
-                    <span>Quantity</span>
-                    <span>Price</span>
-                    <span>Total</span>
-                    <span>Action</span>
-                </div>
+                    <!-- Access the cart data in your EJS file -->
+                    <div class="d-flex align-items-center justify-content-around mt-3 text-dark bg-light p-3">
+                        <span>Product Image</span>
+                        <span>Name</span>
+                        <span>Quantity</span>
+                        <span>Price</span>
+                        <span>Total</span>
+                        <span>Action</span>
+                    </div>
 
 
-                <!-- <table>
+                    <!-- <table>
                     <thead class="mt-3">
 
                         <th class="text-dark text-center">Product Image</th>
@@ -1375,464 +1394,464 @@
 
                 </table> -->
 
-                <% const cart=locals.session.cart || []; %>
-                    <% if (cart.length> 0) { %>
-                        <!--If cart is not empty, render each product -->
-                        <% cart.forEach(product=> { %>
-                            <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
+                    <% const cart=locals.session.cart || []; %>
+                        <% if (cart.length> 0) { %>
+                            <!--If cart is not empty, render each product -->
+                            <% cart.forEach(product=> { %>
+                                <div class="d-flex align-items-center gap-3 mt-3 d-flex align-items-center justify-content-around " id="productcartContainer_<%=product.id%>">
 
-                                <div class="bottom-product-img ms-4 mb-3">
-                                    <a href="/product_details">
-                                        <img src="<%= product.primary_image %>" width="60" alt="<%= product.name %>">
-                                    </a>
-                                </div>
-                                <div class="ms-4 mb-3">
-                                    <h6 class="mb-0 fw-light mb-1">
-                                        <span>
-                                            <% const maxWords=2;%>
-                                                <% const words=product.name.split(' '); %>
+                                    <div class="bottom-product-img ms-4 mb-3">
+                                        <a href="/product_details">
+                                            <img src="<%= product.primary_image %>" width="60" alt="<%= product.name %>">
+                                        </a>
+                                    </div>
+                                    <div class="ms-4 mb-3">
+                                        <h6 class="mb-0 fw-light mb-1">
+                                            <span>
+                                                <% const maxWords=2;%>
+                                                    <% const words=product.name.split(' '); %>
                                                                                             <%const numWords = words.length;%>
                                                                                             <%console.log(numWords)%>
                                         
                                                                                             <% const truncatedName = words.slice(0, maxWords).join(' ');%>
                                                                                             <% const remainingText = words.slice(maxWords).join(' ');%>
                                                                                            <%= numWords < maxWords ? truncatedName : truncatedName + ' ..' %>
+                                            </span>
+                                        </h6>
+                                        <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
+                                    </div>
+
+                                    <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
+                                        <span onclick="change_quantity_value('plus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
+                                        <span class="quantity-counter p-2" id="input">
+                                            <%= product.quantity %>
                                         </span>
-                                    </h6>
-                                    <!-- <p class="mb-0"><strong>1 X ৳<%= product.selling_price %></strong></p> -->
-                                </div>
-
-                                <div class="d-flex justify-center md:w-1/5  mr-2 mb-3 ms-3">
-                                    <span onclick="change_quantity_value('plus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">+</span>
-                                    <span class="quantity-counter p-2" id="input">
-                                        <%= product.quantity %>
-                                    </span>
-                                    <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
-                                </div>
-                                <div class="ms-3 mb-3">
-                                    <span>
-                                        <%= product.selling_price %>
-                                    </span>
-
-                                </div>
-                                <div class="ms-3 mb-3" id="total_<%= product.id%>">
-                                    <span>
-                                        <%= product.total %> TK
-                                    </span>
-
-                                </div>
-                                <div class="fs-5 me-2 mb-3">
-                                    <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
-                                </div>
-
-                            </div>
-                            <hr id="hr_for_<%= product.id%>">
-                            <% }); %>
-                                <% } else { %>
-                                    <!-- If cart is empty, display a message or alternative content -->
-                                    <p></p>
-                                    <% } %>
-            </div>
-        </div>
-        <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
-            <div class="d-grid">
-                <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
-            </div>
-        </div>
-
-    </div>
-    <!--end right cart-->
-
-    <!-- checkout  modal -->
-    <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
-        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-        <div class="offcanvas-header bg-section-2 d-none">
-            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-        </div>
-
-        <div class="offcanvas-body">
-
-            <div class="cart-list">
-
-                <!-- Modal content -->
-                <div class="modal-contentCheckout">
-                    <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
-
-                    <!-- <p>Some text in the Modal..</p> -->
-                    <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
-
-                        <div class="leftSection" id="phone_2nd">
-                            <div class="contactContainer">
-
-                                <style>
-                                    .btn-close {
-                                        color: white !important;
-                                        opacity: unset;
-                                    }
-
-                                    .offcanvas-header {
-                                        border-bottom: #146FB6;
-                                    }
-                                </style>
-
-                                <div class="contactHead d-flex justify-content-between desktop-checkout-title">
-                                    <span class="headTitle">Checkout</span>
-                                    <div class="offcanvas-header bg-section-0">
-                                        <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        <span onclick="change_quantity_value('minus',<%= product.id %>, this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
                                     </div>
-                                    <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                    <!-- <span class="checkoutClose">&times;</span> -->
+                                    <div class="ms-3 mb-3">
+                                        <span>
+                                            <%= product.selling_price %>
+                                        </span>
+
+                                    </div>
+                                    <div class="ms-3 mb-3" id="total_<%= product.id%>">
+                                        <span>
+                                            <%= product.total %> TK
+                                        </span>
+
+                                    </div>
+                                    <div class="fs-5 me-2 mb-3">
+                                        <span class="link-dark" onclick="deleteSessionProduct(<%= product.id%>)"><i class="bi bi-trash"></i></span>
+                                    </div>
+
                                 </div>
-                                <div class="rightSection " id="phone_1st">
-                                    <div class="contactContainer mobile-checkout-title" style="display: none;">
-                                        <style>
-                                            .btn-close {
+                                <hr id="hr_for_<%= product.id%>">
+                                <% }); %>
+                                    <% } else { %>
+                                        <!-- If cart is empty, display a message or alternative content -->
+                                        <p></p>
+                                        <% } %>
+                </div>
+            </div>
+            <div class="offcanvas-footer p-3 border-top" onclick="calculate_subtotal()">
+                <div class="d-grid">
+                    <div type="" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal">Checkout</div>
+                </div>
+            </div>
 
-                                                opacity: unset;
-                                            }
+        </div>
+        <!--end right cart-->
 
-                                            .offcanvas-header {
-                                                border-bottom: #146FB6;
-                                            }
-                                        </style>
+        <!-- checkout  modal -->
+        <div class="none_modal offcanvas offcanvas-end cart_modal checkoutModalnew" data-bs-scroll="true" tabindex="-1" id="checkoutModal" aria-labelledby="offcanvasRightLabel">
+            <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+            <div class="offcanvas-header bg-section-2 d-none">
+                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+            </div>
 
-                                        <div class="contactHead d-flex justify-content-between ">
-                                            <span class="headTitle">Checkout</span>
-                                            <div class="offcanvas-header bg-section-0">
-                                                <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
-                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                            </div>
-                                            <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-                                            <!-- <span class="checkoutClose">&times;</span> -->
+            <div class="offcanvas-body">
+
+                <div class="cart-list">
+
+                    <!-- Modal content -->
+                    <div class="modal-contentCheckout">
+                        <!-- <span class="checkoutClose" onclick="checkoutNone()">&times;</span> -->
+
+                        <!-- <p>Some text in the Modal..</p> -->
+                        <div class="backContent movable-card" id="phoneModal" style="cursor: move;">
+
+                            <div class="leftSection" id="phone_2nd">
+                                <div class="contactContainer">
+
+                                    <style>
+                                        .btn-close {
+                                            color: white !important;
+                                            opacity: unset;
+                                        }
+
+                                        .offcanvas-header {
+                                            border-bottom: #146FB6;
+                                        }
+                                    </style>
+
+                                    <div class="contactHead d-flex justify-content-between desktop-checkout-title">
+                                        <span class="headTitle">Checkout</span>
+                                        <div class="offcanvas-header bg-section-0">
+                                            <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
+                                        <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                        <!-- <span class="checkoutClose">&times;</span> -->
                                     </div>
+                                    <div class="rightSection " id="phone_1st">
+                                        <div class="contactContainer mobile-checkout-title" style="display: none;">
+                                            <style>
+                                                .btn-close {
 
-                                    <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
-                                    <hr style="">
-                                    <div class="itemContainer">
-                                        <div class="addItem addCard">
+                                                    opacity: unset;
+                                                }
 
-                                            <div class="addCardText">
-                                                <div class="mb-2"> Subtotal: 00.00 TK</div>
-                                                <div class="mb-2"> Delivery: 00 TK</div>
-                                                <!-- <div class="mb-3"> Discount: 10%</div> -->
+                                                .offcanvas-header {
+                                                    border-bottom: #146FB6;
+                                                }
+                                            </style>
+
+                                            <div class="contactHead d-flex justify-content-between ">
+                                                <span class="headTitle">Checkout</span>
+                                                <div class="offcanvas-header bg-section-0">
+                                                    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"></h5>
+                                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                </div>
+                                                <!-- <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                                                <!-- <span class="checkoutClose">&times;</span> -->
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div class="totalPrice">
-                                        <span>Total: </span>
-                                        <span id="total_amount"> 00.00 <span>&#2547;</span></span>
-                                    </div>
-                                </div>
+                                        <h5 style="text-decoration: ;" class="ms-2">Total Amount</h5>
+                                        <hr style="">
+                                        <div class="itemContainer">
+                                            <div class="addItem addCard">
 
-                                <div>
-                                    <div class="contactBody">
-                                        <div class="bodyHead" id="createScroll">
-                                            <span class="userIcon"> <i class='bx bx-user'></i></span>
-
-                                            <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
-                                        </div>
-                                        <div class="inputInformation">
-                                            <div class="phone-container">
-                                                <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
-                                                <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
-                                                <div class="setCodeDropdown">
-                                                    <div class="phoneDropdown">
-                                                    </div>
+                                                <div class="addCardText">
+                                                    <div class="mb-2"> Subtotal: 00.00 TK</div>
+                                                    <div class="mb-2"> Delivery: 00 TK</div>
+                                                    <!-- <div class="mb-3"> Discount: 10%</div> -->
                                                 </div>
                                             </div>
-                                            <div class="input-container mt-3">
-                                                <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
-                                                <label for="email" class="lavel">Email</label>
-                                            </div>
-                                            <div class="bodyHead mb-2">
-                                                <span class="userIcon"> <i class='bx bx-map'></i></span>
-                                                <!-- <span class="text">Delivery Information</span> -->
-                                            </div>
-                                            <div class="input-container">
-                                                <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
-                                                <label for="fullName" class="lavel full-name">Full Name</label>
-                                            </div>
 
+                                        </div>
+                                        <div class="totalPrice">
+                                            <span>Total: </span>
+                                            <span id="total_amount"> 00.00 <span>&#2547;</span></span>
+                                        </div>
+                                    </div>
 
-                                            <div class="input_dropdown">
-                                                <div>
-                                                    <!-- <span>left site</span> -->
-                                                    <div class="checkoutDropdown">
-                                                        <div class="select" id="textColoSet">
-                                                            <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
-                                                            <span class="mimi22">Select</span>
-                                                            <div class="caret"></div>
+                                    <div>
+                                        <div class="contactBody">
+                                            <div class="bodyHead" id="createScroll">
+                                                <span class="userIcon"> <i class='bx bx-user'></i></span>
+
+                                                <h5 style="text-decoration: ;" class="text mb-2">Contact Details</h5>
+                                            </div>
+                                            <div class="inputInformation">
+                                                <div class="phone-container">
+                                                    <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" class="text-input" required>
+                                                    <!-- <label for="phone" class="lavel phone-lavel">Phone Number</label> -->
+                                                    <div class="setCodeDropdown">
+                                                        <div class="phoneDropdown">
                                                         </div>
-
-                                                        <ul class="menu">
-                                                            <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
-                                                            </li>
-                                                            <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
-                                                        </ul>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <!-- <span>right site</span> -->
-                                                    <!-- <div class="input-container">
+                                                <div class="input-container mt-3">
+                                                    <input type="text" name="email" id="email" autocomplete="off" placeholder="ইমেইল নামটি লিখুন" class="text-input">
+                                                    <label for="email" class="lavel">Email</label>
+                                                </div>
+                                                <div class="bodyHead mb-2">
+                                                    <span class="userIcon"> <i class='bx bx-map'></i></span>
+                                                    <!-- <span class="text">Delivery Information</span> -->
+                                                </div>
+                                                <div class="input-container">
+                                                    <input type="text" name="customer_name" id="fullName" autocomplete="off" placeholder="সম্পূর্ণ নামটি লিখুন" class="text-input">
+                                                    <label for="fullName" class="lavel full-name">Full Name</label>
+                                                </div>
+
+
+                                                <div class="input_dropdown">
+                                                    <div>
+                                                        <!-- <span>left site</span> -->
+                                                        <div class="checkoutDropdown">
+                                                            <div class="select" id="textColoSet">
+                                                                <input class="d-none" type="text" id="delivery_charge" name="delivery_charge" required>
+                                                                <span class="mimi22">Select</span>
+                                                                <div class="caret"></div>
+                                                            </div>
+
+                                                            <ul class="menu">
+                                                                <li id="city1" class="active" onclick="setDeliveryCharge(60)">ঢাকা সিটির ভিতরে হোম ডেলিভারি (60Tk)
+                                                                </li>
+                                                                <li id="city2" class="active" onclick="setDeliveryCharge(150)">ঢাকা সিটির বাহিরে হোম ডেলিভারি (150Tk)</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <!-- <span>right site</span> -->
+                                                        <!-- <div class="input-container">
                                                                                                                                             <input type="text" name="city" id="City" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                                 <label for="City" class="lavel City-name">City</label>
                                                                                                                                         </div> -->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- <div class="input-container mb-3">
+                                                <!-- <div class="input-container mb-3">
                                                                                                                                     <input type="text" name="houseNumber" id="HouseNumber" autocomplete="off" placeholder="" class="text-input">
                                                                                                                                         <label for="HouseNumber" class="lavel house-number">House Number</label>
                                                                                                                                 </div> -->
-                                            <div style="margin-bottom: 20px;" class="input-container">
-                                                <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
-                                                <label for="areaSector" class="lavel area-sector">Area /Address</label>
-                                            </div>
-                                            <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
-                                            <div class="address-check">
-                                                <input type="checkbox" name="addressCheck" id="addressCheck">
-                                                <label for="addressCheck">Billing and delivery address same.</label>
-                                            </div>
-                                            <div>
-                                                <p class="mb-2">Login With</p>
-                                                <div class="social-login mb-4">
-                                                    <div class="row g-4">
-                                                        <div class="col-xl-6">
-                                                            <button type="button" class="btn bg-facebook btn-ecomm w-100 text-white"><i class="bi bi-facebook me-2"></i>Facebook</button>
-                                                        </div>
-                                                        <div class="col-xl-6">
-                                                            <button type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</button>
+                                                <div style="margin-bottom: 20px;" class="input-container">
+                                                    <input type="text" name="address" id="areaSector" autocomplete="off" placeholder="সম্পূর্ণ ঠিকানা লিখুন" class="text-input">
+                                                    <label for="areaSector" class="lavel area-sector">Area /Address</label>
+                                                </div>
+                                                <span style="color: #3e68af;"><i class='bx bx-plus'></i> Add Landmark <span style="color: #9b9c9d;" class="optonal">(Optional)</span></span>
+                                                <div class="address-check">
+                                                    <input type="checkbox" name="addressCheck" id="addressCheck">
+                                                    <label for="addressCheck">Billing and delivery address same.</label>
+                                                </div>
+                                                <div class="d-none">
+                                                    <p class="mb-2">Login With</p>
+                                                    <div class="social-login mb-4">
+                                                        <div class="row g-4">
+                                                            <div class="col-xl-6">
+                                                                <button type="button" class="btn bg-facebook btn-ecomm w-100 text-white"><i class="bi bi-facebook me-2"></i>Facebook</button>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <button type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="contactFooter" onclick="orderList()">
-                                        <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
-                                        <button type="" class="ProceedBtn">Submit Order</button>
+                                        <div class="contactFooter" onclick="orderList()">
+                                            <!-- <h4 class="btnPrice">193,000<span>&#2547;</span></h4> -->
+                                            <button type="" class="ProceedBtn">Submit Order</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
 
 
+                        <!-- drag cursor js -->
+                        <script>
+                            let isDragging = false;
+                            let initialX;
+                            let initialY;
+                            let currentX;
+                            let currentY;
 
+                            const card = document.getElementById('phoneModal');
+
+                            card.addEventListener('mousedown', (e) => {
+                                isDragging = true;
+                                initialX = e.clientX;
+                                initialY = e.clientY;
+                            });
+
+                            document.addEventListener('mousemove', (e) => {
+                                if (!isDragging) return;
+                                currentX = e.clientX - initialX;
+                                currentY = e.clientY - initialY;
+
+                                card.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                            });
+
+                            document.addEventListener('mouseup', () => {
+                                isDragging = false;
+                            });
+
+                        </script>
                     </div>
-
-
-                    <!-- drag cursor js -->
-                    <script>
-                        let isDragging = false;
-                        let initialX;
-                        let initialY;
-                        let currentX;
-                        let currentY;
-
-                        const card = document.getElementById('phoneModal');
-
-                        card.addEventListener('mousedown', (e) => {
-                            isDragging = true;
-                            initialX = e.clientX;
-                            initialY = e.clientY;
-                        });
-
-                        document.addEventListener('mousemove', (e) => {
-                            if (!isDragging) return;
-                            currentX = e.clientX - initialX;
-                            currentY = e.clientY - initialY;
-
-                            card.style.transform = `translate(${currentX}px, ${currentY}px)`;
-                        });
-
-                        document.addEventListener('mouseup', () => {
-                            isDragging = false;
-                        });
-
-                    </script>
                 </div>
             </div>
+
         </div>
+        <!-- checkout  modal end-->
 
-    </div>
-    <!-- checkout  modal end-->
+        <!--start quick view-->
 
-    <!--start quick view-->
+        <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!--End Back To Top Button-->
 
-    <!--Start Back To Top Button-->
-    <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
-    <!--End Back To Top Button-->
+        <!-- JavaScript files -->
+        <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/front_assets/js/jquery.min.js"></script>
+        <script src="/front_assets/plugins/slick/slick.min.js"></script>
+        <script src="/front_assets/js/main.js"></script>
+        <script src="/front_assets/js/index.js"></script>
+        <script src="/front_assets/js/loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- JavaScript files -->
-    <script src="/front_assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/front_assets/js/jquery.min.js"></script>
-    <script src="/front_assets/plugins/slick/slick.min.js"></script>
-    <script src="/front_assets/js/main.js"></script>
-    <script src="/front_assets/js/index.js"></script>
-    <script src="/front_assets/js/loader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- increment or decrement input css -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- add product to the cart dynamically -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- increment or decrement input css -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- add product to the cart dynamically -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!--  checkout js-->
+        <script>
 
-    <!--  checkout js-->
-    <script>
+            // When the user clicks on the button, open the modal
+            // btn.onclick = function () {
+            //   console.log(modal.style);
+            //   modal.style.display = "";
+            // };
 
-        // When the user clicks on the button, open the modal
-        // btn.onclick = function () {
-        //   console.log(modal.style);
-        //   modal.style.display = "";
-        // };
+            // When the user clicks on <span> (x), close the modal
+            // span.onclick = function() {
+            //   modal.style.display = "none";
+            // }
 
-        // When the user clicks on <span> (x), close the modal
-        // span.onclick = function() {
-        //   modal.style.display = "none";
-        // }
+            // When the user clicks anywhere outside of the modal, close it
 
-        // When the user clicks anywhere outside of the modal, close it
+            // window.onclick = function(event) {
+            //   if (event.target == modal) {
+            //     modal.style.display = "none";
+            //   }
+            // }
+            // let checkoutNone = () => {
+            //   modal.style.display = "none";
+            // };
 
-        // window.onclick = function(event) {
-        //   if (event.target == modal) {
-        //     modal.style.display = "none";
-        //   }
-        // }
-        // let checkoutNone = () => {
-        //   modal.style.display = "none";
-        // };
+            // javaScript for dropdown menu
+            // for dropdown option
+            let dropdowns = document.querySelectorAll(".checkoutDropdown");
+            // console.log(dropdowns);
 
-        // javaScript for dropdown menu
-        // for dropdown option
-        let dropdowns = document.querySelectorAll(".checkoutDropdown");
-        // console.log(dropdowns);
+            dropdowns.forEach((dropdown) => {
+                let select = dropdown.querySelector(".select");
+                let caret = dropdown.querySelector(".caret");
+                let menu = dropdown.querySelector(".menu");
+                let options = dropdown.querySelectorAll(".menu li");
+                let selected = dropdown.querySelector(".selected");
+                let mimi22 = dropdown.querySelector(".mimi22");
 
-        dropdowns.forEach((dropdown) => {
-            let select = dropdown.querySelector(".select");
-            let caret = dropdown.querySelector(".caret");
-            let menu = dropdown.querySelector(".menu");
-            let options = dropdown.querySelectorAll(".menu li");
-            let selected = dropdown.querySelector(".selected");
-            let mimi22 = dropdown.querySelector(".mimi22");
-
-            select.addEventListener("click", () => {
-                select.classList.toggle("select-clicked");
-                caret.classList.toggle("caret-rotate");
-                menu.classList.toggle("menu-open");
-            });
-
-            options.forEach((option) => {
-                option.addEventListener("click", () => {
-                    console.log('like option', option.textContent, selected);
-                    mimi22.innerText = option.textContent;
-                    if (mimi22.innerText == option.textContent) {
-                        if (mimi22.innerText == "Delivery address") {
-                            document.getElementById("textColoSet").style.color = "#9b9c9d";
-                        } else {
-                            document.getElementById("textColoSet").style.color = "black";
-                        }
-                    }
-                    select.classList.remove("select-clicked");
-                    caret.classList.remove("caret-rotate");
-                    menu.classList.remove("menu-open");
-
-                    options.forEach((option) => {
-                        option.classList.remove("active");
-                    });
-
-                    option.classList.add("active");
-                });
-            });
-        });
-
-        // for country code  option
-        let codeDropdowns = document.querySelectorAll(".phoneDropdown");
-
-        codeDropdowns.forEach((dropdown) => {
-            let select = dropdown.querySelector(".countrySelect");
-            let caret = dropdown.querySelector(".countryCaret");
-            let menu = dropdown.querySelector(".countryMenu");
-            let options = dropdown.querySelectorAll(".countryMenu li");
-            let selected = dropdown.querySelector(".countrySelected");
-
-            select.addEventListener("click", () => {
-                select.classList.toggle("select-clicked");
-                caret.classList.toggle("caret-rotate");
-                menu.classList.toggle("menu-open");
-            });
-
-            options.forEach((option) => {
-                option.addEventListener("click", () => {
-                    console.log("inner text test", option.innerText);
-                    selected.innerText = option.innerText;
-                    select.classList.remove("select-clicked");
-                    caret.classList.remove("caret-rotate");
+                select.addEventListener("click", () => {
+                    select.classList.toggle("select-clicked");
+                    caret.classList.toggle("caret-rotate");
                     menu.classList.toggle("menu-open");
+                });
 
-                    options.forEach((option) => {
-                        option.classList.remove("active");
+                options.forEach((option) => {
+                    option.addEventListener("click", () => {
+                        console.log('like option', option.textContent, selected);
+                        mimi22.innerText = option.textContent;
+                        if (mimi22.innerText == option.textContent) {
+                            if (mimi22.innerText == "Delivery address") {
+                                document.getElementById("textColoSet").style.color = "#9b9c9d";
+                            } else {
+                                document.getElementById("textColoSet").style.color = "black";
+                            }
+                        }
+                        select.classList.remove("select-clicked");
+                        caret.classList.remove("caret-rotate");
+                        menu.classList.remove("menu-open");
+
+                        options.forEach((option) => {
+                            option.classList.remove("active");
+                        });
+
+                        option.classList.add("active");
                     });
-
-                    option.classList.add("active");
                 });
             });
-        });
 
-        // scroll bar
+            // for country code  option
+            let codeDropdowns = document.querySelectorAll(".phoneDropdown");
 
-        var $doc = $("#createScroll");
-        var $win = $(window);
-        var itemstoshow = 5;
+            codeDropdowns.forEach((dropdown) => {
+                let select = dropdown.querySelector(".countrySelect");
+                let caret = dropdown.querySelector(".countryCaret");
+                let menu = dropdown.querySelector(".countryMenu");
+                let options = dropdown.querySelectorAll(".countryMenu li");
+                let selected = dropdown.querySelector(".countrySelected");
 
-        $(".infinite")
-            .filter(function (index) {
-                return $(this).offset().top > $win.height();
-            })
-            .hide();
+                select.addEventListener("click", () => {
+                    select.classList.toggle("select-clicked");
+                    caret.classList.toggle("caret-rotate");
+                    menu.classList.toggle("menu-open");
+                });
 
-        $(window).scroll(function () {
-            if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
-                $(".infinite:hidden:lt(" + itemstoshow + ")").show();
-            }
-        });
+                options.forEach((option) => {
+                    option.addEventListener("click", () => {
+                        console.log("inner text test", option.innerText);
+                        selected.innerText = option.innerText;
+                        select.classList.remove("select-clicked");
+                        caret.classList.remove("caret-rotate");
+                        menu.classList.toggle("menu-open");
 
-        // mediaQuery and responsive
-        let ovearflows = document.querySelectorAll(".addCardText p");
+                        options.forEach((option) => {
+                            option.classList.remove("active");
+                        });
 
-        const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+                        option.classList.add("active");
+                    });
+                });
+            });
 
-        ovearflows.forEach((ovearflow) => {
-            if (ovearflow.innerHTML.length > 90) {
-                ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
-            }
+            // scroll bar
 
-            if (mediaQuery1300.matches) {
-                console.log("match");
-                if (ovearflow.innerHTML.length > 71) {
-                    ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+            var $doc = $("#createScroll");
+            var $win = $(window);
+            var itemstoshow = 5;
+
+            $(".infinite")
+                .filter(function (index) {
+                    return $(this).offset().top > $win.height();
+                })
+                .hide();
+
+            $(window).scroll(function () {
+                if ($doc.height() - $win.height() - $(this).scrollTop() == 0) {
+                    $(".infinite:hidden:lt(" + itemstoshow + ")").show();
                 }
+            });
+
+            // mediaQuery and responsive
+            let ovearflows = document.querySelectorAll(".addCardText p");
+
+            const mediaQuery1300 = window.matchMedia("(max-width: 1300px)");
+
+            ovearflows.forEach((ovearflow) => {
+                if (ovearflow.innerHTML.length > 90) {
+                    ovearflow.textContent = ovearflow.textContent.slice(0, 90) + " .";
+                }
+
+                if (mediaQuery1300.matches) {
+                    console.log("match");
+                    if (ovearflow.innerHTML.length > 71) {
+                        ovearflow.textContent = ovearflow.textContent.slice(0, 71) + " .";
+                    }
+                }
+            });
+
+            const mediaQuery750 = window.matchMedia("(max-width: 750px)");
+
+            if (mediaQuery750.matches) {
+                let phoneModal = document.getElementById("phoneModal");
+                let phone_2nd = document.getElementById("phone_2nd");
+                let phone_1st = document.getElementById("phone_1st");
+                phoneModal.insertBefore(phone_1st, phone_2nd);
             }
-        });
+        </script>
 
-        const mediaQuery750 = window.matchMedia("(max-width: 750px)");
-
-        if (mediaQuery750.matches) {
-            let phoneModal = document.getElementById("phoneModal");
-            let phone_2nd = document.getElementById("phone_2nd");
-            let phone_1st = document.getElementById("phone_1st");
-            phoneModal.insertBefore(phone_1st, phone_2nd);
-        }
-    </script>
-
-    <script src="../../front_assets/js/axios_post.js"></script>
+        <script src="../../front_assets/js/axios_post.js"></script>
 
 
-    <!-- increment or decrement input css -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- add product to the cart dynamically -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- increment or decrement input css -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- add product to the cart dynamically -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </body>
 

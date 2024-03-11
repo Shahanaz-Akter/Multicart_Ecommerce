@@ -20,7 +20,24 @@
 
   <link href="/front_assets/css/style.css" rel="stylesheet">
   <link href="/front_assets/css/dark-theme.css" rel="stylesheet">
-
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3628050850743550');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3628050850743550&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
   <title>Login</title>
 </head>
 
@@ -69,7 +86,7 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
+              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="/shop" data-bs-toggle="dropdown">
                 Category
               </a>
               <div class="dropdown-menu dropdown-large-menu">
@@ -77,51 +94,58 @@
                   <div class="col-12 col-xl-4">
                     <h6 class="large-menu-title">Fashion</h6>
                     <ul class="list-unstyled">
-                      <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
-                      </li>
-                      <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
-                      </li>
-                      <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
-                      </li>
-                      <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
-                      </li>
-                      <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
-                      </li>
-                      <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
-                      </li>
-                      <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
-                      </li>
-                      <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
-                      </li>
+                      <% for(let i=0; i<=unique_cate.length; i++){%>
+                        <li>
+                          <a href="/all_cate/<%=unique_cate[i]%>">
+                            <%=unique_cate[i]%>
+                          </a>
+                        </li>
+                        <%}%>
+                          <!-- <li><a href="/product_category/categories/mens-and-boys-fashion">Men's & Boys' Fashion</a>
+                                                                            </li> -->
+                          <!-- <li><a href="/product_category/categories/womens-and-girls-fashion">Women's & Girls' Fashion</a>
+                                                                    </li>
+                                                                    <li><a href="/product_category/categories/home-and-gadgets">Home & GADGETS</a>
+                                                                    </li>
+                                                                    <li><a href="/product_category/categories/kitchen-and-dining">kITCHEN & DINING</a>
+                                                                    </li>
+                                                                    <li><a href="/product_category/categories/health-and-beauty">HEALTH & BEAUTY</a>
+                                                                    </li>
+                                                                    <li><a href="/product_category/categories/baby-and-kids">BABY & KIDS</a>
+                                                                    </li>
+                                                                    <li><a href="/product_category/categories/shaver-and-trimmer">SHAVER & TRIMMER</a>
+                                                                    </li>
+                                                                    <li><a href="/product_category/categories/electronics">ELECTRONICS</a>
+                                                                    </li> -->
                     </ul>
                   </div>
 
                   <!-- end col-3 -->
                   <!-- <div class="col-12 col-xl-4">
-                    <h6 class="large-menu-title">Electronics</h6>
-                    <ul class="list-unstyled">
-                      <li><a href="javascript:;">Mobiles</a>
-                      </li>
-                      <li><a href="javascript:;">Laptops</a>
-                      </li>
-                      <li><a href="javascript:;">Macbook</a>
-                      </li>
-                      <li><a href="javascript:;">Televisions</a>
-                      </li>
-                      <li><a href="javascript:;">Lighting</a>
-                      </li>
-                      <li><a href="javascript:;">Smart Watch</a>
-                      </li>
-                      <li><a href="javascript:;">Galaxy Phones</a>
-                      </li>
-                      <li><a href="javascript:;">PC Monitors</a>
-                      </li>
-                    </ul>
-                  </div> -->
+                                <h6 class="large-menu-title">Electronics</h6>
+                                <ul class="list-unstyled">
+                                  <li><a href="javascript:;">Mobiles</a>
+                                  </li>
+                                  <li><a href="javascript:;">Laptops</a>
+                                  </li>
+                                  <li><a href="javascript:;">Macbook</a>
+                                  </li>
+                                  <li><a href="javascript:;">Televisions</a>
+                                  </li>
+                                  <li><a href="javascript:;">Lighting</a>
+                                  </li>
+                                  <li><a href="javascript:;">Smart Watch</a>
+                                  </li>
+                                  <li><a href="javascript:;">Galaxy Phones</a>
+                                  </li>
+                                  <li><a href="javascript:;">PC Monitors</a>
+                                  </li>
+                                </ul>
+                              </div> -->
                   <!-- end col-3 -->
                   <div class="col-12 col-xl-4 d-none d-xl-block">
                     <div class="pramotion-banner1">
-                      <img src="/front_assets/img/menu-img.jpg" class="img-fluid" alt="" />
+                      <img src="/front_assets/img/menu-img.webp" class="img-fluid" alt="" />
                     </div>
                   </div>
                   <!-- end col-3 -->
@@ -129,8 +153,6 @@
                 <!-- end row -->
               </div>
             </li>
-
-
 
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
@@ -244,10 +266,14 @@
                 <div class="social-login mb-4">
                   <div class="row g-4">
                     <div class="col-xl-6">
-                      <button type="button" class="btn bg-facebook btn-ecomm w-100 text-white"><i class="bi bi-facebook me-2"></i>Facebook</button>
+                      <a href="/auth/facebook">
+                        <div class="btn bg-facebook btn-ecomm w-100 text-white"><i class="bi bi-facebook me-2"></i>Facebook</div>
+                      </a>
                     </div>
                     <div class="col-xl-6">
-                      <button type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</button>
+                      <a href="/auth/google">
+                        <div class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -309,20 +335,41 @@
   <!--start footer-->
   <section class="footer-section bg-section-2 section-padding">
     <div class="container">
-      <div class="row row-cols-1 row-cols-lg-4 g-4">
+      <style>
+        @media (max-width: 575.98px) {
+          .child_clss {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+        }
+      </style>
+      <div class="child_clss row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
         <div class="col">
           <div class="footer-widget-6">
-            <%if(logo_img !=null){%>
-              <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
-              <%}%>
-                <!-- <img src="images/logo.webp" class="logo-img mb-3" alt=""> -->
-                <h5 class="mb-3 fw-bold">About Us</h5>
-                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. dolores! At quasi est minima dolores nostrum quos odit nobis officia quas rerum excepturi, velit quidem vel perferendis amet unde?.</p>
+            <div class="offcanvas-logo">
+              <!-- <img src="/front_assets/img/logo.webp" class="logo-img mb-3" alt=""> -->
+              <%if(logo_img!=null){%>
+                <img src="<%=logo_img.logo_image%>" class="logo-img" alt="Not view">
+                <%}%>
+            </div>
+            <h5 class="mb-3 fw-bold">About Us</h5>
+            <p class="mb-2">
+            <div class="mb-1">
+              Welcome to Gchieftain your go-to destination for an exciting array of innovative products! We're dedicated to bringing you the latest and most groundbreaking items, carefully curated for your enjoyment.
+            </div>
+            <div class="mb-1">
+              At Gchieftain we're passionate about sourcing unique products that stand out from the crowd. From cutting-edge gadgets to innovative fashion accessories, we're constantly on the lookout for what's pushing the boundaries of creativity and functionality.
+            </div>
+            <div>
+              Thank you for choosing Gchieftain as your destination for innovative products. Join us in exploring the latest trends and discovering must-have items that redefine the way you experience the world..
+            </div>
 
-                <a class="link-dark" href="javascript:;">Read More</a>
+            </p>
+            <a class="link-dark" href="javascript:;">Read More</a>
           </div>
         </div>
-        <div class="col">
+        <div class="col d-none">
           <div class="footer-widget-7">
             <h5 class="mb-3 fw-bold">Explore</h5>
             <ul class="widget-link list-unstyled">
@@ -336,7 +383,7 @@
             </ul>
           </div>
         </div>
-        <div class="col">
+        <div class="col d-none">
           <div class="footer-widget-8">
             <h5 class="mb-3 fw-bold">Company</h5>
             <ul class="widget-link list-unstyled">
@@ -353,44 +400,44 @@
           <div class="footer-widget-9">
             <h5 class="mb-3 fw-bold">Follow Us</h5>
             <div class="social-link d-flex align-items-center gap-2">
-              <a href="javascript:;"><i class="bi bi-facebook"></i></a>
-              <a href="javascript:;"><i class="bi bi-twitter"></i></a>
-              <a href="javascript:;"><i class="bi bi-linkedin"></i></a>
-              <a href="javascript:;"><i class="bi bi-youtube"></i></a>
-              <a href="javascript:;"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-facebook"></i></a>
+              <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
+              <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-linkedin"></i></a>
+              <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
+              <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
             </div>
-            <div class="mb-4 mt-4">
+            <div class="mb-3 mt-3">
               <h5 class="mb-0 fw-bold">Support</h5>
-              <p class="mb-0 text-muted">support@example.com</p>
+              <p class="mb-0 text-muted">gchieftainbd@gmail.com</p>
             </div>
-            <div class="">
-              <h5 class="mb-0 fw-bold">Toll Free</h5>
-              <p class="mb-0 text-muted">1800- 8xx 2xx</p>
-            </div>
+            <!-- <div class="">
+                                  <h5 class="mb-0 fw-bold">Toll Free</h5>
+                                  <p class="mb-0 text-muted">1800- 8xx 2xx</p>
+                              </div> -->
           </div>
         </div>
       </div><!--end row-->
       <div class="my-5"></div>
-      <div class="row">
-        <div class="col-12">
-          <div class="text-center">
-            <h5 class="fw-bold mb-3">Download Mobile App</h5>
-          </div>
-          <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
-            <div>
-              <a href="javascript:;">
-                <img src="images/play-store.webp" width="160" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:;">
-                <img src="images/apple-store.webp" width="160" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div><!--end row-->
-
+      <!-- <div class="row">
+                      <div class="col-12">
+                          <div class="text-center">
+                              <h5 class="fw-bold mb-3">Download Mobile App</h5>
+                          </div>
+                          <div class="app-icon d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
+                              <div>
+                                  <a href="javascript:;">
+                                      <img src="/front_assets/img/play-store.jpg" width="160" alt="">
+                                  </a>
+                              </div>
+                              <div>
+                                  <a href="javascript:;">
+                                      <img src="/front_assets/img/apple-store.jpg" width="160" alt="">
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div> -->
+      <!--end row-->
     </div>
   </section>
   <!--end footer-->

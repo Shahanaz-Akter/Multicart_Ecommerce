@@ -22,8 +22,26 @@
     <link href="/front_assets/css/dark-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="/front_assets/css/checkout.css" rel="stylesheet">
-
     <title>Home</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3628050850743550');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3628050850743550&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 
     <style>
         * {
@@ -33,7 +51,6 @@
             font-family: poppins, sans-serif;
         }
     </style>
-
 
 </head>
 
@@ -264,8 +281,10 @@
                                 <% banner_img.forEach(images=> { %>
                                     <div class="carousel-item active bg-dark">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <div class="" style="background: url('<%=images %>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 520px;width:100%;">
+                                            <div class="" style="background: url('<%=images%>');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 520px;width:100%;">
                                             </div>
+                                            <!-- <img src="<%=images %>" alt="Not available" height="400" width="100%"> -->
+
                                         </div>
                                     </div>
                                     <% }); %>
@@ -294,6 +313,7 @@
                     <h3 class="mb-0 h3 fw-bold">Featured Products</h3>
                     <!-- <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p> -->
                 </div>
+
                 <!-- ekhane kaj -->
                 <div class="product-thumbs">
                     <%products.slice(0,10).forEach(product=>{%>
@@ -310,7 +330,7 @@
 
                                     <a onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3" id="liveToastBtn"></i></a>
                                     <a href="" data-bs-toggle="modal" data-bs-target="#plusIconModal_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                    <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>, buy='buy_now')"></i> </a>
                                 </div>
 
                                 <!-- style="background: url('<%=product.primary_image%>');background-size: cover;background-repeat: no-repeat;background-position: center;" -->
@@ -479,7 +499,7 @@
 
                                         <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3 me-2">
                                             <i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i>Buy Now</a>-->
-                                        <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                        <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2" onclick="buy_now(<%=product.id%>,  buy='buy_now')"><i class="bi bi-telephone-fill"></i> Buy Now</a>
 
                                     </div>
                                 </div>
@@ -564,8 +584,8 @@
                                             <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
                                                 <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
                                                 <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
-                                                <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)" data-bs-toggle="modal" data-bs-target="#IconModal_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
-                                                <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#IconModal_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
+                                                <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')"></i> </a>
 
                                             </div>
 
@@ -718,7 +738,7 @@
                                                 <div class="buttons d-flex flex-column gap-3 mt-4">
                                                     <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                     <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
-                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
                                                 </div>
                                             </div>
                                             <hr class="my-3">
@@ -769,7 +789,7 @@
                                             <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
                                             <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
                                             <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#Icon_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
-                                            <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                            <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')"></i> </a>
                                         </div>
                                         <a href="/product/product_details/<%=product.id%>">
                                             <!-- <div class="" style="background: url('');background-size:cover;background-repeat: no-repeat;background-position:center center; height: 300px;width: auto;">
@@ -921,7 +941,7 @@
                                             <div class="buttons d-flex flex-column gap-3 mt-4">
                                                 <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                 <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
-                                                <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                                <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
                                             </div>
                                         </div>
                                         <hr class="my-3">
@@ -972,7 +992,7 @@
                                                 <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
                                                 <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
                                                 <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#Iconn_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
-                                                <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                                <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')"></i> </a>
 
                                             </div>
 
@@ -1124,7 +1144,7 @@
                                                     <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                     <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
 
-                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                                    <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
                                                 </div>
                                             </div>
                                             <hr class="my-3">
@@ -1174,7 +1194,7 @@
                                                     <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
                                                     <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
                                                     <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#Icon3_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                                    <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')"></i> </a>
 
                                                 </div>
                                                 <a href="/product/product_details/<%=product.id%>">
@@ -1327,7 +1347,7 @@
                                                         <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                         <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
 
-                                                        <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                                        <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
                                                     </div>
                                                 </div>
                                                 <hr class="my-3">
@@ -1377,7 +1397,7 @@
                                                         <!-- <a href="javascript:;"><i class="bi bi-heart"></i></a> -->
                                                         <a href="javascript:;" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket3"></i></a>
                                                         <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#Icon5_<%=product.id%>"><i class="bi bi-zoom-in"></i></a>
-                                                        <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal"></i> </a>
+                                                        <a href="javascript:;"><i class="bi bi-telephone-fill" data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')"></i> </a>
 
                                                     </div>
                                                     <a href="/product/product_details/<%=product.id%>">
@@ -1530,7 +1550,7 @@
                                                             <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1" onclick="add_cart_product(<%=product.id%>)"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                                             <!-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> -->
 
-                                                            <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
+                                                            <a data-bs-toggle="offcanvas" data-bs-target="#checkoutModal" onclick="buy_now(<%=product.id%>,  buy='buy_now')" class="btn btn-primary btn-lg btn-outLine-dark btn-ecomm px-5 py-3 me-2"><i class="bi bi-telephone-fill"></i> Buy Now</a>
                                                         </div>
                                                     </div>
                                                     <hr class="my-3">
@@ -1980,9 +2000,9 @@
                         <div class="footer-widget-9">
                             <h5 class="mb-3 fw-bold">Follow Us</h5>
                             <div class="social-link d-flex align-items-center gap-2">
-                                <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-facebook"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-facebook"></i></a>
                                 <!-- <a href="javascript:;"><i class="bi bi-twitter"></i></a> -->
-                                <a href="https://www.facebook.com/shahanaz.akter.33865?mibextid=ZbWKwL"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=61555665282963&mibextid=kFxxJD"><i class="bi bi-linkedin"></i></a>
                                 <!-- <a href="javascript:;"><i class="bi bi-youtube"></i></a> -->
                                 <!-- <a href="javascript:;"><i class="bi bi-instagram"></i></a> -->
                             </div>
@@ -2272,7 +2292,7 @@
                                                     <label for="addressCheck">Billing and delivery address same.</label>
                                                 </div>
 
-                                                <div>
+                                                <div class="d-none">
                                                     <p class="mb-2">Login With</p>
                                                     <div class="social-login mb-4">
                                                         <div class="row g-4">

@@ -20,7 +20,7 @@ const userView = async (req, res) => {
 
     let products = await models.Product.findAll();
     let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
-    console.log(unique_cate);
+    // console.log(unique_cate);
 
     // let logo_img = await models.Crm.findAll();
 
@@ -93,7 +93,10 @@ const Login = async (req, res) => {
         order: [['createdAt', 'DESC']],
         raw: true,
     });
-    res.render('user/authentication_login.ejs', { logo_img, error, locals: { session: req.session } });
+    let products = await models.Product.findAll();
+    let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+    // console.log(unique_cate);
+    res.render('user/authentication_login.ejs', { unique_cate, logo_img, error, locals: { session: req.session } });
 }
 
 
@@ -121,7 +124,10 @@ const register = async (req, res) => {
         order: [['createdAt', 'DESC']],
         raw: true,
     });
-    res.render('user/authentication_register.ejs', { logo_img, locals: { session: req.session } });
+    let products = await models.Product.findAll();
+    let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
+    // console.log(unique_cate);
+    res.render('user/authentication_register.ejs', { unique_cate, logo_img, locals: { session: req.session } });
 }
 
 const postReview = async (req, res) => {
@@ -155,7 +161,7 @@ const postReview = async (req, res) => {
 
 const allCate = async (req, res) => {
     let pr_cate = req.params.name;
-    console.log(pr_cate);
+    // console.log(pr_cate);
     let products = await models.Product.findAll();
     let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
     // console.log(unique_cate);
@@ -371,9 +377,9 @@ const post_checkout = async (req, res) => {
     // phone, email, fullName, deliver_charge, areaSector, addressCheck, subT 
     let { fullName, phone, dob, email, country, address, zip_code, date, areaSector, addressCheck, deliver_charge, subT, discount } = req.body;
 
+
     // console.log(phone);
     console.log('moi moi');
-
     console.log(subT);
     console.log(address);
     console.log(deliver_charge);
@@ -381,6 +387,7 @@ const post_checkout = async (req, res) => {
     let sessionProducts = req.session.cart;
     // subT = 0;
     // console.log('0' + mobile, email, customer_name, delivery_charge, address, sub_total, total, discount);
+
     try {
         let customer = await models.Customer.create({
             'customer_name': fullName,
@@ -433,7 +440,7 @@ const shop = async (req, res) => {
 
         let products = await models.Product.findAll();
         let unique_cate = [...new Set(products.map(product => product.product_category).filter(category => category !== ''))];
-        console.log(unique_cate);
+        // console.log(unique_cate);
 
         let logo_img = await models.Crm.findOne({
             order: [['createdAt', 'DESC']],

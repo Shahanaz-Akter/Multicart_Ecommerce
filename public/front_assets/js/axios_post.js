@@ -288,26 +288,31 @@ const buy_now = async (product_id, buy) => {
     console.log(buy);
     console.log(product_id);
     const response = await axios.post('/product/post_cart_product', { product_id, buy });
+    subT = response.data.record.selling_price;
     console.log('Records: ', response.data.record);
-
-    if (await response.status === 200) {
-        let checkoutSubTotal = document.querySelector('#checkoutSubTotal');
-        checkoutSubTotal.textContent = response.data.record.selling_price;
-        // console.log('alu2');
-
-    }
-}
-
-const calculate_subtotal = async () => {
-    const response = await axios.post('/product/calculate_subtotal');
-    subT = response.data.subtotal;
-
     document.querySelector('.addCardText').children[0].innerHTML = `Subtotal: ${subT} TK`;
     console.log(subT);
-}
+    // calculate_subtotal();
 
+    // if (await response.status === 200) {
+    //     let checkoutSubTotal = document.querySelector('#checkoutSubTotal');
+    //     checkoutSubTotal.textContent = response.data.record.selling_price;
+    // }
+}
+const calculate_subtotal = async () => {
+    document.querySelector('.addCardText').children[1].innerHTML = `Delivery: 00.00 TK`;
+    document.querySelector('.checkoutDropdown').querySelector('.mimi22').textContent = "Select";
+    document.querySelector('.totalPrice').querySelector('#total_amount').textContent = "00.00 TK";
+    const response = await axios.post('/product/calculate_subtotal');
+    subT = response.data.subtotal;
+    document.querySelector('.addCardText').children[0].innerHTML = `Subtotal: ${subT} TK`;
+    console.log(subT);
+
+
+}
 const setDeliveryCharge = (price) => {
     deliver_charge = price;
+    console.log(deliver_charge);
     document.querySelector('.addCardText').children[1].innerHTML = `Delivery: ${price} TK`;
     let t = subT + deliver_charge;
     document.querySelector('.totalPrice').children[1].innerHTML = `${t} ৳`;
@@ -317,10 +322,6 @@ const orderList = async () => {
     let none_modal = document.querySelector('.none_modal');
     var modal = bootstrap.Offcanvas.getInstance(none_modal);
 
-    let checkoutSubTotal = document.querySelector('#checkoutSubTotal').value;
-    console.log('checkoutSubTotal: ', checkoutSubTotal);
-    let checkoutDelivery = document.querySelector('#checkoutDelivery').value;
-    console.log('checkoutDelivery: ', checkoutDelivery);
 
     let phone = document.querySelector('#mobile').value;
     // console.log('bbb: ', phone);
@@ -339,18 +340,18 @@ const orderList = async () => {
     }
     let fullName = document.querySelector('#fullName').value;
     let delivery_charge = document.querySelector('#delivery_charge').value;
-    console.log(delivery_charge);
     // 01836549237
-    if (!(delivery_charge)) {
-        alert('Enter Delivery Charge');
-        return
-    }
+    // if (!(deliver_charge)) {
+    //     alert('Enter Delivery Charge');
+    //     return
+    // }
     // console.log('delivery charge ', deliver_charge);
     let areaSector = document.querySelector('#areaSector').value;
     let addressCheck = document.querySelector('#addressCheck').value;
-    // console.log(delivery_charge, areaSector, addressCheck, subT);
+    console.log(deliver_charge, areaSector, addressCheck, subT);
+
     let orderResponse = await axios.post('/post_checkout', {
-        phone, email, fullName, deliver_charge, areaSector, addressCheck, subT, checkoutSubTotal, checkoutDelivery
+        phone, email, fullName, deliver_charge, areaSector, addressCheck, subT,
     });
 
     if (orderResponse) {
@@ -358,6 +359,12 @@ const orderList = async () => {
         let prevCartItems = document.querySelectorAll('.cart-item-session');
         let cartbadge = document.querySelector('.cart-badge');
         cartbadge.innerHTML = '0';
+        document.querySelector('.addCardText').children[0].innerHTML = `Subtotal: 00.00 TK`;
+        document.querySelector('.addCardText').children[1].innerHTML = `Delivery: 00.00 TK`;
+        document.querySelector('.checkoutDropdown').querySelector('.mimi22').textContent = "Select";
+        document.querySelector('.totalPrice').querySelector('#total_amount').textContent = "00.00 TK";
+
+        cartArr = [];
         Array.from(prevCartItems).forEach(ele => {
             ele.remove()
         })
